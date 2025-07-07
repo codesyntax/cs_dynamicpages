@@ -18,5 +18,6 @@ class DynamicView(BrowserView):
                                                 context=self.context)
         if dynamic_page_folder:
             return api.content.find(portal_type="DynamicPageRow",
+                                    sort_on="getObjPositionInParent",
                                     context=dynamic_page_folder[0].getObject())
         return []
