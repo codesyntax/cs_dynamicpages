@@ -12,7 +12,7 @@
     class=".dynamic_view.DynamicView"
     template="dynamic_view.pt"
     permission="zope2.View"
-    layer="cs_dynamicpages.interfaces.ICsDynamicpagesLayer"
+    layer="cs_dynamicpages.interfaces.IBrowserLayer"
     />
 
  <browser:pages

@@ -4,7 +4,7 @@
 from Products.Five.browser import BrowserView
 from zope.interface import implementer
 from zope.interface import Interface
-
+from plone import api
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 class IDynamicView(Interface):
@@ -13,10 +13,10 @@ class IDynamicView(Interface):
 
 @implementer(IDynamicView)
 class DynamicView(BrowserView):
-    # If you want to define a template here, please remove the template from
-    # the configure.zcml registration of this view.
-    # template = ViewPageTemplateFile('dynamic_view.pt')
-
-    def __call__(self):
-        # Implement your own actions:
-        return self.index()
+    def features(self):
+        dynamic_page_folder = api.content.find(portal_type="DynamicPageFolder",
+                                                context=self.context)
+        if dynamic_page_folder:
+            return api.content.find(portal_type="DynamicPageRow",
+                                    context=dynamic_page_folder[0].getObject())
+        return []

@@ -1,35 +1,16 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="cs_dynamicpages"
-      metal:use-macro="context/main_template/macros/master">
-<body>
-
-  <metal:custom_title fill-slot="content-title">
-    <h1 tal:replace="structure context/@@title" />
-
-    <!-- @@title view template: -->
-    <!--
-    <h1 tal:define="title context/Title" tal:condition="title" tal:content="title">
-      Title or id
-    </h1>
-    -->
-
-  </metal:custom_title>
-
-  <metal:custom_description fill-slot="content-description">
-    <p tal:replace="structure context/@@description" />
-  </metal:custom_description>
-
-  <metal:content-core fill-slot="content-core">
-  <metal:block define-macro="content-core">
-
-    <h2>Main content</h2>
-    <!--<div tal:replace="view/my_custom_view_method" />-->
-    <!--<div tal:replace="context/my_custom_field" />-->
-
-  </metal:block>
-  </metal:content-core>
-</body>
-</html>
+<div class="card text-bg-dark">
+  <tal:image tal:define="image view/related_image" tal:condition="image">
+    <img tal:define="
+                             images image/@@images;
+                           " tal:replace="structure python:images.srcset(fieldname='image',
+                                      scale_in_src='huge',
+                                      sizes='(min-width: 1400px) 1200px, 100vw',
+                                      alt=image.Title() ,
+                                      title=image.Title())" />
+  </tal:image>
+  <div class="card-img-overlay">
+    <h5 class="card-title">${context/Title}</h5>
+    <p class="card-text" tal:condition="context/Description">${context/Description}</p>
+    <a href="${context/link_url}" tal:condition="context/link_url">${context/link_text}</a>
+  </div>
+</div>

@@ -17,6 +17,8 @@ class FeaturedView(BrowserView):
     # the configure.zcml registration of this view.
     # template = ViewPageTemplateFile('featured_view.pt')
 
-    def __call__(self):
-        # Implement your own actions:
-        return self.index()
+    def related_image(self):
+        related_image = self.context.related_image
+        if related_image:
+            return related_image[0].to_object
+        return None
