@@ -2,4 +2,10 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+    <utility
+        component=".row_type.RowTypeFactory"
+        name="cs_dynamicpages.RowType"
+    />
+
+
 </configure>
