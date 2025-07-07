@@ -6,4 +6,10 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+    <permission
+        id="cs_dynamicpages.AddDynamicPageRow"
+        title="cs_dynamicpages: Add DynamicPageRow"
+    />
+
+
 </configure>

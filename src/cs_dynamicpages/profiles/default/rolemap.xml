@@ -2,5 +2,13 @@
 <rolemap>
   <permissions>
     <!-- -*- extra stuff goes here -*- -->
+
+    <permission name="cs_dynamicpages: Add DynamicPageRow" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
   </permissions>
 </rolemap>
