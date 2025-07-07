@@ -9,7 +9,7 @@
     name="dynamica_pages_control_panel-controlpanel"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     class=".controlpanel.DynamicaPagesControlPanelView"
-    layer="cs_dynamicpages.interfaces.ICsDynamicpagesLayer"
+    layer="cs_dynamicpages.interfaces.IBrowserLayer"
     permission="cmf.ManagePortal"
     />
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from cs_dynamicpages import _
-from cs_dynamicpages.interfaces import ICsDynamicpagesLayer
+from cs_dynamicpages.interfaces import IBrowserLayer
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
 from plone.restapi.controlpanels import RegistryConfigletPanel
@@ -35,7 +35,7 @@ DynamicaPagesControlPanelView = layout.wrap_form(
 
 
 
-@adapter(Interface, ICsDynamicpagesLayer)
+@adapter(Interface, IBrowserLayer)
 class DynamicaPagesControlPanelConfigletPanel(RegistryConfigletPanel):
     """Control Panel endpoint"""
 
