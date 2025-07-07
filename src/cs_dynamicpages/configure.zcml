@@ -23,6 +23,9 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+    <include package=".behaviors" />
+
+
   <include package=".views" />
 
     <include package=".vocabularies" />
