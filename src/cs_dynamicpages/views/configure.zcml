@@ -6,6 +6,15 @@
 
  <!-- -*- extra stuff goes here -*- -->
 
+  <browser:page
+    name="dynamic-view"
+    for="plone.app.contenttypes.interfaces.IFolder"
+    class=".dynamic_view.DynamicView"
+    template="dynamic_view.pt"
+    permission="zope2.View"
+    layer="cs_dynamicpages.interfaces.ICsDynamicpagesLayer"
+    />
+
  <browser:pages
     for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
     class=".featured_view.FeaturedView"
