@@ -41,6 +41,7 @@
     <element value="plone.categorization"/>
     <element value="plone.locking" />
     <element value="cs_dynamicpages.link_info" />
+    <element value="cs_dynamicpages.related_image" />
     <!--<element value="plone.leadimage"/>-->
     <!--<element value="plone.relateditems"/>-->
     <!--<element value="plone.richtext"/>-->
