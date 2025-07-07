@@ -20,9 +20,15 @@ class ILinkInfo(model.Schema):
     """
     """
 
-    project = schema.TextLine(
-        title=_(u'Project'),
-        description=_(u'Give in a project name'),
+    link_text = schema.TextLine(
+        title="Link Text",
+        description="Give in a link text",
+        required=False,
+    )
+
+    link_url = schema.TextLine(
+        title="Link URL",
+        description="Give in a link URL",
         required=False,
     )
 
@@ -34,11 +40,21 @@ class LinkInfo(object):
         self.context = context
 
     @property
-    def project(self):
-        if safe_hasattr(self.context, 'project'):
-            return self.context.project
+    def link_text(self):
+        if safe_hasattr(self.context, 'link_text'):
+            return self.context.link_text
         return None
 
-    @project.setter
-    def project(self, value):
-        self.context.project = value
+    @link_text.setter
+    def link_text(self, value):
+        self.context.link_text = value
+
+    @property
+    def link_url(self):
+        if safe_hasattr(self.context, 'link_url'):
+            return self.context.link_url
+        return None
+
+    @link_url.setter
+    def link_url(self, value):
+        self.context.link_url = value
