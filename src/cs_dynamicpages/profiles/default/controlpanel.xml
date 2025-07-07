@@ -3,4 +3,18 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+  <configlet
+      i18n:attributes="title"
+      title="Dynamica Pages Control Panel"
+      action_id="dynamica_pages_control_panel-controlpanel"
+      appId="dynamica_pages_control_panel-controlpanel"
+      category="Products"
+      condition_expr=""
+      icon_expr=""
+      url_expr="string:${portal_url}/@@dynamica_pages_control_panel-controlpanel"
+      visible="True">
+    <permission>Manage Portal</permission>
+  </configlet>
+
+
 </object>

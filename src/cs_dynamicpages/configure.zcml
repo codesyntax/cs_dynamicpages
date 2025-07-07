@@ -23,6 +23,9 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+    <include package=".controlpanels" />
+
+
     <include package=".behaviors" />
 
 
