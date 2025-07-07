@@ -1,42 +1,42 @@
 # -*- coding: utf-8 -*-
 
-# from plone import api
 from zope.schema.interfaces import IVocabularyFactory
 from zope.interface import implementer
 from cs_dynamicpages import _
-from plone.dexterity.interfaces import IDexterityContent
 from zope.globalrequest import getRequest
-from zope.schema.vocabulary import SimpleTerm
+from plone.dexterity.interfaces import IDexterityContent
 from zope.schema.vocabulary import SimpleVocabulary
-
-
+from zope.component import getSiteManager
+from zope.schema.vocabulary import SimpleTerm
+from zope.interface import providedBy
+from zope.interface import Interface
 class VocabItem(object):
     def __init__(self, token, value):
         self.token = token
         self.value = value
 
+VIEW_PREFIX = "cs_dynamicpages-"
 
 @implementer(IVocabularyFactory)
 class RowType(object):
     """
     """
-
     def __call__(self, context):
-        # Just an example list of content for our vocabulary,
-        # this can be any static or dynamic data, a catalog result for example.
-        items = [
-            VocabItem(u'sony-a7r-iii', _(u'Sony Aplha 7R III')),
-            VocabItem(u'canon-5d-iv', _(u'Canon 5D IV')),
-        ]
-
-        # Fix context if you are using the vocabulary in DataGridField.
-        # See https://github.com/collective/collective.z3cform.datagridfield/issues/31:  # NOQA: 501
+        items = []
+        terms = []
         if not IDexterityContent.providedBy(context):
             req = getRequest()
             context = req.PARENTS[0]
-
-        # create a list of SimpleTerm items:
-        terms = []
+        sm = getSiteManager()
+        available_views = sm.adapters.lookupAll(
+            required=(providedBy(context), providedBy(getRequest())),
+            provided=Interface,
+        )
+        available_view_names = [view[0] for view in available_views if view[0].startswith(VIEW_PREFIX)]
+        for view_name in available_view_names:
+            items.append(VocabItem(view_name, view_name.replace(VIEW_PREFIX, "")))
+        if not available_view_names:
+            items.append(VocabItem("cs_dynamicpages-featured-view", "Featured View"))
         for item in items:
             terms.append(
                 SimpleTerm(
@@ -45,7 +45,6 @@ class RowType(object):
                     title=item.value,
                 )
             )
-        # Create a SimpleVocabulary from the terms list and return it:
         return SimpleVocabulary(terms)
 
 

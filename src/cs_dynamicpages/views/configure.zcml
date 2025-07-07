@@ -6,13 +6,16 @@
 
  <!-- -*- extra stuff goes here -*- -->
 
-  <browser:page
-    name="featured-view"
-    for="DynamicPageRow"
+ <browser:pages
+    for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
     class=".featured_view.FeaturedView"
-    template="featured_view.pt"
+    layer="cs_dynamicpages.interfaces.IBrowserLayer"
     permission="zope2.View"
-    layer="cs_dynamicpages.interfaces.ICsDynamicpagesLayer"
-    />
+    >
+    <browser:page
+      template="featured_view.pt"
+      name="cs_dynamicpages-featured-view"
+      />
+ </browser:pages>
 
 </configure>
