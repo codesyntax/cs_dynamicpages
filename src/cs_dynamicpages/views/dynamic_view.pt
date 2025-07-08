@@ -1,17 +1,27 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:metal="http://xml.zope.org/namespaces/metal"
-  xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-  i18n:domain="cs_dynamicpages" metal:use-macro="context/main_template/macros/master">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="cs_dynamicpages"
+>
 
-<body>
-  <metal:main fill-slot="main">
-    <main id="content">
-      <tal:features define="features view/features">
-        <tal:featured repeat="brain features">
-          <div tal:define="featured brain/getObject" tal:replace="structure python:featured.render(request)"></div>
-        </tal:featured>
-      </tal:features>
-    </main>
-  </metal:main>
-</body>
+  <body>
+    <metal:main fill-slot="main">
+      <main id="content">
+        <tal:features define="
+                        features view/features;
+                      ">
+          <tal:featured repeat="brain features">
+            <div tal:define="
+                   featured brain/getObject;
+                 "
+                 tal:replace="structure python:featured.render(request)"
+            ></div>
+          </tal:featured>
+        </tal:features>
+      </main>
+    </metal:main>
+  </body>
 
 </html>

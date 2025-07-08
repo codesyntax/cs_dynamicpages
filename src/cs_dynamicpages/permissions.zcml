@@ -6,16 +6,16 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
-    <permission
-        id="cs_dynamicpages.AddDynamicPageRowFeatured"
-        title="cs_dynamicpages: Add DynamicPageRowFeatured"
-    />
+  <permission
+      id="cs_dynamicpages.AddDynamicPageRowFeatured"
+      title="cs_dynamicpages: Add DynamicPageRowFeatured"
+      />
 
 
-    <permission
-        id="cs_dynamicpages.AddDynamicPageRow"
-        title="cs_dynamicpages: Add DynamicPageRow"
-    />
+  <permission
+      id="cs_dynamicpages.AddDynamicPageRow"
+      title="cs_dynamicpages: Add DynamicPageRow"
+      />
 
 
 </configure>

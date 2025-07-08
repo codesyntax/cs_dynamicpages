@@ -1,13 +1,15 @@
-# -*- coding: utf-8 -*-
 
 # from cs_dynamicpages import _
+from plone.app.contenttypes.browser.collection import CollectionView
 from zope.interface import implementer
 from zope.interface import Interface
-from plone.app.contenttypes.browser.collection import CollectionView
+
+
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+
 class IQueryThreeColumnsView(Interface):
-    """ Marker Interface for IQueryThreeColumnsView"""
+    """Marker Interface for IQueryThreeColumnsView"""
 
 
 @implementer(IQueryThreeColumnsView)
@@ -19,4 +21,3 @@ class QueryThreeColumnsView(CollectionView):
     def __call__(self):
         # Implement your own actions:
         return self.index()
-

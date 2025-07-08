@@ -4,7 +4,9 @@
         name="Folder"
         i18n:domain="plone"
 >
-  <property name="allowed_content_types" purge="False">
+  <property name="allowed_content_types"
+            purge="False"
+  >
     <element value="DynamicPageFolder" />
   </property>
 

@@ -1,13 +1,13 @@
-# -*- coding: utf-8 -*-
 from cs_dynamicpages import _
 from cs_dynamicpages.interfaces import IBrowserLayer
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from plone.z3cform import layout
+from zope import schema
 from zope.component import adapter
 from zope.interface import Interface
-from zope import schema
+
 
 class IDynamicaPagesControlPanel(Interface):
     myfield_name = schema.TextLine(
@@ -32,7 +32,6 @@ class DynamicaPagesControlPanel(RegistryEditForm):
 DynamicaPagesControlPanelView = layout.wrap_form(
     DynamicaPagesControlPanel, ControlPanelFormWrapper
 )
-
 
 
 @adapter(Interface, IBrowserLayer)

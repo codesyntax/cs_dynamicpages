@@ -1,23 +1,29 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:metal="http://xml.zope.org/namespaces/metal"
-  xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-  i18n:domain="cs_dynamicpages" metal:use-macro="context/main_template/macros/master">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="cs_dynamicpages"
+>
 
-<body>
+  <body>
 
 
-  <metal:content-main fill-slot="main">
-    <main id="content">
-      <tal:define tal:define="isAnon context/@@plone_portal_state/anonymous">
-        <tal:conditionisAnon tal:condition="isAnon">
-          <tal:replace tal:replace="python:context.REQUEST.RESPONSE.redirect(context.portal_url(),301)">
-          </tal:replace>
-        </tal:conditionisAnon>
-        <tal:conditionisAnon tal:condition="not:isAnon">
-          <div tal:replace="structure python:context.render(request)"></div>
-        </tal:conditionisAnon>
-      </tal:define>
-    </main>
-  </metal:content-main>
-</body>
+    <metal:content-main fill-slot="main">
+      <main id="content">
+        <tal:define tal:define="
+                      isAnon context/@@plone_portal_state/anonymous;
+                    ">
+          <tal:conditionisanon tal:condition="isAnon">
+            <tal:replace tal:replace="python:context.REQUEST.RESPONSE.redirect(context.portal_url(),301)">
+            </tal:replace>
+          </tal:conditionisanon>
+          <tal:conditionisanon tal:condition="not:isAnon">
+            <div tal:replace="structure python:context.render(request)"></div>
+          </tal:conditionisanon>
+        </tal:define>
+      </main>
+    </metal:content-main>
+  </body>
 
 </html>

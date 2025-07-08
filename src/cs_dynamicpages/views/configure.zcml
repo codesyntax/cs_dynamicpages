@@ -2,65 +2,66 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="cs_dynamicpages">
-
- <!-- -*- extra stuff goes here -*- -->
-
-
-  <browser:page
-    name="view"
-    for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
-    class=".dynamic_page_row_view.DynamicPageRowView"
-    template="dynamic_page_row_view.pt"
-    permission="zope2.View"
-    layer="cs_dynamicpages.interfaces.IBrowserLayer"
-    />
-
-  <browser:page
-    name="dynamic-view"
-    for="plone.app.contenttypes.interfaces.IFolder"
-    class=".dynamic_view.DynamicView"
-    template="dynamic_view.pt"
-    permission="zope2.View"
-    layer="cs_dynamicpages.interfaces.IBrowserLayer"
-    />
-
- <browser:pages
-    for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
-    class=".featured_view.FeaturedView"
-    layer="cs_dynamicpages.interfaces.IBrowserLayer"
-    permission="zope2.View"
+    i18n_domain="cs_dynamicpages"
     >
-    <browser:page
-      name="cs_dynamicpages-featured-view"
-      template="featured_view.pt"
+
+  <!-- -*- extra stuff goes here -*- -->
+
+
+  <browser:page
+      name="view"
+      for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+      class=".dynamic_page_row_view.DynamicPageRowView"
+      template="dynamic_page_row_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
       />
+
+  <browser:page
+      name="dynamic-view"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      class=".dynamic_view.DynamicView"
+      template="dynamic_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
+
+  <browser:pages
+      for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+      class=".featured_view.FeaturedView"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      >
     <browser:page
-    name="cs_dynamicpages-horizontal-rule-view"
-    template="horizontal_rule_view.pt"
-    />
- </browser:pages>
- <browser:pages
-    for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
-    class=".query_three_columns_view.QueryThreeColumnsView"
-    layer="cs_dynamicpages.interfaces.IBrowserLayer"
-    permission="zope2.View"
-    >
+        name="cs_dynamicpages-featured-view"
+        template="featured_view.pt"
+        />
     <browser:page
-    name="cs_dynamicpages-query-three-columns-view"
-    template="query_three_columns_view.pt"
-    />
- </browser:pages>
- <browser:pages
-    for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
-    class=".slider_view.SliderView"
-    layer="cs_dynamicpages.interfaces.IBrowserLayer"
-    permission="zope2.View"
-    >
+        name="cs_dynamicpages-horizontal-rule-view"
+        template="horizontal_rule_view.pt"
+        />
+  </browser:pages>
+  <browser:pages
+      for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+      class=".query_three_columns_view.QueryThreeColumnsView"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      >
     <browser:page
-    name="cs_dynamicpages-slider-view"
-    template="slider_view.pt"
-    />
- </browser:pages>
+        name="cs_dynamicpages-query-three-columns-view"
+        template="query_three_columns_view.pt"
+        />
+  </browser:pages>
+  <browser:pages
+      for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+      class=".slider_view.SliderView"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      >
+    <browser:page
+        name="cs_dynamicpages-slider-view"
+        template="slider_view.pt"
+        />
+  </browser:pages>
 
 </configure>

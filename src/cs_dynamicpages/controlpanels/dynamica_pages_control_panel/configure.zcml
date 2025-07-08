@@ -3,20 +3,22 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="cs_dynamicpages">
+    i18n_domain="cs_dynamicpages"
+    >
 
   <browser:page
-    name="dynamica_pages_control_panel-controlpanel"
-    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-    class=".controlpanel.DynamicaPagesControlPanelView"
-    layer="cs_dynamicpages.interfaces.IBrowserLayer"
-    permission="cmf.ManagePortal"
-    />
+      name="dynamica_pages_control_panel-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.DynamicaPagesControlPanelView"
+      permission="cmf.ManagePortal"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
 
-  <include package="plone.restapi"  />
+  <include package="plone.restapi" />
   <adapter
-    factory=".controlpanel.DynamicaPagesControlPanelConfigletPanel"
-    name="dynamica_pages_control_panel" />
+      factory=".controlpanel.DynamicaPagesControlPanelConfigletPanel"
+      name="dynamica_pages_control_panel"
+      />
 
 
 </configure>

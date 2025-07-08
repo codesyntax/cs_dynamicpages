@@ -1,13 +1,11 @@
-# -*- coding: utf-8 -*-
 
-from cs_dynamicpages import _
 from plone import schema
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
 from Products.CMFPlone.utils import safe_hasattr
 from zope.component import adapter
-from zope.interface import Interface
 from zope.interface import implementer
+from zope.interface import Interface
 from zope.interface import provider
 
 
@@ -17,8 +15,7 @@ class ILinkInfoMarker(Interface):
 
 @provider(IFormFieldProvider)
 class ILinkInfo(model.Schema):
-    """
-    """
+    """ """
 
     link_text = schema.TextLine(
         title="Link Text",
@@ -35,13 +32,13 @@ class ILinkInfo(model.Schema):
 
 @implementer(ILinkInfo)
 @adapter(ILinkInfoMarker)
-class LinkInfo(object):
+class LinkInfo:
     def __init__(self, context):
         self.context = context
 
     @property
     def link_text(self):
-        if safe_hasattr(self.context, 'link_text'):
+        if safe_hasattr(self.context, "link_text"):
             return self.context.link_text
         return None
 
@@ -51,7 +48,7 @@ class LinkInfo(object):
 
     @property
     def link_url(self):
-        if safe_hasattr(self.context, 'link_url'):
+        if safe_hasattr(self.context, "link_url"):
             return self.context.link_url
         return None
 

@@ -1,14 +1,15 @@
-# -*- coding: utf-8 -*-
 
 # from cs_dynamicpages import _
 from Products.Five.browser import BrowserView
 from zope.interface import implementer
 from zope.interface import Interface
 
+
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+
 class IHorizontalRuleView(Interface):
-    """ Marker Interface for IHorizontalRuleView"""
+    """Marker Interface for IHorizontalRuleView"""
 
 
 @implementer(IHorizontalRuleView)

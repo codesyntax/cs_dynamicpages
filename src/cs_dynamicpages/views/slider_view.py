@@ -1,14 +1,16 @@
-# -*- coding: utf-8 -*-
 
 # from cs_dynamicpages import _
+from plone import api
 from Products.Five.browser import BrowserView
 from zope.interface import implementer
 from zope.interface import Interface
-from plone import api
+
+
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+
 class ISliderView(Interface):
-    """ Marker Interface for ISliderView"""
+    """Marker Interface for ISliderView"""
 
 
 @implementer(ISliderView)
@@ -24,4 +26,3 @@ class SliderView(BrowserView):
             context=self.context,
             sort_on="getObjPositionInParent",
         )
-

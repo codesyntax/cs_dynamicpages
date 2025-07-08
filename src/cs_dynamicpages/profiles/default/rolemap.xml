@@ -3,19 +3,23 @@
   <permissions>
     <!-- -*- extra stuff goes here -*- -->
 
-    <permission name="cs_dynamicpages: Add DynamicPageRowFeatured" acquire="True">
-      <role name="Manager"/>
-      <role name="Site Administrator"/>
-      <role name="Owner"/>
-      <role name="Contributor"/>
+    <permission acquire="True"
+                name="cs_dynamicpages: Add DynamicPageRowFeatured"
+    >
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Owner" />
+      <role name="Contributor" />
     </permission>
 
 
-    <permission name="cs_dynamicpages: Add DynamicPageRow" acquire="True">
-      <role name="Manager"/>
-      <role name="Site Administrator"/>
-      <role name="Owner"/>
-      <role name="Contributor"/>
+    <permission acquire="True"
+                name="cs_dynamicpages: Add DynamicPageRow"
+    >
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Owner" />
+      <role name="Contributor" />
     </permission>
 
   </permissions>

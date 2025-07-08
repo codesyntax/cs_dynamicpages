@@ -1,32 +1,36 @@
 <configure
-  xmlns="http://namespaces.zope.org/zope"
-  xmlns:browser="http://namespaces.zope.org/browser"
-  xmlns:plone="http://namespaces.plone.org/plone"
-  xmlns:zcml="http://namespaces.zope.org/zcml"
-  i18n_domain="plone">
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="plone"
+    >
 
-    <include package="plone.behavior" file="meta.zcml"/>
+  <include
+      package="plone.behavior"
+      file="meta.zcml"
+      />
 
-    <!-- -*- extra stuff goes here -*- -->
+  <!-- -*- extra stuff goes here -*- -->
 
-    <plone:behavior
-        name="cs_dynamicpages.related_image"
-        title="RelatedImage"
-        description="This behavior provides..."
-        provides=".related_image.IRelatedImage"
-        factory=".related_image.RelatedImage"
-        marker=".related_image.IRelatedImageMarker"
-        />
+  <plone:behavior
+      name="cs_dynamicpages.related_image"
+      title="RelatedImage"
+      description="This behavior provides..."
+      factory=".related_image.RelatedImage"
+      provides=".related_image.IRelatedImage"
+      marker=".related_image.IRelatedImageMarker"
+      />
 
 
-    <plone:behavior
-        name="cs_dynamicpages.link_info"
-        title="LinkInfo"
-        description="This behavior provides..."
-        provides=".link_info.ILinkInfo"
-        factory=".link_info.LinkInfo"
-        marker=".link_info.ILinkInfoMarker"
-        />
+  <plone:behavior
+      name="cs_dynamicpages.link_info"
+      title="LinkInfo"
+      description="This behavior provides..."
+      factory=".link_info.LinkInfo"
+      provides=".link_info.ILinkInfo"
+      marker=".link_info.ILinkInfoMarker"
+      />
 
 
 </configure>

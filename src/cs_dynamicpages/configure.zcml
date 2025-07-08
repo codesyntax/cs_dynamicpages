@@ -21,15 +21,15 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
-    <include package=".controlpanels" />
+  <include package=".controlpanels" />
 
 
-    <include package=".behaviors" />
+  <include package=".behaviors" />
 
 
   <include package=".views" />
 
-    <include package=".vocabularies" />
+  <include package=".vocabularies" />
 
 
 </configure>
