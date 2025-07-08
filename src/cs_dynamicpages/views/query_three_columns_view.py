@@ -1,4 +1,3 @@
-
 # from cs_dynamicpages import _
 from plone.app.contenttypes.browser.collection import CollectionView
 from zope.interface import implementer

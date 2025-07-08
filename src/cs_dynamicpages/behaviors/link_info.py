@@ -1,4 +1,3 @@
-
 from plone import schema
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model

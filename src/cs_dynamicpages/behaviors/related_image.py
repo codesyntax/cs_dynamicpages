@@ -1,4 +1,3 @@
-
 from plone.app.z3cform.widgets.contentbrowser import ContentBrowserFieldWidget
 from plone.autoform import directives as form
 from plone.autoform.interfaces import IFormFieldProvider

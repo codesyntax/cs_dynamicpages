@@ -1,4 +1,3 @@
-
 from plone.dexterity.interfaces import IDexterityContent
 from zope.component import getSiteManager
 from zope.globalrequest import getRequest
