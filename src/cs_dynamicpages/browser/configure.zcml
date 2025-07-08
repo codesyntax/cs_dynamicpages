@@ -5,6 +5,8 @@
     i18n_domain="cs_dynamicpages"
     >
 
+
+
   <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
   <include
       package="z3c.jbot"
@@ -18,7 +20,7 @@
   <!-- Publish static files -->
   <plone:static
       directory="static"
-      name="cs_dynamicpages"
+      name="cs_dynamicpages.edit"
       type="plone"
       />
 

@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <registry>
     <records interface="cs_dynamicpages.controlpanels.dynamica_pages_control_panel.controlpanel.IDynamicaPagesControlPanel" />
+
+    <!-- Resource bundle for DynamicPageRow edit page -->
+
+     <records interface="Products.CMFPlone.interfaces.IBundleRegistry"
+           prefix="plone.bundles/cs_dynamicpages.dynamicpagerow_edit"
+  >
+        <value key="enabled">True</value>
+        <value key="jscompilation">++plone++cs_dynamicpages.edit/edit_dynamicpagerow.js</value>
+        <value key="csscompilation"></value>
+        <value key="depends">plone</value>
+        <value key="load_async">True</value>
+        <value key="load_defer">False</value>
+        <value key="expression" />
+  </records>
 </registry>
