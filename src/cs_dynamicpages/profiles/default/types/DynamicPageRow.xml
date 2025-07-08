@@ -19,6 +19,10 @@
 
   <!-- Hierarchy control -->
   <property name="global_allow">False</property>
+  <property name="filter_content_types">True</property>
+  <property name="allowed_content_types">
+    <element value="DynamicPageRowFeatured" />
+  </property>
   <!-- Schema, class and security -->
   <property name="add_permission">cs_dynamicpages.AddDynamicPageRow</property>
   <property name="klass">cs_dynamicpages.content.dynamic_page_row.DynamicPageRow</property>

@@ -4,7 +4,7 @@
 from Products.Five.browser import BrowserView
 from zope.interface import implementer
 from zope.interface import Interface
-
+from plone import api
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 class ISliderView(Interface):
@@ -17,6 +17,11 @@ class SliderView(BrowserView):
     # the configure.zcml registration of this view.
     # template = ViewPageTemplateFile('slider_view.pt')
 
-    def __call__(self):
+    def elements(self):
         # Implement your own actions:
-        return self.index()
+        return api.content.find(
+            portal_type="DynamicPageRowFeatured",
+            context=self.context,
+            sort_on="getObjPositionInParent",
+        )
+

@@ -16,48 +16,14 @@ from zope.interface import implementer
 class IDynamicPageRowFeatured(model.Schema):
     """ Marker interface and Dexterity Python Schema for DynamicPageRowFeatured
     """
-    # If you want, you can load a xml model created TTW here
-    # and customize it in Python:
-
-    # model.load('dynamic_page_row_featured.xml')
-
-    # directives.widget(level=RadioFieldWidget)
-    # level = schema.Choice(
-    #     title=_(u'Sponsoring Level'),
-    #     vocabulary=LevelVocabulary,
-    #     required=True
-    # )
-
-    # text = RichText(
-    #     title=_(u'Text'),
-    #     required=False
-    # )
-
-    # url = schema.URI(
-    #     title=_(u'Link'),
-    #     required=False
-    # )
-
-    # fieldset('Images', fields=['logo', 'advertisement'])
-    # logo = namedfile.NamedBlobImage(
-    #     title=_(u'Logo'),
-    #     required=False,
-    # )
-
-    # advertisement = namedfile.NamedBlobImage(
-    #     title=_(u'Advertisement (Gold-sponsors and above)'),
-    #     required=False,
-    # )
-
-    # directives.read_permission(notes='cmf.ManagePortal')
-    # directives.write_permission(notes='cmf.ManagePortal')
-    # notes = RichText(
-    #     title=_(u'Secret Notes (only for site-admins)'),
-    #     required=False
-    # )
 
 
 @implementer(IDynamicPageRowFeatured)
 class DynamicPageRowFeatured(Item):
     """ Content-type class for IDynamicPageRowFeatured
     """
+    def related_image_object(self):
+        related_image = self.related_image
+        if related_image:
+            return related_image[0].to_object
+        return None

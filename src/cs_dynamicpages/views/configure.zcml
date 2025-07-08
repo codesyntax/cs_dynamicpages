@@ -6,14 +6,6 @@
 
  <!-- -*- extra stuff goes here -*- -->
 
-  <browser:page
-    name="slider-view"
-    for="*"
-    class=".slider_view.SliderView"
-    template="slider_view.pt"
-    permission="zope2.View"
-    layer="cs_dynamicpages.interfaces.ICsDynamicpagesLayer"
-    />
 
   <browser:page
     name="view"
@@ -57,6 +49,17 @@
     <browser:page
     name="cs_dynamicpages-query-three-columns-view"
     template="query_three_columns_view.pt"
+    />
+ </browser:pages>
+ <browser:pages
+    for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+    class=".slider_view.SliderView"
+    layer="cs_dynamicpages.interfaces.IBrowserLayer"
+    permission="zope2.View"
+    >
+    <browser:page
+    name="cs_dynamicpages-slider-view"
+    template="slider_view.pt"
     />
  </browser:pages>
 
