@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # from plone.app.textfield import RichText
 # from plone.autoform import directives
-from plone.dexterity.content import Item
+from plone.dexterity.content import Container
 # from plone.namedfile import field as namedfile
 from plone.supermodel import model
 # from plone.supermodel.directives import fieldset
@@ -24,7 +24,7 @@ class IDynamicPageRow(model.Schema):
                                )
 
 @implementer(IDynamicPageRow)
-class DynamicPageRow(Item):
+class DynamicPageRow(Container):
     """ Content-type class for IPortadakoLerroa
     """
     def render(self, request):

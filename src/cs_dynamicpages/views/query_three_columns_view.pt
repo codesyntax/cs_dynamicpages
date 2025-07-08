@@ -7,7 +7,7 @@
                             ">
                 <div class="col-md-4">
                     <div class="card">
-                        <tal:image tal:define="image element/image" tal:condition="image">
+                        <tal:image tal:define="image element/image" tal:condition="image" tal:on-error="nothing">
                             <img tal:define="
                                                      images element/@@images;
                                                    " tal:replace="structure python:images.srcset(fieldname='image',
@@ -17,8 +17,12 @@
                                                               title=element.Title())" />
                         </tal:image>
                         <div class="card-body">
-                            <h5 class="card-title">${element/Title}</h5>
-                            <p class="mb-3" tal:content="python:element.toLocalizedTime(element.EffectiveDate())"></p>
+                            <a href="${element/absolute_url}" class="h5 card-title stretched-link">${element/Title}</a>
+                            <p class="mb-3" tal:condition="python:element.portal_type != 'Event'"
+                                tal:content="python:element.toLocalizedTime(element.EffectiveDate())"></p>
+                            <p class="mb-3" tal:condition="python:element.portal_type == 'Event'"
+                                tal:content="python:element.toLocalizedTime(element.start)"></p>
+
                             <p class="card-text">${element/Description}</p>
                         </div>
                     </div>
