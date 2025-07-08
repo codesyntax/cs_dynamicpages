@@ -1,4 +1,4 @@
-<section tal:define="batch view/results">
+<section class="dynamic-three-columns" tal:define="batch view/results">
     <h2 class="mb-5">${context/Title}</h2>
     <div class="row">
         <tal:repeat tal:repeat="brain batch">

@@ -1,4 +1,4 @@
-<div class="card text-bg-dark">
+<div class="dynamic-featured card text-bg-dark">
   <tal:image tal:define="image view/related_image" tal:condition="image">
     <img tal:define="
                              images image/@@images;
