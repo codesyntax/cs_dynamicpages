@@ -7,4 +7,5 @@
 -->
   <object name="DynamicPageFolder" meta_type="Dexterity FTI"/>
   <object name="DynamicPageRow" meta_type="Dexterity FTI"/>
+  <object name="DynamicPageRowFeatured" meta_type="Dexterity FTI"/>
 </object>
