@@ -27,6 +27,4 @@
       />
 
 
-  <include package=".upgrades" />
-
 </configure>
