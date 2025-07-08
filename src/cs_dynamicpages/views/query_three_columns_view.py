@@ -17,6 +17,6 @@ class QueryThreeColumnsView(BrowserView):
     # the configure.zcml registration of this view.
     # template = ViewPageTemplateFile('query_three_columns_view.pt')
 
-    def __call__(self):
-        # Implement your own actions:
-        return self.index()
+    def elements(self):
+        import pdb; pdb.set_trace(); a=1
+
