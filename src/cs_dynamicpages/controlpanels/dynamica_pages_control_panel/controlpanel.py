@@ -47,7 +47,7 @@ class IDynamicaPagesControlPanel(Interface):
             },
             {
                 "row_type": "cs_dynamicpages-query-three-columns-view",
-                "each_row_type_fields": ["ICollection.query", "ICollection.sort_on", "ICollection.sort_order", "ICollection.betweeen", "ICollection.limit"],
+                "each_row_type_fields": ["IBasic.title", "ICollection.query", "ICollection.sort_on", "ICollection.sort_order", "ICollection.betweeen", "ICollection.limit"],
             },
         ],
     )
