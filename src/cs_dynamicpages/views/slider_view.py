@@ -1,11 +1,8 @@
 # from cs_dynamicpages import _
 from plone import api
-from Products.Five.browser import BrowserView
 from zope.interface import implementer
 from zope.interface import Interface
-
-
-# from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from cs_dynamicpages.views.dynamic_page_row_view import DynamicPageRowView
 
 
 class ISliderView(Interface):
@@ -13,7 +10,7 @@ class ISliderView(Interface):
 
 
 @implementer(ISliderView)
-class SliderView(BrowserView):
+class SliderView(DynamicPageRowView):
     # If you want to define a template here, please remove the template from
     # the configure.zcml registration of this view.
     # template = ViewPageTemplateFile('slider_view.pt')

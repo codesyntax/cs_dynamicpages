@@ -2,7 +2,7 @@
 from plone.app.contenttypes.browser.collection import CollectionView
 from zope.interface import implementer
 from zope.interface import Interface
-
+from cs_dynamicpages.views.dynamic_page_row_view import DynamicPageRowView
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -12,7 +12,7 @@ class IQueryThreeColumnsView(Interface):
 
 
 @implementer(IQueryThreeColumnsView)
-class QueryThreeColumnsView(CollectionView):
+class QueryThreeColumnsView(CollectionView, DynamicPageRowView):
     # If you want to define a template here, please remove the template from
     # the configure.zcml registration of this view.
     # template = ViewPageTemplateFile('query_three_columns_view.pt')

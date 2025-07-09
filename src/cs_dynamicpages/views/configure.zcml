@@ -7,6 +7,14 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+  <browser:page
+      name="dynamic-view"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      class=".dynamic_view.DynamicView"
+      template="dynamic_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
 
   <browser:page
       name="view"
@@ -17,14 +25,7 @@
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
       />
 
-  <browser:page
-      name="dynamic-view"
-      for="plone.app.contenttypes.interfaces.IFolder"
-      class=".dynamic_view.DynamicView"
-      template="dynamic_view.pt"
-      permission="zope2.View"
-      layer="cs_dynamicpages.interfaces.IBrowserLayer"
-      />
+
 
   <browser:pages
       for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
@@ -41,6 +42,7 @@
         template="horizontal_rule_view.pt"
         />
   </browser:pages>
+
   <browser:pages
       for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
       class=".query_three_columns_view.QueryThreeColumnsView"
@@ -52,6 +54,7 @@
         template="query_three_columns_view.pt"
         />
   </browser:pages>
+
   <browser:pages
       for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
       class=".slider_view.SliderView"

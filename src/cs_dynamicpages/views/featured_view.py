@@ -1,10 +1,7 @@
 # from cs_dynamicpages import _
-from Products.Five.browser import BrowserView
 from zope.interface import implementer
 from zope.interface import Interface
-
-
-# from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from cs_dynamicpages.views.dynamic_page_row_view import DynamicPageRowView
 
 
 class IFeaturedView(Interface):
@@ -12,11 +9,7 @@ class IFeaturedView(Interface):
 
 
 @implementer(IFeaturedView)
-class FeaturedView(BrowserView):
-    # If you want to define a template here, please remove the template from
-    # the configure.zcml registration of this view.
-    # template = ViewPageTemplateFile('featured_view.pt')
-
+class FeaturedView(DynamicPageRowView):
     def related_image(self):
         related_image = self.context.related_image
         if related_image:

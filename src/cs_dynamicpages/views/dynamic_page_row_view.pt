@@ -1,29 +1,31 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      metal:use-macro="context/main_template/macros/master"
-      i18n:domain="cs_dynamicpages"
->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  xmlns:metal="http://xml.zope.org/namespaces/metal" xmlns:tal="http://xml.zope.org/namespaces/tal"
+  metal:use-macro="context/main_template/macros/master" i18n:domain="cs_dynamicpages">
 
-  <body>
-
-
-    <metal:content-main fill-slot="main">
-      <main id="content">
-        <tal:define tal:define="
+<body>
+  <metal:content-main fill-slot="main">
+    <main id="content">
+      <tal:define tal:define="
                       isAnon context/@@plone_portal_state/anonymous;
                     ">
-          <tal:conditionisanon tal:condition="isAnon">
-            <tal:replace tal:replace="python:context.REQUEST.RESPONSE.redirect(context.portal_url(),301)">
-            </tal:replace>
-          </tal:conditionisanon>
-          <tal:conditionisanon tal:condition="not:isAnon">
-            <div tal:replace="structure python:context.render(request)"></div>
-          </tal:conditionisanon>
-        </tal:define>
-      </main>
-    </metal:content-main>
-  </body>
+        <tal:conditionisanon tal:condition="isAnon">
+          <tal:replace tal:replace="python:context.REQUEST.RESPONSE.redirect(context.portal_url(),301)">
+          </tal:replace>
+        </tal:conditionisanon>
+        <tal:conditionisanon tal:condition="not:isAnon">
+          <section class="dynamic-row state-${context/review_state}">
+            <div class="edit-buttons d-flex" tal:condition="featured/can_edit">
+              <a href="${featured/absolute_url}/edit">Edit</a>
+              <span class="ms-auto">Review state: ${featured/review_state}</span>
+            </div>
+            <div class="content">
+              <replace tal:replace="structure python:context.render(request)"></replace>
+            </div>
+          </section>
+        </tal:conditionisanon>
+      </tal:define>
+    </main>
+  </metal:content-main>
+</body>
 
 </html>

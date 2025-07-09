@@ -11,7 +11,7 @@ from plone.supermodel import model
 # from z3c.form.browser.radio import RadioFieldWidget
 from zope import schema
 from zope.interface import implementer
-
+from plone import api
 
 log = getLogger(__name__)
 
@@ -31,6 +31,12 @@ class IDynamicPageRow(model.Schema):
 @implementer(IDynamicPageRow)
 class DynamicPageRow(Container):
     """Content-type class for IPortadakoLerroa"""
+
+    def review_state(self):
+        return api.content.get_state(obj=self)
+
+    def can_edit(self):
+        return api.user.has_permission("Modify portal content", obj=self)
 
     def render(self, request):
         if self.row_type:
