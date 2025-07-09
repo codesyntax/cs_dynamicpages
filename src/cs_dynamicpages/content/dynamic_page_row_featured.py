@@ -9,7 +9,7 @@ from plone.supermodel import model
 # from z3c.form.browser.radio import RadioFieldWidget
 # from zope import schema
 from zope.interface import implementer
-
+from plone import api
 
 # from cs_dynamicpages import _
 
@@ -21,6 +21,9 @@ class IDynamicPageRowFeatured(model.Schema):
 @implementer(IDynamicPageRowFeatured)
 class DynamicPageRowFeatured(Item):
     """Content-type class for IDynamicPageRowFeatured"""
+
+    def review_state(self):
+        return api.content.get_state(obj=self)
 
     def related_image_object(self):
         related_image = self.related_image

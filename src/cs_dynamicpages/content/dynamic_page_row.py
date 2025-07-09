@@ -24,6 +24,7 @@ class IDynamicPageRow(model.Schema):
     row_type = schema.Choice(
         title="Row type",
         required=True,
+        default="cs_dynamicpages-horizontal-rule-view",
         vocabulary="cs_dynamicpages.RowType",
     )
 
@@ -37,6 +38,14 @@ class DynamicPageRow(Container):
 
     def can_edit(self):
         return api.user.has_permission("Modify portal content", obj=self)
+
+    def featured_list(self):
+        return api.content.find(
+            context=self,
+            portal_type="DynamicPageRowFeatured",
+            sort_on="getObjPositionInParent",
+            depth=1,
+        )
 
     def render(self, request):
         if self.row_type:

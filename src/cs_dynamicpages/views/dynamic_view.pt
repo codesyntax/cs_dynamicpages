@@ -1,36 +1,60 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://xml.zope.org/namespaces/i18n"
   xmlns:metal="http://xml.zope.org/namespaces/metal" xmlns:tal="http://xml.zope.org/namespaces/tal"
-  metal:use-macro="context/main_template/macros/master" i18n:domain="cs_dynamicpages">
+  metal:use-macro="context/main_template/macros/master" i18n:domain="cs_dynamicpages"
+  tal:define="portal_url context/portal_url;" data-portal-url="${portal_url}">
 
 <body>
   <metal:main fill-slot="main">
     <main id="content">
       <tal:features define="
-                        features view/features;
+                        rows view/rows;
                       ">
-        <tal:featured repeat="brain features">
-          <div tal:define="featured brain/getObject;">
-            <section class="dynamic-row state-${featured/review_state}">
-              <div class="edit-buttons d-flex gap-2" tal:condition="featured/can_edit">
-                <a class="btn btn-outline-primary btn-sm align-self-start" href="${featured/absolute_url}">View</a>
-                <a class="btn btn-outline-primary btn-sm align-self-start" href="${featured/absolute_url}/edit">Edit</a>
-                <a class="btn btn-outline-primary btn-sm align-self-start" href="${featured/absolute_url}">Move up</a>
-                <a class="btn btn-outline-primary btn-sm align-self-start" href="${featured/absolute_url}">Move down</a>
-                <small
-                  class="d-inline-flex ms-auto mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
-                  Review state: ${featured/review_state}
-                  <span
-                    tal:attributes="class python:featured.review_state() == 'published' and 'position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle' or 'position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle'">
-                  </span>
-                </small>
+        <tal:featured repeat="brain rows">
+          <div tal:define="row brain/getObject;">
+            <section class="dynamic-row state-${row/review_state}" data-rowid="${row/id}"
+              data-rowurl="${row/aq_parent/absolute_url}">
+              <div class="edit-buttons d-flex gap-2" tal:condition="row/can_edit">
+                <a class="btn btn-outline-primary btn-sm align-self-start" href="${row/absolute_url}">View</a>
+                <a class="btn btn-outline-primary btn-sm align-self-start" href="${row/absolute_url}/edit">Edit</a>
+
+                <div class="ms-auto d-flex gap-2 align-items-start">
+                  <a tal:condition="python:not(repeat['brain'].start)"
+                    class="btn btn-outline-primary btn-sm align-self-start" href="#" data-action="move-up">Move up</a>
+                  <a tal:condition="python:not(repeat['brain'].end)"
+                    class="btn btn-outline-primary btn-sm align-self-start" href="#" data-action="move-down">Move
+                    down</a>
+                  <small
+                    class="d-inline-flex ms-auto mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
+                    Review state: ${row/review_state}
+                    <span
+                      tal:attributes="class python:row.review_state() == 'published' and 'position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle' or 'position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle'">
+                    </span>
+                  </small>
+                </div>
+
               </div>
+              <tal:condition tal:condition="row/can_edit">
+                <div class="features-list d-flex gap-2 align-items-start mb-3"
+                  tal:define="features_list row/featured_list" tal:condition="features_list">
+                  <tal:featured repeat="featured_brain features_list">
+                    <div tal:define="featured_obj featured_brain/getObject;">
+                      <a tal:attributes="class python:featured_obj.review_state() == 'published' and 'btn btn-outline-success btn-sm bg-success-subtle' or 'btn btn-outline-danger btn-sm bg-danger-subtle'"
+                        href="${featured_obj/absolute_url}">${featured_obj/Title}</a>
+                    </div>
+                  </tal:featured>
+                </div>
+              </tal:condition>
               <div class="content">
-                <replace tal:replace="structure python:featured.render(request)"></replace>
+                <replace tal:replace="structure python:row.render(request)"></replace>
               </div>
             </section>
           </div>
         </tal:featured>
       </tal:features>
+      <div class="dynamic-row d-flex justify-content-center align-items-center">
+        <a class="btn btn-primary btn-lg" href="${view/dynamic_page_folder_element_url}/++add++DynamicPageRow">Add
+          new row</a>
+      </div>
     </main>
   </metal:main>
 </body>

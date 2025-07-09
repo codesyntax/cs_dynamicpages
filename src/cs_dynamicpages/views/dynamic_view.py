@@ -14,10 +14,8 @@ class IDynamicView(Interface):
 
 @implementer(IDynamicView)
 class DynamicView(BrowserView):
-    def features(self):
-        dynamic_page_folder = api.content.find(
-            portal_type="DynamicPageFolder", context=self.context
-        )
+    def rows(self):
+        dynamic_page_folder = self.dynamic_page_folder_element()
         if dynamic_page_folder:
             return api.content.find(
                 portal_type="DynamicPageRow",
@@ -25,3 +23,14 @@ class DynamicView(BrowserView):
                 context=dynamic_page_folder[0].getObject(),
             )
         return []
+
+    def dynamic_page_folder_element(self):
+        return api.content.find(
+            portal_type="DynamicPageFolder", context=self.context, depth=1, sort_on="getObjPositionInParent"
+        )
+
+    def dynamic_page_folder_element_url(self):
+        dynamic_page_folder = self.dynamic_page_folder_element()
+        if dynamic_page_folder:
+            return dynamic_page_folder[0].getObject().absolute_url()
+        return ""

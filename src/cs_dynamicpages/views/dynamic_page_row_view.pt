@@ -14,10 +14,34 @@
         </tal:conditionisanon>
         <tal:conditionisanon tal:condition="not:isAnon">
           <section class="dynamic-row state-${context/review_state}">
-            <div class="edit-buttons d-flex" tal:condition="featured/can_edit">
-              <a href="${featured/absolute_url}/edit">Edit</a>
-              <span class="ms-auto">Review state: ${featured/review_state}</span>
+            <div class="edit-buttons d-flex gap-2" tal:condition="context/can_edit">
+              <a class="btn btn-outline-primary btn-sm align-self-start" href="${context/absolute_url}/edit">Edit</a>
+              <div class="ms-auto d-flex gap-2 align-items-start">
+                <a class="btn btn-outline-primary btn-sm align-self-start"
+                  href="${context/aq_parent/aq_parent/absolute_url}">Go
+                  to top</a>
+                <small
+                  class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
+                  Review state: ${context/review_state}
+                  <span
+                    tal:attributes="class python:context.review_state() == 'published' and 'position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle' or 'position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle'">
+                  </span>
+                </small>
+              </div>
+
             </div>
+            <tal:condition tal:condition="context/can_edit">
+              <div class="features-list d-flex gap-2 align-items-start mb-3"
+                tal:define="features_list context/featured_list" tal:condition="features_list">
+                <tal:featured repeat="featured_brain features_list">
+                  <div tal:define="featured_obj featured_brain/getObject;">
+                    <a tal:attributes="class python:featured_obj.review_state() == 'published' and 'btn btn-outline-success btn-sm bg-success-subtle' or 'btn btn-outline-danger btn-sm bg-danger-subtle'"
+                      href="${featured_obj/absolute_url}">${featured_obj/Title}</a>
+                  </div>
+                </tal:featured>
+              </div>
+            </tal:condition>
+
             <div class="content">
               <replace tal:replace="structure python:context.render(request)"></replace>
             </div>
