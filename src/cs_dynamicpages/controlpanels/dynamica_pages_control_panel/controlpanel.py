@@ -36,7 +36,19 @@ class IDynamicaPagesControlPanel(Interface):
             {
                 "row_type": "cs_dynamicpages-featured-view",
                 "each_row_type_fields": ["IBasic.title", "IBasic.description", "IRelatedImage.image", "ILinkInfo.link_text", "ILinkInfo.link_url"],
-            }
+            },
+            {
+                "row_type": "cs_dynamicpages-horizontal-rule-view",
+                "each_row_type_fields": ["IBasic.title"],
+            },
+            {
+                "row_type": "cs_dynamicpages-slider-view",
+                "each_row_type_fields": ["IBasic.title"],
+            },
+            {
+                "row_type": "cs_dynamicpages-query-three-columns-view",
+                "each_row_type_fields": ["ICollection.query", "ICollection.sort_on", "ICollection.sort_order", "ICollection.betweeen", "ICollection.limit"],
+            },
         ],
     )
 

@@ -3,48 +3,60 @@
  * Loads configuration from control panel and applies it to the form
  */
 
-(function() {
+(function () {
   "use strict";
 
   // Store row type configurations globally
   let rowTypeConfigs = {};
   let rowTypeSelect = null;
 
-  function initialize() {
-    // Only run on DynamicPageRow edit form
-    if (!document.body.classList.contains('template-edit') || 
-        !document.body.classList.contains('portaltype-dynamicpagerow')) {
+  function initialize(context = document) {
+    // Check if we're in an edit form or an add form
+    const isEditForm =
+      context === document &&
+      document.body.classList.contains("template-edit") &&
+      document.body.classList.contains("portaltype-dynamicpagerow");
+
+    // Check if we're in an add form or a dynamically added form
+    const isAddForm = (context === document ? document : context).querySelector(
+      "form.view-name-add-DynamicPageRow"
+    );
+
+    if (!isEditForm && !isAddForm) {
       return;
     }
 
     // Get configuration from control panel
-    const baseUrl = document.body.dataset.portalUrl || '';
-    fetch(`${baseUrl}/@registry/cs_dynamicpages.dynamica_pages_control_panel.row_type_fields`, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-      },
-      credentials: 'same-origin'
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+    const baseUrl = document.body.dataset.portalUrl || "";
+    fetch(
+      `${baseUrl}/@registry/cs_dynamicpages.dynamica_pages_control_panel.row_type_fields`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
+        credentials: "same-origin",
       }
-      return response.json();
-    })
-    .then(data => {
-      if (data && data.length > 0) {
-        processRowTypeFields(data);
-      }
-    })
-    .catch(error => {
-      console.error('Error loading row type fields:', error);
-    });
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data && data.length > 0) {
+          processRowTypeFields(data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error loading row type fields:", error);
+      });
   }
 
   function processRowTypeFields(rowTypeFields) {
     // Store all row type configurations
-    rowTypeFields.forEach(rowTypeConfig => {
+    rowTypeFields.forEach((rowTypeConfig) => {
       rowTypeConfigs[rowTypeConfig.row_type] = {
         fields: rowTypeConfig.each_row_type_fields || [],
       };
@@ -64,9 +76,9 @@
     rowTypeSelect = newSelect;
 
     // Add new event listener
-    rowTypeSelect.addEventListener('change', toggleFields);
+    rowTypeSelect.addEventListener("change", toggleFields);
 
-    // Initial setup
+    // Initial setup - force update for the default value
     toggleFields();
   }
 
@@ -75,42 +87,72 @@
     if (!selectedRowType) return;
 
     const config = rowTypeConfigs[selectedRowType];
-    const allFields = document.querySelectorAll('.field');
-    const rowTypeField = rowTypeSelect.closest('.field');
+    const allFields = document.querySelectorAll(".field");
+    const rowTypeField = rowTypeSelect.closest(".field");
 
     // Show all fields first
-    allFields.forEach(field => {
-      field.style.display = '';
+    allFields.forEach((field) => {
+      field.style.display = "";
     });
 
-    if (config && config.fields && config.fields.length > 0) {
-      // Hide all fields except row type select
-      allFields.forEach(field => {
-        if (field !== rowTypeField) {
-          field.style.display = 'none';
-        }
-      });
+    // Always hide all fields except row type select by default
+    allFields.forEach((field) => {
+      if (field !== rowTypeField) {
+        field.style.display = "none";
+      }
+    });
 
-      // Show only the configured fields
-      config.fields.forEach(fieldName => {
-        const fieldElement = document.querySelector(
-          `[data-fieldname$="form.widgets.${fieldName}"]`
-        );
-        if (fieldElement) {
-          const fieldContainer = fieldElement.closest('.field');
-          if (fieldContainer) {
-            fieldContainer.style.display = '';
+    // If we have a config for this row type, show its fields
+    if (config && config.fields && config.fields.length > 0) {
+      config.fields.forEach((fieldName) => {
+        // Try different field name patterns to match the actual field in the form
+        const fieldSelectors = [
+          `[data-fieldname$="form.widgets.${fieldName}"]`,
+          `[data-fieldname$="form.widgets.I${fieldName}"]`,
+          `[data-fieldname*="${fieldName}"]`,
+          `#formfield-form-widgets-${fieldName}`,
+          `#formfield-form-widgets-I${fieldName}`,
+        ];
+
+        for (const selector of fieldSelectors) {
+          const fieldElement = document.querySelector(selector);
+          if (fieldElement) {
+            const fieldContainer = fieldElement.closest(".field");
+            if (fieldContainer) {
+              fieldContainer.style.display = "";
+              break; // Found and showed the field, no need to check other selectors
+            }
           }
         }
       });
+    } else if (selectedRowType === "horizontal-row-type") {
+      // If no config but we're on the default type, show all fields
+      allFields.forEach((field) => {
+        field.style.display = "";
+      });
     }
-    // If no config, all fields remain visible
   }
 
   // Initialize when DOM is fully loaded
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initialize);
-  } else {
+  function start() {
     initialize();
+
+    // Handle dynamically loaded content (for add forms)
+    document.body.addEventListener("DOMNodeInserted", function (e) {
+      const form = e.target.closest ? e.target.closest("form") : null;
+      if (
+        form &&
+        (form.classList.contains("view-name-add-DynamicPageRow") ||
+          form.id === "form")
+      ) {
+        initialize(form);
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
   }
 })();
