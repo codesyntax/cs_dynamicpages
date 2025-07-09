@@ -3,44 +3,48 @@
  * Loads configuration from control panel and applies it to the form
  */
 
-(function ($) {
+(function() {
   "use strict";
+
+  // Store row type configurations globally
+  let rowTypeConfigs = {};
+  let rowTypeSelect = null;
 
   function initialize() {
     // Only run on DynamicPageRow edit form
-    if (
-      !$("body.template-edit").length ||
-      !$("body.portaltype-dynamicpagerow").length
-    ) {
+    if (!document.body.classList.contains('template-edit') || 
+        !document.body.classList.contains('portaltype-dynamicpagerow')) {
       return;
     }
 
     // Get configuration from control panel
-    let base_url = $("body").data("portal-url");
-    $.ajax({
-      url: `${base_url}/@registry/cs_dynamicpages.dynamica_pages_control_panel.row_type_fields`,
-      type: "GET",
-      dataType: "json",
+    const baseUrl = document.body.dataset.portalUrl || '';
+    fetch(`${baseUrl}/@registry/cs_dynamicpages.dynamica_pages_control_panel.row_type_fields`, {
+      method: 'GET',
       headers: {
-        Accept: "application/json",
+        'Accept': 'application/json',
       },
+      credentials: 'same-origin'
     })
-      .done(function (data) {
-        if (data.length > 0) {
-          processRowTypeFields(data);
-        }
-      })
-      .fail(function (error) {
-        console.error("Error loading row type fields:", error);
-      });
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data && data.length > 0) {
+        processRowTypeFields(data);
+      }
+    })
+    .catch(error => {
+      console.error('Error loading row type fields:', error);
+    });
   }
-
-  // Store row type configurations globally
-  let rowTypeConfigs = {};
 
   function processRowTypeFields(rowTypeFields) {
     // Store all row type configurations
-    rowTypeFields.forEach(function (rowTypeConfig) {
+    rowTypeFields.forEach(rowTypeConfig => {
       rowTypeConfigs[rowTypeConfig.row_type] = {
         fields: rowTypeConfig.each_row_type_fields || [],
       };
@@ -51,43 +55,62 @@
   }
 
   function updateFieldVisibility() {
-    const rowTypeSelect = $('select[name$=".row_type:list"]');
-    if (!rowTypeSelect.length) return;
+    rowTypeSelect = document.querySelector('select[name$=".row_type:list"]');
+    if (!rowTypeSelect) return;
 
-    function toggleFields() {
-      const selectedRowType = rowTypeSelect.val();
-      if (!selectedRowType) return;
+    // Remove previous event listener if it exists
+    const newSelect = rowTypeSelect.cloneNode(true);
+    rowTypeSelect.parentNode.replaceChild(newSelect, rowTypeSelect);
+    rowTypeSelect = newSelect;
 
-      const config = rowTypeConfigs[selectedRowType];
-
-      // Always show the row type select
-      rowTypeSelect.closest(".field").show();
-
-      if (!config || !config.fields || config.fields.length === 0) {
-        // If no configuration for this row type, show all fields
-        $(".field").show();
-      } else {
-        // Otherwise, show only the configured fields
-        // First hide all fields except the row type select
-        $(".field").not(rowTypeSelect.closest(".field")).hide();
-
-        // Show the fields for the selected row type
-        config.fields.forEach(function (fieldName) {
-          $(`[data-fieldname$="form.widgets.${fieldName}"]`)
-            .closest(".field")
-            .show();
-        });
-      }
-    }
+    // Add new event listener
+    rowTypeSelect.addEventListener('change', toggleFields);
 
     // Initial setup
     toggleFields();
-
-    // Update on change
-    rowTypeSelect
-      .off("change.rowTypeChange")
-      .on("change.rowTypeChange", toggleFields);
   }
 
-  $(document).ready(initialize);
-})(jQuery);
+  function toggleFields() {
+    const selectedRowType = rowTypeSelect.value;
+    if (!selectedRowType) return;
+
+    const config = rowTypeConfigs[selectedRowType];
+    const allFields = document.querySelectorAll('.field');
+    const rowTypeField = rowTypeSelect.closest('.field');
+
+    // Show all fields first
+    allFields.forEach(field => {
+      field.style.display = '';
+    });
+
+    if (config && config.fields && config.fields.length > 0) {
+      // Hide all fields except row type select
+      allFields.forEach(field => {
+        if (field !== rowTypeField) {
+          field.style.display = 'none';
+        }
+      });
+
+      // Show only the configured fields
+      config.fields.forEach(fieldName => {
+        const fieldElement = document.querySelector(
+          `[data-fieldname$="form.widgets.${fieldName}"]`
+        );
+        if (fieldElement) {
+          const fieldContainer = fieldElement.closest('.field');
+          if (fieldContainer) {
+            fieldContainer.style.display = '';
+          }
+        }
+      });
+    }
+    // If no config, all fields remain visible
+  }
+
+  // Initialize when DOM is fully loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize);
+  } else {
+    initialize();
+  }
+})();
