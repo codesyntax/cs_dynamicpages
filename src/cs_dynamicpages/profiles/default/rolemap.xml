@@ -22,5 +22,14 @@
       <role name="Contributor" />
     </permission>
 
+    <permission acquire="True"
+                name="cs_dynamicpages: Add DynamicPageFolder"
+    >
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Owner" />
+      <role name="Contributor" />
+    </permission>
+
   </permissions>
 </rolemap>

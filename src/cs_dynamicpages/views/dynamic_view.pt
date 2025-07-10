@@ -22,6 +22,7 @@
                 <a class="btn btn-outline-primary btn-sm align-self-start" href="${row/absolute_url}/edit">Edit</a>
 
                 <div class="ms-auto d-flex gap-2 align-items-start">
+                  <a class="btn btn-sm btn-danger" href="#" data-action="delete-row">Delete row</a>
                   <a tal:condition="python:not(repeat['brain'].start)"
                     class="btn btn-outline-primary btn-sm align-self-start" href="#" data-action="move-up">Move up</a>
                   <a tal:condition="python:not(repeat['brain'].end)"
@@ -59,7 +60,8 @@
           </div>
         </tal:featured>
       </tal:features>
-      <div class="dynamic-row d-flex justify-content-center align-items-center">
+      <div class="dynamic-row d-flex justify-content-center align-items-center"
+        tal:condition="view/dynamic_page_folder_element_url">
         <a class="btn btn-primary btn-lg" href="${view/dynamic_page_folder_element_url}/++add++DynamicPageRow">Add
           new row</a>
       </div>
