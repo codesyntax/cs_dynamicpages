@@ -6,14 +6,6 @@
 
   <metal:custom_title fill-slot="content-title">
     <h1 tal:replace="structure context/@@title" />
-
-    <!-- @@title view template: -->
-    <!--
-    <h1 tal:define="title context/Title" tal:condition="title" tal:content="title">
-      Title or id
-    </h1>
-    -->
-
   </metal:custom_title>
 
   <metal:custom_description fill-slot="content-description">

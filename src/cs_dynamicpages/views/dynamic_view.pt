@@ -14,6 +14,10 @@
             <section class="dynamic-row state-${row/review_state}" data-rowid="${row/id}"
               data-rowurl="${row/aq_parent/absolute_url}">
               <div class="edit-buttons d-flex gap-2" tal:condition="row/can_edit">
+                <small
+                  class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
+                  Template: ${row/row_template}
+                </small>
                 <a class="btn btn-outline-primary btn-sm align-self-start" href="${row/absolute_url}">View</a>
                 <a class="btn btn-outline-primary btn-sm align-self-start" href="${row/absolute_url}/edit">Edit</a>
 
@@ -24,7 +28,7 @@
                     class="btn btn-outline-primary btn-sm align-self-start" href="#" data-action="move-down">Move
                     down</a>
                   <small
-                    class="d-inline-flex ms-auto mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
+                    class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
                     Review state: ${row/review_state}
                     <span
                       tal:attributes="class python:row.review_state() == 'published' and 'position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle' or 'position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle'">
@@ -42,6 +46,10 @@
                         href="${featured_obj/absolute_url}">${featured_obj/Title}</a>
                     </div>
                   </tal:featured>
+                  <tal:featured_add_button tal:condition="python:row.show_featured_add_button(request)">
+                    <a class="btn btn-outline-primary btn-sm align-self-start"
+                      href="${context/absolute_url}/++add++DynamicPageRowFeatured">Add new featured</a>
+                  </tal:featured_add_button>
                 </div>
               </tal:condition>
               <div class="content">

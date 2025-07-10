@@ -14,6 +14,7 @@ class SliderView(DynamicPageRowView):
     # If you want to define a template here, please remove the template from
     # the configure.zcml registration of this view.
     # template = ViewPageTemplateFile('slider_view.pt')
+    featured_add_button = True
 
     def elements(self):
         # Implement your own actions:

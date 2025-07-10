@@ -8,12 +8,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
   <browser:page
-    name="dynamic-page-row-featured-view"
-    for="*"
+    name="view"
+    for="cs_dynamicpages.content.dynamic_page_row_featured.IDynamicPageRowFeatured"
     class=".dynamic_page_row_featured_view.DynamicPageRowFeaturedView"
     template="dynamic_page_row_featured_view.pt"
     permission="zope2.View"
-    layer="cs_dynamicpages.interfaces.ICsDynamicpagesLayer"
+    layer="cs_dynamicpages.interfaces.IBrowserLayer"
     />
 
   <browser:page

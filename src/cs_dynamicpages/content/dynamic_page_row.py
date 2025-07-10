@@ -33,6 +33,9 @@ class IDynamicPageRow(model.Schema):
 class DynamicPageRow(Container):
     """Content-type class for IPortadakoLerroa"""
 
+    def row_template(self):
+        return self.row_type.replace("cs_dynamicpages-", "")
+
     def review_state(self):
         return api.content.get_state(obj=self)
 
@@ -46,6 +49,20 @@ class DynamicPageRow(Container):
             sort_on="getObjPositionInParent",
             depth=1,
         )
+
+    def show_featured_add_button(self, request):
+        try:
+            view = api.content.get_view(
+                name=self.row_type,
+                context=self,
+                request=request,
+            )
+            if view and hasattr(view, "featured_add_button"):
+                return view.featured_add_button
+            return False
+        except Exception as e:
+            log.error(e)
+            return False
 
     def render(self, request):
         if self.row_type:
