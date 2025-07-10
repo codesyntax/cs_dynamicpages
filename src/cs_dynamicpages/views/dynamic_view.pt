@@ -115,11 +115,13 @@
           </div>
         </tal:featured>
       </tal:features>
-      <div class="dynamic-row d-flex justify-content-center align-items-center"
-        tal:condition="view/dynamic_page_folder_element_url">
-        <a class="btn btn-primary btn-lg" href="${view/dynamic_page_folder_element_url}/++add++DynamicPageRow">Add
-          new row</a>
-      </div>
+      <tal:condition tal:condition="view/can_edit">
+        <div class="dynamic-row d-flex justify-content-center align-items-center"
+          tal:condition="view/dynamic_page_folder_element_url">
+          <a class="btn btn-primary btn-lg" href="${view/dynamic_page_folder_element_url}/++add++DynamicPageRow">Add
+            new row</a>
+        </div>
+      </tal:condition>
       <!-- Delete Confirmation Modal -->
       <div class="modal fade" id="deleteElementModal" tabindex="-1" aria-labelledby="deleteElementModalLabel"
         aria-hidden="true">

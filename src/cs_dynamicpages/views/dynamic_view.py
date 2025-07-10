@@ -34,3 +34,6 @@ class DynamicView(BrowserView):
         if dynamic_page_folder:
             return dynamic_page_folder[0].getObject().absolute_url()
         return ""
+
+    def can_edit(self):
+        return api.user.has_permission("Modify portal content", obj=self.context)
