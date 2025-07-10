@@ -9,7 +9,8 @@
                       isAnon context/@@plone_portal_state/anonymous;
                     ">
         <tal:conditionisanon tal:condition="isAnon">
-          <tal:replace tal:replace="python:context.REQUEST.RESPONSE.redirect(context.portal_url(),301)">
+          <tal:replace
+            tal:replace="python:context.REQUEST.RESPONSE.redirect(context.aq_parent.aq_parent.absolute_url(),301)">
           </tal:replace>
         </tal:conditionisanon>
         <tal:conditionisanon tal:condition="not:isAnon">
