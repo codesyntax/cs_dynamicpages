@@ -8,6 +8,15 @@
   <!-- -*- extra stuff goes here -*- -->
 
   <browser:page
+    name="dynamic-page-folder-view"
+    for="*"
+    class=".dynamic_page_folder_view.DynamicPageFolderView"
+    template="dynamic_page_folder_view.pt"
+    permission="zope2.View"
+    layer="cs_dynamicpages.interfaces.ICsDynamicpagesLayer"
+    />
+
+  <browser:page
       name="dynamic-view"
       for="plone.app.contenttypes.interfaces.IFolder"
       class=".dynamic_view.DynamicView"
