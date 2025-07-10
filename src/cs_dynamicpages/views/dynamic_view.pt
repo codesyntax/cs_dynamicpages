@@ -12,7 +12,7 @@
         <tal:featured repeat="brain rows">
           <div tal:define="row brain/getObject;">
             <section class="dynamic-row state-${row/review_state}" data-rowid="${row/id}"
-              data-rowurl="${row/aq_parent/absolute_url}">
+              data-rowurl="${row/absolute_url}" data-rowsurl="${row/aq_parent/absolute_url}">
               <div class="edit-buttons d-flex gap-2" tal:condition="row/can_edit">
                 <small
                   class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
@@ -22,7 +22,8 @@
                 <a class="btn btn-outline-primary btn-sm align-self-start" href="${row/absolute_url}/edit">Edit</a>
 
                 <div class="ms-auto d-flex gap-2 align-items-start">
-                  <a class="btn btn-sm btn-danger" href="#" data-action="delete-row">Delete row</a>
+                  <a class="btn btn-sm btn-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteRowModal"
+                    data-rowid="${row/id}">Delete row</a>
                   <a tal:condition="python:not(repeat['brain'].start)"
                     class="btn btn-outline-primary btn-sm align-self-start" href="#" data-action="move-up">Move up</a>
                   <a tal:condition="python:not(repeat['brain'].end)"
@@ -65,8 +66,28 @@
         <a class="btn btn-primary btn-lg" href="${view/dynamic_page_folder_element_url}/++add++DynamicPageRow">Add
           new row</a>
       </div>
+      <!-- Delete Confirmation Modal -->
+      <div class="modal fade" id="deleteRowModal" tabindex="-1" aria-labelledby="deleteRowModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteRowModalLabel" i18n:translate="">Confirm Deletion</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p i18n:translate="">Are you sure you want to delete this row? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" i18n:translate="">Cancel</button>
+              <button type="button" class="btn btn-danger" id="confirmDeleteRow" i18n:translate="">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   </metal:main>
+
 </body>
 
 </html>

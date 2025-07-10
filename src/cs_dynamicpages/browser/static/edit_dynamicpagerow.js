@@ -136,18 +136,6 @@
   // Initialize when DOM is fully loaded
   function start() {
     initialize();
-
-    // Handle dynamically loaded content (for add forms)
-    document.body.addEventListener("DOMNodeInserted", function (e) {
-      const form = e.target.closest ? e.target.closest("form") : null;
-      if (
-        form &&
-        (form.classList.contains("view-name-add-DynamicPageRow") ||
-          form.id === "form")
-      ) {
-        initialize(form);
-      }
-    });
   }
 
   if (document.readyState === "loading") {

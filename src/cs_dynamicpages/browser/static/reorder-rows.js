@@ -68,7 +68,7 @@
 
     console.log(`Preparing to move row ${rowId} with delta ${delta}`);
 
-    const baseUrl = row.dataset.rowurl || "";
+    const baseUrl = row.dataset.rowsurl || "";
     console.log(`Sending request to: ${baseUrl}`);
 
     const requestBody = {
