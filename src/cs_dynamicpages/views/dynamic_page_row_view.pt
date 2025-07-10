@@ -1,65 +1,26 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-  xmlns:metal="http://xml.zope.org/namespaces/metal" xmlns:tal="http://xml.zope.org/namespaces/tal"
-  metal:use-macro="context/main_template/macros/master" i18n:domain="cs_dynamicpages">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="cs_dynamicpages" metal:use-macro="context/main_template/macros/master">
 
 <body>
-  <metal:content-main fill-slot="main">
-    <main id="content">
-      <tal:define tal:define="
-                      isAnon context/@@plone_portal_state/anonymous;
-                    ">
-        <tal:conditionisanon tal:condition="isAnon">
-          <tal:replace
-            tal:replace="python:context.REQUEST.RESPONSE.redirect(context.aq_parent.aq_parent.absolute_url(),301)">
-          </tal:replace>
-        </tal:conditionisanon>
-        <tal:conditionisanon tal:condition="not:isAnon">
-          <section class="dynamic-row state-${context/review_state}">
-            <div class="edit-buttons d-flex gap-2" tal:condition="context/can_edit">
-              <small
-                class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
-                Template: ${context/row_template}
-              </small>
-              <a class="btn btn-outline-primary btn-sm align-self-start" href="${context/absolute_url}/edit">Edit</a>
-              <div class="ms-auto d-flex gap-2 align-items-start">
-                <a class="btn btn-outline-primary btn-sm align-self-start"
-                  href="${context/aq_parent/aq_parent/absolute_url}">Go
-                  to top</a>
-                <small
-                  class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
-                  Review state: ${context/review_state}
-                  <span
-                    tal:attributes="class python:context.review_state() == 'published' and 'position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle' or 'position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle'">
-                  </span>
-                </small>
-              </div>
 
-            </div>
-            <tal:condition tal:condition="context/can_edit">
-              <div class="features-list d-flex gap-2 align-items-start mb-3"
-                tal:define="features_list context/featured_list">
-                <tal:featured repeat="featured_brain features_list">
-                  <div tal:define="featured_obj featured_brain/getObject;">
-                    <a tal:attributes="class python:featured_obj.review_state() == 'published' and 'btn btn-outline-success btn-sm bg-success-subtle' or 'btn btn-outline-danger btn-sm bg-danger-subtle'"
-                      href="${featured_obj/absolute_url}">${featured_obj/Title}</a>
-                  </div>
-                </tal:featured>
-                <tal:featured_add_button tal:condition="python:context.show_featured_add_button(request)">
-                  <a class="btn btn-outline-primary btn-sm align-self-start"
-                    href="${context/absolute_url}/++add++DynamicPageRowFeatured">Add new featured</a>
-                </tal:featured_add_button>
-              </div>
+  <metal:custom_title fill-slot="content-title">
+    <h1 tal:replace="structure context/@@title" />
+  </metal:custom_title>
 
-            </tal:condition>
+  <metal:custom_description fill-slot="content-description">
+    <p tal:replace="structure context/@@description" />
+  </metal:custom_description>
 
-            <div class="content">
-              <replace tal:replace="structure python:context.render(request)"></replace>
-            </div>
-          </section>
-        </tal:conditionisanon>
-      </tal:define>
-    </main>
-  </metal:content-main>
+  <metal:content-core fill-slot="content-core">
+    <metal:block define-macro="content-core">
+
+      <tal:replace
+        tal:replace="python:context.REQUEST.RESPONSE.redirect(context.aq_parent.aq_parent.absolute_url(),301)">
+      </tal:replace>
+
+    </metal:block>
+  </metal:content-core>
 </body>
 
 </html>
