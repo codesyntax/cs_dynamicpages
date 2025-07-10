@@ -36,44 +36,80 @@
 
     // Add event listeners to move up buttons
     moveUpButtons.forEach((button) => {
-      button.addEventListener("click", function (e) {
-        e.preventDefault();
-        console.log("Move up button clicked");
-        const row = this.closest(".dynamic-row");
-        console.log(`Moving row with ID: ${row.dataset.rowid} up`);
-        moveRow(row, -1);
-      });
+      button.addEventListener(
+        "click",
+        function (e) {
+          e.preventDefault();
+          e.stopPropagation(); // Detener la propagación del evento
+
+          // Deshabilitar el botón temporalmente
+          if (this.disabled) return;
+          this.disabled = true;
+
+          console.log("Move up button clicked");
+          const element = this.closest('[data-move-target="true"]');
+          console.log(
+            `Moving element with ID: ${element.dataset.elementid} up`
+          );
+
+          // Re-habilitar el botón después de un tiempo
+          setTimeout(() => {
+            this.disabled = false;
+          }, 2000);
+
+          moveElement(element, -1);
+        },
+        { once: true }
+      ); // Usar { once: true } para que el listener se ejecute solo una vez
     });
 
     // Add event listeners to move down buttons
     moveDownButtons.forEach((button) => {
-      button.addEventListener("click", function (e) {
-        e.preventDefault();
-        console.log("Move down button clicked");
-        const row = this.closest(".dynamic-row");
-        console.log(`Moving row with ID: ${row.dataset.rowid} down`);
-        moveRow(row, 1);
-      });
+      button.addEventListener(
+        "click",
+        function (e) {
+          e.preventDefault();
+          e.stopPropagation(); // Detener la propagación del evento
+
+          // Deshabilitar el botón temporalmente
+          if (this.disabled) return;
+          this.disabled = true;
+
+          console.log("Move down button clicked");
+          const element = this.closest('[data-move-target="true"]');
+          console.log(
+            `Moving element with ID: ${element.dataset.elementid} down`
+          );
+
+          // Re-habilitar el botón después de un tiempo
+          setTimeout(() => {
+            this.disabled = false;
+          }, 2000);
+
+          moveElement(element, 1);
+        },
+        { once: true }
+      ); // Usar { once: true } para que el listener se ejecute solo una vez
     });
   }
 
-  function moveRow(row, delta) {
-    const rowId = row.dataset.rowid;
-    if (!rowId) {
-      const errorMsg = "No data-row-id attribute found on row";
+  function moveElement(element, delta) {
+    const elementId = element.dataset.elementid;
+    if (!elementId) {
+      const errorMsg = "No data-element-id attribute found on element";
       console.error(errorMsg);
       alert(errorMsg);
       return;
     }
 
-    console.log(`Preparing to move row ${rowId} with delta ${delta}`);
+    console.log(`Preparing to move element ${elementId} with delta ${delta}`);
 
-    const baseUrl = row.dataset.rowsurl || "";
+    const baseUrl = element.dataset.parenturl || "";
     console.log(`Sending request to: ${baseUrl}`);
 
     const requestBody = {
       ordering: {
-        obj_id: rowId,
+        obj_id: elementId,
         delta: delta,
       },
     };
@@ -89,17 +125,20 @@
       },
       body: JSON.stringify(requestBody),
       credentials: "same-origin",
-    }).then((response) => {
-      console.log(`Received response with status: ${response.status}`);
-      console.log("Response headers:", response.headers);
-      console.log("Response ok:", response.ok);
-      if (!response.ok) {
-        const error = new Error(`HTTP error! status: ${response.status}`);
-        console.error("Response not OK:", error);
-        throw error;
-      }
-      // Refresh the page after successful update
-      window.location.reload();
-    });
+    })
+      .then((response) => {
+        console.log(`Received response with status: ${response.status}`);
+        console.log("Response headers:", response.headers);
+        console.log("Response ok:", response.ok);
+        if (!response.ok) {
+          const error = new Error(`HTTP error! status: ${response.status}`);
+          console.error("Response not OK:", error);
+          throw error;
+        }
+      })
+      .finally(() => {
+        // Refresh the page after successful update
+        window.location.reload();
+      });
   }
 })();

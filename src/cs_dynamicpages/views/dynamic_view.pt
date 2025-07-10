@@ -12,8 +12,8 @@
         <tal:featured repeat="brain rows">
           <div tal:define="row brain/getObject;">
             <section class="dynamic-row state-${row/review_state}" data-elementid="${row/id}"
-              data-elementurl="${row/absolute_url}" data-rowsurl="${row/aq_parent/absolute_url}"
-              data-delete-target="true">
+              data-elementurl="${row/absolute_url}" data-parenturl="${row/aq_parent/absolute_url}"
+              data-delete-target="true" data-move-target="true">
               <div class="edit-buttons d-flex gap-2" tal:condition="row/can_edit">
                 <small
                   class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
@@ -55,8 +55,9 @@
                   tal:define="features_list row/featured_list" tal:condition="features_list">
                   <tal:featured repeat="featured_brain features_list">
                     <div tal:define="featured_obj featured_brain/getObject;">
-                      <div class="btn-group" data-elementid="${featured_obj/id}"
-                        data-elementurl="${featured_obj/absolute_url}" data-delete-target="true">
+                      <div class="btn-group" data-elementid="${featured_obj/id}" data-parenturl="${row/absolute_url}"
+                        data-elementurl="${featured_obj/absolute_url}" data-delete-target="true"
+                        data-move-target="true">
                         <a tal:attributes="class python:featured_obj.review_state() == 'published' and
                                           'position-relative btn btn-outline-success btn-sm bg-success-subtle dropdown-toggle' or
                                           'position-relative btn btn-outline-danger btn-sm bg-danger-subtle dropdown-toggle'"
@@ -75,6 +76,13 @@
                           </li>
                           <li><a class="dropdown-item" href="#">Published</a></li>
                           <li><a class="dropdown-item" href="#">Draft</a></li>
+                          <li>
+                            <h5 class="dropdown-header">Move actions</h5>
+                          </li>
+                          <li><a class="dropdown-item" href="#" data-action="move-up"
+                              tal:condition="python:not(repeat['featured_brain'].start)">Move up</a></li>
+                          <li><a class="dropdown-item" href="#" data-action="move-down"
+                              tal:condition="python:not(repeat['featured_brain'].end)">Move down</a></li>
                           <li>
                             <hr class="dropdown-divider">
                           </li>
