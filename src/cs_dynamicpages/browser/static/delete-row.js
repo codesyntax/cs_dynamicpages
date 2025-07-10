@@ -26,9 +26,9 @@
 
     console.log("Initializing row deletion...");
 
-    const deleteModal = document.getElementById("deleteRowModal");
+    const deleteModal = document.getElementById("deleteElementModal");
     if (!deleteModal) {
-      console.error("Delete row modal not found");
+      console.error("Delete element modal not found");
       return;
     }
 
@@ -36,29 +36,80 @@
 
     deleteModal.addEventListener("show.bs.modal", function (event) {
       const button = event.relatedTarget;
-      rowToDelete = button.closest("section.dynamic-row");
-      console.log("Preparing to delete row:", rowToDelete?.dataset.rowid);
-    });
-
-    const confirmButton = document.getElementById("confirmDeleteRow");
-    if (confirmButton) {
-      confirmButton.addEventListener("click", handleDeleteRow);
-    } else {
-      console.error("Confirm delete button not found");
-    }
-
-    function handleDeleteRow() {
+      // Get the closest parent element with data-delete-target="true"
+      rowToDelete = button.closest('[data-delete-target="true"]');
       if (!rowToDelete) {
-        console.error("No row selected for deletion");
+        console.error(
+          'No deletable element found. Add data-delete-target="true" to the parent element you want to delete.'
+        );
         return;
       }
+      console.log("Preparing to delete element:", rowToDelete);
+    });
 
-      const rowId = rowToDelete.dataset.rowid;
-      const rowUrl = rowToDelete.dataset.rowurl;
+    // Store the deletion context for modal confirmation
+    let deletionContext = null;
+    const modal = document.getElementById("deleteElementModal");
 
-      console.log(`Deleting row ${rowId} via ${rowUrl}`);
+    // Handle delete button click
+    document.addEventListener("click", function (event) {
+      const deleteButton = event.target.closest(".btn-delete-element");
+      if (deleteButton) {
+        event.preventDefault();
+        const elementToDelete = deleteButton.closest(
+          '[data-delete-target="true"]'
+        );
+        if (elementToDelete) {
+          // Store the deletion context for when modal is confirmed
+          deletionContext = {
+            elementId: elementToDelete.dataset.elementid,
+            element: elementToDelete,
+          };
+          // The modal will be shown by Bootstrap's data-bs-toggle="modal"
+        } else {
+          console.error(
+            'No deletable element found. Add data-delete-target="true" to the parent element you want to delete.'
+          );
+        }
+      }
+    });
 
-      fetch(rowUrl, {
+    // Handle modal confirm button click
+    if (modal) {
+      modal.addEventListener("show.bs.modal", function (event) {
+        const button = event.relatedTarget;
+        // Update the modal content if needed
+        const modalTitle = modal.querySelector(".modal-title");
+        if (modalTitle) {
+          modalTitle.textContent = "Confirm Deletion";
+        }
+      });
+
+      const confirmButton = document.getElementById("confirmDeleteElement");
+      if (confirmButton) {
+        confirmButton.addEventListener("click", function () {
+          if (deletionContext) {
+            deleteRow(deletionContext.elementId, deletionContext.element);
+            // Close the modal
+            const modalInstance = bootstrap.Modal.getInstance(modal);
+            if (modalInstance) {
+              modalInstance.hide();
+            }
+          }
+        });
+      } else {
+        console.error(
+          'Could not find confirm button with ID "confirmDeleteRow"'
+        );
+      }
+    }
+
+    function deleteRow(elementId, elementToDelete) {
+      const elementUrl = elementToDelete.dataset.elementurl;
+
+      console.log(`Deleting element ${elementId} via ${elementUrl}`);
+
+      fetch(elementUrl, {
         method: "DELETE",
         headers: {
           Accept: "application/json",

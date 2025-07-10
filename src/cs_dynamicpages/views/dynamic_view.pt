@@ -11,8 +11,9 @@
                       ">
         <tal:featured repeat="brain rows">
           <div tal:define="row brain/getObject;">
-            <section class="dynamic-row state-${row/review_state}" data-rowid="${row/id}"
-              data-rowurl="${row/absolute_url}" data-rowsurl="${row/aq_parent/absolute_url}">
+            <section class="dynamic-row state-${row/review_state}" data-elementid="${row/id}"
+              data-elementurl="${row/absolute_url}" data-rowsurl="${row/aq_parent/absolute_url}"
+              data-delete-target="true">
               <div class="edit-buttons d-flex gap-2" tal:condition="row/can_edit">
                 <small
                   class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
@@ -20,8 +21,8 @@
                 </small>
                 <!-- <a class="btn btn-outline-primary btn-sm align-self-start" href="${row/absolute_url}">View</a> -->
                 <a class="btn btn-outline-primary btn-sm align-self-start" href="${row/absolute_url}/edit">Edit</a>
-                <a class="btn btn-sm btn-danger align-self-start" href="#" data-bs-toggle="modal"
-                  data-bs-target="#deleteRowModal" data-rowid="${row/id}">Delete row</a>
+                <a class="btn btn-sm btn-danger align-self-start btn-delete-element" href="#" data-bs-toggle="modal"
+                  data-bs-target="#deleteElementModal" data-rowid="${row/id}">Delete row</a>
 
                 <div class="ms-auto d-flex gap-2 align-items-start">
 
@@ -54,7 +55,8 @@
                   tal:define="features_list row/featured_list" tal:condition="features_list">
                   <tal:featured repeat="featured_brain features_list">
                     <div tal:define="featured_obj featured_brain/getObject;">
-                      <div class="btn-group">
+                      <div class="btn-group" data-elementid="${featured_obj/id}"
+                        data-elementurl="${featured_obj/absolute_url}" data-delete-target="true">
                         <a tal:attributes="class python:featured_obj.review_state() == 'published' and
                                           'position-relative btn btn-outline-success btn-sm bg-success-subtle dropdown-toggle' or
                                           'position-relative btn btn-outline-danger btn-sm bg-danger-subtle dropdown-toggle'"
@@ -76,9 +78,8 @@
                           <li>
                             <hr class="dropdown-divider">
                           </li>
-                          <li><a class="ms-3 btn btn-sm btn-danger align-self-start" href="#" data-bs-toggle="modal"
-                              data-bs-target="#deleteRowModal" data-rowid="${featured_obj/id}"
-                              data-rowurl="${featured_obj/absolute_url}">Delete</a></li>
+                          <li><a class="ms-3 btn btn-sm btn-danger align-self-start btn-delete-element" href="#"
+                              data-bs-toggle="modal" data-bs-target="#deleteElementModal">Delete</a></li>
                         </ul>
                       </div>
                     </div>
@@ -102,12 +103,12 @@
           new row</a>
       </div>
       <!-- Delete Confirmation Modal -->
-      <div class="modal fade" id="deleteRowModal" tabindex="-1" aria-labelledby="deleteRowModalLabel"
+      <div class="modal fade" id="deleteElementModal" tabindex="-1" aria-labelledby="deleteElementModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="deleteRowModalLabel" i18n:translate="">Confirm Deletion</h5>
+              <h5 class="modal-title" id="deleteElementModalLabel" i18n:translate="">Confirm Deletion</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -115,7 +116,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" i18n:translate="">Cancel</button>
-              <button type="button" class="btn btn-danger" id="confirmDeleteRow" i18n:translate="">Delete</button>
+              <button type="button" class="btn btn-danger" id="confirmDeleteElement" i18n:translate="">Delete</button>
             </div>
           </div>
         </div>
