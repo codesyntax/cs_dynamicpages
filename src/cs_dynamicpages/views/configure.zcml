@@ -8,12 +8,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
   <browser:page
-    name="dynamic-page-folder-view"
-    for="*"
+    name="view"
+    for="cs_dynamicpages.content.dynamic_page_folder.IDynamicPageFolder"
     class=".dynamic_page_folder_view.DynamicPageFolderView"
     template="dynamic_page_folder_view.pt"
     permission="zope2.View"
-    layer="cs_dynamicpages.interfaces.ICsDynamicpagesLayer"
+    layer="cs_dynamicpages.interfaces.IBrowserLayer"
     />
 
   <browser:page
