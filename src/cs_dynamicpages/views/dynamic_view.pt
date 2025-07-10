@@ -49,7 +49,7 @@
                   </tal:featured>
                   <tal:featured_add_button tal:condition="python:row.show_featured_add_button(request)">
                     <a class="btn btn-outline-primary btn-sm align-self-start"
-                      href="${context/absolute_url}/++add++DynamicPageRowFeatured">Add new featured</a>
+                      href="${row/absolute_url}/++add++DynamicPageRowFeatured">Add new featured</a>
                   </tal:featured_add_button>
                 </div>
               </tal:condition>
