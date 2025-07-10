@@ -18,24 +18,34 @@
                   class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
                   Template: ${row/row_template}
                 </small>
-                <a class="btn btn-outline-primary btn-sm align-self-start" href="${row/absolute_url}">View</a>
+                <!-- <a class="btn btn-outline-primary btn-sm align-self-start" href="${row/absolute_url}">View</a> -->
                 <a class="btn btn-outline-primary btn-sm align-self-start" href="${row/absolute_url}/edit">Edit</a>
+                <a class="btn btn-sm btn-danger align-self-start" href="#" data-bs-toggle="modal"
+                  data-bs-target="#deleteRowModal" data-rowid="${row/id}">Delete row</a>
 
                 <div class="ms-auto d-flex gap-2 align-items-start">
-                  <a class="btn btn-sm btn-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteRowModal"
-                    data-rowid="${row/id}">Delete row</a>
+
                   <a tal:condition="python:not(repeat['brain'].start)"
                     class="btn btn-outline-primary btn-sm align-self-start" href="#" data-action="move-up">Move up</a>
                   <a tal:condition="python:not(repeat['brain'].end)"
                     class="btn btn-outline-primary btn-sm align-self-start" href="#" data-action="move-down">Move
                     down</a>
-                  <small
-                    class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
-                    Review state: ${row/review_state}
-                    <span
-                      tal:attributes="class python:row.review_state() == 'published' and 'position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle' or 'position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle'">
-                    </span>
-                  </small>
+                  <div class="btn-group">
+                    <a tal:attributes="class python:row.review_state() == 'published' and
+                    'position-relative btn btn-outline-success btn-sm bg-success-subtle dropdown-toggle' or
+                    'position-relative btn btn-outline-danger btn-sm bg-danger-subtle dropdown-toggle'" type="button"
+                      class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static"
+                      aria-expanded="false">
+                      Review state: ${row/review_state}
+                      <span
+                        tal:attributes="class python:row.review_state() == 'published' and 'position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle' or 'position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle'">
+                      </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Send back</a></li>
+                      <li><a class="dropdown-item" href="#">Publish</a></li>
+                    </ul>
+                  </div>
                 </div>
 
               </div>
@@ -44,8 +54,33 @@
                   tal:define="features_list row/featured_list" tal:condition="features_list">
                   <tal:featured repeat="featured_brain features_list">
                     <div tal:define="featured_obj featured_brain/getObject;">
-                      <a tal:attributes="class python:featured_obj.review_state() == 'published' and 'btn btn-outline-success btn-sm bg-success-subtle' or 'btn btn-outline-danger btn-sm bg-danger-subtle'"
-                        href="${featured_obj/absolute_url}">${featured_obj/Title}</a>
+                      <div class="btn-group">
+                        <a tal:attributes="class python:featured_obj.review_state() == 'published' and
+                                          'position-relative btn btn-outline-success btn-sm bg-success-subtle dropdown-toggle' or
+                                          'position-relative btn btn-outline-danger btn-sm bg-danger-subtle dropdown-toggle'"
+                          type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                          data-bs-display="static" aria-expanded="false">
+                          ${featured_obj/Title}
+                          <span
+                            tal:attributes="class python:featured_obj.review_state() == 'published' and 'text-white position-absolute top-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle' or 'text-white position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle'">
+                          </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="${featured_obj/absolute_url}/edit">Edit</a>
+                          </li>
+                          <li>
+                            <h5 class="dropdown-header">State</h5>
+                          </li>
+                          <li><a class="dropdown-item" href="#">Published</a></li>
+                          <li><a class="dropdown-item" href="#">Draft</a></li>
+                          <li>
+                            <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="ms-3 btn btn-sm btn-danger align-self-start" href="#" data-bs-toggle="modal"
+                              data-bs-target="#deleteRowModal" data-rowid="${featured_obj/id}"
+                              data-rowurl="${featured_obj/absolute_url}">Delete</a></li>
+                        </ul>
+                      </div>
                     </div>
                   </tal:featured>
                   <tal:featured_add_button tal:condition="python:row.show_featured_add_button(request)">
@@ -76,7 +111,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p i18n:translate="">Are you sure you want to delete this row? This action cannot be undone.</p>
+              <p i18n:translate="">Are you sure you want to delete this item? This action cannot be undone.</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" i18n:translate="">Cancel</button>
