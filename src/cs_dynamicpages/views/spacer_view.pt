@@ -1,0 +1,3 @@
+<div class="my-5">
+    <h6 tal:condition="context/can_edit">Spacer</h6>
+</div>

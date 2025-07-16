@@ -59,6 +59,12 @@
         name="cs_dynamicpages-horizontal-rule-view"
         template="horizontal_rule_view.pt"
         />
+
+    <browser:page
+        name="cs_dynamicpages-spacer-view"
+        template="spacer_view.pt"
+        />
+
     <browser:page
         name="cs_dynamicpages-text-view"
         template="text_view.pt"
