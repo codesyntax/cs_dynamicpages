@@ -59,6 +59,10 @@
         name="cs_dynamicpages-horizontal-rule-view"
         template="horizontal_rule_view.pt"
         />
+    <browser:page
+        name="cs_dynamicpages-text-view"
+        template="text_view.pt"
+        />
   </browser:pages>
 
   <browser:pages
@@ -82,6 +86,11 @@
     <browser:page
         name="cs_dynamicpages-slider-view"
         template="slider_view.pt"
+        />
+
+    <browser:page
+        name="cs_dynamicpages-accordion-view"
+        template="accordion_view.pt"
         />
   </browser:pages>
 

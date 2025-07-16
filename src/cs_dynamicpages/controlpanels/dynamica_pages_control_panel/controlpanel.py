@@ -46,8 +46,16 @@ class IDynamicaPagesControlPanel(Interface):
                 "each_row_type_fields": ["IBasic.title"],
             },
             {
+                "row_type": "cs_dynamicpages-accordion-view",
+                "each_row_type_fields": ["IBasic.title"],
+            },
+            {
                 "row_type": "cs_dynamicpages-query-three-columns-view",
                 "each_row_type_fields": ["IBasic.title", "ICollection.query", "ICollection.sort_on", "ICollection.sort_order", "ICollection.betweeen", "ICollection.limit"],
+            },
+            {
+                "row_type": "cs_dynamicpages-text-view",
+                "each_row_type_fields": ["IBasic.title", "IRichTextBehavior-text"],
             },
         ],
     )
