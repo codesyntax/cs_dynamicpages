@@ -35,10 +35,18 @@ class IDynamicaPagesControlPanel(Interface):
         default=[
             {
                 "row_type": "cs_dynamicpages-featured-view",
-                "each_row_type_fields": ["IBasic.title", "IBasic.description", "IRelatedImage.image", "ILinkInfo.link_text", "ILinkInfo.link_url"],
+                "each_row_type_fields": ["IBasic.title", "IBasic.description", "IRelatedImage.related_image", "ILinkInfo.link_text", "ILinkInfo.link_url"],
+            },
+            {
+                "row_type": "cs_dynamicpages-featured-overlay-view",
+                "each_row_type_fields": ["IBasic.title", "IBasic.description", "IRelatedImage.related_image", "ILinkInfo.link_text", "ILinkInfo.link_url"],
             },
             {
                 "row_type": "cs_dynamicpages-horizontal-rule-view",
+                "each_row_type_fields": ["IBasic.title"],
+            },
+            {
+                "row_type": "cs_dynamicpages-spacer-view",
                 "each_row_type_fields": ["IBasic.title"],
             },
             {
