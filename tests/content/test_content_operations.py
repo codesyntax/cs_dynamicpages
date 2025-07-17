@@ -1,3 +1,4 @@
+import transaction
 from plone import api
 import pytest
 from ..base import TestBase
@@ -16,6 +17,8 @@ class TestContent(TestBase):
 
             assert self.folder is not None
             assert self.folder.id == "folder"
+
+            self.folder.setLayout('dynamic-view')
 
             self.dpf = api.content.create(
                 container=self.folder, type="DynamicPageFolder", id="dpf", title="DPF"
@@ -36,11 +39,33 @@ class TestContent(TestBase):
             assert self.row2 is not None
             assert self.row2.id == "row-2"
 
-    def test_view(self, portal, my_request):
-        self.folder.setLayout('dynamic-view')
+            transaction.commit()
+    def test_view(self, browser):
+        """ check that the folder is rendered correctly with the basic instructions """
 
-        view = api.content.get_view(
-            context=self.folder, name="dynamic-view", request=my_request
-        )
+        browser.open(self.folder.absolute_url())
+        # We have 2 rows, so there must be an option to delete a row
+        assert 'Delete row' in browser.contents
 
-        assert view().find('Add row') != -1
+        # assert "Row 1" in browser.contents
+        # assert "Row 2" in browser.contents
+
+        # There must be an option to add a new row
+        assert 'Add new row' in browser.contents
+
+    def test_add_row(self, browser):
+        """ click add row"""
+        browser.open(self.folder.absolute_url())
+        link = browser.getLink("Add new row")
+        link.click()
+        assert "++add++DynamicPageRow" in browser.url
+
+        control = browser.getControl(name="form.widgets.IBasic.title")
+        control.value = "Row 3"
+
+        save = browser.getControl(name="form.buttons.save")
+        save.click()
+
+        browser.open(self.folder.absolute_url())
+
+        assert len(self.folder.dpf.keys()) == 3

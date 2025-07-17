@@ -1,3 +1,6 @@
+from plone.app.testing import SITE_OWNER_NAME
+from plone.app.testing import SITE_OWNER_PASSWORD
+from plone.testing.zope import Browser
 from zope.interface import alsoProvides
 from cs_dynamicpages.interfaces import IBrowserLayer
 from plone.app.multilingual.interfaces import ITranslationManager
@@ -51,6 +54,16 @@ def contents() -> list:
 @pytest.fixture()
 def portal(functional):
     return functional["portal"]
+
+
+@pytest.fixture()
+def browser(functional):
+    browser = Browser(functional['app'])
+    browser.handleErrors = False
+    browser.addHeader(
+            "Authorization", f"Basic {SITE_OWNER_NAME}:{SITE_OWNER_PASSWORD}"
+        )
+    return browser
 
 @pytest.fixture()
 def my_request(functional):

@@ -29,6 +29,7 @@ class RowType:
                 portal_type="DynamicPageRow",
                 context=api.portal.get(),
             )
+        query_context = None
         if elements:
             query_context = elements[0].getObject()
         else:
