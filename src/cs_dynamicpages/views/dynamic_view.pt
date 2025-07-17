@@ -6,10 +6,13 @@
 <body>
   <metal:main fill-slot="main">
     <main id="content">
-      <div class="d-flex justify-content-end mb-3" tal:condition="view/can_edit">
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="editModeToggle" checked>
-          <label class="form-check-label" for="editModeToggle">Edit Mode</label>
+      <div class="fixed-top d-flex justify-content-end py-2 me-2" tal:condition="view/can_edit">
+        <div
+          class="d-inline-flex mb-3 px-3 py-2 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-5">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="editModeToggle" checked>
+            <label class="form-check-label" for="editModeToggle">Edit Mode</label>
+          </div>
         </div>
       </div>
       <tal:features define="
