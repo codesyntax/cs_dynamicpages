@@ -3,6 +3,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <utility
+        component=".row_columns.RowColumnsFactory"
+        name="cs_dynamicpages.RowColumns"
+    />
+
+
+    <utility
         component=".image_position.ImagePositionFactory"
         name="cs_dynamicpages.ImagePosition"
     />
