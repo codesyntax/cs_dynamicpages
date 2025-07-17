@@ -11,11 +11,12 @@
              category="Products"
              condition_expr=""
              icon_expr=""
+             remove="true"
              title="Dynamica Pages Control Panel"
              url_expr="string:${portal_url}/@@dynamica_pages_control_panel-controlpanel"
              visible="True"
              i18n:attributes="title"
-             remove="true" />
+  />
 
 
 </object>

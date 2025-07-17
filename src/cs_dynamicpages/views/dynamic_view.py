@@ -26,7 +26,10 @@ class DynamicView(BrowserView):
 
     def dynamic_page_folder_element(self):
         return api.content.find(
-            portal_type="DynamicPageFolder", context=self.context, depth=1, sort_on="getObjPositionInParent"
+            portal_type="DynamicPageFolder",
+            context=self.context,
+            depth=1,
+            sort_on="getObjPositionInParent",
         )
 
     def dynamic_page_folder_element_url(self):

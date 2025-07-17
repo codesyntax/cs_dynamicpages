@@ -1,8 +1,9 @@
 # from cs_dynamicpages import _
+from cs_dynamicpages.views.dynamic_page_row_view import DynamicPageRowView
 from plone.app.contenttypes.browser.collection import CollectionView
 from zope.interface import implementer
 from zope.interface import Interface
-from cs_dynamicpages.views.dynamic_page_row_view import DynamicPageRowView
+
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 

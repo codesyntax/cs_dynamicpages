@@ -1,15 +1,15 @@
+from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield.registry import DictRow
 from cs_dynamicpages import _
 from cs_dynamicpages.interfaces import IBrowserLayer
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
+from plone.autoform.directives import widget
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from plone.z3cform import layout
 from zope import schema
 from zope.component import adapter
 from zope.interface import Interface
-from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
-from collective.z3cform.datagridfield.registry import DictRow
-from plone.autoform.directives import widget
 
 
 class IRowTypeFieldsSchema(Interface):
@@ -42,12 +42,25 @@ class IDynamicaPagesControlPanel(Interface):
         default=[
             {
                 "row_type": "cs_dynamicpages-featured-view",
-                "each_row_type_fields": ["IBasic.title", "IBasic.description", "IRelatedImage.related_image", "IRelatedImage.image_position", "ILinkInfo.link_text", "ILinkInfo.link_url"],
+                "each_row_type_fields": [
+                    "IBasic.title",
+                    "IBasic.description",
+                    "IRelatedImage.related_image",
+                    "IRelatedImage.image_position",
+                    "ILinkInfo.link_text",
+                    "ILinkInfo.link_url",
+                ],
                 "row_type_has_featured_add_button": False,
             },
             {
                 "row_type": "cs_dynamicpages-featured-overlay-view",
-                "each_row_type_fields": ["IBasic.title", "IBasic.description", "IRelatedImage.related_image", "ILinkInfo.link_text", "ILinkInfo.link_url"],
+                "each_row_type_fields": [
+                    "IBasic.title",
+                    "IBasic.description",
+                    "IRelatedImage.related_image",
+                    "ILinkInfo.link_text",
+                    "ILinkInfo.link_url",
+                ],
                 "row_type_has_featured_add_button": False,
             },
             {
@@ -77,7 +90,15 @@ class IDynamicaPagesControlPanel(Interface):
             },
             {
                 "row_type": "cs_dynamicpages-query-columns-view",
-                "each_row_type_fields": ["IBasic.title", "ICollection.query", "ICollection.sort_on", "ICollection.sort_order", "ICollection.betweeen", "ICollection.limit", "IRowColumns.columns"],
+                "each_row_type_fields": [
+                    "IBasic.title",
+                    "ICollection.query",
+                    "ICollection.sort_on",
+                    "ICollection.sort_order",
+                    "ICollection.betweeen",
+                    "ICollection.limit",
+                    "IRowColumns.columns",
+                ],
                 "row_type_has_featured_add_button": False,
             },
             {
