@@ -15,5 +15,6 @@ class TestBase:
         """
         try:
             installer.install_product(PACKAGE_NAME)
-        except:
+        except Exception as e:
+            logger.info(e)
             logger.info("Package already installed")
