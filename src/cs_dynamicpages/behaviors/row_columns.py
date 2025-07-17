@@ -20,10 +20,11 @@ class IRowColumns(model.Schema):
     """
     """
 
-    project = schema.TextLine(
-        title=_(u'Project'),
-        description=_(u'Give in a project name'),
-        required=False,
+    columns = schema.Choice(
+        title="Columns",
+        vocabulary="cs_dynamicpages.RowColumns",
+        required=True,
+        default="2",
     )
 
 
@@ -34,11 +35,11 @@ class RowColumns(object):
         self.context = context
 
     @property
-    def project(self):
-        if safe_hasattr(self.context, 'project'):
-            return self.context.project
+    def columns(self):
+        if safe_hasattr(self.context, 'columns'):
+            return self.context.columns
         return None
 
-    @project.setter
-    def project(self, value):
-        self.context.project = value
+    @columns.setter
+    def columns(self, value):
+        self.context.columns = value
