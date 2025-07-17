@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 # from cs_dynamicpages import _
 from Products.Five.browser import BrowserView

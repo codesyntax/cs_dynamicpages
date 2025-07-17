@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <registry>
-    <records interface="cs_dynamicpages.controlpanels.dynamica_pages_control_panel.controlpanel.IDynamicaPagesControlPanel" />
-
     <!-- Resource bundle for DynamicPageRow edit page -->
 
      <records interface="Products.CMFPlone.interfaces.IBundleRegistry"

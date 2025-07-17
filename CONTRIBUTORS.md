@@ -1,3 +1,3 @@
 # Contributors
 
-- Lur Ibargutxi [libargutxi@codesyntax.com]
+- Plone Community [collective@plone.org]

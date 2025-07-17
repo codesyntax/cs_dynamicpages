@@ -1,7 +1,7 @@
+from pytest_plone import fixtures_factory
 from cs_dynamicpages.testing import ACCEPTANCE_TESTING
 from cs_dynamicpages.testing import FUNCTIONAL_TESTING
 from cs_dynamicpages.testing import INTEGRATION_TESTING
-from pytest_plone import fixtures_factory
 
 
 pytest_plugins = ["pytest_plone"]
