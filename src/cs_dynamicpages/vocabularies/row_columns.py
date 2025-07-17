@@ -25,9 +25,9 @@ class RowColumns(object):
         # Just an example list of content for our vocabulary,
         # this can be any static or dynamic data, a catalog result for example.
         items = [
-            VocabItem(u'2', _(u'2')),
-            VocabItem(u'3', _(u'3')),
-            VocabItem(u'4', _(u'4')),
+            VocabItem(u'col-md-6', _(u'2')),
+            VocabItem(u'col-md-4', _(u'3')),
+            VocabItem(u'col-md-3', _(u'4')),
         ]
 
         # Fix context if you are using the vocabulary in DataGridField.

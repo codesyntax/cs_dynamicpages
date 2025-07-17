@@ -79,13 +79,13 @@
 
   <browser:pages
       for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
-      class=".query_three_columns_view.QueryThreeColumnsView"
+      class=".query_columns_view.QueryColumnsView"
       permission="zope2.View"
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
       >
     <browser:page
-        name="cs_dynamicpages-query-three-columns-view"
-        template="query_three_columns_view.pt"
+        name="cs_dynamicpages-query-columns-view"
+        template="query_columns_view.pt"
         />
   </browser:pages>
 

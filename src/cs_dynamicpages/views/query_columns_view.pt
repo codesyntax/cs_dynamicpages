@@ -7,7 +7,7 @@
       <tal:define tal:define="
                     element brain/getObject;
                   ">
-        <div class="col-md-4 mb-5">
+        <div class="${context/columns} mb-5">
           <div class="card">
             <tal:image tal:define="
                          image element/image;

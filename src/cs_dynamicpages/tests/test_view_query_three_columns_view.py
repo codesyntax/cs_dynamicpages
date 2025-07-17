@@ -1,6 +1,6 @@
 from cs_dynamicpages.testing import CS_DYNAMICPAGES_FUNCTIONAL_TESTING
 from cs_dynamicpages.testing import CS_DYNAMICPAGES_INTEGRATION_TESTING
-from cs_dynamicpages.views.query_three_columns_view import IQueryThreeColumnsView
+from cs_dynamicpages.views.query_columns_view import IQueryColumnsView
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -19,24 +19,24 @@ class ViewsIntegrationTest(unittest.TestCase):
         api.content.create(self.portal, "Folder", "other-folder")
         api.content.create(self.portal, "Document", "front-page")
 
-    def test_query_three_columns_view_is_registered(self):
+    def test_query_columns_view_is_registered(self):
         view = getMultiAdapter(
             (self.portal["other-folder"], self.portal.REQUEST),
-            name="query-three-columns-view",
+            name="query-columns-view",
         )
-        self.assertTrue(IQueryThreeColumnsView.providedBy(view))
+        self.assertTrue(IQueryColumnsView.providedBy(view))
 
-    def test_query_three_columns_view_not_matching_interface(self):
+    def test_query_columns_view_not_matching_interface(self):
         view_found = True
         try:
             view = getMultiAdapter(
                 (self.portal["front-page"], self.portal.REQUEST),
-                name="query-three-columns-view",
+                name="query-columns-view",
             )
         except ComponentLookupError:
             view_found = False
         else:
-            view_found = IQueryThreeColumnsView.providedBy(view)
+            view_found = IQueryColumnsView.providedBy(view)
         self.assertFalse(view_found)
 
 

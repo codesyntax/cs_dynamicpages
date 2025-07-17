@@ -27,7 +27,7 @@ class IRowTypeFieldsSchema(Interface):
 
     row_type_has_featured_add_button = schema.Bool(
         title="Has featured add button",
-        required=True,
+        required=False,
         default=False,
     )
 
@@ -70,7 +70,7 @@ class IDynamicaPagesControlPanel(Interface):
                 "row_type_has_featured_add_button": True,
             },
             {
-                "row_type": "cs_dynamicpages-query-three-columns-view",
+                "row_type": "cs_dynamicpages-query-columns-view",
                 "each_row_type_fields": ["IBasic.title", "ICollection.query", "ICollection.sort_on", "ICollection.sort_order", "ICollection.betweeen", "ICollection.limit"],
                 "row_type_has_featured_add_button": False,
             },
