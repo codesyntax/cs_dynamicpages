@@ -114,7 +114,7 @@ def create_contents(contents):
 def portal_with_content(app, portal, create_contents):
     """Plone portal with initial content."""
     with api.env.adopt_roles(["Manager"]):
-        content_ids = create_contents(portal)
+        create_contents(portal)
     # transaction.commit()
     yield portal
     # with api.env.adopt_roles(["Manager"]):
