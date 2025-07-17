@@ -35,7 +35,7 @@ class IDynamicaPagesControlPanel(Interface):
         default=[
             {
                 "row_type": "cs_dynamicpages-featured-view",
-                "each_row_type_fields": ["IBasic.title", "IBasic.description", "IRelatedImage.related_image", "ILinkInfo.link_text", "ILinkInfo.link_url"],
+                "each_row_type_fields": ["IBasic.title", "IBasic.description", "IRelatedImage.related_image", "IRelatedImage.image_position", "ILinkInfo.link_text", "ILinkInfo.link_url"],
             },
             {
                 "row_type": "cs_dynamicpages-featured-overlay-view",

@@ -9,7 +9,7 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import provider
-
+from zope import schema
 
 class IRelatedImageMarker(Interface):
     pass
@@ -36,6 +36,12 @@ class IRelatedImage(model.Schema):
             "selectableTypes": ["Image"],
         },
     )
+    image_position = schema.Choice(
+        title="Image Position",
+        vocabulary="cs_dynamicpages.ImagePosition",
+        required=True,
+        default="left",
+    )
 
 
 @implementer(IRelatedImage)
@@ -53,3 +59,13 @@ class RelatedImage:
     @related_image.setter
     def related_image(self, value):
         self.context.related_image = value
+
+    @property
+    def image_position(self):
+        if safe_hasattr(self.context, "image_position"):
+            return self.context.image_position
+        return None
+
+    @image_position.setter
+    def image_position(self, value):
+        self.context.image_position = value

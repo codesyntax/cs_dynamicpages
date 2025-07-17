@@ -12,7 +12,8 @@
                                           title=image.Title())" />
     </tal:image>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6"
+    tal:attributes="class python:context.image_position=='right' and 'col-md-6 order-first' or 'col-md-6'">
     <h3>${context/Title}</h3>
     <p tal:condition="context/Description">${context/Description}</p>
     <tal:replace tal:condition="context/text" replace="structure context/text/output">
