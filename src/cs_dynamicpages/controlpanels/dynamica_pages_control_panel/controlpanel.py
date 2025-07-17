@@ -66,7 +66,6 @@ class IDynamicaPagesControlPanel(Interface):
                 "row_type_has_featured_add_button": True,
             },
             {
-<<<<<<< HEAD
                 "row_type": "cs_dynamicpages-features-view",
                 "each_row_type_fields": ["IBasic.title", "IRowWidth.width"],
                 "row_type_has_featured_add_button": True,
@@ -85,17 +84,6 @@ class IDynamicaPagesControlPanel(Interface):
                 "row_type": "cs_dynamicpages-text-view",
                 "each_row_type_fields": ["IBasic.title", "IRowWidth.width", "IRichTextBehavior-text"],
                 "row_type_has_featured_add_button": False,
-=======
-                "row_type": "cs_dynamicpages-query-three-columns-view",
-                "each_row_type_fields": [
-                    "IBasic.title",
-                    "ICollection.query",
-                    "ICollection.sort_on",
-                    "ICollection.sort_order",
-                    "ICollection.betweeen",
-                    "ICollection.limit",
-                ],
->>>>>>> 0eadc1c (initial test setup)
             },
         ],
     )
