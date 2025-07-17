@@ -13,6 +13,16 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+    <plone:behavior
+        name="cs_dynamicpages.row_columns"
+        title="RowColumns"
+        description="This behavior provides..."
+        provides=".row_columns.IRowColumns"
+        factory=".row_columns.RowColumns"
+        marker=".row_columns.IRowColumnsMarker"
+        />
+
+
   <plone:behavior
       name="cs_dynamicpages.related_image"
       title="RelatedImage"
