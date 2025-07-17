@@ -46,7 +46,8 @@ site_id = "Plone"
 payload = {
     "title": "cs_dynamicpages",
     "profile_id": _DEFAULT_PROFILE,
-    "distribution_name": "classic",
+"distribution_name": "classic",
+
     "setup_content": False,
     "default_language": "en",
     "portal_timezone": "UTC",

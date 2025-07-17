@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from cs_dynamicpages.testing import CS_DYNAMICPAGES_FUNCTIONAL_TESTING
 from cs_dynamicpages.testing import CS_DYNAMICPAGES_INTEGRATION_TESTING
 from cs_dynamicpages.views.dynamic_page_row_featured_view import IDynamicPageRowFeaturedView

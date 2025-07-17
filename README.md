@@ -1,6 +1,6 @@
 # cs_dynamicpages
 
-An addon to create dynamic pages for Plone
+A new addon for Plone
 
 ## Features
 
@@ -22,8 +22,8 @@ make create-site
 
 ## Contribute
 
-- [Issue tracker](https://github.com/cs/cs_dynamicpages/issues)
-- [Source code](https://github.com/cs/cs_dynamicpages/)
+- [Issue tracker](https://github.com/collective/cs_dynamicpages/issues)
+- [Source code](https://github.com/collective/cs_dynamicpages/)
 
 ### Prerequisites ✅
 
@@ -38,7 +38,7 @@ make create-site
 1.  Clone this repository, then change your working directory.
 
     ```shell
-    git clone git@github.com:cs/cs_dynamicpages.git
+    git clone git@github.com:collective/cs_dynamicpages.git
     cd cs_dynamicpages
     ```
 
@@ -83,4 +83,4 @@ The project is licensed under GPLv2.
 
 ## Credits and acknowledgements 🙏
 
-Generated using [Cookieplone (0.9.7)](https://github.com/plone/cookieplone) and [cookieplone-templates (6782781)](https://github.com/plone/cookieplone-templates/commit/6782781dae4bafb227467828066ab16b84c23750) on 2025-07-07 09:25:15.108762. A special thanks to all contributors and supporters!
+Generated using [Cookieplone (0.9.7)](https://github.com/plone/cookieplone) and [cookieplone-templates (4d55553)](https://github.com/plone/cookieplone-templates/commit/4d55553d61416df56b3360914b398d675b3f72a6) on 2025-07-17 11:59:12.982862. A special thanks to all contributors and supporters!

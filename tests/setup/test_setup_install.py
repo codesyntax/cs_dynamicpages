@@ -1,7 +1,11 @@
+from ..base import TestBase
 from cs_dynamicpages import PACKAGE_NAME
 
 
-class TestSetupInstall:
+
+class TestSetupInstall(TestBase):
+
+
     def test_addon_installed(self, installer):
         """Test if cs_dynamicpages is installed."""
         assert installer.is_product_installed(PACKAGE_NAME) is True

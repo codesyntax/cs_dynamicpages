@@ -11,6 +11,7 @@ from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield.registry import DictRow
 from plone.autoform.directives import widget
 
+
 class IRowTypeFieldsSchema(Interface):
     row_type = schema.Choice(
         title="Row type",
@@ -35,9 +36,9 @@ class IRowTypeFieldsSchema(Interface):
 class IDynamicaPagesControlPanel(Interface):
     widget(row_type_fields=DataGridFieldFactory)
     row_type_fields = schema.List(
-        title=u"Row Type Fields",
+        title="Row Type Fields",
         required=True,
-        value_type=DictRow(title=u"Row Type Fields", schema=IRowTypeFieldsSchema),
+        value_type=DictRow(title="Row Type Fields", schema=IRowTypeFieldsSchema),
         default=[
             {
                 "row_type": "cs_dynamicpages-featured-view",
@@ -65,6 +66,7 @@ class IDynamicaPagesControlPanel(Interface):
                 "row_type_has_featured_add_button": True,
             },
             {
+<<<<<<< HEAD
                 "row_type": "cs_dynamicpages-features-view",
                 "each_row_type_fields": ["IBasic.title", "IRowColumns.columns"],
                 "row_type_has_featured_add_button": True,
@@ -83,6 +85,17 @@ class IDynamicaPagesControlPanel(Interface):
                 "row_type": "cs_dynamicpages-text-view",
                 "each_row_type_fields": ["IBasic.title", "IRichTextBehavior-text"],
                 "row_type_has_featured_add_button": False,
+=======
+                "row_type": "cs_dynamicpages-query-three-columns-view",
+                "each_row_type_fields": [
+                    "IBasic.title",
+                    "ICollection.query",
+                    "ICollection.sort_on",
+                    "ICollection.sort_order",
+                    "ICollection.betweeen",
+                    "ICollection.limit",
+                ],
+>>>>>>> 0eadc1c (initial test setup)
             },
         ],
     )
