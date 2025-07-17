@@ -1,6 +1,8 @@
 from cs_dynamicpages.testing import CS_DYNAMICPAGES_FUNCTIONAL_TESTING
 from cs_dynamicpages.testing import CS_DYNAMICPAGES_INTEGRATION_TESTING
-from cs_dynamicpages.views.dynamic_page_row_featured_view import IDynamicPageRowFeaturedView
+from cs_dynamicpages.views.dynamic_page_row_featured_view import (
+    IDynamicPageRowFeaturedView,
+)
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -11,19 +13,18 @@ import unittest
 
 
 class ViewsIntegrationTest(unittest.TestCase):
-
     layer = CS_DYNAMICPAGES_INTEGRATION_TESTING
 
     def setUp(self):
-        self.portal = self.layer['portal']
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        api.content.create(self.portal, 'Folder', 'other-folder')
-        api.content.create(self.portal, 'Document', 'front-page')
+        self.portal = self.layer["portal"]
+        setRoles(self.portal, TEST_USER_ID, ["Manager"])
+        api.content.create(self.portal, "Folder", "other-folder")
+        api.content.create(self.portal, "Document", "front-page")
 
     def test_dynamic_page_row_featured_view_is_registered(self):
         view = getMultiAdapter(
-            (self.portal['other-folder'], self.portal.REQUEST),
-            name='dynamic-page-row-featured-view'
+            (self.portal["other-folder"], self.portal.REQUEST),
+            name="dynamic-page-row-featured-view",
         )
         self.assertTrue(IDynamicPageRowFeaturedView.providedBy(view))
 
@@ -31,8 +32,8 @@ class ViewsIntegrationTest(unittest.TestCase):
         view_found = True
         try:
             view = getMultiAdapter(
-                (self.portal['front-page'], self.portal.REQUEST),
-                name='dynamic-page-row-featured-view'
+                (self.portal["front-page"], self.portal.REQUEST),
+                name="dynamic-page-row-featured-view",
             )
         except ComponentLookupError:
             view_found = False
@@ -42,9 +43,8 @@ class ViewsIntegrationTest(unittest.TestCase):
 
 
 class ViewsFunctionalTest(unittest.TestCase):
-
     layer = CS_DYNAMICPAGES_FUNCTIONAL_TESTING
 
     def setUp(self):
-        self.portal = self.layer['portal']
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        self.portal = self.layer["portal"]
+        setRoles(self.portal, TEST_USER_ID, ["Manager"])

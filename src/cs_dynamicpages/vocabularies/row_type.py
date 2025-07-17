@@ -1,3 +1,4 @@
+from plone import api
 from plone.dexterity.interfaces import IDexterityContent
 from zope.component import getSiteManager
 from zope.globalrequest import getRequest
@@ -7,7 +8,7 @@ from zope.interface import providedBy
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
-from plone import api
+
 
 class VocabItem:
     def __init__(self, token, value):
@@ -26,9 +27,9 @@ class RowType:
         items = []
         terms = []
         elements = api.content.find(
-                portal_type="DynamicPageRow",
-                context=api.portal.get(),
-            )
+            portal_type="DynamicPageRow",
+            context=api.portal.get(),
+        )
         query_context = None
         if elements:
             query_context = elements[0].getObject()
@@ -47,7 +48,6 @@ class RowType:
         for view_name in available_view_names:
             items.append(VocabItem(view_name, view_name.replace(VIEW_PREFIX, "")))
         if not available_view_names:
-
             items.append(VocabItem("cs_dynamicpages-featured-view", "Featured View"))
         for item in items:
             terms.append(

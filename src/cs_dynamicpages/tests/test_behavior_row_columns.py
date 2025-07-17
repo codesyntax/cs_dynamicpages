@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 from cs_dynamicpages.behaviors.row_columns import IRowColumnsMarker
-from cs_dynamicpages.testing import CS_DYNAMICPAGES_INTEGRATION_TESTING  # noqa
+from cs_dynamicpages.testing import CS_DYNAMICPAGES_INTEGRATION_TESTING
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.behavior.interfaces import IBehavior
@@ -10,16 +9,15 @@ import unittest
 
 
 class RowColumnsIntegrationTest(unittest.TestCase):
-
     layer = CS_DYNAMICPAGES_INTEGRATION_TESTING
 
     def setUp(self):
         """Custom shared utility setup for tests."""
-        self.portal = self.layer['portal']
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        self.portal = self.layer["portal"]
+        setRoles(self.portal, TEST_USER_ID, ["Manager"])
 
     def test_behavior_row_columns(self):
-        behavior = getUtility(IBehavior, 'cs_dynamicpages.row_columns')
+        behavior = getUtility(IBehavior, "cs_dynamicpages.row_columns")
         self.assertEqual(
             behavior.marker,
             IRowColumnsMarker,

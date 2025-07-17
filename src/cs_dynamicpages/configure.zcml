@@ -21,10 +21,10 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
-    <include package=".vocabularies" />
+  <include package=".vocabularies" />
 
 
-    <include package=".vocabularies" />
+  <include package=".vocabularies" />
 
 
     <include package=".vocabularies" />

@@ -1,7 +1,8 @@
-import pytest
-
 from cs_dynamicpages import logger
 from cs_dynamicpages import PACKAGE_NAME
+
+import pytest
+
 
 class TestBase:
     @pytest.fixture(autouse=True)
@@ -15,5 +16,4 @@ class TestBase:
         try:
             installer.install_product(PACKAGE_NAME)
         except:
-            logger.info('Package already installed')
-
+            logger.info("Package already installed")

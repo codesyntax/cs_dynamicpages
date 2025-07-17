@@ -1,14 +1,14 @@
-from plone.app.testing import SITE_OWNER_NAME
-from plone.app.testing import SITE_OWNER_PASSWORD
-from plone.testing.zope import Browser
-from zope.interface import alsoProvides
-from cs_dynamicpages.interfaces import IBrowserLayer
-from plone.app.multilingual.interfaces import ITranslationManager
-
-from plone.namedfile import NamedBlobImage
 from base64 import b64decode
 from collections import defaultdict
+from cs_dynamicpages.interfaces import IBrowserLayer
 from plone import api
+from plone.app.multilingual.interfaces import ITranslationManager
+from plone.app.testing import SITE_OWNER_NAME
+from plone.app.testing import SITE_OWNER_PASSWORD
+from plone.namedfile import NamedBlobImage
+from plone.testing.zope import Browser
+from zope.interface import alsoProvides
+
 import pytest
 
 
@@ -51,6 +51,7 @@ def contents() -> list:
         },
     ]
 
+
 @pytest.fixture()
 def portal(functional):
     return functional["portal"]
@@ -58,18 +59,18 @@ def portal(functional):
 
 @pytest.fixture()
 def browser(functional):
-    browser = Browser(functional['app'])
+    browser = Browser(functional["app"])
     browser.handleErrors = False
-    browser.addHeader(
-            "Authorization", f"Basic {SITE_OWNER_NAME}:{SITE_OWNER_PASSWORD}"
-        )
+    browser.addHeader("Authorization", f"Basic {SITE_OWNER_NAME}:{SITE_OWNER_PASSWORD}")
     return browser
+
 
 @pytest.fixture()
 def my_request(functional):
-    req = functional['request']
+    req = functional["request"]
     alsoProvides(req, IBrowserLayer)
     return req
+
 
 @pytest.fixture
 def create_contents(contents):

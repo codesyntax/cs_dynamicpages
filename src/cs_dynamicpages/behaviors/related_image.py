@@ -5,11 +5,12 @@ from plone.supermodel import model
 from Products.CMFPlone.utils import safe_hasattr
 from z3c.relationfield.schema import RelationChoice
 from z3c.relationfield.schema import RelationList
+from zope import schema
 from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import provider
-from zope import schema
+
 
 class IRelatedImageMarker(Interface):
     pass

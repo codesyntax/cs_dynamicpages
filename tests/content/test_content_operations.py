@@ -1,11 +1,11 @@
-import transaction
-from plone import api
-import pytest
 from ..base import TestBase
+from plone import api
+
+import pytest
+import transaction
 
 
 class TestContent(TestBase):
-
     @pytest.fixture(autouse=True)
     def create_content(self, portal):
         with api.env.adopt_roles(["Manager"]):
@@ -18,7 +18,7 @@ class TestContent(TestBase):
             assert self.folder is not None
             assert self.folder.id == "folder"
 
-            self.folder.setLayout('dynamic-view')
+            self.folder.setLayout("dynamic-view")
 
             self.dpf = api.content.create(
                 container=self.folder, type="DynamicPageFolder", id="dpf", title="DPF"
@@ -40,21 +40,22 @@ class TestContent(TestBase):
             assert self.row2.id == "row-2"
 
             transaction.commit()
+
     def test_view(self, browser):
-        """ check that the folder is rendered correctly with the basic instructions """
+        """check that the folder is rendered correctly with the basic instructions"""
 
         browser.open(self.folder.absolute_url())
         # We have 2 rows, so there must be an option to delete a row
-        assert 'Delete row' in browser.contents
+        assert "Delete row" in browser.contents
 
         # assert "Row 1" in browser.contents
         # assert "Row 2" in browser.contents
 
         # There must be an option to add a new row
-        assert 'Add new row' in browser.contents
+        assert "Add new row" in browser.contents
 
     def test_add_row(self, browser):
-        """ click add row"""
+        """click add row"""
         browser.open(self.folder.absolute_url())
         link = browser.getLink("Add new row")
         link.click()

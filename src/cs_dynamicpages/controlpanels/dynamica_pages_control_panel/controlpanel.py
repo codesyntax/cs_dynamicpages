@@ -1,15 +1,15 @@
+from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield.registry import DictRow
 from cs_dynamicpages import _
 from cs_dynamicpages.interfaces import IBrowserLayer
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
+from plone.autoform.directives import widget
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from plone.z3cform import layout
 from zope import schema
 from zope.component import adapter
 from zope.interface import Interface
-from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
-from collective.z3cform.datagridfield.registry import DictRow
-from plone.autoform.directives import widget
 
 
 class IRowTypeFieldsSchema(Interface):

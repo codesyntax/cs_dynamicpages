@@ -37,7 +37,7 @@ def locale_folder_setup(domain: str):
                 f"--input={locale_path}/{domain}.pot "
                 f"--output={locale_path}/{lang}/LC_MESSAGES/{domain}.po"
             )
-            subprocess.call(cmd, shell=True)  # noQA: S602
+            subprocess.call(cmd, shell=True)  # noqa: S602
 
 
 def _rebuild(domain: str):
@@ -46,7 +46,7 @@ def _rebuild(domain: str):
         f"--exclude {excludes} "
         f"--create {domain} {target_path}"
     )
-    subprocess.call(cmd, shell=True)  # noQA: S602
+    subprocess.call(cmd, shell=True)  # noqa: S602
 
 
 def _sync(domain: str):
@@ -54,7 +54,7 @@ def _sync(domain: str):
         f"{i18ndude} sync --pot {locale_path}/{domain}.pot "
         f"{locale_path}/*/LC_MESSAGES/{domain}.po"
     )
-    subprocess.call(cmd, shell=True)  # noQA: S602
+    subprocess.call(cmd, shell=True)  # noqa: S602
 
 
 def main():

@@ -1,7 +1,7 @@
 # from cs_dynamicpages import _
+from cs_dynamicpages.views.dynamic_page_row_view import DynamicPageRowView
 from zope.interface import implementer
 from zope.interface import Interface
-from cs_dynamicpages.views.dynamic_page_row_view import DynamicPageRowView
 
 
 class IFeaturedView(Interface):

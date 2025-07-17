@@ -2,22 +2,22 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
-    <utility
-        component=".row_width.RowWidthFactory"
-        name="cs_dynamicpages.RowWidth"
-    />
+  <utility
+      name="cs_dynamicpages.RowWidth"
+      component=".row_width.RowWidthFactory"
+      />
 
 
-    <utility
-        component=".row_columns.RowColumnsFactory"
-        name="cs_dynamicpages.RowColumns"
-    />
+  <utility
+      name="cs_dynamicpages.RowColumns"
+      component=".row_columns.RowColumnsFactory"
+      />
 
 
-    <utility
-        component=".image_position.ImagePositionFactory"
-        name="cs_dynamicpages.ImagePosition"
-    />
+  <utility
+      name="cs_dynamicpages.ImagePosition"
+      component=".image_position.ImagePositionFactory"
+      />
 
 
   <utility

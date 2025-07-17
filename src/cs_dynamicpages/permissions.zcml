@@ -17,7 +17,7 @@
       title="cs_dynamicpages: Add DynamicPageRow"
       />
 
-   <permission
+  <permission
       id="cs_dynamicpages.AddDynamicPageFolder"
       title="cs_dynamicpages: Add DynamicPageFolder"
       />
