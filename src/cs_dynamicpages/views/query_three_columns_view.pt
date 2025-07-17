@@ -1,4 +1,4 @@
-<tal:define tal:define="
+<div class="my-5" tal:define="
            batch view/results;
          ">
   <h2 class="mb-5">${context/Title}</h2>
@@ -35,8 +35,8 @@
       </tal:define>
     </tal:repeat>
   </div>
-  <div class="mt-5 d-flex justify-content-end">
+  <div class="d-flex justify-content-end">
     <a href="${context/link_url}" tal:condition="context/link_url">${context/link_text}</a>
   </div>
 
-</tal:define>
+</div>

@@ -1,4 +1,4 @@
-<div class="carousel slide" id="DynamicPageSlider" tal:define="
+<div class="carousel slide my-5" id="DynamicPageSlider" tal:define="
        elements view/elements;
      " tal:condition="elements">
   <div class="carousel-indicators">

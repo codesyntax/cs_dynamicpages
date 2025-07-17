@@ -1,4 +1,4 @@
-<div class="accordion accordion-flush" id="accordionDynamicPage-${context/id}" tal:define="
+<div class="my-5 accordion accordion-flush" id="accordionDynamicPage-${context/id}" tal:define="
        elements view/elements;
      " tal:condition="elements">
   <div class="accordion-item" tal:repeat="brain elements">
