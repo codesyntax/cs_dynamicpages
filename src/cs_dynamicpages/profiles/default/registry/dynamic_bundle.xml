@@ -36,4 +36,15 @@
         <value key="load_defer">False</value>
         <value key="expression" />
   </records>
+
+  <records interface="Products.CMFPlone.interfaces.IBundleRegistry"
+           prefix="plone.bundles/cs_dynamicpages.editmode_toggle"
+  >
+        <value key="enabled">True</value>
+        <value key="jscompilation">++plone++cs_dynamicpages.edit/editmode-toggle.js</value>
+        <value key="depends">plone</value>
+        <value key="load_async">True</value>
+        <value key="load_defer">False</value>
+        <value key="expression" />
+  </records>
 </registry>
