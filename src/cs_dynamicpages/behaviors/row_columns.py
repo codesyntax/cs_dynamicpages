@@ -24,7 +24,7 @@ class IRowColumns(model.Schema):
         title="Columns",
         vocabulary="cs_dynamicpages.RowColumns",
         required=True,
-        default="2",
+        default="col-md-6",
     )
 
 

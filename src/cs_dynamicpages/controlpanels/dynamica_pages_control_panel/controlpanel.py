@@ -65,13 +65,18 @@ class IDynamicaPagesControlPanel(Interface):
                 "row_type_has_featured_add_button": True,
             },
             {
+                "row_type": "cs_dynamicpages-features-view",
+                "each_row_type_fields": ["IBasic.title", "IRowColumns.columns"],
+                "row_type_has_featured_add_button": True,
+            },
+            {
                 "row_type": "cs_dynamicpages-accordion-view",
                 "each_row_type_fields": ["IBasic.title"],
                 "row_type_has_featured_add_button": True,
             },
             {
                 "row_type": "cs_dynamicpages-query-columns-view",
-                "each_row_type_fields": ["IBasic.title", "ICollection.query", "ICollection.sort_on", "ICollection.sort_order", "ICollection.betweeen", "ICollection.limit"],
+                "each_row_type_fields": ["IBasic.title", "ICollection.query", "ICollection.sort_on", "ICollection.sort_order", "ICollection.betweeen", "ICollection.limit", "IRowColumns.columns"],
                 "row_type_has_featured_add_button": False,
             },
             {

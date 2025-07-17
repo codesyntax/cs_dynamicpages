@@ -104,6 +104,11 @@
         name="cs_dynamicpages-accordion-view"
         template="accordion_view.pt"
         />
+
+    <browser:page
+        name="cs_dynamicpages-features-view"
+        template="features_view.pt"
+        />
   </browser:pages>
 
 </configure>
