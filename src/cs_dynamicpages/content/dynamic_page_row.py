@@ -50,19 +50,13 @@ class DynamicPageRow(Container):
             depth=1,
         )
 
-    def show_featured_add_button(self, request):
-        try:
-            view = api.content.get_view(
-                name=self.row_type,
-                context=self,
-                request=request,
-            )
-            if view and hasattr(view, "featured_add_button"):
-                return view.featured_add_button
-            return False
-        except Exception as e:
-            log.error(e)
-            return False
+    def show_featured_add_button(self):
+        row_type = self.row_type
+        row_type_fields = api.portal.get_registry_record('cs_dynamicpages.dynamica_pages_control_panel.row_type_fields')
+        for row_type_field in row_type_fields:
+            if row_type_field['row_type'] == row_type:
+                return row_type_field['row_type_has_featured_add_button']
+        return False
 
     def render(self, request):
         if self.row_type:

@@ -25,6 +25,12 @@ class IRowTypeFieldsSchema(Interface):
         default=[],
     )
 
+    row_type_has_featured_add_button = schema.Bool(
+        title="Has featured add button",
+        required=True,
+        default=False,
+    )
+
 
 class IDynamicaPagesControlPanel(Interface):
     widget(row_type_fields=DataGridFieldFactory)
@@ -36,34 +42,42 @@ class IDynamicaPagesControlPanel(Interface):
             {
                 "row_type": "cs_dynamicpages-featured-view",
                 "each_row_type_fields": ["IBasic.title", "IBasic.description", "IRelatedImage.related_image", "IRelatedImage.image_position", "ILinkInfo.link_text", "ILinkInfo.link_url"],
+                "row_type_has_featured_add_button": False,
             },
             {
                 "row_type": "cs_dynamicpages-featured-overlay-view",
                 "each_row_type_fields": ["IBasic.title", "IBasic.description", "IRelatedImage.related_image", "ILinkInfo.link_text", "ILinkInfo.link_url"],
+                "row_type_has_featured_add_button": False,
             },
             {
                 "row_type": "cs_dynamicpages-horizontal-rule-view",
                 "each_row_type_fields": ["IBasic.title"],
+                "row_type_has_featured_add_button": False,
             },
             {
                 "row_type": "cs_dynamicpages-spacer-view",
                 "each_row_type_fields": ["IBasic.title"],
+                "row_type_has_featured_add_button": False,
             },
             {
                 "row_type": "cs_dynamicpages-slider-view",
                 "each_row_type_fields": ["IBasic.title"],
+                "row_type_has_featured_add_button": True,
             },
             {
                 "row_type": "cs_dynamicpages-accordion-view",
                 "each_row_type_fields": ["IBasic.title"],
+                "row_type_has_featured_add_button": True,
             },
             {
                 "row_type": "cs_dynamicpages-query-three-columns-view",
                 "each_row_type_fields": ["IBasic.title", "ICollection.query", "ICollection.sort_on", "ICollection.sort_order", "ICollection.betweeen", "ICollection.limit"],
+                "row_type_has_featured_add_button": False,
             },
             {
                 "row_type": "cs_dynamicpages-text-view",
                 "each_row_type_fields": ["IBasic.title", "IRichTextBehavior-text"],
+                "row_type_has_featured_add_button": False,
             },
         ],
     )

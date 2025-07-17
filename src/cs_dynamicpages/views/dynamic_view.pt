@@ -64,52 +64,56 @@
             </div>
             <tal:condition tal:condition="row/can_edit">
               <div class="edit-options features-list d-flex gap-2 align-items-start mb-3"
-                tal:define="features_list row/featured_list" tal:condition="features_list">
-                <tal:featured repeat="featured_brain features_list">
-                  <div tal:define="featured_obj featured_brain/getObject;">
-                    <div class="btn-group" data-elementid="${featured_obj/id}" data-parenturl="${row/absolute_url}"
-                      data-elementurl="${featured_obj/absolute_url}" data-delete-target="true" data-move-target="true">
-                      <a tal:attributes="class python:featured_obj.review_state() == 'published' and
+                tal:define="features_list row/featured_list">
+                <tal:conditionfeatures tal:condition="features_list">
+                  <tal:featured repeat="featured_brain features_list">
+                    <div tal:define="featured_obj featured_brain/getObject;">
+                      <div class="btn-group" data-elementid="${featured_obj/id}" data-parenturl="${row/absolute_url}"
+                        data-elementurl="${featured_obj/absolute_url}" data-delete-target="true"
+                        data-move-target="true">
+                        <a tal:attributes="class python:featured_obj.review_state() == 'published' and
                                           'position-relative btn btn-outline-success btn-sm bg-success-subtle dropdown-toggle' or
                                           'position-relative btn btn-outline-danger btn-sm bg-danger-subtle dropdown-toggle'"
-                        type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-                        data-bs-display="static" aria-expanded="false">
-                        ${featured_obj/Title}
-                        <span
-                          tal:attributes="class python:featured_obj.review_state() == 'published' and 'text-white position-absolute top-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle' or 'text-white position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle'">
-                        </span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="${featured_obj/absolute_url}/edit">Edit</a>
-                        </li>
-                        <li>
-                          <h5 class="dropdown-header">State</h5>
-                        </li>
-                        <tal:define
-                          tal:define="featured_transitions python:context.portal_workflow.getTransitionsFor(featured_obj)">
-                          <tal:featured_transitions repeat="featured_transition featured_transitions">
-                            <li><a class="dropdown-item"
-                                href="${featured_transition/url}&_authenticator=${context/@@authenticator/token}">${featured_transition/name}</a>
-                            </li>
-                          </tal:featured_transitions>
-                        </tal:define>
-                        <li>
-                          <h5 class="dropdown-header">Move actions</h5>
-                        </li>
-                        <li><a class="dropdown-item" href="#" data-action="move-up"
-                            tal:condition="python:not(repeat['featured_brain'].start)">Move up</a></li>
-                        <li><a class="dropdown-item" href="#" data-action="move-down"
-                            tal:condition="python:not(repeat['featured_brain'].end)">Move down</a></li>
-                        <li>
-                          <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="ms-3 btn btn-sm btn-danger align-self-start btn-delete-element" href="#"
-                            data-bs-toggle="modal" data-bs-target="#deleteElementModal">Delete</a></li>
-                      </ul>
+                          type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                          data-bs-display="static" aria-expanded="false">
+                          ${featured_obj/Title}
+                          <span
+                            tal:attributes="class python:featured_obj.review_state() == 'published' and 'text-white position-absolute top-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle' or 'text-white position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle'">
+                          </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="${featured_obj/absolute_url}/edit">Edit</a>
+                          </li>
+                          <li>
+                            <h5 class="dropdown-header">State</h5>
+                          </li>
+                          <tal:define
+                            tal:define="featured_transitions python:context.portal_workflow.getTransitionsFor(featured_obj)">
+                            <tal:featured_transitions repeat="featured_transition featured_transitions">
+                              <li><a class="dropdown-item"
+                                  href="${featured_transition/url}&_authenticator=${context/@@authenticator/token}">${featured_transition/name}</a>
+                              </li>
+                            </tal:featured_transitions>
+                          </tal:define>
+                          <li>
+                            <h5 class="dropdown-header">Move actions</h5>
+                          </li>
+                          <li><a class="dropdown-item" href="#" data-action="move-up"
+                              tal:condition="python:not(repeat['featured_brain'].start)">Move up</a></li>
+                          <li><a class="dropdown-item" href="#" data-action="move-down"
+                              tal:condition="python:not(repeat['featured_brain'].end)">Move down</a></li>
+                          <li>
+                            <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="ms-3 btn btn-sm btn-danger align-self-start btn-delete-element" href="#"
+                              data-bs-toggle="modal" data-bs-target="#deleteElementModal">Delete</a></li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                </tal:featured>
-                <tal:featured_add_button tal:condition="python:row.show_featured_add_button(request)">
+                  </tal:featured>
+                </tal:conditionfeatures>
+
+                <tal:featured_add_button tal:condition="row/show_featured_add_button">
                   <a class="btn btn-outline-primary btn-sm align-self-start"
                     href="${row/absolute_url}/++add++DynamicPageRowFeatured">Add new featured</a>
                 </tal:featured_add_button>
