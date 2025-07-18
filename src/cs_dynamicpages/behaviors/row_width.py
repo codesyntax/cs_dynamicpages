@@ -20,10 +20,11 @@ class IRowWidth(model.Schema):
     """
     """
 
-    project = schema.TextLine(
-        title=_(u'Project'),
-        description=_(u'Give in a project name'),
-        required=False,
+    width = schema.Choice(
+        title="Width",
+        vocabulary="cs_dynamicpages.RowWidth",
+        required=True,
+        default="col-md-12",
     )
 
 
@@ -34,11 +35,11 @@ class RowWidth(object):
         self.context = context
 
     @property
-    def project(self):
-        if safe_hasattr(self.context, 'project'):
-            return self.context.project
+    def width(self):
+        if safe_hasattr(self.context, 'width'):
+            return self.context.width
         return None
 
-    @project.setter
-    def project(self, value):
-        self.context.project = value
+    @width.setter
+    def width(self, value):
+        self.context.width = value

@@ -152,8 +152,10 @@
                 </tal:featured_add_button>
               </div>
             </tal:condition>
-            <div class="content">
-              <replace tal:replace="structure python:row.render(request)"></replace>
+            <div class="content row">
+              <div class="${row/width}">
+                <replace tal:replace="structure python:row.render(request)"></replace>
+              </div>
             </div>
           </section>
         </tal:featured>
