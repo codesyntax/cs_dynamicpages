@@ -31,6 +31,12 @@ else
 PLONE_VERSION := 6.1.2
 endif
 
+ifdef python-version
+python-version := $(python-version)
+else
+python-version := 3.10
+endif
+
 VENV_FOLDER=$(BACKEND_FOLDER)/.venv
 export VIRTUAL_ENV=$(VENV_FOLDER)
 BIN_FOLDER=$(VENV_FOLDER)/bin
@@ -54,7 +60,7 @@ requirements-mxdev.txt: pyproject.toml mx.ini ## Generate constraints file
 
 $(VENV_FOLDER): requirements-mxdev.txt ## Install dependencies
 	@echo "$(GREEN)==> Install environment$(RESET)"
-	@uv venv --python=3.10 $(VENV_FOLDER)
+	@uv venv --python=$(python-version) $(VENV_FOLDER)
 	@uv pip install -r requirements-mxdev.txt
 
 .PHONY: sync
