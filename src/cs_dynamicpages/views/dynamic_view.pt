@@ -6,7 +6,7 @@
 <body>
   <metal:main fill-slot="main">
     <main id="content">
-      <div class="fixed-top d-flex justify-content-end py-2 me-2" tal:condition="view/can_edit">
+      <div class="sticky-top right-0 d-flex justify-content-end py-2 me-2" tal:condition="view/can_edit">
         <div
           class="d-inline-flex align-items-center mb-3 px-3 py-2 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-5">
           <div class="form-check form-switch">
@@ -69,7 +69,12 @@
                     'position-relative btn btn-outline-danger btn-sm bg-danger-subtle dropdown-toggle'" type="button"
                     class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static"
                     aria-expanded="false">
-                    Review state: ${row/review_state}
+                    <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-info-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path
+                        d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>Review state: ${row/review_state}
                     <span
                       tal:attributes="class python:row.review_state() == 'published' and 'position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle' or 'position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle'">
                     </span>
