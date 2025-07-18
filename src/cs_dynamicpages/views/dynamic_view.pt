@@ -19,9 +19,10 @@
                         rows view/rows;
                       ">
         <tal:featured repeat="brain rows">
-          <section tal:define="row brain/getObject;" class="dynamic-row ${row/row_template} state-${row/review_state}"
-            data-elementid="${row/id}" data-elementurl="${row/absolute_url}"
-            data-parenturl="${row/aq_parent/absolute_url}" data-delete-target="true" data-move-target="true">
+          <section id="${row/id}" tal:define="row brain/getObject;"
+            class="dynamic-row ${row/row_template} state-${row/review_state}" data-elementid="${row/id}"
+            data-elementurl="${row/absolute_url}" data-parenturl="${row/aq_parent/absolute_url}"
+            data-delete-target="true" data-move-target="true">
             <div class="edit-options edit-buttons d-flex gap-2" tal:condition="row/can_edit">
               <small
                 class="d-inline-flex align-items-center mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">

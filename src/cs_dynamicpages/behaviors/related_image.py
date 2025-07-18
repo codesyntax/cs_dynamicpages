@@ -34,6 +34,7 @@ class IRelatedImage(model.Schema):
         pattern_options={
             "recentlyUsed": True,
             "selectableTypes": ["Image"],
+            "upload": True,
         },
     )
     image_position = schema.Choice(

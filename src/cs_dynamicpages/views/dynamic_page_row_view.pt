@@ -16,7 +16,7 @@
     <metal:block define-macro="content-core">
 
       <tal:replace
-        tal:replace="python:context.REQUEST.RESPONSE.redirect(context.aq_parent.aq_parent.absolute_url(),301)">
+        tal:replace="python:context.REQUEST.RESPONSE.redirect('{}#{}'.format(context.aq_parent.aq_parent.absolute_url(), context.id),301)">
       </tal:replace>
 
     </metal:block>
