@@ -25,8 +25,9 @@ class RowWidth(object):
         # Just an example list of content for our vocabulary,
         # this can be any static or dynamic data, a catalog result for example.
         items = [
-            VocabItem(u'sony-a7r-iii', _(u'Sony Aplha 7R III')),
-            VocabItem(u'canon-5d-iv', _(u'Canon 5D IV')),
+            VocabItem(u'col-md-6 offset-md-3', _(u'narrow')),
+            VocabItem(u'col-md-8 offset-md-2', _(u'normal')),
+            VocabItem(u'col-md-12', _(u'wide')),
         ]
 
         # Fix context if you are using the vocabulary in DataGridField.
