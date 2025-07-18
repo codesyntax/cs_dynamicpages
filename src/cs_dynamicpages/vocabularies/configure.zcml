@@ -3,6 +3,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <utility
+        component=".row_width.RowWidthFactory"
+        name="cs_dynamicpages.RowWidth"
+    />
+
+
+    <utility
         component=".row_columns.RowColumnsFactory"
         name="cs_dynamicpages.RowColumns"
     />
