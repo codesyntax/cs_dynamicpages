@@ -14,6 +14,16 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <plone:behavior
+        name="cs_dynamicpages.row_width"
+        title="RowWidth"
+        description="This behavior provides..."
+        provides=".row_width.IRowWidth"
+        factory=".row_width.RowWidth"
+        marker=".row_width.IRowWidthMarker"
+        />
+
+
+    <plone:behavior
         name="cs_dynamicpages.row_columns"
         title="RowColumns"
         description="This behavior provides..."
