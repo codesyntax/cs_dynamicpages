@@ -162,7 +162,7 @@
         </tal:featured>
       </tal:features>
       <tal:condition tal:condition="view/can_edit">
-        <div class="edit-options dynamic-row d-flex justify-content-center align-items-center"
+        <div class="sticky-bottom edit-options dynamic-row d-flex justify-content-center align-items-center"
           tal:condition="view/dynamic_page_folder_element_url">
           <a title="Add row" class="btn btn-primary btn-lg"
             href="${view/dynamic_page_folder_element_url}/++add++DynamicPageRow"><svg xmlns="http://www.w3.org/2000/svg"
