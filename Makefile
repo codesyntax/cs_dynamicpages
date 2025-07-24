@@ -31,7 +31,7 @@ else
 PLONE_VERSION := 6.1.2
 endif
 
-ifdef python-version
+ifdef $(python-version)
 PYTHON_VERSION := $(python-version)
 else
 PYTHON_VERSION := 3.10
