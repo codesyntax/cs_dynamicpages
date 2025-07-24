@@ -26,7 +26,6 @@ dependencies = [
     "Products.CMFPlone",
     "plone.api",
     "collective.z3cform.datagridfield",
-    "plone.app.z3cform",
 ]
 
 [project.optional-dependencies]
