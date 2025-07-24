@@ -31,12 +31,6 @@ else
 PLONE_VERSION := 6.1.2
 endif
 
-ifdef $(python-version)
-PYTHON_VERSION := $(python-version)
-else
-PYTHON_VERSION := 3.10
-endif
-
 VENV_FOLDER=$(BACKEND_FOLDER)/.venv
 export VIRTUAL_ENV=$(VENV_FOLDER)
 BIN_FOLDER=$(VENV_FOLDER)/bin
