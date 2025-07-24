@@ -62,12 +62,12 @@ requirements-mxdev.txt: pyproject.toml mx.ini ## Generate constraints file
 $(VENV_FOLDER): requirements-mxdev.txt ## Install dependencies
 	@echo "$(GREEN)==> Install environment$(RESET)"
 	@uv venv --python ${PYTHON_VERSION} $(VENV_FOLDER)
-	@uv $(VENV_FOLDER)/bin/pip install -r requirements-mxdev.txt
+	@uv pip install -r requirements-mxdev.txt
 
 .PHONY: sync
 sync: $(VENV_FOLDER) ## Sync project dependencies
 	@echo "$(GREEN)==> Sync project dependencies$(RESET)"
-	@uv $(VENV_FOLDER)/pip install -r requirements-mxdev.txt
+	@uv pip install -r requirements-mxdev.txt
 
 instance/etc/zope.ini instance/etc/zope.conf: instance.yaml ## Create instance configuration
 	@echo "$(GREEN)==> Create instance configuration$(RESET)"
