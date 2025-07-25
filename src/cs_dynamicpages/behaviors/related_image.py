@@ -1,4 +1,4 @@
-from plone.app.z3cform.widgets.contentbrowser import ContentBrowserFieldWidget
+# from plone.app.z3cform.widgets.contentbrowser import ContentBrowserFieldWidget
 from plone.autoform import directives as form
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
@@ -10,6 +10,13 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import provider
+
+try:
+    # This is for Plone 6.1
+    from plone.app.z3cform.widgets.contentbrowser import ContentBrowserFieldWidget as RelatedImageFieldWidget
+except:
+    # This is for previous versions of Plone
+    from plone.app.z3cform.widgets.relateditems import RelatedItemsFieldWidget as RelatedImageFieldWidget
 
 
 class IRelatedImageMarker(Interface):
@@ -30,7 +37,7 @@ class IRelatedImage(model.Schema):
 
     form.widget(
         "related_image",
-        ContentBrowserFieldWidget,
+        RelatedImageFieldWidget,
         vocabulary="plone.app.vocabularies.Catalog",
         pattern_options={
             "recentlyUsed": True,
