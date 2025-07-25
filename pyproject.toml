@@ -39,6 +39,11 @@ test = [
     "pytest-cov",
     "pytest-plone>=0.5.0",
 ]
+release = [
+    "zest.releaser[recommended]",
+    "zestreleaser.towncrier",
+    "zest.pocompile",
+]
 
 [project.urls]
 Homepage = "https://github.com/collective/cs_dynamicpages"
@@ -169,3 +174,7 @@ source_pkgs = ["cs_dynamicpages", "tests"]
 branch = true
 parallel = true
 omit = ["src/cs_dynamicpages/locales/*.py"]
+
+
+[tool.zest-releaser]
+python-file-with-version = "src/cs_dynamicpages/__init__.py"
