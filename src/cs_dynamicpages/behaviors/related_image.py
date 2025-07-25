@@ -11,12 +11,17 @@ from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import provider
 
+
 try:
     # This is for Plone 6.1
-    from plone.app.z3cform.widgets.contentbrowser import ContentBrowserFieldWidget as RelatedImageFieldWidget
-except:
+    from plone.app.z3cform.widgets.contentbrowser import (
+        ContentBrowserFieldWidget as RelatedImageFieldWidget,
+    )
+except ImportError:
     # This is for previous versions of Plone
-    from plone.app.z3cform.widgets.relateditems import RelatedItemsFieldWidget as RelatedImageFieldWidget
+    from plone.app.z3cform.widgets.relateditems import (
+        RelatedItemsFieldWidget as RelatedImageFieldWidget,
+    )
 
 
 class IRelatedImageMarker(Interface):
