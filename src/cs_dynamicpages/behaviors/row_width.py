@@ -1,13 +1,10 @@
-# -*- coding: utf-8 -*-
-
-from cs_dynamicpages import _
 from plone import schema
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
 from Products.CMFPlone.utils import safe_hasattr
 from zope.component import adapter
-from zope.interface import Interface
 from zope.interface import implementer
+from zope.interface import Interface
 from zope.interface import provider
 
 
@@ -17,8 +14,7 @@ class IRowWidthMarker(Interface):
 
 @provider(IFormFieldProvider)
 class IRowWidth(model.Schema):
-    """
-    """
+    """ """
 
     width = schema.Choice(
         title="Width",
@@ -30,13 +26,13 @@ class IRowWidth(model.Schema):
 
 @implementer(IRowWidth)
 @adapter(IRowWidthMarker)
-class RowWidth(object):
+class RowWidth:
     def __init__(self, context):
         self.context = context
 
     @property
     def width(self):
-        if safe_hasattr(self.context, 'width'):
+        if safe_hasattr(self.context, "width"):
             return self.context.width
         return None
 

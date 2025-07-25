@@ -27,7 +27,7 @@
   <include package=".vocabularies" />
 
 
-    <include package=".vocabularies" />
+  <include package=".vocabularies" />
 
 
   <include package=".controlpanels" />
