@@ -24,9 +24,9 @@
       template="dynamic_page_folder_view.pt"
       permission="zope2.View"
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Dynamic view"
       />
-
-
 
   <browser:page
       name="dynamic-view"
@@ -35,6 +35,8 @@
       template="dynamic_view.pt"
       permission="zope2.View"
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Dynamic view"
       />
 
   <browser:page
@@ -44,6 +46,8 @@
       template="dynamic_view.pt"
       permission="zope2.View"
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Dynamic view"
       />
 
   <browser:page
