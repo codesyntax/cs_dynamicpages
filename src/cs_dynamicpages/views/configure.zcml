@@ -26,6 +26,8 @@
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
       />
 
+
+
   <browser:page
       name="dynamic-view"
       for="plone.app.contenttypes.interfaces.IFolder"
@@ -34,6 +36,25 @@
       permission="zope2.View"
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
       />
+
+  <browser:page
+      name="dynamic-view"
+      for="plone.app.multilingual.interfaces.ILanguageRootFolder"
+      class=".dynamic_view.DynamicView"
+      template="dynamic_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
+
+  <browser:page
+      name="dynamic-view"
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".dynamic_view.DynamicView"
+      template="dynamic_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
+
 
   <browser:page
       name="view"
