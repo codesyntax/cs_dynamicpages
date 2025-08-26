@@ -3,6 +3,8 @@ from plone import api
 from Products.Five.browser import BrowserView
 from zope.interface import implementer
 from zope.interface import Interface
+from plone.protect.interfaces import IDisableCSRFProtection
+from zope.interface import alsoProvides
 
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -25,9 +27,21 @@ class DynamicView(BrowserView):
         return []
 
     def dynamic_page_folder_element(self):
-        return api.content.find(
+        page_folders = api.content.find(
             portal_type="DynamicPageFolder", context=self.context, depth=1, sort_on="getObjPositionInParent"
         )
+        if page_folders:
+            return page_folders
+        else:
+            alsoProvides(self.request, IDisableCSRFProtection)
+            api.content.create(
+                container=self.context,
+                type="DynamicPageFolder",
+                title="Rows",
+            )
+            return api.content.find(
+                portal_type="DynamicPageFolder", context=self.context, depth=1, sort_on="getObjPositionInParent"
+            )
 
     def dynamic_page_folder_element_url(self):
         dynamic_page_folder = self.dynamic_page_folder_element()

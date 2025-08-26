@@ -18,13 +18,8 @@
       <tal:define tal:define="
                           isAnon context/@@plone_portal_state/anonymous;
                         ">
-        <tal:condition tal:condition="isAnon">
-          <tal:replace tal:replace="python:context.REQUEST.RESPONSE.redirect(context.aq_parent.absolute_url(),301)">
-          </tal:replace>
-        </tal:condition>
-        <tal:conditionisanon tal:condition="not:isAnon">
-          <a class="btn btn-primary btn-lg" href="${context/aq_parent/absolute_url}">View dynamic page</a>
-        </tal:conditionisanon>
+        <tal:replace tal:replace="python:context.REQUEST.RESPONSE.redirect(context.aq_parent.absolute_url(),301)">
+        </tal:replace>
       </tal:define>
 
     </metal:block>
