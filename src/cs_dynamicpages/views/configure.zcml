@@ -41,22 +41,13 @@
 
   <browser:page
       name="dynamic-view"
-      for="plone.app.multilingual.interfaces.ILanguageRootFolder"
+      for="plone.base.interfaces.INavigationRoot"
       class=".dynamic_view.DynamicView"
       template="dynamic_view.pt"
       permission="zope2.View"
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
       menu="plone_displayviews"
       title="Dynamic view"
-      />
-
-  <browser:page
-      name="dynamic-view"
-      for="plone.base.interfaces.IPloneSiteRoot"
-      class=".dynamic_view.DynamicView"
-      template="dynamic_view.pt"
-      permission="zope2.View"
-      layer="cs_dynamicpages.interfaces.IBrowserLayer"
       />
 
 
