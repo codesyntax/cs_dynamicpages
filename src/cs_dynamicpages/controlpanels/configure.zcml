@@ -7,7 +7,7 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
-  <include package=".dynamica_pages_control_panel" />
+  <include package=".dynamic_pages_control_panel" />
 
 
 

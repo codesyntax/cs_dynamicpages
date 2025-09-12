@@ -23,7 +23,7 @@ class RowWidth:
         # Just an example list of content for our vocabulary,
         # this can be any static or dynamic data, a catalog result for example.
         values = api.portal.get_registry_record(
-            "cs_dynamicpages.dynamica_pages_control_panel.row_widths", default=[]
+            "cs_dynamicpages.dynamic_pages_control_panel.row_widths", default=[]
         )
 
         terms = []

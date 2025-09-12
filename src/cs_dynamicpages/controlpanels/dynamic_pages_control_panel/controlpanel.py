@@ -163,7 +163,7 @@ class DynamicPagesControlPanel(RegistryEditForm):
     label = _("Dynamic Pages Control Panel")
 
 
-DynamicaPagesControlPanelView = layout.wrap_form(
+DynamicPagesControlPanelView = layout.wrap_form(
     DynamicPagesControlPanel, ControlPanelFormWrapper
 )
 
@@ -172,9 +172,9 @@ DynamicaPagesControlPanelView = layout.wrap_form(
 class DynamicPagesControlPanelConfigletPanel(RegistryConfigletPanel):
     """Control Panel endpoint"""
 
-    schema = IDynamicaPagesControlPanel
-    configlet_id = "dynamica_pages_control_panel-controlpanel"
+    schema = IDynamicPagesControlPanel
+    configlet_id = "dynamic_pages_control_panel-controlpanel"
     configlet_category_id = "Products"
     title = _("Dynamic Pages Control Panel")
     group = ""
-    schema_prefix = "cs_dynamicpages.dynamica_pages_control_panel"
+    schema_prefix = "cs_dynamicpages.dynamic_pages_control_panel"

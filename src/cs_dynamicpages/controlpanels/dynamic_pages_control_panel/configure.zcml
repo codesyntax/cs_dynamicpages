@@ -7,17 +7,17 @@
     >
 
   <browser:page
-      name="dynamica_pages_control_panel-controlpanel"
+      name="dynamic_pages_control_panel-controlpanel"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      class=".controlpanel.DynamicaPagesControlPanelView"
+      class=".controlpanel.DynamicPagesControlPanelView"
       permission="cmf.ManagePortal"
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
       />
 
   <include package="plone.restapi" />
   <adapter
-      factory=".controlpanel.DynamicaPagesControlPanelConfigletPanel"
-      name="dynamica_pages_control_panel"
+      factory=".controlpanel.DynamicPagesControlPanelConfigletPanel"
+      name="dynamic_pages_control_panel"
       />
 
 

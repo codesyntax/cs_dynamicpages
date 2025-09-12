@@ -11,4 +11,4 @@ def upgrade(setup_tool=None):
     """
     """
     logger.info("Running upgrade (Python): Add row width field in the controlpanel")
-    reload_gs_profile(setup_tool)
+

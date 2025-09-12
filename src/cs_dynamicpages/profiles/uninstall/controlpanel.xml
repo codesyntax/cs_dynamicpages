@@ -6,16 +6,12 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
-  <configlet action_id="dynamica_pages_control_panel-controlpanel"
-             appId="dynamica_pages_control_panel-controlpanel"
+  <configlet action_id="dynamic_pages_control_panel-controlpanel"
+             appId="dynamic_pages_control_panel-controlpanel"
              category="Products"
-             condition_expr=""
-             icon_expr=""
+
              remove="true"
-             title="Dynamica Pages Control Panel"
-             url_expr="string:${portal_url}/@@dynamica_pages_control_panel-controlpanel"
-             visible="True"
-             i18n:attributes="title"
+
   />
 
 
