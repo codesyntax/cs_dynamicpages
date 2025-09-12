@@ -1,12 +1,9 @@
 # from plone import api
-from cs_dynamicpages import _
-from plone.dexterity.interfaces import IDexterityContent
-from zope.globalrequest import getRequest
+from plone import api
 from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
-from plone import api
 
 
 class VocabItem:
@@ -30,9 +27,9 @@ class RowWidth:
         for item in values:
             terms.append(
                 SimpleTerm(
-                    value=item['row_width_class'],
-                    token=str(item['row_width_class']),
-                    title=item['row_width_label'],
+                    value=item["row_width_class"],
+                    token=str(item["row_width_class"]),
+                    title=item["row_width_label"],
                 )
             )
         # Create a SimpleVocabulary from the terms list and return it:

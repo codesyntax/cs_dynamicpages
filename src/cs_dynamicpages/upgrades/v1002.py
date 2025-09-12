@@ -1,21 +1,21 @@
-# -*- coding: utf-8 -*-
-
 from . import logger
+from cs_dynamicpages.controlpanels.dynamic_pages_control_panel.controlpanel import (
+    IDynamicPagesControlPanel,
+)
 from plone import api
+from plone.app.upgrade.utils import alias_module
+from zope.annotation.interfaces import IAnnotations
 
-from .base import reload_gs_profile
 
 # from plone import api
 import json
-from zope.annotation.interfaces import IAnnotations
 
-from plone.app.upgrade.utils import alias_module
-from cs_dynamicpages.controlpanels.dynamic_pages_control_panel.controlpanel import IDynamicPagesControlPanel
 
 alias_module(
     "cs_dynamicpages.controlpanels.dynamica_pages_control_panel.controlpanel.IDynamicaPagesControlPanel",
     IDynamicPagesControlPanel,
 )
+
 
 def upgrade(setup_tool=None):
     """ """
@@ -59,8 +59,6 @@ def post_handler(setup_tool=None):
             f"cs_dynamicpages.dynamic_pages_control_panel.{key}", value
         )
 
-        del annotated[
-            f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
-        ]
+        del annotated[f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"]
 
     logger.info("Restored existing values after upgrade")

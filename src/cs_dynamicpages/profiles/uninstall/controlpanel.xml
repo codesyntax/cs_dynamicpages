@@ -9,10 +9,10 @@
   <configlet action_id="dynamic_pages_control_panel-controlpanel"
              appId="dynamic_pages_control_panel-controlpanel"
              category="Products"
-
              remove="true"
+  >
 
-  />
+  </configlet>
 
 
 </object>
