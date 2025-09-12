@@ -6,6 +6,7 @@ from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
+from plone import api
 
 
 class VocabItem:
@@ -21,25 +22,17 @@ class RowWidth:
     def __call__(self, context):
         # Just an example list of content for our vocabulary,
         # this can be any static or dynamic data, a catalog result for example.
-        items = [
-            VocabItem("col-md-6 offset-md-3", _("Narrow")),
-            VocabItem("col-md-8 offset-md-2", _("Centered")),
-            VocabItem("col-md-12", _("Full width")),
-        ]
+        values = api.portal.get_registry_record(
+            "cs_dynamicpages.dynamica_pages_control_panel.row_widths", default=[]
+        )
 
-        # Fix context if you are using the vocabulary in DataGridField.
-        if not IDexterityContent.providedBy(context):
-            req = getRequest()
-            context = req.PARENTS[0]
-
-        # create a list of SimpleTerm items:
         terms = []
-        for item in items:
+        for item in values:
             terms.append(
                 SimpleTerm(
-                    value=item.token,
-                    token=str(item.token),
-                    title=item.value,
+                    value=item['row_width_class'],
+                    token=str(item['row_width_class']),
+                    title=item['row_width_label'],
                 )
             )
         # Create a SimpleVocabulary from the terms list and return it:

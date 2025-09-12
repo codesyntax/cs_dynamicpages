@@ -33,6 +33,19 @@ class IRowTypeFieldsSchema(Interface):
     )
 
 
+class IRowWidthSchema(Interface):
+    row_width_label = schema.TextLine(
+        title="Row Width Label",
+        required=True,
+    )
+
+    row_width_class = schema.TextLine(
+        title=_("Row Width"),
+        description=_("CSS class for the row width"),
+        required=True,
+    )
+
+
 class IDynamicaPagesControlPanel(Interface):
     widget(row_type_fields=DataGridFieldFactory)
     row_type_fields = schema.List(
@@ -117,11 +130,36 @@ class IDynamicaPagesControlPanel(Interface):
         ],
     )
 
+    row_widths = schema.List(
+        title="Row Widths",
+        required=True,
+        value_type=DictRow(
+            title="Row Widths",
+            schema=Interface(
+                IRowWidthSchema,
+            ),
+        ),
+        default=[
+            {
+                "row_width_label": "Narrow",
+                "row_width_class": "col-md-6 offset-md-3",
+            },
+            {
+                "row_width_label": "Centered",
+                "row_width_class": "col-md-8 offset-md-2",
+            },
+            {
+                "row_width_label": "Full width",
+                "row_width_class": "col-md-12",
+            },
+        ],
+    )
+
 
 class DynamicaPagesControlPanel(RegistryEditForm):
     schema = IDynamicaPagesControlPanel
     schema_prefix = "cs_dynamicpages.dynamica_pages_control_panel"
-    label = _("Dynamica Pages Control Panel")
+    label = _("Dynamic Pages Control Panel")
 
 
 DynamicaPagesControlPanelView = layout.wrap_form(
@@ -136,6 +174,6 @@ class DynamicaPagesControlPanelConfigletPanel(RegistryConfigletPanel):
     schema = IDynamicaPagesControlPanel
     configlet_id = "dynamica_pages_control_panel-controlpanel"
     configlet_category_id = "Products"
-    title = _("Dynamica Pages Control Panel")
+    title = _("Dynamic Pages Control Panel")
     group = ""
     schema_prefix = "cs_dynamicpages.dynamica_pages_control_panel"
