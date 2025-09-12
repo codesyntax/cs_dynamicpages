@@ -130,6 +130,7 @@ class IDynamicaPagesControlPanel(Interface):
         ],
     )
 
+    widget(row_widths=DataGridFieldFactory)
     row_widths = schema.List(
         title="Row Widths",
         required=True,
