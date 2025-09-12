@@ -18,4 +18,6 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+  <include file="1001.zcml" />
+
 </configure>
