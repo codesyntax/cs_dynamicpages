@@ -5,8 +5,8 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
-  <records interface="cs_dynamicpages.controlpanels.dynamica_pages_control_panel.controlpanel.IDynamicaPagesControlPanel"
-           prefix="cs_dynamicpages.dynamica_pages_control_panel"
+  <records interface="cs_dynamicpages.controlpanels.dynamic_pages_control_panel.controlpanel.IDynamicaPagesControlPanel"
+           prefix="cs_dynamicpages.dynamic_pages_control_panel"
   />
 
 

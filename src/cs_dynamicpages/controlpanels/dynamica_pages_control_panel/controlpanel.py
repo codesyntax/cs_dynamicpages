@@ -46,7 +46,7 @@ class IRowWidthSchema(Interface):
     )
 
 
-class IDynamicaPagesControlPanel(Interface):
+class IDynamicPagesControlPanel(Interface):
     widget(row_type_fields=DataGridFieldFactory)
     row_type_fields = schema.List(
         title="Row Type Fields",
@@ -157,19 +157,19 @@ class IDynamicaPagesControlPanel(Interface):
     )
 
 
-class DynamicaPagesControlPanel(RegistryEditForm):
-    schema = IDynamicaPagesControlPanel
-    schema_prefix = "cs_dynamicpages.dynamica_pages_control_panel"
+class DynamicPagesControlPanel(RegistryEditForm):
+    schema = IDynamicPagesControlPanel
+    schema_prefix = "cs_dynamicpages.dynamic_pages_control_panel"
     label = _("Dynamic Pages Control Panel")
 
 
 DynamicaPagesControlPanelView = layout.wrap_form(
-    DynamicaPagesControlPanel, ControlPanelFormWrapper
+    DynamicPagesControlPanel, ControlPanelFormWrapper
 )
 
 
 @adapter(Interface, IBrowserLayer)
-class DynamicaPagesControlPanelConfigletPanel(RegistryConfigletPanel):
+class DynamicPagesControlPanelConfigletPanel(RegistryConfigletPanel):
     """Control Panel endpoint"""
 
     schema = IDynamicaPagesControlPanel
