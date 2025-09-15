@@ -3,5 +3,9 @@
   <!-- Indexers/Metadata -->
 
   <!-- -*- extra stuff goes here -*- -->
+  <adapter
+      factory=".content_index_extender.FolderishItemTextExtender"
+      name="IDexterityContainer"
+      />
 
 </configure>
