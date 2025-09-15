@@ -7,7 +7,7 @@ from zope.interface import implementer
 
 def extract_text_value_to_index(content):
     """convert the text field of a content item to plain text"""
-    text = content.text and content.text.output or ""
+    text = (content.text and content.text.output) or ""
     pt = api.portal.get_tool("portal_transforms")
     data = pt.convertTo("text/plain", text, mimetype="text/html")
     return data.getData()
