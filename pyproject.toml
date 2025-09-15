@@ -26,6 +26,7 @@ dependencies = [
     "Products.CMFPlone",
     "plone.api",
     "collective.z3cform.datagridfield",
+    "plone.app.upgrade",
 ]
 
 [project.optional-dependencies]
