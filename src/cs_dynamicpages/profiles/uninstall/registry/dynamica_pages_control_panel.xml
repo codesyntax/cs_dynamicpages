@@ -5,7 +5,7 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
-  <records interface="cs_dynamicpages.controlpanels.dynamic_pages_control_panel.controlpanel.IDynamicaPagesControlPanel"
+  <records interface="cs_dynamicpages.controlpanels.dynamic_pages_control_panel.controlpanel.IDynamicPagesControlPanel"
            prefix="cs_dynamicpages.dynamic_pages_control_panel"
            remove="true"
   />
