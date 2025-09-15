@@ -53,7 +53,7 @@ class DynamicPageRow(Container):
     def show_featured_add_button(self):
         row_type = self.row_type
         row_type_fields = api.portal.get_registry_record(
-            "cs_dynamicpages.dynamica_pages_control_panel.row_type_fields"
+            "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields"
         )
         for row_type_field in row_type_fields:
             if row_type_field["row_type"] == row_type:
