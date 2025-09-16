@@ -22,6 +22,7 @@ class RowColumns:
         # Just an example list of content for our vocabulary,
         # this can be any static or dynamic data, a catalog result for example.
         items = [
+            VocabItem("col-md-12", _("1")),
             VocabItem("col-md-6", _("2")),
             VocabItem("col-md-4", _("3")),
             VocabItem("col-md-3", _("4")),
