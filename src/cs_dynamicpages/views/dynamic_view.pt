@@ -21,7 +21,7 @@
                           rows view/rows;
                         ">
           <tal:featured repeat="brain rows">
-            <section class="dynamic-row ${row/row_template} state-${row/review_state}" id="${row/id}"
+            <section class="dynamic-row ${row/row_template} state-${row/review_state} ${row/extra_class}" id="${row/id}"
               data-delete-target="true" data-elementid="${row/id}" data-elementurl="${row/absolute_url}"
               data-move-target="true" data-parenturl="${row/aq_parent/absolute_url}" tal:define="
                          row brain/getObject;

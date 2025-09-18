@@ -22,6 +22,15 @@
       marker=".row_width.IRowWidthMarker"
       />
 
+  <plone:behavior
+      name="cs_dynamicpages.extra_class"
+      title="ExtraClass"
+      description="This behavior provides..."
+      factory=".extra_class.ExtraClass"
+      provides=".extra_class.IExtraClass"
+      marker=".extra_class.IExtraClassMarker"
+      />
+
 
   <plone:behavior
       name="cs_dynamicpages.row_columns"

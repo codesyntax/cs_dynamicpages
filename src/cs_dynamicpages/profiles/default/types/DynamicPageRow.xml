@@ -51,6 +51,7 @@
     <element value="cs_dynamicpages.related_image" />
     <element value="cs_dynamicpages.row_columns" />
     <element value="cs_dynamicpages.row_width" />
+    <element value="cs_dynamicpages.extra_class" />
     <element value="plone.collection" />
     <element value="plone.constraintypes" />
     <!--<element value="plone.leadimage"/>-->
