@@ -10,7 +10,7 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import provider
-
+from cs_dynamicpages import _
 
 try:
     # This is for Plone 6.1
@@ -33,7 +33,8 @@ class IRelatedImage(model.Schema):
     """ """
 
     related_image = RelationList(
-        title="Related Image",
+        title=_("Related image"),
+        description=_("Select the related image that will be shown in this row"),
         default=[],
         max_length=1,
         value_type=RelationChoice(vocabulary="plone.app.vocabularies.Catalog"),
@@ -51,7 +52,8 @@ class IRelatedImage(model.Schema):
         },
     )
     image_position = schema.Choice(
-        title="Image Position",
+        title=_("Image position"),
+        description=_("Select the position of this image"),
         vocabulary="cs_dynamicpages.ImagePosition",
         required=True,
         default="left",

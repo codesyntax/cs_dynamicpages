@@ -11,7 +11,7 @@
              category="Products"
              condition_expr=""
              icon_expr=""
-             title="Dynamica Pages Control Panel"
+             title="Dynamic Pages Control Panel"
              url_expr="string:${portal_url}/@@dynamic_pages_control_panel-controlpanel"
              visible="True"
              i18n:attributes="title"

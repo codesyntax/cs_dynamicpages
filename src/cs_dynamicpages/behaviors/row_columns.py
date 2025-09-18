@@ -6,6 +6,7 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import provider
+from cs_dynamicpages import _
 
 
 class IRowColumnsMarker(Interface):
@@ -17,7 +18,8 @@ class IRowColumns(model.Schema):
     """ """
 
     columns = schema.Choice(
-        title="Columns",
+        title=_("Column count"),
+        description=_("Select how many columns will be shown in this row"),
         vocabulary="cs_dynamicpages.RowColumns",
         required=True,
         default="col-md-6",

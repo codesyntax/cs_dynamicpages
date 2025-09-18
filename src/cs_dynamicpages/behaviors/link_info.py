@@ -6,6 +6,7 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import provider
+from cs_dynamicpages import _
 
 
 class ILinkInfoMarker(Interface):
@@ -17,14 +18,14 @@ class ILinkInfo(model.Schema):
     """ """
 
     link_text = schema.TextLine(
-        title="Link Text",
-        description="Give in a link text",
+        title=_("Link text"),
+        description=_("Enter the text that will be linked"),
         required=False,
     )
 
     link_url = schema.TextLine(
-        title="Link URL",
-        description="Give in a link URL",
+        title=_("Link URL"),
+        description=_("Enter the URL of the link"),
         required=False,
     )
 

@@ -14,20 +14,30 @@ from zope.interface import Interface
 
 class IRowTypeFieldsSchema(Interface):
     row_type = schema.Choice(
-        title="Row type",
+        title=_("Row type"),
         required=True,
         vocabulary="cs_dynamicpages.RowType",
     )
 
     each_row_type_fields = schema.List(
-        title="Row type fields",
+        title=_("Row fields"),
+        description=_(
+            "Enter the fields that will be available when "
+            "editing this row type. This is useful to hide unused fields."
+        ),
         required=True,
         value_type=schema.TextLine(),
         default=[],
     )
 
     row_type_has_featured_add_button = schema.Bool(
-        title="Has featured add button",
+        title=_("Has featured add button?"),
+        description=_(
+            "If selected a 'Add featured' button will be added in the edit "
+            "interface. This is useful for rows that have content pieces "
+            "inside them. For example in a slider row, there are slider items. "
+            "This button will be used to add those items."
+        ),
         required=False,
         default=False,
     )
@@ -35,12 +45,13 @@ class IRowTypeFieldsSchema(Interface):
 
 class IRowWidthSchema(Interface):
     row_width_label = schema.TextLine(
-        title="Row Width Label",
+        title=_("Row Width Label"),
+        description=_("This is the label corresponding to this width"),
         required=True,
     )
 
     row_width_class = schema.TextLine(
-        title=_("Row Width"),
+        title=_("Row Width CSS class"),
         description=_("CSS class for the row width"),
         required=True,
     )
@@ -49,9 +60,12 @@ class IRowWidthSchema(Interface):
 class IDynamicPagesControlPanel(Interface):
     widget(row_type_fields=DataGridFieldFactory)
     row_type_fields = schema.List(
-        title="Row Type Fields",
+        title=_("Row type fields"),
+        description=_(
+            "Here we have all the available views for the rows and their settings"
+        ),
         required=True,
-        value_type=DictRow(title="Row Type Fields", schema=IRowTypeFieldsSchema),
+        value_type=DictRow(title=_("Row type field"), schema=IRowTypeFieldsSchema),
         default=[
             {
                 "row_type": "cs_dynamicpages-featured-view",
@@ -155,10 +169,11 @@ class IDynamicPagesControlPanel(Interface):
 
     widget(row_widths=DataGridFieldFactory)
     row_widths = schema.List(
-        title="Row Widths",
+        title=_("Row widths"),
+        description=_("Here you can define the available widths for each row"),
         required=True,
         value_type=DictRow(
-            title="Row Widths",
+            title=_("Row width"),
             schema=Interface(
                 IRowWidthSchema,
             ),

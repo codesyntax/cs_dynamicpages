@@ -6,6 +6,7 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import provider
+from cs_dynamicpages import _
 
 
 class IExtraClassMarker(Interface):
@@ -17,7 +18,8 @@ class IExtraClass(model.Schema):
     """ """
 
     extra_class = schema.TextLine(
-        title="Extra class for row",
+        title=_("Extra CSS class"),
+        description=_("Enter an extra CSS class that will be added to the row"),
         required=False,
     )
 

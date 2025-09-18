@@ -6,6 +6,7 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import provider
+from cs_dynamicpages import _
 
 
 class IRowWidthMarker(Interface):
@@ -14,10 +15,10 @@ class IRowWidthMarker(Interface):
 
 @provider(IFormFieldProvider)
 class IRowWidth(model.Schema):
-    """ """
 
     width = schema.Choice(
-        title="Width",
+        title=_("Row width"),
+        description=_("Select the width that this row will have"),
         vocabulary="cs_dynamicpages.RowWidth",
         required=True,
         default="col-md-12",
