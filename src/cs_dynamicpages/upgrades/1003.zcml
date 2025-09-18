@@ -1,0 +1,25 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:gs="http://namespaces.zope.org/genericsetup">
+
+  <gs:registerProfile name="1003"
+    title="Add a new default behavior to the row"
+    directory="1003"
+    description='Configuration for version 1003'
+    for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+    provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+  <gs:upgradeSteps source="1002"
+    destination="1003"
+    profile="cs_dynamicpages:default">
+
+    <gs:upgradeStep title="Add a new default behavior to the row"
+      description=""
+      handler=".v1003.upgrade" />
+
+    <gs:upgradeDepends title="Add a new default behavior to the row (GS profile)"
+      description=""
+      import_profile="cs_dynamicpages.upgrades:1003" />
+
+  </gs:upgradeSteps>
+
+</configure>
