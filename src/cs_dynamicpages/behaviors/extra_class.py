@@ -19,7 +19,6 @@ class IExtraClass(model.Schema):
     extra_class = schema.TextLine(
         title="Extra class for row",
         required=False,
-
     )
 
 

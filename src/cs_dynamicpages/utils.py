@@ -1,5 +1,5 @@
-from plone import api
 from cs_dynamicpages import logger
+from plone import api
 
 
 def add_custom_view(view_name: str, shown_fields: list[str], has_button: bool = False):

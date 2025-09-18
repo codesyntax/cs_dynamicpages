@@ -83,27 +83,46 @@ class IDynamicPagesControlPanel(Interface):
             },
             {
                 "row_type": "cs_dynamicpages-horizontal-rule-view",
-                "each_row_type_fields": ["IBasic.title", "IRowWidth.width", "IExtraClass.extra_class",],
+                "each_row_type_fields": [
+                    "IBasic.title",
+                    "IRowWidth.width",
+                    "IExtraClass.extra_class",
+                ],
                 "row_type_has_featured_add_button": False,
             },
             {
                 "row_type": "cs_dynamicpages-spacer-view",
-                "each_row_type_fields": ["IBasic.title", "IExtraClass.extra_class",],
+                "each_row_type_fields": [
+                    "IBasic.title",
+                    "IExtraClass.extra_class",
+                ],
                 "row_type_has_featured_add_button": False,
             },
             {
                 "row_type": "cs_dynamicpages-slider-view",
-                "each_row_type_fields": ["IBasic.title", "IRowWidth.width", "IExtraClass.extra_class",],
+                "each_row_type_fields": [
+                    "IBasic.title",
+                    "IRowWidth.width",
+                    "IExtraClass.extra_class",
+                ],
                 "row_type_has_featured_add_button": True,
             },
             {
                 "row_type": "cs_dynamicpages-features-view",
-                "each_row_type_fields": ["IBasic.title", "IRowWidth.width", "IExtraClass.extra_class",],
+                "each_row_type_fields": [
+                    "IBasic.title",
+                    "IRowWidth.width",
+                    "IExtraClass.extra_class",
+                ],
                 "row_type_has_featured_add_button": True,
             },
             {
                 "row_type": "cs_dynamicpages-accordion-view",
-                "each_row_type_fields": ["IBasic.title", "IRowWidth.width", "IExtraClass.extra_class",],
+                "each_row_type_fields": [
+                    "IBasic.title",
+                    "IRowWidth.width",
+                    "IExtraClass.extra_class",
+                ],
                 "row_type_has_featured_add_button": True,
             },
             {
