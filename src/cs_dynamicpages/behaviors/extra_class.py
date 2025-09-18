@@ -1,3 +1,4 @@
+from cs_dynamicpages import _
 from plone import schema
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
@@ -6,7 +7,6 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import provider
-from cs_dynamicpages import _
 
 
 class IExtraClassMarker(Interface):

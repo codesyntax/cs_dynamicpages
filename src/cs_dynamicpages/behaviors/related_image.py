@@ -1,4 +1,5 @@
 # from plone.app.z3cform.widgets.contentbrowser import ContentBrowserFieldWidget
+from cs_dynamicpages import _
 from plone.autoform import directives as form
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
@@ -10,7 +11,7 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import provider
-from cs_dynamicpages import _
+
 
 try:
     # This is for Plone 6.1
