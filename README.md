@@ -65,8 +65,8 @@ make create-site
 
 ## Contribute
 
-- [Issue tracker](https://github.com/collective/cs_dynamicpages/issues)
-- [Source code](https://github.com/collective/cs_dynamicpages/)
+- [Issue tracker](https://github.com/codesyntax/cs_dynamicpages/issues)
+- [Source code](https://github.com/codesyntax/cs_dynamicpages/)
 
 ### Prerequisites ✅
 
@@ -81,7 +81,7 @@ make create-site
 1.  Clone this repository, then change your working directory.
 
     ```shell
-    git clone git@github.com:collective/cs_dynamicpages.git
+    git clone git@github.com:codesyntax/cs_dynamicpages.git
     cd cs_dynamicpages
     ```
 
