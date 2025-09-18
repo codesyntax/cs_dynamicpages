@@ -5,7 +5,7 @@ description = "A new addon for Plone"
 readme = "README.md"
 license = "GPL-2.0-only"
 requires-python = ">=3.10"
-authors = [{ name = "Plone Community", email = "collective@plone.org" }]
+authors = [{ name = "CodeSyntax", email = "plone@codesyntax.com" }]
 keywords = ["CMS", "Plone", "Python"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -47,10 +47,10 @@ release = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/collective/cs_dynamicpages"
+Homepage = "https://github.com/codesyntax/cs_dynamicpages"
 PyPI = "https://pypi.org/project/cs_dynamicpages"
-Source = "https://github.com/collective/cs_dynamicpages"
-Tracker = "https://github.com/collective/cs_dynamicpages/issues"
+Source = "https://github.com/codesyntax/cs_dynamicpages"
+Tracker = "https://github.com/codesyntax/cs_dynamicpages/issues"
 
 
 [project.entry-points."plone.autoinclude.plugin"]

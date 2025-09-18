@@ -1,3 +1,4 @@
 # Contributors
 
-- Plone Community [collective@plone.org]
+- Lur Ibargutxi [libargutxi@codesyntax.com]
+- Mikel Larreategi [mlarreategi@codesyntax.com]
