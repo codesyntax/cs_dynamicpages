@@ -21,15 +21,11 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+  <include package=".subscribers" />
+
   <include package=".upgrades" />
 
-  <include package=".vocabularies" />
 
-
-  <include package=".vocabularies" />
-
-
-  <include package=".vocabularies" />
 
 
   <include package=".controlpanels" />
@@ -40,7 +36,6 @@
 
   <include package=".views" />
 
-  <include package=".vocabularies" />
 
 
 </configure>
