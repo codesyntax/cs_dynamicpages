@@ -28,12 +28,17 @@ There is just one view `dynamic_view` registered for Folders and Naviation roots
 To provide different fields, you should register standard `behaviors` to the `DynamicPageRow`
 content type.
 
-### Different views
+### Custom views
 
 To provide different views, you should register standard views (using `zcml`).
 
 Those views must be registered for implementers of `cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow`
 and their name _must_ start by `cs_dynamicpages-`.
+
+To ease installation of such views in your products, `cs_dynamicpages.utils` contains 2 utility functions:
+
+- `add_custom_view`: function to add a given view to the list of available row types
+- `enable_behavior`: function to enable the given behavior in the `DynamicPageRow` content type
 
 ### Restrict fields in the row edit view
 
