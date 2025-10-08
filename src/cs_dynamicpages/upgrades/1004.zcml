@@ -1,0 +1,25 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:gs="http://namespaces.zope.org/genericsetup">
+
+  <gs:registerProfile name="1004"
+    title="Remove unneeded behaviors"
+    directory="1004"
+    description='Configuration for version 1004'
+    for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+    provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+  <gs:upgradeSteps source="1003"
+    destination="1004"
+    profile="cs_dynamicpages:default">
+
+    <gs:upgradeStep title="Remove unneeded behaviors"
+      description=""
+      handler=".v1004.upgrade" />
+
+    <gs:upgradeDepends title="Remove unneeded behaviors (GS profile)"
+      description=""
+      import_profile="cs_dynamicpages.upgrades:1004" />
+
+  </gs:upgradeSteps>
+
+</configure>
