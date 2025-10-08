@@ -10,7 +10,9 @@
             purge="false"
   >
 
-    <element remove="true" value="plone.allowdiscussion" />
+    <element remove="true"
+             value="plone.allowdiscussion"
+    />
 
   </property>
 
