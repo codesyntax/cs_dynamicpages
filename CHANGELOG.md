@@ -8,3 +8,10 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 1.0.0b1 (2025-10-08)
+
+
+### Internal:
+
+- Initial release @codesyntax
