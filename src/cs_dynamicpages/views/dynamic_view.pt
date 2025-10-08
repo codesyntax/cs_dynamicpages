@@ -158,7 +158,9 @@
                               i18n:translate=""
                         >Review state:
                           <span tal:omit-tag=""
+                                i18n:domain="plone"
                                 i18n:name="state"
+                                i18n:translate=""
                           >${row/review_state}</span></span>
                         <span tal:attributes="
                                 class python:row.review_state() == 'published' and 'position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle' or 'position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle';
@@ -173,6 +175,8 @@
                         <tal:transitions repeat="transition transitions">
                           <li><a class="dropdown-item"
                                href="${transition/url}&amp;_authenticator=${context/@@authenticator/token}"
+                               i18n:domain="plone"
+                               i18n:translate=""
                             >${transition/name}</a>
                           </li>
                         </tal:transitions>
