@@ -22,7 +22,7 @@ class DynamicView(BrowserView):
             return api.content.find(
                 portal_type="DynamicPageRow",
                 sort_on="getObjPositionInParent",
-                context=dynamic_page_folder[0].getObject(),
+                context=dynamic_page_folder,
             )
         return []
 
@@ -34,7 +34,7 @@ class DynamicView(BrowserView):
             sort_on="getObjPositionInParent",
         )
         if page_folders:
-            return page_folders
+            return page_folders[0].getObject()
         else:
             if self.can_edit():
                 alsoProvides(self.request, IDisableCSRFProtection)
@@ -43,17 +43,20 @@ class DynamicView(BrowserView):
                     type="DynamicPageFolder",
                     title="Rows",
                 )
-                return api.content.find(
+                created_elements_find = api.content.find(
                     portal_type="DynamicPageFolder",
                     context=self.context,
                     depth=1,
                     sort_on="getObjPositionInParent",
                 )
+                created_element = created_elements_find[0].getObject()
+                api.content.transition(created_element, transition="publish")
+                return created_element
 
     def dynamic_page_folder_element_url(self):
         dynamic_page_folder = self.dynamic_page_folder_element()
         if dynamic_page_folder:
-            return dynamic_page_folder[0].getObject().absolute_url()
+            return dynamic_page_folder.absolute_url()
         return ""
 
     def can_edit(self):
