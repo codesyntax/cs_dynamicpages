@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b2 (2025-10-08)
+
+
+### New features:
+
+- Publish created rows folder @libargutxi [#4](https://github.com/collective/cs_dynamicpages/issues/4)
+
 ## 1.0.0b1 (2025-10-08)
 
 
