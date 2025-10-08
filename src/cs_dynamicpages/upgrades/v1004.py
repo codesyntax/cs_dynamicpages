@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 from . import logger
 from .base import reload_gs_profile
