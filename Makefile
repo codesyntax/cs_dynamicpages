@@ -54,7 +54,7 @@ requirements-mxdev.txt: pyproject.toml mx.ini ## Generate constraints file
 
 $(VENV_FOLDER): requirements-mxdev.txt ## Install dependencies
 	@echo "$(GREEN)==> Install environment$(RESET)"
-	@uv venv --python=3.10 $(VENV_FOLDER)
+	@uv venv $(VENV_FOLDER)
 	@uv pip install -r requirements-mxdev.txt
 
 .PHONY: sync
@@ -131,4 +131,10 @@ test-coverage: $(VENV_FOLDER) ## run tests with coverage
 
 ## Add bobtemplates features (check bobtemplates.plone's documentation to get the list of available features)
 add: $(VENV_FOLDER)
-	/home/lur/plonecli_azkena/bin/plonecli add $(filter-out $@,$(MAKECMDGOALS))
+	@uvx plonecli add -b .mrbob.ini $(filter-out $@,$(MAKECMDGOALS))
+
+.PHONY: release
+release: $(VENV_FOLDER) ## Create a release
+	@echo "$(GREEN)==> Create a release$(RESET)"
+	@uv pip install -e ".[release]"
+	@uv run fullrelease

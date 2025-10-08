@@ -2,28 +2,31 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="cs_dynamicpages"
     >
 
   <!-- -*- extra stuff goes here -*- -->
 
   <browser:page
-    name="view"
-    for="cs_dynamicpages.content.dynamic_page_row_featured.IDynamicPageRowFeatured"
-    class=".dynamic_page_row_featured_view.DynamicPageRowFeaturedView"
-    template="dynamic_page_row_featured_view.pt"
-    permission="zope2.View"
-    layer="cs_dynamicpages.interfaces.IBrowserLayer"
-    />
+      name="view"
+      for="cs_dynamicpages.content.dynamic_page_row_featured.IDynamicPageRowFeatured"
+      class=".dynamic_page_row_featured_view.DynamicPageRowFeaturedView"
+      template="dynamic_page_row_featured_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
 
   <browser:page
-    name="view"
-    for="cs_dynamicpages.content.dynamic_page_folder.IDynamicPageFolder"
-    class=".dynamic_page_folder_view.DynamicPageFolderView"
-    template="dynamic_page_folder_view.pt"
-    permission="zope2.View"
-    layer="cs_dynamicpages.interfaces.IBrowserLayer"
-    />
+      name="view"
+      for="cs_dynamicpages.content.dynamic_page_folder.IDynamicPageFolder"
+      class=".dynamic_page_folder_view.DynamicPageFolderView"
+      template="dynamic_page_folder_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Dynamic view"
+      />
 
   <browser:page
       name="dynamic-view"
@@ -32,7 +35,21 @@
       template="dynamic_view.pt"
       permission="zope2.View"
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Dynamic view"
       />
+
+  <browser:page
+      name="dynamic-view"
+      for="plone.base.interfaces.INavigationRoot"
+      class=".dynamic_view.DynamicView"
+      template="dynamic_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Dynamic view"
+      />
+
 
   <browser:page
       name="view"
@@ -54,11 +71,13 @@
     <browser:page
         name="cs_dynamicpages-featured-view"
         template="featured_view.pt"
+        zcml:condition="have plone-61"
         />
 
     <browser:page
         name="cs_dynamicpages-featured-overlay-view"
         template="featured_overlay_view.pt"
+        zcml:condition="have plone-61"
         />
 
     <browser:page
@@ -86,6 +105,7 @@
     <browser:page
         name="cs_dynamicpages-query-columns-view"
         template="query_columns_view.pt"
+        zcml:condition="have plone-61"
         />
   </browser:pages>
 
@@ -98,6 +118,7 @@
     <browser:page
         name="cs_dynamicpages-slider-view"
         template="slider_view.pt"
+        zcml:condition="have plone-61"
         />
 
     <browser:page
@@ -108,6 +129,7 @@
     <browser:page
         name="cs_dynamicpages-features-view"
         template="features_view.pt"
+        zcml:condition="have plone-61"
         />
   </browser:pages>
 

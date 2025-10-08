@@ -1,3 +1,4 @@
+from cs_dynamicpages import _
 from plone import schema
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
@@ -17,14 +18,14 @@ class ILinkInfo(model.Schema):
     """ """
 
     link_text = schema.TextLine(
-        title="Link Text",
-        description="Give in a link text",
+        title=_("Link text"),
+        description=_("Enter the text that will be linked"),
         required=False,
     )
 
     link_url = schema.TextLine(
-        title="Link URL",
-        description="Give in a link URL",
+        title=_("Link URL"),
+        description=_("Enter the URL of the link"),
         required=False,
     )
 

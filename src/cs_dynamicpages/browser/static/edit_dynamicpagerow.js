@@ -29,7 +29,7 @@
     // Get configuration from control panel
     const baseUrl = document.body.dataset.portalUrl || "";
     fetch(
-      `${baseUrl}/@registry/cs_dynamicpages.dynamica_pages_control_panel.row_type_fields`,
+      `${baseUrl}/@registry/cs_dynamicpages.dynamic_pages_control_panel.row_type_fields`,
       {
         method: "GET",
         headers: {

@@ -1,14 +1,14 @@
-# -*- coding: utf-8 -*-
-
 # from cs_dynamicpages import _
 from Products.Five.browser import BrowserView
 from zope.interface import implementer
 from zope.interface import Interface
 
+
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+
 class IDynamicPageRowFeaturedView(Interface):
-    """ Marker Interface for IDynamicPageRowFeaturedView"""
+    """Marker Interface for IDynamicPageRowFeaturedView"""
 
 
 @implementer(IDynamicPageRowFeaturedView)

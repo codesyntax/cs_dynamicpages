@@ -1,49 +1,35 @@
-# -*- coding: utf-8 -*-
-
 # from plone import api
-from zope.schema.interfaces import IVocabularyFactory
+from plone import api
 from zope.interface import implementer
-from cs_dynamicpages import _
-from plone.dexterity.interfaces import IDexterityContent
-from zope.globalrequest import getRequest
+from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
 
-class VocabItem(object):
+class VocabItem:
     def __init__(self, token, value):
         self.token = token
         self.value = value
 
 
 @implementer(IVocabularyFactory)
-class RowWidth(object):
-    """
-    """
+class RowWidth:
+    """ """
 
     def __call__(self, context):
         # Just an example list of content for our vocabulary,
         # this can be any static or dynamic data, a catalog result for example.
-        items = [
-            VocabItem(u'col-md-6 offset-md-3', _('Narrow')),
-            VocabItem(u'col-md-8 offset-md-2', _('Centered')),
-            VocabItem(u'col-md-12', _('Full width')),
-        ]
+        values = api.portal.get_registry_record(
+            "cs_dynamicpages.dynamic_pages_control_panel.row_widths", default=[]
+        )
 
-        # Fix context if you are using the vocabulary in DataGridField.
-        # See https://github.com/collective/collective.z3cform.datagridfield/issues/31:  # NOQA: 501
-        if not IDexterityContent.providedBy(context):
-            req = getRequest()
-            context = req.PARENTS[0]
-
-        # create a list of SimpleTerm items:
         terms = []
-        for item in items:
+        for item in values:
             terms.append(
                 SimpleTerm(
-                    value=item.token,
-                    token=str(item.token),
-                    title=item.value,
+                    value=item["row_width_class"],
+                    token=str(item["row_width_class"]),
+                    title=item["row_width_label"],
                 )
             )
         # Create a SimpleVocabulary from the terms list and return it:

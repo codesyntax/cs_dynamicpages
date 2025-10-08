@@ -11,7 +11,7 @@ from plone.supermodel import model
 # from z3c.form.browser.radio import RadioFieldWidget
 from zope import schema
 from zope.interface import implementer
-from plone import api
+
 
 log = getLogger(__name__)
 
@@ -52,10 +52,12 @@ class DynamicPageRow(Container):
 
     def show_featured_add_button(self):
         row_type = self.row_type
-        row_type_fields = api.portal.get_registry_record('cs_dynamicpages.dynamica_pages_control_panel.row_type_fields')
+        row_type_fields = api.portal.get_registry_record(
+            "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields"
+        )
         for row_type_field in row_type_fields:
-            if row_type_field['row_type'] == row_type:
-                return row_type_field['row_type_has_featured_add_button']
+            if row_type_field["row_type"] == row_type:
+                return row_type_field["row_type_has_featured_add_button"]
         return False
 
     def render(self, request):

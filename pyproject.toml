@@ -1,49 +1,55 @@
 [project]
 name = "cs_dynamicpages"
 dynamic = ["version"]
-description = "An addon to create dynamic pages for Plone"
+description = "A new addon for Plone"
 readme = "README.md"
-license = "GPL-2.0-only"
 requires-python = ">=3.10"
-authors = [
-    { name = "Lur Ibargutxi", email = "libargutxi@codesyntax.com" },
-]
-keywords = [
-    "CMS",
-    "Plone",
-    "Python",
-]
+authors = [{ name = "CodeSyntax", email = "plone@codesyntax.com" }]
+keywords = ["CMS", "Plone", "Python"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Web Environment",
-    "Framework :: Plone","Framework :: Plone :: 6.0","Framework :: Plone :: 6.1",
+    "Framework :: Plone",
+    "Framework :: Plone :: 6.0",
+    "Framework :: Plone :: 6.1",
     "Framework :: Plone :: Addon",
     "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     "Operating System :: OS Independent",
-    "Programming Language :: Python","Programming Language :: Python :: 3.10","Programming Language :: Python :: 3.11","Programming Language :: Python :: 3.12","Programming Language :: Python :: 3.13",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
     "Products.CMFPlone",
     "plone.api",
-    "z3c.jbot",
     "collective.z3cform.datagridfield",
+    "plone.app.upgrade",
 ]
 
 [project.optional-dependencies]
 test = [
     "horse-with-no-namespace",
     "plone.app.testing",
-    "plone.classicui","plone.restapi[test]",
+    "plone.app.contenttypes[test]",
+    "plone.classicui",
+    "plone.restapi[test]",
     "pytest",
     "pytest-cov",
     "pytest-plone>=0.5.0",
 ]
+release = [
+    "zest.releaser[recommended]",
+    "zestreleaser.towncrier",
+    "zest.pocompile",
+]
 
 [project.urls]
-Homepage = "https://github.com/cs/cs_dynamicpages"
+Homepage = "https://github.com/codesyntax/cs_dynamicpages"
 PyPI = "https://pypi.org/project/cs_dynamicpages"
-Source = "https://github.com/cs/cs_dynamicpages"
-Tracker = "https://github.com/cs/cs_dynamicpages/issues"
+Source = "https://github.com/codesyntax/cs_dynamicpages"
+Tracker = "https://github.com/codesyntax/cs_dynamicpages/issues"
 
 
 [project.entry-points."plone.autoinclude.plugin"]
@@ -63,9 +69,7 @@ build-backend = "hatchling.build"
 strict-naming = true
 
 [tool.hatch.build.targets.sdist]
-exclude = [
-  "/.github",
-]
+exclude = ["/.github"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/cs_dynamicpages"]
@@ -76,7 +80,7 @@ filename = "CHANGELOG.md"
 start_string = "<!-- towncrier release notes start -->\n"
 title_format = "## {version} ({project_date})"
 template = "news/.changelog_template.jinja"
-issue_format = "[#{issue}](https://github.com/cs/cs_dynamicpages/issues/{issue})"
+issue_format = "[#{issue}](https://github.com/collective/cs_dynamicpages/issues/{issue})"
 underlines = ["", "", ""]
 
 [[tool.towncrier.type]]
@@ -131,7 +135,8 @@ lint.select = [
     # mccabe
     "C90",
     # pycodestyle
-    "E", "W",
+    "E",
+    "W",
     # pyflakes
     "F",
     # pygrep-hooks
@@ -168,6 +173,8 @@ testpaths = ["tests"]
 source_pkgs = ["cs_dynamicpages", "tests"]
 branch = true
 parallel = true
-omit = [
-  "src/cs_dynamicpages/locales/*.py",
-]
+omit = ["src/cs_dynamicpages/locales/*.py"]
+
+
+[tool.zest-releaser]
+python-file-with-version = "src/cs_dynamicpages/__init__.py"
