@@ -68,6 +68,16 @@ class IDynamicPagesControlPanel(Interface):
         value_type=DictRow(title=_("Row type field"), schema=IRowTypeFieldsSchema),
         default=[
             {
+                "row_type": "cs_dynamicpages-title-description-view",
+                "each_row_type_fields": [
+                    "IBasic.title",
+                    "IBasic.description",
+                    "IRowWidth.width",
+                    "IExtraClass.extra_class",
+                ],
+                "row_type_has_featured_add_button": False,
+            },
+            {
                 "row_type": "cs_dynamicpages-featured-view",
                 "each_row_type_fields": [
                     "IBasic.title",

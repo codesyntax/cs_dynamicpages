@@ -69,6 +69,11 @@
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
       >
     <browser:page
+        name="cs_dynamicpages-title-description-view"
+        template="dynamic_title_description_view.pt"
+        zcml:condition="have plone-61"
+        />
+    <browser:page
         name="cs_dynamicpages-featured-view"
         template="featured_view.pt"
         zcml:condition="have plone-61"

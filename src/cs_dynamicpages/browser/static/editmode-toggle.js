@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Add preview-mode class by default on page load
-  document.body.classList.add("preview-mode");
+  // document.body.classList.add("preview-mode");
 
   const toggle = document.getElementById("editModeToggle");
   if (toggle) {

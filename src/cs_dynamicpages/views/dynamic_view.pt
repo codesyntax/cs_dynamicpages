@@ -23,6 +23,7 @@
                        id="editModeToggle"
                        role="switch"
                        type="checkbox"
+                       checked
                 />
                 <label class="form-check-label"
                        for="editModeToggle"
