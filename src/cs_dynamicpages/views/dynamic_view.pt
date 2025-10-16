@@ -187,7 +187,7 @@
 
                 </div>
                 <tal:condition tal:condition="row/can_edit">
-                  <div class="edit-options features-list d-flex gap-2 align-items-start mb-3"
+                  <div class="edit-options features-list d-flex flex-wrap gap-2 align-items-start mb-3"
                        tal:define="
                          features_list row/featured_list;
                        "
