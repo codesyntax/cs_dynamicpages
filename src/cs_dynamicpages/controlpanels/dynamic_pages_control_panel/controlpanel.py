@@ -42,6 +42,13 @@ class IRowTypeFieldsSchema(Interface):
         default=False,
     )
 
+    row_type_icon = schema.TextLine(
+        title=_("Row type icon"),
+        description=_("Icon for the row type"),
+        required=True,
+        default="bricks",
+    )
+
 
 class IRowWidthSchema(Interface):
     row_width_label = schema.TextLine(
@@ -76,6 +83,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IExtraClass.extra_class",
                 ],
                 "row_type_has_featured_add_button": False,
+                "row_type_icon": "fonts",
             },
             {
                 "row_type": "cs_dynamicpages-featured-view",
@@ -90,6 +98,7 @@ class IDynamicPagesControlPanel(Interface):
                     "ILinkInfo.link_url",
                 ],
                 "row_type_has_featured_add_button": False,
+                "row_type_icon": "card-image",
             },
             {
                 "row_type": "cs_dynamicpages-featured-overlay-view",
@@ -99,11 +108,11 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowWidth.width",
                     "IExtraClass.extra_class",
                     "IRelatedImage.related_image",
-                    "IRelatedImage.image_position",
                     "ILinkInfo.link_text",
                     "ILinkInfo.link_url",
                 ],
                 "row_type_has_featured_add_button": False,
+                "row_type_icon": "image-fill",
             },
             {
                 "row_type": "cs_dynamicpages-horizontal-rule-view",
@@ -113,6 +122,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IExtraClass.extra_class",
                 ],
                 "row_type_has_featured_add_button": False,
+                "row_type_icon": "hr",
             },
             {
                 "row_type": "cs_dynamicpages-spacer-view",
@@ -121,6 +131,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IExtraClass.extra_class",
                 ],
                 "row_type_has_featured_add_button": False,
+                "row_type_icon": "arrows-vertical",
             },
             {
                 "row_type": "cs_dynamicpages-slider-view",
@@ -130,6 +141,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IExtraClass.extra_class",
                 ],
                 "row_type_has_featured_add_button": True,
+                "row_type_icon": "images",
             },
             {
                 "row_type": "cs_dynamicpages-features-view",
@@ -139,6 +151,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IExtraClass.extra_class",
                 ],
                 "row_type_has_featured_add_button": True,
+                "row_type_icon": "grid",
             },
             {
                 "row_type": "cs_dynamicpages-accordion-view",
@@ -148,6 +161,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IExtraClass.extra_class",
                 ],
                 "row_type_has_featured_add_button": True,
+                "row_type_icon": "chevron-double-down",
             },
             {
                 "row_type": "cs_dynamicpages-query-columns-view",
@@ -163,6 +177,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowColumns.columns",
                 ],
                 "row_type_has_featured_add_button": False,
+                "row_type_icon": "funnel",
             },
             {
                 "row_type": "cs_dynamicpages-text-view",
@@ -173,6 +188,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRichTextBehavior-text",
                 ],
                 "row_type_has_featured_add_button": False,
+                "row_type_icon": "body-text",
             },
         ],
     )

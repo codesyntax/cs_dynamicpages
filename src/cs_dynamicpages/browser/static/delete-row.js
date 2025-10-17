@@ -18,17 +18,12 @@
       !document.body.classList.contains("template-dynamic-view") ||
       !document.body.classList.contains("userrole-manager")
     ) {
-      console.log(
-        "Not in dynamic-view edit mode, skipping row deletion initialization"
-      );
       return;
     }
 
-    console.log("Initializing row deletion...");
-
     const deleteModal = document.getElementById("deleteElementModal");
     if (!deleteModal) {
-      console.error("Delete element modal not found");
+      // Delete element modal not found
       return;
     }
 
@@ -39,12 +34,9 @@
       // Get the closest parent element with data-delete-target="true"
       rowToDelete = button.closest('[data-delete-target="true"]');
       if (!rowToDelete) {
-        console.error(
-          'No deletable element found. Add data-delete-target="true" to the parent element you want to delete.'
-        );
+        // No deletable element found
         return;
       }
-      console.log("Preparing to delete element:", rowToDelete);
     });
 
     // Store the deletion context for modal confirmation
@@ -66,10 +58,6 @@
             element: elementToDelete,
           };
           // The modal will be shown by Bootstrap's data-bs-toggle="modal"
-        } else {
-          console.error(
-            'No deletable element found. Add data-delete-target="true" to the parent element you want to delete.'
-          );
         }
       }
     });
@@ -98,16 +86,12 @@
           }
         });
       } else {
-        console.error(
-          'Could not find confirm button with ID "confirmDeleteRow"'
-        );
+        // Confirm button not found
       }
     }
 
     function deleteRow(elementId, elementToDelete) {
       const elementUrl = elementToDelete.dataset.elementurl;
-
-      console.log(`Deleting element ${elementId} via ${elementUrl}`);
 
       fetch(elementUrl, {
         method: "DELETE",
@@ -120,12 +104,8 @@
         credentials: "same-origin",
       })
         .then((response) => {
-          console.log(`Received response with status: ${response.status}`);
-          console.log("Response headers:", response.headers);
-          console.log("Response ok:", response.ok);
           if (!response.ok) {
             const error = new Error(`HTTP error! status: ${response.status}`);
-            console.error("Response not OK:", error);
             throw error;
           }
         })
@@ -134,6 +114,7 @@
           if (modal) {
             modal.hide();
           }
+          sessionStorage.setItem('toast-message', 'Element deleted successfully.');
           // Refresh the page after successful update
           window.location.reload();
         });
