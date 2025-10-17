@@ -1,13 +1,11 @@
 # from cs_dynamicpages import _
+from cs_dynamicpages.utils import get_available_views_for_row
 from plone import api
 from plone.protect.interfaces import IDisableCSRFProtection
 from Products.Five.browser import BrowserView
 from zope.interface import alsoProvides
 from zope.interface import implementer
 from zope.interface import Interface
-
-
-# from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class IDynamicView(Interface):
@@ -61,3 +59,6 @@ class DynamicView(BrowserView):
 
     def can_edit(self):
         return api.user.has_permission("Modify portal content", obj=self.context)
+
+    def available_views_for_row(self):
+        return get_available_views_for_row()
