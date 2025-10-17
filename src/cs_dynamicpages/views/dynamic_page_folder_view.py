@@ -82,4 +82,4 @@ class DynamicPageAddRowContentView(BrowserView):
                             )
             statusmessage = _("Row added successfully")
             IStatusMessage(self.request).add(statusmessage, type="info")
-            return self.request.response.redirect(f"{self.context.absolute_url()}#{str(random_id)}")
+            return self.request.response.redirect(f"{self.context.aq_parent.absolute_url()}#{str(random_id)}")
