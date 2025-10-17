@@ -21,7 +21,7 @@
                role="alert"
           >
             <div class="toast-header">
-              <strong class="me-auto">Notification</strong>
+              <strong class="me-auto" i18n:translate="">Notification</strong>
               <button class="btn-close"
                       aria-label="Close"
                       type="button"
@@ -353,9 +353,11 @@
               <div class="offcanvas-header">
                 <h5 class="offcanvas-title"
                     id="offcanvasRightLabel"
+                    i18n:translate=""
                 >Add new row</h5>
                 <button class="btn-close"
                         aria-label="Close"
+                        i18n:attributes="aria-label"
                         type="button"
                         data-bs-dismiss="offcanvas"
                 ></button>
