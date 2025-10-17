@@ -10,7 +10,12 @@ from zope.interface import providedBy
 VIEW_PREFIX = "cs_dynamicpages-"
 
 
-def add_custom_view(view_name: str, shown_fields: list[str], has_button: bool = False):
+def add_custom_view(
+    view_name: str,
+    shown_fields: list[str],
+    has_button: bool = False,
+    icon: str = "bricks",
+):
     """utility function to add a given view to the list of available row types"""
     record_name = "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields"
     values = api.portal.get_registry_record(record_name)
@@ -18,6 +23,7 @@ def add_custom_view(view_name: str, shown_fields: list[str], has_button: bool = 
         "row_type": view_name,
         "each_row_type_fields": shown_fields,
         "row_type_has_featured_add_button": has_button,
+        "row_type_icon": icon,
     }
     values.append(new_item)
     api.portal.set_registry_record(record_name, values)

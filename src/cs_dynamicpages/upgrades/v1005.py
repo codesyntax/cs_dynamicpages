@@ -1,5 +1,6 @@
 from . import logger
 from plone import api
+from cs_dynamicpages.utils import add_custom_view
 
 
 def upgrade(setup_tool=None):
@@ -18,3 +19,20 @@ def upgrade(setup_tool=None):
         "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields",
         new_registry_values,
     )
+
+    view_names = [view["row_type"] for view in new_registry_values]
+    if "cs_dynamicpages-title-description-view" not in view_names:
+        add_custom_view(
+            "cs_dynamicpages-title-description-view",
+            [
+                "IBasic.title",
+                "IBasic.description",
+                "IRowWidth.width",
+                "IExtraClass.extra_class",
+            ],
+            has_button=False,
+            icon="fonts",
+        )
+        logger.info("Added new view")
+
+    logger.info("Upgrade step run")
