@@ -43,7 +43,7 @@ class DynamicPageAddRowContentView(BrowserView):
                 type="DynamicPageRow",
                 container=self.context,
                 row_type=row_type,
-                title="New Row",
+                title=row_type,
                 description="Here goes the description",
                 id=str(random_id),
                 link_text="Link Text",

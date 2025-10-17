@@ -114,6 +114,7 @@
           if (modal) {
             modal.hide();
           }
+          sessionStorage.setItem('toast-message', 'Element deleted successfully.');
           // Refresh the page after successful update
           window.location.reload();
         });
