@@ -1,15 +1,17 @@
 # from cs_dynamicpages import _
-from Products.Five.browser import BrowserView
-from zope.interface import implementer
-from zope.interface import Interface
-from plone import api
-from plone.protect.interfaces import IDisableCSRFProtection
-from uuid import uuid4
-from zope.interface import alsoProvides
+from cs_dynamicpages import _
+
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from cs_dynamicpages.utils import get_available_views_for_row
-from cs_dynamicpages import _
+from plone import api
+from plone.protect.interfaces import IDisableCSRFProtection
+from Products.Five.browser import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
+from uuid import uuid4
+from zope.interface import alsoProvides
+from zope.interface import implementer
+from zope.interface import Interface
+
 
 class IDynamicPageFolderView(Interface):
     """Marker Interface for IDynamicPageFolderView"""
@@ -48,15 +50,15 @@ class DynamicPageAddRowContentView(BrowserView):
                 id=str(random_id),
                 link_text="Link Text",
                 link_url="/",
-                )
+            )
             available_views = get_available_views_for_row()
             for view in available_views:
                 if view["row_type"] == row_type:
                     has_featured_button = view["row_type_has_featured_add_button"]
                     if has_featured_button:
                         created_elements_find = api.content.find(
-                        portal_type="DynamicPageRow",
-                        id=str(random_id),
+                            portal_type="DynamicPageRow",
+                            id=str(random_id),
                         )
                         created_element = created_elements_find[0].getObject()
                         random_id_featured = uuid4()
@@ -68,7 +70,7 @@ class DynamicPageAddRowContentView(BrowserView):
                             id=str(random_id_featured),
                             link_text="Link Text",
                             link_url="/",
-                            )
+                        )
 
                         random_id_featured_2 = uuid4()
                         api.content.create(
@@ -79,7 +81,9 @@ class DynamicPageAddRowContentView(BrowserView):
                             id=str(random_id_featured_2),
                             link_text="Link Text",
                             link_url="/",
-                            )
+                        )
             statusmessage = _("Row added successfully")
             IStatusMessage(self.request).add(statusmessage, type="info")
-            return self.request.response.redirect(f"{self.context.aq_parent.absolute_url()}#{str(random_id)}")
+            return self.request.response.redirect(
+                f"{self.context.aq_parent.absolute_url()}#{random_id!s}"
+            )

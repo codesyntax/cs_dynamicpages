@@ -1,10 +1,11 @@
 from cs_dynamicpages import logger
+from cs_dynamicpages.content.dynamic_page_row import IDynamicPageRow
 from plone import api
 from zope.component import getSiteManager
 from zope.globalrequest import getRequest
 from zope.interface import Interface
-from cs_dynamicpages.content.dynamic_page_row import IDynamicPageRow
 from zope.interface import providedBy
+
 
 VIEW_PREFIX = "cs_dynamicpages-"
 
@@ -56,6 +57,7 @@ def enable_behavior(behavior_dotted_name=str):
             f"Behavior '{behavior_dotted_name}' is already enabled on 'DynamicPageRow'."
         )
 
+
 def get_available_views_for_row():
     items = []
     sm = getSiteManager()
@@ -66,13 +68,18 @@ def get_available_views_for_row():
     )
 
     values = api.portal.get_registry_record(
-            "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields", default=[]
-        )
+        "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields", default=[]
+    )
 
     for item in available_views:
         if item[0].startswith(VIEW_PREFIX):
             for value in values:
-                item_dict = {"row_type": item[0], "each_row_type_fields": [], "row_type_has_featured_add_button": False, "row_type_icon": "bricks"}
+                item_dict = {
+                    "row_type": item[0],
+                    "each_row_type_fields": [],
+                    "row_type_has_featured_add_button": False,
+                    "row_type_icon": "bricks",
+                }
                 if item[0] == value["row_type"] and value not in items:
                     item_dict = value
                     items.append(item_dict)

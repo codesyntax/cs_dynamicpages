@@ -1,12 +1,12 @@
 # from cs_dynamicpages import _
+from cs_dynamicpages.utils import get_available_views_for_row
 from plone import api
 from plone.protect.interfaces import IDisableCSRFProtection
 from Products.Five.browser import BrowserView
 from zope.interface import alsoProvides
 from zope.interface import implementer
 from zope.interface import Interface
-from cs_dynamicpages.utils import get_available_views_for_row
-from cs_dynamicpages.utils import VIEW_PREFIX
+
 
 class IDynamicView(Interface):
     """Marker Interface for IDynamicView"""
