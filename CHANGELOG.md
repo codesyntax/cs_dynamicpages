@@ -9,6 +9,14 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b3 (2025-10-17)
+
+
+### New features:
+
+- Add more javascript code to the frontend @libargutxi [#5](https://github.com/codesyntax/cs_dynamicpages/issues/5)
+- New configuration options @libargutxi 
+
 ## 1.0.0b2 (2025-10-08)
 
 
