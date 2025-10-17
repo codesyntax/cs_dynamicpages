@@ -306,7 +306,7 @@
                  tal:condition="view/dynamic_page_folder_element_url"
             >
               <a class="btn btn-primary btn-lg"
-                 href="${view/dynamic_page_folder_element_url}/++add++DynamicPageRow"
+              data-bs-toggle="offcanvas" data-bs-target="#addrow-offcanvasRight" aria-controls="offcanvasRight"
                  title="Add row"
                  i18n:attributes="title"
               ><svg xmlns="http://www.w3.org/2000/svg"
@@ -320,6 +320,24 @@
                         fill-rule="evenodd"
                   ></path>
                 </svg></a>
+            </div>
+            <div tal:define="available_views_for_row view/available_views_for_row"
+                 class="offcanvas offcanvas-end" tabindex="-1" id="addrow-offcanvasRight" aria-labelledby="offcanvasRightLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Add new row</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="list-unstyled row">
+                  <li tal:repeat="item available_views_for_row" class="col-6 mb-2">
+                    <div class="p-5 bg-light rounded h-100 d-flex justify-content-center align-items-center">
+                      <a data-bs-toggle="tooltip" data-bs-title="${item/row_type}" href="${view/dynamic_page_folder_element_url}/add-row-content?row_type=${item/row_type}">
+                      <span tal:replace="structure python:icons.tag(item['row_type_icon'], tag_class='fs-1')"></span>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </tal:condition>
           <!-- Delete Confirmation Modal -->
@@ -361,9 +379,17 @@
               </div>
             </div>
           </div>
+          <script>
+            // Selecciona todos los elementos con el atributo data-bs-toggle="tooltip"
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+
+            // Crea una instancia de tooltip para cada elemento encontrado
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+          </script>
         </tal:condition-configuration>
       </main>
     </metal:main>
-  </body>
+
+</body>
 
 </html>

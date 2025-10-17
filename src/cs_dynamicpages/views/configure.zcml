@@ -29,6 +29,14 @@
       />
 
   <browser:page
+      name="add-row-content"
+      for="cs_dynamicpages.content.dynamic_page_folder.IDynamicPageFolder"
+      class=".dynamic_page_folder_view.DynamicPageAddRowContentView"
+      permission="cmf.AddPortalContent"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
+
+  <browser:page
       name="dynamic-view"
       for="plone.app.contenttypes.interfaces.IFolder"
       class=".dynamic_view.DynamicView"
