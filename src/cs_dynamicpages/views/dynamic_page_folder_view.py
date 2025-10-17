@@ -9,6 +9,7 @@ from zope.interface import alsoProvides
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from cs_dynamicpages.utils import get_available_views_for_row
 from cs_dynamicpages import _
+from Products.statusmessages.interfaces import IStatusMessage
 
 class IDynamicPageFolderView(Interface):
     """Marker Interface for IDynamicPageFolderView"""
@@ -43,7 +44,10 @@ class DynamicPageAddRowContentView(BrowserView):
                 container=self.context,
                 row_type=row_type,
                 title="New Row",
-                id=str(random_id)
+                description="Here goes the description",
+                id=str(random_id),
+                link_text="Link Text",
+                link_url="/",
                 )
             available_views = get_available_views_for_row()
             for view in available_views:
@@ -52,7 +56,7 @@ class DynamicPageAddRowContentView(BrowserView):
                     if has_featured_button:
                         created_elements_find = api.content.find(
                         portal_type="DynamicPageRow",
-                        id=str(random_id)
+                        id=str(random_id),
                         )
                         created_element = created_elements_find[0].getObject()
                         random_id_featured = uuid4()
@@ -60,7 +64,10 @@ class DynamicPageAddRowContentView(BrowserView):
                             type="DynamicPageRowFeatured",
                             container=created_element,
                             title="New Featured",
-                            id=str(random_id_featured)
+                            description="Here goes the description",
+                            id=str(random_id_featured),
+                            link_text="Link Text",
+                            link_url="/",
                             )
 
                         random_id_featured_2 = uuid4()
@@ -68,12 +75,11 @@ class DynamicPageAddRowContentView(BrowserView):
                             type="DynamicPageRowFeatured",
                             container=created_element,
                             title="New Featured 2",
-                            id=str(random_id_featured_2)
+                            description="Here goes the description",
+                            id=str(random_id_featured_2),
+                            link_text="Link Text",
+                            link_url="/",
                             )
             statusmessage = _("Row added successfully")
-            api.portal.show_message(
-                message=statusmessage,
-                request=self.request,
-                type="info"
-            )
+            IStatusMessage(self.request).add(statusmessage, type="info")
             return self.request.response.redirect(f"{self.context.absolute_url()}#{str(random_id)}")
