@@ -26,6 +26,7 @@
               >Notification</strong>
               <button class="btn-close"
                       aria-label="Close"
+                      i18n:attributes="aria-label"
                       type="button"
                       data-bs-dismiss="toast"
               ></button>
