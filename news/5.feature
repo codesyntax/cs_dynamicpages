@@ -1,0 +1,1 @@
+Add more javascript code to the frontend @libargutxi
