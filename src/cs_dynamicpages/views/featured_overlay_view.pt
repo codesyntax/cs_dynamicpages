@@ -1,4 +1,4 @@
-<div class="card text-bg-dark my-5">
+<div class="card text-bg-dark">
 
   <tal:image tal:define="
                image view/related_image;

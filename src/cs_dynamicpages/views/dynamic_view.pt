@@ -13,28 +13,7 @@
   <body>
     <metal:main fill-slot="main">
       <main id="content">
-        <div class="toast-container position-fixed bottom-0 end-0 p-3">
-          <div class="toast"
-               id="liveToast"
-               aria-atomic="true"
-               aria-live="assertive"
-               role="alert"
-          >
-            <div class="toast-header">
-              <strong class="me-auto"
-                      i18n:translate=""
-              >Notification</strong>
-              <button class="btn-close"
-                      aria-label="Close"
-                      type="button"
-                      data-bs-dismiss="toast"
-                      i18n:attributes="aria-label"
-              ></button>
-            </div>
-            <div class="toast-body">
-            </div>
-          </div>
-        </div>
+
         <tal:condition-configuration condition="view/dynamic_page_folder_element">
           <div class="sticky-top right-0 d-flex justify-content-end py-2 me-2"
                tal:condition="view/can_edit"
@@ -429,6 +408,28 @@
             // Crea una instancia de tooltip para cada elemento encontrado
             const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
           </script>
+          <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div class="toast"
+                id="liveToast"
+                aria-atomic="true"
+                aria-live="assertive"
+                role="alert"
+            >
+              <div class="toast-header">
+                <strong class="me-auto"
+                        i18n:translate=""
+                >Notification</strong>
+                <button class="btn-close"
+                        aria-label="Close"
+                        type="button"
+                        data-bs-dismiss="toast"
+                        i18n:attributes="aria-label"
+                ></button>
+              </div>
+              <div class="toast-body">
+              </div>
+            </div>
+          </div>
         </tal:condition-configuration>
       </main>
     </metal:main>

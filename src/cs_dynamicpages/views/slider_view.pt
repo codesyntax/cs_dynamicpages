@@ -1,5 +1,5 @@
-<div class="carousel slide my-5"
-     id="DynamicPageSlider"
+<div class="carousel slide"
+     id="DynamicPageSlider-${context/id}"
      tal:define="
        elements view/elements;
      "
@@ -12,14 +12,14 @@
               aria-label="Slide ${repeat/element/index}"
               type="button"
               data-bs-slide-to="${repeat/element/index}"
-              data-bs-target="#DynamicPageSlider"
+              data-bs-target="#DynamicPageSlider-${context/id}"
               i18n:attributes="aria-label"
       ></button>
     </tal:indicators>
   </div>
   <div class="carousel-inner">
     <tal:slides repeat="brain elements">
-      <div class="carousel-item active"
+      <div
            tal:define="
              element brain/getObject;
            "
@@ -55,7 +55,7 @@
   <button class="carousel-control-prev"
           type="button"
           data-bs-slide="prev"
-          data-bs-target="#DynamicPageSlider"
+          data-bs-target="#DynamicPageSlider-${context/id}"
   >
     <span class="carousel-control-prev-icon"
           aria-hidden="true"
@@ -67,7 +67,7 @@
   <button class="carousel-control-next"
           type="button"
           data-bs-slide="next"
-          data-bs-target="#DynamicPageSlider"
+          data-bs-target="#DynamicPageSlider-${context/id}"
   >
     <span class="carousel-control-next-icon"
           aria-hidden="true"

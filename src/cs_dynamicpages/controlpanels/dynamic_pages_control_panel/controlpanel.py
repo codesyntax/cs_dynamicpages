@@ -15,6 +15,7 @@ from zope.interface import Interface
 class IRowTypeFieldsSchema(Interface):
     row_type = schema.Choice(
         title=_("Row type"),
+        description=_("Select the row type. This is the type of the row that will be added."),
         required=True,
         vocabulary="cs_dynamicpages.RowType",
     )
@@ -60,6 +61,19 @@ class IRowWidthSchema(Interface):
     row_width_class = schema.TextLine(
         title=_("Row Width CSS class"),
         description=_("CSS class for the row width"),
+        required=True,
+    )
+
+class ISpacerPaddingSchema(Interface):
+    spacer_padding_label = schema.TextLine(
+        title=_("Spacer Padding Label"),
+        description=_("This is the label corresponding to this padding"),
+        required=True,
+    )
+
+    spacer_padding_class = schema.TextLine(
+        title=_("Spacer Padding CSS class"),
+        description=_("CSS class for the spacer padding"),
         required=True,
     )
 
@@ -216,6 +230,40 @@ class IDynamicPagesControlPanel(Interface):
             {
                 "row_width_label": "Full width",
                 "row_width_class": "col-md-12",
+            },
+        ],
+    )
+    widget(spacer_paddings=DataGridFieldFactory)
+    spacer_paddings = schema.List(
+        title=_("Spacer paddings"),
+        description=_("Here you can define the available paddings for each spacer"),
+        required=True,
+        value_type=DictRow(
+            title=_("Spacer padding"),
+            schema=Interface(
+                ISpacerPaddingSchema,
+            ),
+        ),
+        default=[
+            {
+                "spacer_padding_label": "py-1",
+                "spacer_padding_class": "py-1",
+            },
+            {
+                "spacer_padding_label": "py-2",
+                "spacer_padding_class": "py-2",
+            },
+            {
+                "spacer_padding_label": "py-3",
+                "spacer_padding_class": "py-3",
+            },
+            {
+                "spacer_padding_label": "py-4",
+                "spacer_padding_class": "py-4",
+            },
+            {
+                "spacer_padding_label": "py-5",
+                "spacer_padding_class": "py-5",
             },
         ],
     )

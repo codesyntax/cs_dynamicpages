@@ -1,8 +1,4 @@
-<div class="my-5"
-     tal:define="
-       batch view/results;
-     "
->
+<tal:define tal:define="batch view/results;">
   <h2 class="mb-5">${context/Title}</h2>
   <div class="row">
     <tal:repeat tal:repeat="brain batch">
@@ -54,4 +50,4 @@
     >${context/link_text}</a>
   </div>
 
-</div>
+</tal:define>
