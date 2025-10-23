@@ -64,16 +64,16 @@ class IRowWidthSchema(Interface):
         required=True,
     )
 
-class ISpacerPaddingSchema(Interface):
-    spacer_padding_label = schema.TextLine(
-        title=_("Spacer Padding Label"),
-        description=_("This is the label corresponding to this padding"),
+class ISpacerSchema(Interface):
+    spacer_label = schema.TextLine(
+        title=_("Spacer Label"),
+        description=_("This is the label corresponding to this spacer"),
         required=True,
     )
 
-    spacer_padding_class = schema.TextLine(
-        title=_("Spacer Padding CSS class"),
-        description=_("CSS class for the spacer padding"),
+    spacer_class = schema.TextLine(
+        title=_("Spacer CSS class"),
+        description=_("CSS class for the spacer"),
         required=True,
     )
 
@@ -241,29 +241,29 @@ class IDynamicPagesControlPanel(Interface):
         value_type=DictRow(
             title=_("Spacer padding"),
             schema=Interface(
-                ISpacerPaddingSchema,
+                ISpacerSchema,
             ),
         ),
         default=[
             {
-                "spacer_padding_label": "py-1",
-                "spacer_padding_class": "py-1",
+                "spacer_label": "py-1",
+                "spacer_class": "py-1",
             },
             {
-                "spacer_padding_label": "py-2",
-                "spacer_padding_class": "py-2",
+                "spacer_label": "py-2",
+                "spacer_class": "py-2",
             },
             {
-                "spacer_padding_label": "py-3",
-                "spacer_padding_class": "py-3",
+                "spacer_label": "py-3",
+                "spacer_class": "py-3",
             },
             {
-                "spacer_padding_label": "py-4",
-                "spacer_padding_class": "py-4",
+                "spacer_label": "py-4",
+                "spacer_class": "py-4",
             },
             {
-                "spacer_padding_label": "py-5",
-                "spacer_padding_class": "py-5",
+                "spacer_label": "py-5",
+                "spacer_class": "py-5",
             },
         ],
     )
