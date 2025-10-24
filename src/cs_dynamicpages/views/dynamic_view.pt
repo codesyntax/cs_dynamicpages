@@ -37,7 +37,7 @@
                           rows view/rows;
                         ">
             <tal:featured repeat="brain rows">
-              <section class="dynamic-row ${row/row_template} state-${row/review_state} ${row/extra_class}"
+              <section class="dynamic-row ${row/row_template} state-${row/review_state} ${row/extra_class|nothing} ${row/padding_top|nothing} ${row/padding_bottom|nothing} ${row/margin_top|nothing} ${row/margin_bottom|nothing}"
                        id="${row/id}"
                        data-delete-target="true"
                        data-elementid="${row/id}"

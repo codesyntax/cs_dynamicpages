@@ -12,6 +12,14 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+  <plone:behavior
+      name="cs_dynamicpages.row_vertical_spacing"
+      title="RowVerticalSpacing"
+      description="This behavior provides..."
+      factory=".row_vertical_spacing.RowVerticalSpacing"
+      provides=".row_vertical_spacing.IRowVerticalSpacing"
+      marker=".row_vertical_spacing.IRowVerticalSpacingMarker"
+      />
 
   <plone:behavior
       name="cs_dynamicpages.row_width"
