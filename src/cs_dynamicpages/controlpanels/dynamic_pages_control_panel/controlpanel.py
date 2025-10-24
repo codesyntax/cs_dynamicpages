@@ -233,37 +233,142 @@ class IDynamicPagesControlPanel(Interface):
             },
         ],
     )
-    widget(spacer_paddings=DataGridFieldFactory)
-    spacer_paddings = schema.List(
-        title=_("Spacer paddings"),
+    widget(spacer_padding_top=DataGridFieldFactory)
+    spacer_padding_top = schema.List(
+        title=_("Spacer padding top"),
         description=_("Here you can define the available paddings for each spacer"),
         required=True,
         value_type=DictRow(
-            title=_("Spacer padding"),
+            title=_("Spacer padding top"),
             schema=Interface(
                 ISpacerSchema,
             ),
         ),
         default=[
             {
-                "spacer_label": "py-1",
-                "spacer_class": "py-1",
+                "spacer_label": "pt-1",
+                "spacer_class": "pt-1",
             },
             {
-                "spacer_label": "py-2",
-                "spacer_class": "py-2",
+                "spacer_label": "pt-2",
+                "spacer_class": "pt-2",
             },
             {
-                "spacer_label": "py-3",
-                "spacer_class": "py-3",
+                "spacer_label": "pt-3",
+                "spacer_class": "pt-3",
             },
             {
-                "spacer_label": "py-4",
-                "spacer_class": "py-4",
+                "spacer_label": "pt-4",
+                "spacer_class": "pt-4",
             },
             {
-                "spacer_label": "py-5",
-                "spacer_class": "py-5",
+                "spacer_label": "pt-5",
+                "spacer_class": "pt-5",
+            },
+        ],
+    )
+
+    widget(spacer_padding_bottom=DataGridFieldFactory)
+    spacer_padding_bottom = schema.List(
+        title=_("Spacer padding bottom"),
+        description=_("Here you can define the available paddings for each spacer"),
+        required=True,
+        value_type=DictRow(
+            title=_("Spacer padding bottom"),
+            schema=Interface(
+                ISpacerSchema,
+            ),
+        ),
+        default=[
+            {
+                "spacer_label": "pb-1",
+                "spacer_class": "pb-1",
+            },
+            {
+                "spacer_label": "pb-2",
+                "spacer_class": "pb-2",
+            },
+            {
+                "spacer_label": "pb-3",
+                "spacer_class": "pb-3",
+            },
+            {
+                "spacer_label": "pb-4",
+                "spacer_class": "pb-4",
+            },
+            {
+                "spacer_label": "pb-5",
+                "spacer_class": "pb-5",
+            },
+        ],
+    )
+
+    widget(spacer_margin_top=DataGridFieldFactory)
+    spacer_margin_top = schema.List(
+        title=_("Spacer margin top"),
+        description=_("Here you can define the available margins for each spacer"),
+        required=True,
+        value_type=DictRow(
+            title=_("Spacer margin top"),
+            schema=Interface(
+                ISpacerSchema,
+            ),
+        ),
+        default=[
+            {
+                "spacer_label": "mt-1",
+                "spacer_class": "mt-1",
+            },
+            {
+                "spacer_label": "mt-2",
+                "spacer_class": "mt-2",
+            },
+            {
+                "spacer_label": "mt-3",
+                "spacer_class": "mt-3",
+            },
+            {
+                "spacer_label": "mt-4",
+                "spacer_class": "mt-4",
+            },
+            {
+                "spacer_label": "mt-5",
+                "spacer_class": "mt-5",
+            },
+        ],
+    )
+
+    widget(spacer_margin_bottom=DataGridFieldFactory)
+    spacer_margin_bottom = schema.List(
+        title=_("Spacer margin bottom"),
+        description=_("Here you can define the available margins for each spacer"),
+        required=True,
+        value_type=DictRow(
+            title=_("Spacer margin bottom"),
+            schema=Interface(
+                ISpacerSchema,
+            ),
+        ),
+        default=[
+            {
+                "spacer_label": "mb-1",
+                "spacer_class": "mb-1",
+            },
+            {
+                "spacer_label": "mb-2",
+                "spacer_class": "mb-2",
+            },
+            {
+                "spacer_label": "mb-3",
+                "spacer_class": "mb-3",
+            },
+            {
+                "spacer_label": "mb-4",
+                "spacer_class": "mb-4",
+            },
+            {
+                "spacer_label": "mb-5",
+                "spacer_class": "mb-5",
             },
         ],
     )
