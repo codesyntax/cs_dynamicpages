@@ -19,8 +19,7 @@
   </div>
   <div class="carousel-inner">
     <tal:slides repeat="brain elements">
-      <div
-           tal:define="
+      <div tal:define="
              element brain/getObject;
            "
            tal:attributes="

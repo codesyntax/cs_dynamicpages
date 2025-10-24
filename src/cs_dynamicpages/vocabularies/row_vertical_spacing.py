@@ -20,7 +20,8 @@ class RowPaddingTop:
         # Just an example list of content for our vocabulary,
         # this can be any static or dynamic data, a catalog result for example.
         values = api.portal.get_registry_record(
-            "cs_dynamicpages.dynamic_pages_control_panel.spacer_padding_top", default=[]
+            "cs_dynamicpages.dynamic_pages_control_panel.spacer_padding_top",
+            default=[],
         )
 
         terms = []
@@ -38,6 +39,7 @@ class RowPaddingTop:
 
 RowPaddingTopFactory = RowPaddingTop()
 
+
 @implementer(IVocabularyFactory)
 class RowPaddingBottom:
     """ """
@@ -46,7 +48,8 @@ class RowPaddingBottom:
         # Just an example list of content for our vocabulary,
         # this can be any static or dynamic data, a catalog result for example.
         values = api.portal.get_registry_record(
-            "cs_dynamicpages.dynamic_pages_control_panel.spacer_padding_bottom", default=[]
+            "cs_dynamicpages.dynamic_pages_control_panel.spacer_padding_bottom",
+            default=[],
         )
 
         terms = []
@@ -64,6 +67,7 @@ class RowPaddingBottom:
 
 RowPaddingBottomFactory = RowPaddingBottom()
 
+
 @implementer(IVocabularyFactory)
 class RowMarginTop:
     """ """
@@ -72,7 +76,8 @@ class RowMarginTop:
         # Just an example list of content for our vocabulary,
         # this can be any static or dynamic data, a catalog result for example.
         values = api.portal.get_registry_record(
-            "cs_dynamicpages.dynamic_pages_control_panel.spacer_margin_top", default=[]
+            "cs_dynamicpages.dynamic_pages_control_panel.spacer_margin_top",
+            default=[],
         )
 
         terms = []
@@ -90,6 +95,7 @@ class RowMarginTop:
 
 RowMarginTopFactory = RowMarginTop()
 
+
 @implementer(IVocabularyFactory)
 class RowMarginBottom:
     """ """
@@ -98,7 +104,8 @@ class RowMarginBottom:
         # Just an example list of content for our vocabulary,
         # this can be any static or dynamic data, a catalog result for example.
         values = api.portal.get_registry_record(
-            "cs_dynamicpages.dynamic_pages_control_panel.spacer_margin_bottom", default=[]
+            "cs_dynamicpages.dynamic_pages_control_panel.spacer_margin_bottom",
+            default=[],
         )
 
         terms = []

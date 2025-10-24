@@ -15,7 +15,9 @@ from zope.interface import Interface
 class IRowTypeFieldsSchema(Interface):
     row_type = schema.Choice(
         title=_("Row type"),
-        description=_("Select the row type. This is the type of the row that will be added."),
+        description=_(
+            "Select the row type. This is the type of the row that will be added."
+        ),
         required=True,
         vocabulary="cs_dynamicpages.RowType",
     )
@@ -63,6 +65,7 @@ class IRowWidthSchema(Interface):
         description=_("CSS class for the row width"),
         required=True,
     )
+
 
 class ISpacerSchema(Interface):
     spacer_label = schema.TextLine(
