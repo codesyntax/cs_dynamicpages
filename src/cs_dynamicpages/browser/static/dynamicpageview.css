@@ -1,3 +1,7 @@
+:root {
+  --dynamicpages-primary-color: #68bcf3;
+}
+
 body.template-dynamic-view.userrole-manager {
   &:not(.preview-mode) {
     .dynamic-row {
@@ -31,5 +35,20 @@ body.template-dynamic-view.userrole-manager {
     pointer-events: none;
     height: 0;
     overflow: hidden;
+  }
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.offcanvas-body {
+  .available-view {
+    &:hover {
+      background-color: var(--dynamicpages-primary-color);
+      a {
+        color: white;
+      }
+    }
   }
 }

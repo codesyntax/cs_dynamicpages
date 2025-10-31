@@ -62,3 +62,12 @@ class DynamicView(BrowserView):
 
     def available_views_for_row(self):
         return get_available_views_for_row()
+
+    def normalize_title(self, title):
+        return (
+            title.replace("cs_dynamicpages-", " ")
+            .replace("-", " ")
+            .replace("_", " ")
+            .replace("view", "")
+            .lower()
+        )
