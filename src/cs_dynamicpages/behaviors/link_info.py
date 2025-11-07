@@ -1,5 +1,7 @@
 from cs_dynamicpages import _
 from plone import schema
+from plone.app.z3cform.widgets.link import LinkFieldWidget
+from plone.autoform import directives as form
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
 from Products.CMFPlone.utils import safe_hasattr
@@ -27,6 +29,11 @@ class ILinkInfo(model.Schema):
         title=_("Link URL"),
         description=_("Enter the URL of the link"),
         required=False,
+    )
+
+    form.widget(
+        "link_url",
+        LinkFieldWidget,
     )
 
 

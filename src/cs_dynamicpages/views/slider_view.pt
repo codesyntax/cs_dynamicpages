@@ -44,8 +44,8 @@
         <div class="carousel-caption d-none d-md-block">
           <h5>${element/Title}</h5>
           <p>${element/Description}</p>
-          <a href="${element/link_url}"
-             tal:condition="element/link_url"
+          <a href="${element/url}"
+             tal:condition="element/url"
           >${element/link_text}</a>
         </div>
       </div>

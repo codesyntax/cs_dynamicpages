@@ -30,11 +30,11 @@
         </tal:image>
         <div class="card-body">
           <a class="h5 card-title stretched-link mb-3"
-             href="${element/link_url}"
-             tal:condition="element/link_url"
+             href="${element/url}"
+             tal:condition="element/url"
           >${element/Title}</a>
           <p class="h5 card-title mb-3"
-             tal:condition="not:element/link_url"
+             tal:condition="not:element/url"
           >${element/Title}</p>
           <p class="card-text"
              tal:condition="element/Description"

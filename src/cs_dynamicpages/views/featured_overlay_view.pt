@@ -20,8 +20,8 @@
     <p class="card-text"
        tal:condition="context/Description"
     >${context/Description}</p>
-    <a href="${context/link_url}"
-       tal:condition="context/link_url"
+    <a href="${context/url}"
+       tal:condition="context/url"
     >${context/link_text}</a>
   </div>
 </div>

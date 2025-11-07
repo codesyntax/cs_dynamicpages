@@ -28,8 +28,8 @@
     >
     </tal:replace>
     <a class="btn btn-primary"
-       href="${context/link_url}"
-       tal:condition="context/link_url"
+       href="${context/url}"
+       tal:condition="context/url"
     >${context/link_text}</a>
   </div>
 </div>
