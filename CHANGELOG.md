@@ -9,6 +9,16 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b4 (2025-11-10)
+
+
+### New features:
+
+- - Add icons to views @libargutxi
+  - Add row spacing configuration @libargutxi
+  - Add behavior to set fetchpriority/loading attributes to images @libargutxi
+  - Complete translations @erral [#7](https://github.com/codesyntax/cs_dynamicpages/issues/7)
+
 ## 1.0.0b3 (2025-10-17)
 
 
