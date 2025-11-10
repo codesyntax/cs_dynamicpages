@@ -189,6 +189,7 @@ class IDynamicPagesControlPanel(Interface):
                 "each_row_type_fields": [
                     "IBasic.title",
                     "IRowWidth.width",
+                    "IRowColumns.columns",
                     "IExtraClass.extra_class",
                     "IRowVerticalSpacing.padding_top",
                     "IRowVerticalSpacing.padding_bottom",
