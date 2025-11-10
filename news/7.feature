@@ -1,4 +1,0 @@
-- Add icons to views @libargutxi
-- Add row spacing configuration @libargutxi
-- Add behavior to set fetchpriority/loading attributes to images @libargutxi
-- Complete translations @erral
