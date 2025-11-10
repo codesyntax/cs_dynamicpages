@@ -16,7 +16,7 @@
     // Only run on dynamic-view with edit permissions
     if (
       !document.body.classList.contains("template-dynamic-view") ||
-      !document.body.classList.contains("userrole-manager")
+      !document.body.classList.contains("can_edit")
     ) {
       return;
     }
@@ -114,7 +114,10 @@
           if (modal) {
             modal.hide();
           }
-          sessionStorage.setItem('toast-message', 'Element deleted successfully.');
+          sessionStorage.setItem(
+            "toast-message",
+            "Element deleted successfully."
+          );
           // Refresh the page after successful update
           window.location.reload();
         });

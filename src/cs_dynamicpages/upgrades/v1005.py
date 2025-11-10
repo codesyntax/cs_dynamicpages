@@ -1,6 +1,6 @@
 from . import logger
-from plone import api
 from cs_dynamicpages.utils import add_custom_view
+from plone import api
 
 
 def upgrade(setup_tool=None):

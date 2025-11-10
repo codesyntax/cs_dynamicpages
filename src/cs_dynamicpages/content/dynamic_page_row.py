@@ -1,7 +1,9 @@
 # from plone.app.textfield import RichText
 # from plone.autoform import directives
+from cs_dynamicpages.utils import absolute_target_url
 from logging import getLogger
 from plone import api
+from plone.app.contenttypes.utils import replace_link_variables_by_paths
 from plone.dexterity.content import Container
 
 # from plone.namedfile import field as namedfile
@@ -73,3 +75,8 @@ class DynamicPageRow(Container):
                 log.error(e)
                 return "ERROR RENDERING THE SELECTED ROW TYPE"
         return "THE SELECTED ROW TYPE IS NO LONGER AVAILABLE"
+
+    def url(self):
+        """Returns the url with link variables replaced."""
+        url = replace_link_variables_by_paths(self, self.link_url.strip())
+        return absolute_target_url(url)

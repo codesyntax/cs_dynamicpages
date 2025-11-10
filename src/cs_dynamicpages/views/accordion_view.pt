@@ -2,7 +2,7 @@
      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
      xmlns:metal="http://xml.zope.org/namespaces/metal"
      xmlns:tal="http://xml.zope.org/namespaces/tal"
-     class="my-5 accordion accordion-flush"
+     class="accordion accordion-flush"
      id="accordionDynamicPage-${context/id}"
      tal:define="
        elements view/elements;

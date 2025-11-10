@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Only run if both required classes are present on the body
   if (
     !document.body.classList.contains("template-dynamic-view") ||
-    !document.body.classList.contains("userrole-manager")
+    !document.body.classList.contains("can_edit")
   ) {
     return;
   }

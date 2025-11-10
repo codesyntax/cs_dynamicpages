@@ -13,28 +13,7 @@
   <body>
     <metal:main fill-slot="main">
       <main id="content">
-        <div class="toast-container position-fixed bottom-0 end-0 p-3">
-          <div class="toast"
-               id="liveToast"
-               aria-atomic="true"
-               aria-live="assertive"
-               role="alert"
-          >
-            <div class="toast-header">
-              <strong class="me-auto"
-                      i18n:translate=""
-              >Notification</strong>
-              <button class="btn-close"
-                      aria-label="Close"
-                      type="button"
-                      data-bs-dismiss="toast"
-                      i18n:attributes="aria-label"
-              ></button>
-            </div>
-            <div class="toast-body">
-            </div>
-          </div>
-        </div>
+
         <tal:condition-configuration condition="view/dynamic_page_folder_element">
           <div class="sticky-top right-0 d-flex justify-content-end py-2 me-2"
                tal:condition="view/can_edit"
@@ -58,7 +37,7 @@
                           rows view/rows;
                         ">
             <tal:featured repeat="brain rows">
-              <section class="dynamic-row ${row/row_template} state-${row/review_state} ${row/extra_class}"
+              <section class="dynamic-row ${row/row_template} state-${row/review_state} ${row/extra_class|nothing} ${row/padding_top|nothing} ${row/padding_bottom|nothing} ${row/margin_top|nothing} ${row/margin_bottom|nothing}"
                        id="${row/id}"
                        data-delete-target="true"
                        data-elementid="${row/id}"
@@ -343,7 +322,8 @@
                   <path d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"
                         fill-rule="evenodd"
                   ></path>
-                </svg></a>
+                </svg>
+              </a>
             </div>
             <div class="offcanvas offcanvas-end"
                  id="addrow-offcanvasRight"
@@ -367,15 +347,19 @@
               </div>
               <div class="offcanvas-body">
                 <ul class="list-unstyled row">
-                  <li class="col-6 mb-2"
+                  <li class="col-4 mb-2"
                       tal:repeat="item available_views_for_row"
                   >
-                    <div class="p-5 bg-light rounded h-100 d-flex justify-content-center align-items-center">
-                      <a href="${view/dynamic_page_folder_element_url}/add-row-content?row_type=${item/row_type}"
-                         data-bs-title="${item/row_type}"
-                         data-bs-toggle="tooltip"
+                    <div class="p-5 bg-light rounded h-100 available-view">
+                      <a class="d-flex flex-column align-items-center justify-content-between h-100 no-underline"
+                         href="${view/dynamic_page_folder_element_url}/add-row-content?row_type=${item/row_type}"
                       >
-                        <span tal:replace="structure python:icons.tag(item['row_type_icon'], tag_class='fs-1')"></span>
+                        <span class="mb-2"
+                              tal:content="structure python:icons.tag(item['row_type_icon'], tag_class='fs-1')"
+                        ></span>
+                        <span class="small text-center"
+                              tal:content="python:view.normalize_title(item['row_type'])"
+                        ></span>
                       </a>
                     </div>
                   </li>
@@ -429,6 +413,28 @@
             // Crea una instancia de tooltip para cada elemento encontrado
             const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
           </script>
+          <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div class="toast"
+                 id="liveToast"
+                 aria-atomic="true"
+                 aria-live="assertive"
+                 role="alert"
+            >
+              <div class="toast-header">
+                <strong class="me-auto"
+                        i18n:translate=""
+                >Notification</strong>
+                <button class="btn-close"
+                        aria-label="Close"
+                        type="button"
+                        data-bs-dismiss="toast"
+                        i18n:attributes="aria-label"
+                ></button>
+              </div>
+              <div class="toast-body">
+              </div>
+            </div>
+          </div>
         </tal:condition-configuration>
       </main>
     </metal:main>

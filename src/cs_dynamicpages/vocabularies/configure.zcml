@@ -26,4 +26,28 @@
       />
 
 
+  <utility
+      name="cs_dynamicpages.RowPaddingTop"
+      component=".row_vertical_spacing.RowPaddingTopFactory"
+      />
+
+
+  <utility
+      name="cs_dynamicpages.RowPaddingBottom"
+      component=".row_vertical_spacing.RowPaddingBottomFactory"
+      />
+
+
+  <utility
+      name="cs_dynamicpages.RowMarginTop"
+      component=".row_vertical_spacing.RowMarginTopFactory"
+      />
+
+
+  <utility
+      name="cs_dynamicpages.RowMarginBottom"
+      component=".row_vertical_spacing.RowMarginBottomFactory"
+      />
+
+
 </configure>

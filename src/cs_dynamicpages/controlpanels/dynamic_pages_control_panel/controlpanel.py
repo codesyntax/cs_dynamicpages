@@ -15,6 +15,9 @@ from zope.interface import Interface
 class IRowTypeFieldsSchema(Interface):
     row_type = schema.Choice(
         title=_("Row type"),
+        description=_(
+            "Select the row type. This is the type of the row that will be added."
+        ),
         required=True,
         vocabulary="cs_dynamicpages.RowType",
     )
@@ -64,6 +67,20 @@ class IRowWidthSchema(Interface):
     )
 
 
+class ISpacerSchema(Interface):
+    spacer_label = schema.TextLine(
+        title=_("Spacer Label"),
+        description=_("This is the label corresponding to this spacer"),
+        required=True,
+    )
+
+    spacer_class = schema.TextLine(
+        title=_("Spacer CSS class"),
+        description=_("CSS class for the spacer"),
+        required=True,
+    )
+
+
 class IDynamicPagesControlPanel(Interface):
     widget(row_type_fields=DataGridFieldFactory)
     row_type_fields = schema.List(
@@ -81,6 +98,10 @@ class IDynamicPagesControlPanel(Interface):
                     "IBasic.description",
                     "IRowWidth.width",
                     "IExtraClass.extra_class",
+                    "IRowVerticalSpacing.padding_top",
+                    "IRowVerticalSpacing.padding_bottom",
+                    "IRowVerticalSpacing.margin_top",
+                    "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": False,
                 "row_type_icon": "fonts",
@@ -93,9 +114,14 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowWidth.width",
                     "IExtraClass.extra_class",
                     "IRelatedImage.related_image",
+                    "IFetchPriorityImage.fetchpriority_image",
                     "IRelatedImage.image_position",
                     "ILinkInfo.link_text",
                     "ILinkInfo.link_url",
+                    "IRowVerticalSpacing.padding_top",
+                    "IRowVerticalSpacing.padding_bottom",
+                    "IRowVerticalSpacing.margin_top",
+                    "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": False,
                 "row_type_icon": "card-image",
@@ -108,8 +134,13 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowWidth.width",
                     "IExtraClass.extra_class",
                     "IRelatedImage.related_image",
+                    "IFetchPriorityImage.fetchpriority_image",
                     "ILinkInfo.link_text",
                     "ILinkInfo.link_url",
+                    "IRowVerticalSpacing.padding_top",
+                    "IRowVerticalSpacing.padding_bottom",
+                    "IRowVerticalSpacing.margin_top",
+                    "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": False,
                 "row_type_icon": "image-fill",
@@ -120,6 +151,10 @@ class IDynamicPagesControlPanel(Interface):
                     "IBasic.title",
                     "IRowWidth.width",
                     "IExtraClass.extra_class",
+                    "IRowVerticalSpacing.padding_top",
+                    "IRowVerticalSpacing.padding_bottom",
+                    "IRowVerticalSpacing.margin_top",
+                    "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": False,
                 "row_type_icon": "hr",
@@ -129,6 +164,10 @@ class IDynamicPagesControlPanel(Interface):
                 "each_row_type_fields": [
                     "IBasic.title",
                     "IExtraClass.extra_class",
+                    "IRowVerticalSpacing.padding_top",
+                    "IRowVerticalSpacing.padding_bottom",
+                    "IRowVerticalSpacing.margin_top",
+                    "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": False,
                 "row_type_icon": "arrows-vertical",
@@ -139,6 +178,11 @@ class IDynamicPagesControlPanel(Interface):
                     "IBasic.title",
                     "IRowWidth.width",
                     "IExtraClass.extra_class",
+                    "IRowVerticalSpacing.padding_top",
+                    "IRowVerticalSpacing.padding_bottom",
+                    "IRowVerticalSpacing.margin_top",
+                    "IRowVerticalSpacing.margin_bottom",
+                    "IFetchPriorityImage.fetchpriority_image",
                 ],
                 "row_type_has_featured_add_button": True,
                 "row_type_icon": "images",
@@ -148,7 +192,13 @@ class IDynamicPagesControlPanel(Interface):
                 "each_row_type_fields": [
                     "IBasic.title",
                     "IRowWidth.width",
+                    "IRowColumns.columns",
                     "IExtraClass.extra_class",
+                    "IRowVerticalSpacing.padding_top",
+                    "IRowVerticalSpacing.padding_bottom",
+                    "IRowVerticalSpacing.margin_top",
+                    "IRowVerticalSpacing.margin_bottom",
+                    "IFetchPriorityImage.fetchpriority_image",
                 ],
                 "row_type_has_featured_add_button": True,
                 "row_type_icon": "grid",
@@ -159,6 +209,10 @@ class IDynamicPagesControlPanel(Interface):
                     "IBasic.title",
                     "IRowWidth.width",
                     "IExtraClass.extra_class",
+                    "IRowVerticalSpacing.padding_top",
+                    "IRowVerticalSpacing.padding_bottom",
+                    "IRowVerticalSpacing.margin_top",
+                    "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": True,
                 "row_type_icon": "chevron-double-down",
@@ -175,6 +229,11 @@ class IDynamicPagesControlPanel(Interface):
                     "ICollection.betweeen",
                     "ICollection.limit",
                     "IRowColumns.columns",
+                    "IRowVerticalSpacing.padding_top",
+                    "IRowVerticalSpacing.padding_bottom",
+                    "IRowVerticalSpacing.margin_top",
+                    "IRowVerticalSpacing.margin_bottom",
+                    "IFetchPriorityImage.fetchpriority_image",
                 ],
                 "row_type_has_featured_add_button": False,
                 "row_type_icon": "funnel",
@@ -186,6 +245,10 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowWidth.width",
                     "IExtraClass.extra_class",
                     "IRichTextBehavior-text",
+                    "IRowVerticalSpacing.padding_top",
+                    "IRowVerticalSpacing.padding_bottom",
+                    "IRowVerticalSpacing.margin_top",
+                    "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": False,
                 "row_type_icon": "body-text",
@@ -216,6 +279,161 @@ class IDynamicPagesControlPanel(Interface):
             {
                 "row_width_label": "Full width",
                 "row_width_class": "col-md-12",
+            },
+        ],
+    )
+    widget(spacer_padding_top=DataGridFieldFactory)
+    spacer_padding_top = schema.List(
+        title=_("Spacer padding top"),
+        description=_("Here you can define the available paddings for each spacer"),
+        required=True,
+        value_type=DictRow(
+            title=_("Spacer padding top"),
+            schema=Interface(
+                ISpacerSchema,
+            ),
+        ),
+        default=[
+            {
+                "spacer_label": "0",
+                "spacer_class": "pt-0",
+            },
+            {
+                "spacer_label": "1",
+                "spacer_class": "pt-1",
+            },
+            {
+                "spacer_label": "2",
+                "spacer_class": "pt-2",
+            },
+            {
+                "spacer_label": "3",
+                "spacer_class": "pt-3",
+            },
+            {
+                "spacer_label": "4",
+                "spacer_class": "pt-4",
+            },
+            {
+                "spacer_label": "5",
+                "spacer_class": "pt-5",
+            },
+        ],
+    )
+
+    widget(spacer_padding_bottom=DataGridFieldFactory)
+    spacer_padding_bottom = schema.List(
+        title=_("Spacer padding bottom"),
+        description=_("Here you can define the available paddings for each spacer"),
+        required=True,
+        value_type=DictRow(
+            title=_("Spacer padding bottom"),
+            schema=Interface(
+                ISpacerSchema,
+            ),
+        ),
+        default=[
+            {
+                "spacer_label": "0",
+                "spacer_class": "pb-0",
+            },
+            {
+                "spacer_label": "1",
+                "spacer_class": "pb-1",
+            },
+            {
+                "spacer_label": "2",
+                "spacer_class": "pb-2",
+            },
+            {
+                "spacer_label": "3",
+                "spacer_class": "pb-3",
+            },
+            {
+                "spacer_label": "4",
+                "spacer_class": "pb-4",
+            },
+            {
+                "spacer_label": "5",
+                "spacer_class": "pb-5",
+            },
+        ],
+    )
+
+    widget(spacer_margin_top=DataGridFieldFactory)
+    spacer_margin_top = schema.List(
+        title=_("Spacer margin top"),
+        description=_("Here you can define the available margins for each spacer"),
+        required=True,
+        value_type=DictRow(
+            title=_("Spacer margin top"),
+            schema=Interface(
+                ISpacerSchema,
+            ),
+        ),
+        default=[
+            {
+                "spacer_label": "0",
+                "spacer_class": "mt-0",
+            },
+            {
+                "spacer_label": "1",
+                "spacer_class": "mt-1",
+            },
+            {
+                "spacer_label": "2",
+                "spacer_class": "mt-2",
+            },
+            {
+                "spacer_label": "3",
+                "spacer_class": "mt-3",
+            },
+            {
+                "spacer_label": "4",
+                "spacer_class": "mt-4",
+            },
+            {
+                "spacer_label": "5",
+                "spacer_class": "mt-5",
+            },
+        ],
+    )
+
+    widget(spacer_margin_bottom=DataGridFieldFactory)
+    spacer_margin_bottom = schema.List(
+        title=_("Spacer margin bottom"),
+        description=_("Here you can define the available margins for each spacer"),
+        required=True,
+        value_type=DictRow(
+            title=_("Spacer margin bottom"),
+            schema=Interface(
+                ISpacerSchema,
+            ),
+        ),
+        default=[
+            {
+                "spacer_label": "0",
+                "spacer_class": "mb-0",
+            },
+            {
+                "spacer_label": "1",
+                "spacer_class": "mb-1",
+            },
+            {
+                "spacer_label": "2",
+                "spacer_class": "mb-2",
+            },
+            {
+                "spacer_label": "3",
+                "spacer_class": "mb-3",
+            },
+            {
+                "spacer_label": "4",
+                "spacer_class": "mb-4",
+            },
+            {
+                "spacer_label": "5",
+                "spacer_class": "mb-5",
             },
         ],
     )

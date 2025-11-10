@@ -1,8 +1,8 @@
-<div class="my-5"
-     tal:define="
-       batch view/results;
-     "
->
+<tal:define tal:define="
+              batch view/results;
+              fetchpriority_image_value python:hasattr(context, 'fetchpriority_image') and (context.fetchpriority_image and 'high' or 'auto') or 'auto';
+              loading_image_value python:hasattr(context, 'fetchpriority_image') and (context.fetchpriority_image and 'eager' or 'lazy') or 'lazy';
+            ">
   <h2 class="mb-5">${context/Title}</h2>
   <div class="row">
     <tal:repeat tal:repeat="brain batch">
@@ -24,7 +24,9 @@
                                                               scale_in_src='huge',
                                                               sizes='(min-width: 1400px) 400px, 100vw',
                                                               alt=element.Title() ,
-                                                              title=element.Title())"
+                                                              title=element.Title(),
+                                                              fetchpriority=fetchpriority_image_value,
+                                                              loading=loading_image_value)"
               />
             </tal:image>
             <div class="card-body">
@@ -54,4 +56,4 @@
     >${context/link_text}</a>
   </div>
 
-</div>
+</tal:define>
