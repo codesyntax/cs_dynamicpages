@@ -15,6 +15,5 @@
       />
 
   <adapter factory=".body_class.DynamicViewFolderClasses" />
-  <adapter factory=".body_class.DynamicViewNavigationRootClasses" />
 
 </configure>
