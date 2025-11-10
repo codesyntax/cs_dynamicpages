@@ -20,10 +20,8 @@ NON_REDIRECTABLE_URL_SCHEMES = [
 ]
 
 # links starting with these URL scheme should not be resolved to paths
-NON_RESOLVABLE_URL_SCHEMES = NON_REDIRECTABLE_URL_SCHEMES + [
-    "file:",
-    "ftp:",
-]
+NON_RESOLVABLE_URL_SCHEMES = [*NON_REDIRECTABLE_URL_SCHEMES, "file:", "ftp:"]
+
 
 def add_custom_view(
     view_name: str,
@@ -81,6 +79,7 @@ def enable_behavior(behavior_dotted_name=str):
 
 def get_available_views_for_row():
     from cs_dynamicpages.content.dynamic_page_row import IDynamicPageRow
+
     items = []
     sm = getSiteManager()
 
@@ -106,9 +105,6 @@ def get_available_views_for_row():
                     item_dict = value
                     items.append(item_dict)
     return items
-
-
-
 
 
 def normalize_uid_from_path(url=None):

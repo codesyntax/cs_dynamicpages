@@ -5,15 +5,12 @@ from plone import api
 
 def upgrade(setup_tool=None):
     """ """
-    logger.info(
-        "Running upgrade (Python): Add new behavior"
-    )
+    logger.info("Running upgrade (Python): Add new behavior")
     enable_behavior("cs_dynamicpages.fetchpriority_image")
     row_types_fields = api.portal.get_registry_record(
         "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields", default=[]
     )
     new_row_types_fields = []
-    import pdb; pdb.set_trace(); a=1
 
     for row_type_field in row_types_fields:
         if row_type_field["row_type"] not in [

@@ -3,7 +3,7 @@
      tal:define="
        elements view/elements;
        fetchpriority_image_value python:hasattr(context, 'fetchpriority_image') and (context.fetchpriority_image and 'high' or 'auto') or 'auto';
-           loading_image_value python:hasattr(context, 'fetchpriority_image') and (context.fetchpriority_image and 'eager' or 'lazy') or 'lazy';
+       loading_image_value python:hasattr(context, 'fetchpriority_image') and (context.fetchpriority_image and 'eager' or 'lazy') or 'lazy';
      "
      tal:condition="elements"
 >

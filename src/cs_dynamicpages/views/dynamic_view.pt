@@ -323,7 +323,7 @@
                         fill-rule="evenodd"
                   ></path>
                 </svg>
-                </a>
+              </a>
             </div>
             <div class="offcanvas offcanvas-end"
                  id="addrow-offcanvasRight"
@@ -351,11 +351,15 @@
                       tal:repeat="item available_views_for_row"
                   >
                     <div class="p-5 bg-light rounded h-100 available-view">
-                      <a href="${view/dynamic_page_folder_element_url}/add-row-content?row_type=${item/row_type}"
-                         class="d-flex flex-column align-items-center justify-content-between h-100 no-underline"
+                      <a class="d-flex flex-column align-items-center justify-content-between h-100 no-underline"
+                         href="${view/dynamic_page_folder_element_url}/add-row-content?row_type=${item/row_type}"
                       >
-                        <span class="mb-2" tal:content="structure python:icons.tag(item['row_type_icon'], tag_class='fs-1')"></span>
-                        <span class="small text-center" tal:content="python:view.normalize_title(item['row_type'])"></span>
+                        <span class="mb-2"
+                              tal:content="structure python:icons.tag(item['row_type_icon'], tag_class='fs-1')"
+                        ></span>
+                        <span class="small text-center"
+                              tal:content="python:view.normalize_title(item['row_type'])"
+                        ></span>
                       </a>
                     </div>
                   </li>

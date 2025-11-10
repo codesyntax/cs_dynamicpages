@@ -122,7 +122,6 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.padding_bottom",
                     "IRowVerticalSpacing.margin_top",
                     "IRowVerticalSpacing.margin_bottom",
-
                 ],
                 "row_type_has_featured_add_button": False,
                 "row_type_icon": "card-image",
@@ -142,7 +141,6 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.padding_bottom",
                     "IRowVerticalSpacing.margin_top",
                     "IRowVerticalSpacing.margin_bottom",
-
                 ],
                 "row_type_has_featured_add_button": False,
                 "row_type_icon": "image-fill",
