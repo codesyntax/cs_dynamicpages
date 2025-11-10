@@ -16,7 +16,7 @@
     // Only run on dynamic-view with edit permissions
     if (
       !document.body.classList.contains("template-dynamic-view") ||
-      !document.body.classList.contains("userrole-manager")
+      !document.body.classList.contains("can_edit")
     ) {
       return;
     }
@@ -86,7 +86,6 @@
       return;
     }
 
-
     const baseUrl = element.dataset.parenturl || "";
 
     const requestBody = {
@@ -95,7 +94,6 @@
         delta: delta,
       },
     };
-
 
     fetch(baseUrl, {
       method: "PATCH",
@@ -114,7 +112,10 @@
         }
       })
       .finally(() => {
-        sessionStorage.setItem('toast-message', 'Element reordered successfully.');
+        sessionStorage.setItem(
+          "toast-message",
+          "Element reordered successfully."
+        );
         // Refresh the page after successful update
         window.location.reload();
       });

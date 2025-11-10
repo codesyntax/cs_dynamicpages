@@ -2,7 +2,7 @@
   --dynamicpages-primary-color: #68bcf3;
 }
 
-body.template-dynamic-view.userrole-manager {
+body.template-dynamic-view.can_edit {
   &:not(.preview-mode) {
     .dynamic-row {
       background-color: #f5f5f5;
