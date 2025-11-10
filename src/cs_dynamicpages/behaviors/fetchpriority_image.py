@@ -19,7 +19,11 @@ class IFetchPriorityImage(model.Schema):
 
     fetchpriority_image = schema.Bool(
         title=_("Fetch priority image"),
-        description=_("Set this to true if you want to fetch the priority image"),
+        description=_(
+            "Set this to true if you want to signal that this image has a 'high' fetch priority, "
+            "otherwise 'auto' will be used. When using 'high' the value of the loading "
+            "attribute will be set to 'eager', and 'lazy' when it is not set."
+        ),
         required=False,
     )
 
