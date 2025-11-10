@@ -1,7 +1,5 @@
 from plone import api
-from plone.app.contenttypes.interfaces import IFolder
 from plone.app.layout.globals.layout import IBodyClassAdapter
-from plone.base.interfaces import INavigationRoot
 from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
