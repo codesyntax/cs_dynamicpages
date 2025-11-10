@@ -59,6 +59,15 @@
       marker=".related_image.IRelatedImageMarker"
       />
 
+  <plone:behavior
+      name="cs_dynamicpages.fetchpriority_image"
+      title="FetchPriorityImage"
+      description="This behavior provides..."
+      factory=".fetchpriority_image.FetchPriorityImage"
+      provides=".fetchpriority_image.IFetchPriorityImage"
+      marker=".fetchpriority_image.IFetchPriorityImageMarker"
+      />
+
 
   <plone:behavior
       name="cs_dynamicpages.link_info"

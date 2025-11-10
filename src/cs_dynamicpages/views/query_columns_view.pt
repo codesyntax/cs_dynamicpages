@@ -22,7 +22,9 @@
                                                               scale_in_src='huge',
                                                               sizes='(min-width: 1400px) 400px, 100vw',
                                                               alt=element.Title() ,
-                                                              title=element.Title())"
+                                                              title=element.Title(),
+                                                              fetchpriority=context.fetchpriority_image and 'high' or 'auto',
+                                                              loading=context.fetchpriority_image and 'eager' or 'lazy')"
               />
             </tal:image>
             <div class="card-body">

@@ -53,6 +53,7 @@
     <element value="cs_dynamicpages.row_width" />
     <element value="cs_dynamicpages.extra_class" />
     <element value="cs_dynamicpages.row_vertical_spacing" />
+    <element value="cs_dynamicpages.fetchpriority_image" />
     <element value="plone.collection" />
     <element value="plone.constraintypes" />
     <!--<element value="plone.leadimage"/>-->
