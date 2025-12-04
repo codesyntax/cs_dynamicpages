@@ -92,9 +92,10 @@ def get_available_views_for_row():
         "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields", default=[]
     )
 
-    for item in available_views:
-        if item[0].startswith(VIEW_PREFIX):
-            for value in values:
+
+    for value in values:
+        for item in available_views:
+            if item[0].startswith(VIEW_PREFIX):
                 item_dict = {
                     "row_type": item[0],
                     "each_row_type_fields": [],

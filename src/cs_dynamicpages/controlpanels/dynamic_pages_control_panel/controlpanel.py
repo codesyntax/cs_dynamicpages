@@ -82,7 +82,7 @@ class ISpacerSchema(Interface):
 
 
 class IDynamicPagesControlPanel(Interface):
-    widget(row_type_fields=DataGridFieldFactory)
+    widget("row_type_fields", DataGridFieldFactory, allow_reorder=True)
     row_type_fields = schema.List(
         title=_("Row type fields"),
         description=_(
@@ -256,7 +256,7 @@ class IDynamicPagesControlPanel(Interface):
         ],
     )
 
-    widget(row_widths=DataGridFieldFactory)
+    widget("row_widths", DataGridFieldFactory, allow_reorder=True)
     row_widths = schema.List(
         title=_("Row widths"),
         description=_("Here you can define the available widths for each row"),
@@ -282,7 +282,7 @@ class IDynamicPagesControlPanel(Interface):
             },
         ],
     )
-    widget(spacer_padding_top=DataGridFieldFactory)
+    widget("spacer_padding_top", DataGridFieldFactory, allow_reorder=True)
     spacer_padding_top = schema.List(
         title=_("Spacer padding top"),
         description=_("Here you can define the available paddings for each spacer"),
@@ -321,7 +321,7 @@ class IDynamicPagesControlPanel(Interface):
         ],
     )
 
-    widget(spacer_padding_bottom=DataGridFieldFactory)
+    widget("spacer_padding_bottom", DataGridFieldFactory, allow_reorder=True)
     spacer_padding_bottom = schema.List(
         title=_("Spacer padding bottom"),
         description=_("Here you can define the available paddings for each spacer"),
@@ -360,7 +360,7 @@ class IDynamicPagesControlPanel(Interface):
         ],
     )
 
-    widget(spacer_margin_top=DataGridFieldFactory)
+    widget("spacer_margin_top", DataGridFieldFactory, allow_reorder=True)
     spacer_margin_top = schema.List(
         title=_("Spacer margin top"),
         description=_("Here you can define the available margins for each spacer"),
@@ -399,7 +399,7 @@ class IDynamicPagesControlPanel(Interface):
         ],
     )
 
-    widget(spacer_margin_bottom=DataGridFieldFactory)
+    widget("spacer_margin_bottom", DataGridFieldFactory, allow_reorder=True)
     spacer_margin_bottom = schema.List(
         title=_("Spacer margin bottom"),
         description=_("Here you can define the available margins for each spacer"),

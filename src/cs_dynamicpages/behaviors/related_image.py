@@ -60,6 +60,15 @@ class IRelatedImage(model.Schema):
         default="left",
     )
 
+    model.fieldset(
+        'related_image',
+        label=u'Related Image',
+        fields=[
+            'related_image',
+            'image_position',
+        ],
+    )
+
 
 @implementer(IRelatedImage)
 @adapter(IRelatedImageMarker)

@@ -44,6 +44,17 @@ class IRowVerticalSpacing(model.Schema):
         default="mb-0",
     )
 
+    model.fieldset(
+        'spacing',
+        label=u'Spacing',
+        fields=[
+            'padding_top',
+            'padding_bottom',
+            'margin_top',
+            'margin_bottom',
+        ],
+    )
+
 
 @implementer(IRowVerticalSpacing)
 @adapter(IRowVerticalSpacingMarker)
