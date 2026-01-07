@@ -1,7 +1,9 @@
 from cs_dynamicpages.indexers.content_index_extender import extract_text_value_to_index
 from cs_dynamicpages.indexers.content_index_extender import FIELDS_TO_INDEX
 from cs_dynamicpages.indexers.content_index_extender import FolderishItemTextExtender
-from cs_dynamicpages.indexers.content_index_extender import get_available_text_from_dynamic_pages
+from cs_dynamicpages.indexers.content_index_extender import (
+    get_available_text_from_dynamic_pages,
+)
 from cs_dynamicpages.indexers.content_index_extender import get_enabled_fields
 from cs_dynamicpages.testing import CS_DYNAMICPAGES_INTEGRATION_TESTING
 from plone import api

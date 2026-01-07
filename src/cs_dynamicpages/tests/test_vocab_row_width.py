@@ -43,7 +43,7 @@ class RowWidthIntegrationTest(unittest.TestCase):
         factory = getUtility(IVocabularyFactory, vocab_name)
         vocabulary = factory(self.portal)
         if len(vocabulary) > 0:
-            term = list(vocabulary)[0]
+            term = next(iter(vocabulary))
             self.assertIsNotNone(term.value)
             self.assertIsNotNone(term.token)
             self.assertIsNotNone(term.title)

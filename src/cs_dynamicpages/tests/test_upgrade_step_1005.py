@@ -77,10 +77,6 @@ class UpgradeStep1005IntegrationTest(unittest.TestCase):
         """Test that upgrade adds title-description-view if not present."""
         record_name = "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields"
 
-        # Check if view exists before upgrade
-        values = api.portal.get_registry_record(record_name)
-        view_names = [v["row_type"] for v in values]
-
         # Run upgrade
         upgrade()
 

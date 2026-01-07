@@ -3,6 +3,7 @@ from cs_dynamicpages.upgrades.v1007 import upgrade
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
+from typing import ClassVar
 
 import unittest
 
@@ -13,7 +14,7 @@ class UpgradeStep1007IntegrationTest(unittest.TestCase):
     layer = CS_DYNAMICPAGES_INTEGRATION_TESTING
 
     # Row types that should get the fetchpriority_image field
-    TARGET_ROW_TYPES = [
+    TARGET_ROW_TYPES: ClassVar[list[str]] = [
         "cs_dynamicpages-slider-view",
         "cs_dynamicpages-features-view",
         "cs_dynamicpages-query-columns-view",
@@ -75,13 +76,15 @@ class UpgradeStep1007IntegrationTest(unittest.TestCase):
         # Check non-target row types do not have the field (unless they had it before)
         updated_values = api.portal.get_registry_record(record_name)
         for value in updated_values:
-            if value["row_type"] not in self.TARGET_ROW_TYPES:
-                if not non_target_types_fields.get(value["row_type"], False):
-                    self.assertNotIn(
-                        "IFetchPriorityImage.fetchpriority_image",
-                        value["each_row_type_fields"],
-                        f"Field unexpectedly added to non-target row type {value['row_type']}",
-                    )
+            row_type = value["row_type"]
+            is_non_target = row_type not in self.TARGET_ROW_TYPES
+            had_field_before = non_target_types_fields.get(row_type, False)
+            if is_non_target and not had_field_before:
+                self.assertNotIn(
+                    "IFetchPriorityImage.fetchpriority_image",
+                    value["each_row_type_fields"],
+                    f"Field unexpectedly added to non-target: {row_type}",
+                )
 
     def test_upgrade_preserves_existing_fields_in_target_types(self):
         """Test that upgrade preserves existing fields in target row types."""

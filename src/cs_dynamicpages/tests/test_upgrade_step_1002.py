@@ -23,7 +23,9 @@ class UpgradeStep1002IntegrationTest(unittest.TestCase):
         self.original_values = {}
         for key in UPGRADEABLE_KEYS:
             record_name = f"cs_dynamicpages.dynamic_pages_control_panel.{key}"
-            self.original_values[key] = list(api.portal.get_registry_record(record_name))
+            self.original_values[key] = list(
+                api.portal.get_registry_record(record_name)
+            )
         # Clear any existing upgrade annotations
         self._clear_upgrade_annotations()
 
@@ -44,7 +46,9 @@ class UpgradeStep1002IntegrationTest(unittest.TestCase):
         """Clear any upgrade annotations from the portal."""
         annotations = IAnnotations(self.portal)
         for key in UPGRADEABLE_KEYS:
-            annotation_key = f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            annotation_key = (
+                f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            )
             if annotation_key in annotations:
                 del annotations[annotation_key]
 
@@ -61,7 +65,9 @@ class UpgradeStep1002IntegrationTest(unittest.TestCase):
         # Check annotations were created
         annotations = IAnnotations(self.portal)
         for key in UPGRADEABLE_KEYS:
-            annotation_key = f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            annotation_key = (
+                f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            )
             self.assertIn(annotation_key, annotations)
             # Value should be a JSON string
             value_str = annotations[annotation_key]
@@ -73,14 +79,17 @@ class UpgradeStep1002IntegrationTest(unittest.TestCase):
     def test_post_handler_restores_values_from_annotations(self):
         """Test that post_handler restores values from annotations.
 
-        Note: pre_handler reads from old typo registry key 'dynamica_pages_control_panel'
-        which is typically empty. This test verifies the restore mechanism works
-        by manually setting up annotations.
+        Note: pre_handler reads from old typo registry key
+        'dynamica_pages_control_panel' which is typically empty.
+        This test verifies the restore mechanism works by manually
+        setting up annotations.
         """
         # Manually set up annotations with known values
         annotations = IAnnotations(self.portal)
         for key in UPGRADEABLE_KEYS:
-            annotation_key = f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            annotation_key = (
+                f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            )
             # Store current values in annotations
             current_values = api.portal.get_registry_record(
                 f"cs_dynamicpages.dynamic_pages_control_panel.{key}", default=[]
@@ -105,7 +114,9 @@ class UpgradeStep1002IntegrationTest(unittest.TestCase):
         annotations = IAnnotations(self.portal)
         # Verify annotations exist
         for key in UPGRADEABLE_KEYS:
-            annotation_key = f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            annotation_key = (
+                f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            )
             self.assertIn(annotation_key, annotations)
 
         # Run post_handler
@@ -113,7 +124,9 @@ class UpgradeStep1002IntegrationTest(unittest.TestCase):
 
         # Verify annotations were removed
         for key in UPGRADEABLE_KEYS:
-            annotation_key = f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            annotation_key = (
+                f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            )
             self.assertNotIn(annotation_key, annotations)
 
     def test_post_handler_handles_invalid_json(self):
@@ -121,7 +134,9 @@ class UpgradeStep1002IntegrationTest(unittest.TestCase):
         # Manually set invalid JSON in annotations
         annotations = IAnnotations(self.portal)
         for key in UPGRADEABLE_KEYS:
-            annotation_key = f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            annotation_key = (
+                f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            )
             annotations[annotation_key] = "invalid json {"
 
         # Should not raise exception
@@ -139,7 +154,9 @@ class UpgradeStep1002IntegrationTest(unittest.TestCase):
         # Manually set a non-list JSON value
         annotations = IAnnotations(self.portal)
         for key in UPGRADEABLE_KEYS:
-            annotation_key = f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            annotation_key = (
+                f"cs_dynamicpages.dynamic_pages_control_panel.{key}.UPGRADE"
+            )
             annotations[annotation_key] = json.dumps({"not": "a list"})
 
         # Should not raise exception

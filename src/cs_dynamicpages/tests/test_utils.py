@@ -65,25 +65,39 @@ class TestUrlUsesScheme(unittest.TestCase):
     """Tests for _url_uses_scheme function."""
 
     def test_returns_true_for_mailto(self):
-        self.assertTrue(_url_uses_scheme(NON_REDIRECTABLE_URL_SCHEMES, "mailto:test@example.com"))
+        self.assertTrue(
+            _url_uses_scheme(NON_REDIRECTABLE_URL_SCHEMES, "mailto:test@example.com")
+        )
 
     def test_returns_true_for_tel(self):
-        self.assertTrue(_url_uses_scheme(NON_REDIRECTABLE_URL_SCHEMES, "tel:+1234567890"))
+        self.assertTrue(
+            _url_uses_scheme(NON_REDIRECTABLE_URL_SCHEMES, "tel:+1234567890")
+        )
 
     def test_returns_true_for_callto(self):
-        self.assertTrue(_url_uses_scheme(NON_REDIRECTABLE_URL_SCHEMES, "callto:username"))
+        self.assertTrue(
+            _url_uses_scheme(NON_REDIRECTABLE_URL_SCHEMES, "callto:username")
+        )
 
     def test_returns_false_for_http(self):
-        self.assertFalse(_url_uses_scheme(NON_REDIRECTABLE_URL_SCHEMES, "http://example.com"))
+        self.assertFalse(
+            _url_uses_scheme(NON_REDIRECTABLE_URL_SCHEMES, "http://example.com")
+        )
 
     def test_returns_false_for_https(self):
-        self.assertFalse(_url_uses_scheme(NON_REDIRECTABLE_URL_SCHEMES, "https://example.com"))
+        self.assertFalse(
+            _url_uses_scheme(NON_REDIRECTABLE_URL_SCHEMES, "https://example.com")
+        )
 
     def test_returns_true_for_file_in_non_resolvable(self):
-        self.assertTrue(_url_uses_scheme(NON_RESOLVABLE_URL_SCHEMES, "file:///path/to/file"))
+        self.assertTrue(
+            _url_uses_scheme(NON_RESOLVABLE_URL_SCHEMES, "file:///path/to/file")
+        )
 
     def test_returns_true_for_ftp_in_non_resolvable(self):
-        self.assertTrue(_url_uses_scheme(NON_RESOLVABLE_URL_SCHEMES, "ftp://server/path"))
+        self.assertTrue(
+            _url_uses_scheme(NON_RESOLVABLE_URL_SCHEMES, "ftp://server/path")
+        )
 
     def test_returns_false_for_empty_schemes_list(self):
         self.assertFalse(_url_uses_scheme([], "mailto:test@example.com"))
@@ -152,7 +166,11 @@ class AddCustomViewIntegrationTest(unittest.TestCase):
         self.assertEqual(len(values), original_len + 1)
 
         # Last entry should be our new one
-        matching = [v for v in values if v["row_type"] == view_name and v["row_type_icon"] == "heart"]
+        matching = [
+            v
+            for v in values
+            if v["row_type"] == view_name and v["row_type_icon"] == "heart"
+        ]
         self.assertTrue(len(matching) >= 1)
 
     def test_add_custom_view_default_icon_is_bricks(self):
