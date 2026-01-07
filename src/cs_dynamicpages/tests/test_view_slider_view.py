@@ -57,4 +57,49 @@ class SliderViewsFunctionalTest(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer["portal"]
+        self.request = self.layer["request"]
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
+
+        # Create content structure
+        self.folder = api.content.create(self.portal, "Folder", "test-folder-slider")
+        self.dpf = api.content.create(
+            self.folder, "DynamicPageFolder", "rows", title="Rows"
+        )
+        self.row = api.content.create(
+            self.dpf,
+            "DynamicPageRow",
+            "test-row-slider",
+            title="Test Row",
+        )
+        self.row.row_type = "cs_dynamicpages-slider-view"
+
+    def test_slider_view_renders_without_error(self):
+        """Test that slider view renders without raising an error."""
+        view = getMultiAdapter(
+            (self.row, self.request),
+            name="cs_dynamicpages-slider-view",
+        )
+        html = view()
+        self.assertIsInstance(html, str)
+
+    def test_slider_view_renders_carousel_with_elements(self):
+        """Test that slider view renders carousel structure when elements exist."""
+        # Create a featured item for the slider with required attributes
+        featured = api.content.create(
+            self.row,
+            "DynamicPageRowFeatured",
+            "featured-1",
+            title="Featured Item",
+        )
+        # Set required attributes to avoid None errors
+        featured.link_url = ""
+        featured.link_text = ""
+        api.content.transition(obj=featured, transition="publish")
+
+        view = getMultiAdapter(
+            (self.row, self.request),
+            name="cs_dynamicpages-slider-view",
+        )
+        html = view()
+        self.assertIn("carousel", html)
+        self.assertIn("carousel-inner", html)

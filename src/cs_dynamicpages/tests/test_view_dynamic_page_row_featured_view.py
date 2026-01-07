@@ -65,4 +65,34 @@ class DynamicPageRowFeaturedViewsFunctionalTest(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer["portal"]
+        self.request = self.layer["request"]
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
+
+        # Create full content structure
+        self.folder = api.content.create(
+            self.portal, "Folder", "test-folder-featured-func"
+        )
+        self.dpf = api.content.create(
+            self.folder, "DynamicPageFolder", "rows", title="Rows"
+        )
+        self.row = api.content.create(
+            self.dpf,
+            "DynamicPageRow",
+            "test-row",
+            title="Test Row",
+        )
+        self.featured = api.content.create(
+            self.row,
+            "DynamicPageRowFeatured",
+            "test-featured-func",
+            title="Test Featured",
+        )
+
+    def test_dynamic_page_row_featured_view_renders_without_error(self):
+        """Test that DynamicPageRowFeatured view renders without error."""
+        view = getMultiAdapter(
+            (self.featured, self.request),
+            name="view",
+        )
+        html = view()
+        self.assertIsInstance(html, str)

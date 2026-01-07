@@ -51,4 +51,20 @@ class DynamicPageFolderViewsFunctionalTest(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer["portal"]
+        self.request = self.layer["request"]
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
+
+        # Create a DynamicPageFolder
+        self.folder = api.content.create(self.portal, "Folder", "test-folder-dpf-func")
+        self.dpf = api.content.create(
+            self.folder, "DynamicPageFolder", "rows", title="Rows"
+        )
+
+    def test_dynamic_page_folder_view_renders_without_error(self):
+        """Test that DynamicPageFolder view renders without raising an error."""
+        view = getMultiAdapter(
+            (self.dpf, self.request),
+            name="view",
+        )
+        html = view()
+        self.assertIsInstance(html, str)

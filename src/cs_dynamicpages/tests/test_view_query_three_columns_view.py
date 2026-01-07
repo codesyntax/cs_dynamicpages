@@ -57,4 +57,27 @@ class QueryColumnsViewsFunctionalTest(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer["portal"]
+        self.request = self.layer["request"]
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
+
+        # Create content structure
+        self.folder = api.content.create(self.portal, "Folder", "test-folder-query")
+        self.dpf = api.content.create(
+            self.folder, "DynamicPageFolder", "rows", title="Rows"
+        )
+        self.row = api.content.create(
+            self.dpf,
+            "DynamicPageRow",
+            "test-row-query",
+            title="Test Row",
+        )
+        self.row.row_type = "cs_dynamicpages-query-columns-view"
+
+    def test_query_columns_view_renders_without_error(self):
+        """Test that query columns view renders without raising an error."""
+        view = getMultiAdapter(
+            (self.row, self.request),
+            name="cs_dynamicpages-query-columns-view",
+        )
+        html = view()
+        self.assertIsInstance(html, str)

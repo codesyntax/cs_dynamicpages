@@ -56,4 +56,36 @@ class HorizontalRuleViewsFunctionalTest(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer["portal"]
+        self.request = self.layer["request"]
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
+
+        # Create content structure
+        self.folder = api.content.create(self.portal, "Folder", "test-folder-hr")
+        self.dpf = api.content.create(
+            self.folder, "DynamicPageFolder", "rows", title="Rows"
+        )
+        self.row = api.content.create(
+            self.dpf,
+            "DynamicPageRow",
+            "test-row-hr",
+            title="Test Row",
+        )
+        self.row.row_type = "cs_dynamicpages-horizontal-rule-view"
+
+    def test_horizontal_rule_view_renders_without_error(self):
+        """Test that horizontal rule view renders without raising an error."""
+        view = getMultiAdapter(
+            (self.row, self.request),
+            name="cs_dynamicpages-horizontal-rule-view",
+        )
+        html = view()
+        self.assertIsInstance(html, str)
+
+    def test_horizontal_rule_view_renders_hr_element(self):
+        """Test that horizontal rule view renders an hr element."""
+        view = getMultiAdapter(
+            (self.row, self.request),
+            name="cs_dynamicpages-horizontal-rule-view",
+        )
+        html = view()
+        self.assertIn("<hr", html)

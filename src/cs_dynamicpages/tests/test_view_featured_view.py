@@ -57,4 +57,59 @@ class FeaturedViewsFunctionalTest(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer["portal"]
+        self.request = self.layer["request"]
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
+
+        # Create content structure
+        self.folder = api.content.create(self.portal, "Folder", "test-folder-featured")
+        self.dpf = api.content.create(
+            self.folder, "DynamicPageFolder", "rows", title="Rows"
+        )
+        self.row = api.content.create(
+            self.dpf,
+            "DynamicPageRow",
+            "test-row-featured",
+            title="Test Row",
+        )
+        self.row.row_type = "cs_dynamicpages-featured-view"
+
+    def test_featured_view_renders_without_error(self):
+        """Test that featured view renders without raising an error."""
+        # Set required attributes to avoid None errors
+        self.row.link_url = ""
+        self.row.link_text = ""
+        self.row.image_position = "left"
+
+        view = getMultiAdapter(
+            (self.row, self.request),
+            name="cs_dynamicpages-featured-view",
+        )
+        html = view()
+        self.assertIsInstance(html, str)
+
+    def test_featured_view_renders_row_structure(self):
+        """Test that featured view renders Bootstrap row structure."""
+        self.row.link_url = ""
+        self.row.link_text = ""
+        self.row.image_position = "left"
+
+        view = getMultiAdapter(
+            (self.row, self.request),
+            name="cs_dynamicpages-featured-view",
+        )
+        html = view()
+        self.assertIn('class="row"', html)
+        self.assertIn("col-md-6", html)
+
+    def test_featured_view_renders_title(self):
+        """Test that featured view renders the row title."""
+        self.row.link_url = ""
+        self.row.link_text = ""
+        self.row.image_position = "left"
+
+        view = getMultiAdapter(
+            (self.row, self.request),
+            name="cs_dynamicpages-featured-view",
+        )
+        html = view()
+        self.assertIn("Test Row", html)
