@@ -78,5 +78,7 @@ class DynamicPageRow(Container):
 
     def url(self):
         """Returns the url with link variables replaced."""
+        if not self.link_url:
+            return ""
         url = replace_link_variables_by_paths(self, self.link_url.strip())
         return absolute_target_url(url)
