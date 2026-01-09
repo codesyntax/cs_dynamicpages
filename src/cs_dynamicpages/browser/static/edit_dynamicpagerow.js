@@ -90,15 +90,29 @@
     const allFields = document.querySelectorAll(".field");
     const rowTypeField = rowTypeSelect.closest(".field");
 
-    // Show all fields first
-    allFields.forEach((field) => {
-      field.style.display = "";
-    });
+    // Define default Plone fields that should always be visible
+    const alwaysVisibleFieldIds = [
+      "formfield-form-widgets-IExcludeFromNavigation-exclude_from_nav",
+      "formfield-form-widgets-IShortName-id",
+      "formfield-form-widgets-IOwnership-creators",
+      "formfield-form-widgets-IOwnership-contributors",
+      "formfield-form-widgets-IOwnership-rights",
+      "formfield-form-widgets-IPublication-effective",
+      "formfield-form-widgets-IPublication-expires",
+      "formfield-form-widgets-ICategorization-subjects",
+      "formfield-form-widgets-ICategorization-language",
+    ];
 
-    // Always hide all fields except row type select by default
+    // Hide all fields except the row type selector and the always-visible ones
     allFields.forEach((field) => {
-      if (field !== rowTypeField) {
+      // Check if the field is the row type selector or if its ID is in the always-visible list
+      const isAlwaysVisible = alwaysVisibleFieldIds.includes(field.id);
+
+      if (field !== rowTypeField && !isAlwaysVisible) {
         field.style.display = "none";
+      } else {
+        // Ensure the always-visible fields and the selector are displayed
+        field.style.display = "";
       }
     });
 
@@ -131,6 +145,34 @@
         field.style.display = "";
       });
     }
+
+    // After toggling fields, check for empty fieldsets and hide them
+    updateFieldsetAndTabVisibility();
+  }
+
+  function updateFieldsetAndTabVisibility() {
+    const allFieldsets = document.querySelectorAll("fieldset");
+    const allTabLinks = document.querySelectorAll("a.autotoc-level-1");
+
+    allFieldsets.forEach((fieldset, index) => {
+      // Find all direct .field children that are currently visible
+      const visibleFields = fieldset.querySelectorAll(
+        ".field:not([style*='display: none'])"
+      );
+
+      const hasVisibleFields = Array.from(visibleFields).some(
+        (field) => field.style.display !== "none"
+      );
+
+      // Hide or show the fieldset based on whether it has visible fields
+      fieldset.style.display = hasVisibleFields ? "" : "none";
+
+      // Also hide/show the corresponding autotoc tab/link based on its order
+      const tabLink = allTabLinks[index];
+      if (tabLink) {
+        tabLink.style.display = hasVisibleFields ? "" : "none";
+      }
+    });
   }
 
   // Initialize when DOM is fully loaded
