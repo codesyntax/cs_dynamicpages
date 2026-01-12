@@ -18,6 +18,9 @@
             </div>
           </div>
         </div>
+        <tal:conditiondrapanddrop tal:condition="view/can_edit">
+          <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        </tal:conditiondrapanddrop>
         <tal:features define="
                           rows view/rows;
                         ">
@@ -27,6 +30,12 @@
               id="${row/id}" data-delete-target="true" data-elementid="${row/id}" data-elementurl="${row/absolute_url}"
               data-move-target="true" data-parenturl="${row/aq_parent/absolute_url}" tal:define="row brain/getObject;">
               <div class="gap-2 edit-options edit-buttons d-flex" tal:condition="row/can_edit">
+                <div class="drag-handle" title="Drap and drop">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path d="M10 4H4v6h6V4zm0 10H4v6h6v-6zm10-10h-6v6h6V4zm0 10h-6v6h6v-6z" />
+                  </svg>
+                </div>
                 <small
                   class="px-2 py-1 mb-3 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-2 position-relative">
                   <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-info-circle" fill="currentColor" height="16"

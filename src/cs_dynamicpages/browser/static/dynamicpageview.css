@@ -72,6 +72,30 @@ body.template-dynamic-view.can_edit {
     height: 5em;
     width: auto;
   }
+
+  /* Estiloa heldulekuarentzat (handle) */
+  .drag-handle {
+    cursor: grab;
+    color: #aaa;
+    margin-right: 10px;
+  }
+
+  .drag-handle:hover {
+    color: #333;
+  }
+
+  /* SortableJS-k erabiltzen dituen klaseak */
+  .sortable-ghost {
+    opacity: 0 !important;
+    background-color: #c8ebfb !important;
+    border: 2px dashed var(--dynamicpages-primary-color);
+  }
+
+  .sortable-chosen,
+  .sortable-drag {
+    opacity: 1 !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .no-underline {
