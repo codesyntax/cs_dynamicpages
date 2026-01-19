@@ -23,10 +23,10 @@ class IRowWidth(model.Schema):
     )
 
     model.fieldset(
-        'spacing',
-        label=u'Spacing',
+        "spacing",
+        label="Spacing",
         fields=[
-            'width',
+            "width",
         ],
     )
 

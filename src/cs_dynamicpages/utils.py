@@ -92,7 +92,6 @@ def get_available_views_for_row():
         "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields", default=[]
     )
 
-
     for value in values:
         for item in available_views:
             if item[0].startswith(VIEW_PREFIX):

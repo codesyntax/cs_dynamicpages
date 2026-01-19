@@ -13,23 +13,34 @@
           <div class="card">
             <tal:image tal:define="
                          image element/image;
-                       " tal:condition="image" tal:on-error="nothing">
+                       "
+                       tal:condition="image"
+                       tal:on-error="nothing"
+            >
               <img tal:define="
                      images element/@@images;
-                   " tal:replace="structure python:images.srcset(fieldname='image',
+                   "
+                   tal:replace="structure python:images.srcset(fieldname='image',
                                                               scale_in_src='huge',
                                                               sizes='(min-width: 1400px) 400px, 100vw',
                                                               alt=element.Title() ,
                                                               title=element.Title(),
                                                               fetchpriority=fetchpriority_image_value,
-                                                              loading=loading_image_value)" />
+                                                              loading=loading_image_value)"
+              />
             </tal:image>
             <div class="card-body">
-              <a class="h5 card-title stretched-link" href="${element/absolute_url}">${element/Title}</a>
-              <p class="mb-3" tal:condition="python:element.portal_type != 'Event'"
-                tal:content="python:element.toLocalizedTime(element.EffectiveDate())"></p>
-              <p class="mb-3" tal:condition="python:element.portal_type == 'Event'"
-                tal:content="python:element.toLocalizedTime(element.start)"></p>
+              <a class="h5 card-title stretched-link"
+                 href="${element/absolute_url}"
+              >${element/Title}</a>
+              <p class="mb-3"
+                 tal:condition="python:element.portal_type != 'Event'"
+                 tal:content="python:element.toLocalizedTime(element.EffectiveDate())"
+              ></p>
+              <p class="mb-3"
+                 tal:condition="python:element.portal_type == 'Event'"
+                 tal:content="python:element.toLocalizedTime(element.start)"
+              ></p>
 
               <p class="card-text">${element/Description}</p>
             </div>
@@ -39,6 +50,8 @@
     </tal:repeat>
   </div>
   <div class="d-flex justify-content-end">
-    <a href="${context/link_url}" tal:condition="context/link_url">${context/link_text}</a>
+    <a href="${context/link_url}"
+       tal:condition="context/link_url"
+    >${context/link_text}</a>
   </div>
 </tal:define>

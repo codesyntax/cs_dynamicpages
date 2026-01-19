@@ -29,10 +29,10 @@ class IFetchPriorityImage(model.Schema):
     )
 
     model.fieldset(
-        'related_image',
-        label=u'Related Image',
+        "related_image",
+        label="Related Image",
         fields=[
-            'fetchpriority_image',
+            "fetchpriority_image",
         ],
     )
 

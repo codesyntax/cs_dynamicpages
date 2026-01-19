@@ -1,9 +1,10 @@
+from cs_dynamicpages.views.dynamic_view import DynamicView
 from plone import api
 from plone.app.layout.globals.layout import IBodyClassAdapter
 from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
-from cs_dynamicpages.views.dynamic_view import DynamicView
+
 
 @adapter(Interface, Interface)
 @implementer(IBodyClassAdapter)

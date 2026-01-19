@@ -61,11 +61,11 @@ class IRelatedImage(model.Schema):
     )
 
     model.fieldset(
-        'related_image',
-        label=u'Related Image',
+        "related_image",
+        label="Related Image",
         fields=[
-            'related_image',
-            'image_position',
+            "related_image",
+            "image_position",
         ],
     )
 

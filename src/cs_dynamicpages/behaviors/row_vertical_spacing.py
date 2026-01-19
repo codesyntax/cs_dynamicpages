@@ -45,13 +45,13 @@ class IRowVerticalSpacing(model.Schema):
     )
 
     model.fieldset(
-        'spacing',
-        label=u'Spacing',
+        "spacing",
+        label="Spacing",
         fields=[
-            'padding_top',
-            'padding_bottom',
-            'margin_top',
-            'margin_bottom',
+            "padding_top",
+            "padding_bottom",
+            "margin_top",
+            "margin_bottom",
         ],
     )
 

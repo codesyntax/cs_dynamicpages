@@ -65,7 +65,8 @@ class DynamicView(BrowserView):
 
     def normalize_title(self, title):
         return (
-            title.replace("cs_dynamicpages-", " ")
+            title
+            .replace("cs_dynamicpages-", " ")
             .replace("-", " ")
             .replace("_", " ")
             .replace("view", "")
