@@ -1,0 +1,25 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:gs="http://namespaces.zope.org/genericsetup">
+
+  <gs:registerProfile name="1008"
+    title="Install new behavior"
+    directory="1008"
+    description='Configuration for version 1008'
+    for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+    provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+  <gs:upgradeSteps source="1007"
+    destination="1008"
+    profile="cs_dynamicpages:default">
+
+    <gs:upgradeStep title="Install new behavior"
+      description=""
+      handler=".v1008.upgrade" />
+
+    <gs:upgradeDepends title="Install new behavior (GS profile)"
+      description=""
+      import_profile="cs_dynamicpages.upgrades:1008" />
+
+  </gs:upgradeSteps>
+
+</configure>
