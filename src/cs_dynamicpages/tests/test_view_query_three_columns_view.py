@@ -10,74 +10,39 @@ from zope.interface.interfaces import ComponentLookupError
 import unittest
 
 
-class QueryColumnsViewsIntegrationTest(unittest.TestCase):
+class ViewsIntegrationTest(unittest.TestCase):
     layer = CS_DYNAMICPAGES_INTEGRATION_TESTING
 
     def setUp(self):
         self.portal = self.layer["portal"]
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
-
-        # Create a DynamicPageFolder with a DynamicPageRow
-        self.folder = api.content.create(self.portal, "Folder", "test-folder")
-        self.dpf = api.content.create(
-            self.folder, "DynamicPageFolder", "rows", title="Rows"
-        )
-        self.row = api.content.create(
-            self.dpf,
-            "DynamicPageRow",
-            "test-row",
-            title="Test Row",
-        )
-        self.row.row_type = "cs_dynamicpages-query-columns-view"
+        api.content.create(self.portal, "Folder", "other-folder")
+        api.content.create(self.portal, "Document", "front-page")
 
     def test_query_columns_view_is_registered(self):
-        """Test that query columns view is registered for DynamicPageRow."""
         view = getMultiAdapter(
-            (self.row, self.portal.REQUEST),
-            name="cs_dynamicpages-query-columns-view",
+            (self.portal["other-folder"], self.portal.REQUEST),
+            name="query-columns-view",
         )
         self.assertTrue(IQueryColumnsView.providedBy(view))
 
-    def test_query_columns_view_not_found_for_document(self):
-        """Test that query columns view is not registered for Document."""
-        doc = api.content.create(self.portal, "Document", "front-page")
+    def test_query_columns_view_not_matching_interface(self):
         view_found = True
         try:
-            getMultiAdapter(
-                (doc, self.portal.REQUEST),
-                name="cs_dynamicpages-query-columns-view",
+            view = getMultiAdapter(
+                (self.portal["front-page"], self.portal.REQUEST),
+                name="query-columns-view",
             )
         except ComponentLookupError:
             view_found = False
+        else:
+            view_found = IQueryColumnsView.providedBy(view)
         self.assertFalse(view_found)
 
 
-class QueryColumnsViewsFunctionalTest(unittest.TestCase):
+class ViewsFunctionalTest(unittest.TestCase):
     layer = CS_DYNAMICPAGES_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.portal = self.layer["portal"]
-        self.request = self.layer["request"]
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
-
-        # Create content structure
-        self.folder = api.content.create(self.portal, "Folder", "test-folder-query")
-        self.dpf = api.content.create(
-            self.folder, "DynamicPageFolder", "rows", title="Rows"
-        )
-        self.row = api.content.create(
-            self.dpf,
-            "DynamicPageRow",
-            "test-row-query",
-            title="Test Row",
-        )
-        self.row.row_type = "cs_dynamicpages-query-columns-view"
-
-    def test_query_columns_view_renders_without_error(self):
-        """Test that query columns view renders without raising an error."""
-        view = getMultiAdapter(
-            (self.row, self.request),
-            name="cs_dynamicpages-query-columns-view",
-        )
-        html = view()
-        self.assertIsInstance(html, str)

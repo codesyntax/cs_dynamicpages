@@ -124,7 +124,6 @@ i18n: $(VENV_FOLDER) ## Update locales
 .PHONY: test
 test: $(VENV_FOLDER) ## run tests
 	@$(BIN_FOLDER)/pytest
-	@if [ -d "src/cs_dynamicpages/tests" ]; then $(BIN_FOLDER)/pytest src/cs_dynamicpages/tests; fi
 
 .PHONY: test-coverage
 test-coverage: $(VENV_FOLDER) ## run tests with coverage

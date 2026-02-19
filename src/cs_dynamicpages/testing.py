@@ -44,8 +44,3 @@ ACCEPTANCE_TESTING = FunctionalTesting(
     ),
     name="CsDynamicpagesLayer:AcceptanceTesting",
 )
-
-# Aliases for backward compatibility with bobtemplates.plone naming
-CS_DYNAMICPAGES_INTEGRATION_TESTING = INTEGRATION_TESTING
-CS_DYNAMICPAGES_FUNCTIONAL_TESTING = FUNCTIONAL_TESTING
-CS_DYNAMICPAGES_ACCEPTANCE_TESTING = ACCEPTANCE_TESTING
