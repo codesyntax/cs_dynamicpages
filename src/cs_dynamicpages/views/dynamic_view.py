@@ -6,6 +6,7 @@ from Products.Five.browser import BrowserView
 from zope.interface import alsoProvides
 from zope.interface import implementer
 from zope.interface import Interface
+from cs_dynamicpages.templates import Manager
 
 
 class IDynamicView(Interface):
@@ -65,10 +66,13 @@ class DynamicView(BrowserView):
 
     def normalize_title(self, title):
         return (
-            title
-            .replace("cs_dynamicpages-", " ")
+            title.replace("cs_dynamicpages-", " ")
             .replace("-", " ")
             .replace("_", " ")
             .replace("view", "")
             .lower()
         )
+
+    def available_templates(self):
+        manager = Manager(self.context)
+        return manager.get_templates()

@@ -9,6 +9,7 @@ from zope.component import adapter
 from zope.interface import Interface
 from zope.interface import implementer
 from zope.interface import provider
+import json
 
 
 class ITemplatesMarker(Interface):
@@ -17,28 +18,34 @@ class ITemplatesMarker(Interface):
 
 @provider(IFormFieldProvider)
 class ITemplates(model.Schema):
-    """
-    """
+    """ """
 
-    project = schema.TextLine(
-        title=_(u'Project'),
-        description=_(u'Give in a project name'),
+    templates = schema.JSONField(
+        title=_(
+            "",
+        ),
+        description=_(
+            "",
+        ),
+        schema=json.dumps({}),
+        default={"templates": []},
         required=False,
+        readonly=False,
     )
 
 
 @implementer(ITemplates)
 @adapter(ITemplatesMarker)
-class Templates(object):
+class Templates:
     def __init__(self, context):
         self.context = context
 
     @property
-    def project(self):
-        if safe_hasattr(self.context, 'project'):
-            return self.context.project
+    def templates(self):
+        if safe_hasattr(self.context, "templates"):
+            return self.context.templates
         return None
 
-    @project.setter
-    def project(self, value):
-        self.context.project = value
+    @templates.setter
+    def templates(self, value):
+        self.context.templates = value

@@ -19,6 +19,76 @@
                tal:condition="view/can_edit"
           >
             <div class="px-3 py-2 mb-3 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5">
+              <button class="btn btn-primary"
+                      type="button"
+                      data-bs-target="#saveAsTemplateModal"
+                      data-bs-toggle="modal"
+                      i18n:translate=""
+              >
+                Save as template
+              </button>
+              <div class="modal fade"
+                   id="exampleModal"
+                   aria-hidden="true"
+                   aria-labelledby="saveAsTemplateModalLabel"
+                   tabindex="-1"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5"
+                          id="saveAsTemplateModalLabel"
+                          i18n:translate=""
+                      >Save as template?</h1>
+                      <button class="btn-close"
+                              aria-label="Close"
+                              type="button"
+                              data-bs-dismiss="modal"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+        ...
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-secondary"
+                              type="button"
+                              data-bs-dismiss="modal"
+                              i18n:translate=""
+                      >No</button>
+                      <button class="btn btn-primary"
+                              type="button"
+                              i18n:translate=""
+                      >Yes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="px-3 py-2 mb-3 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5"
+                 tal:define="
+                   templates view/available_templates;
+                 "
+                 tal:condition="templates"
+            >
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle"
+                        aria-expanded="false"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        i18n:translate=""
+                >
+                  Templates
+                </button>
+                <ul class="dropdown-menu">
+                  <li tal:repeat="template templates">
+                    <a class="dropdown-item"
+                       href="#"
+                    >${template/name}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="px-3 py-2 mb-3 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5">
               <div class="form-check form-switch">
                 <input class="form-check-input"
                        id="editModeToggle"
