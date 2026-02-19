@@ -66,10 +66,10 @@ class DynamicPageFolderIntegrationTest(unittest.TestCase):
         api.content.delete(obj=obj)
         self.assertNotIn("dynamic_page_folder", parent.objectIds())
 
-    def test_ct_dynamic_page_folder_globally_not_addable(self):
+    def test_ct_dynamic_page_folder_globally_addable(self):
         setRoles(self.portal, TEST_USER_ID, ["Contributor"])
         fti = queryUtility(IDexterityFTI, name="DynamicPageFolder")
-        self.assertFalse(fti.global_allow, f"{fti.id} is globally addable!")
+        self.assertTrue(fti.global_allow, f"{fti.id} is not globally addable!")
 
     def test_ct_dynamic_page_folder_filter_content_type_true(self):
         setRoles(self.portal, TEST_USER_ID, ["Contributor"])
