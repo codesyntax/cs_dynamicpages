@@ -8,6 +8,15 @@
   <!-- -*- extra stuff goes here -*- -->
 
   <browser:page
+    name="dynamic-pages-template-management"
+    for="*"
+    class=".dynamic_pages_template_management.DynamicPagesTemplateManagement"
+    template="dynamic_pages_template_management.pt"
+    permission="zope2.View"
+    layer="cs_dynamicpages.interfaces.ICsDynamicpagesLayer"
+    />
+
+  <browser:page
       name="view"
       for="cs_dynamicpages.content.dynamic_page_row_featured.IDynamicPageRowFeatured"
       class=".dynamic_page_row_featured_view.DynamicPageRowFeaturedView"
