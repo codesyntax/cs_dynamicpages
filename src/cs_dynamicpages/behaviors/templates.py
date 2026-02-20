@@ -1,4 +1,3 @@
-
 from cs_dynamicpages import _
 from plone import schema
 from plone.autoform.interfaces import IFormFieldProvider
