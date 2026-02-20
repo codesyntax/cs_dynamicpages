@@ -28,18 +28,17 @@ class ViewsIntegrationTest(unittest.TestCase):
         )
         self.assertTrue(IDynamicPagesTemplateManagement.providedBy(view))
 
-    def test_dynamic_pages_template_management_not_matching_interface(self):
-        view_found = True
-        try:
-            view = getMultiAdapter(
-                (self.portal["front-page"], self.portal.REQUEST),
-                name="dynamic-pages-template-management",
-            )
-        except ComponentLookupError:
-            view_found = False
-        else:
-            view_found = IDynamicPagesTemplateManagement.providedBy(view)
-        self.assertFalse(view_found)
+        view = getMultiAdapter(
+            (self.portal["front-page"], self.portal.REQUEST),
+            name="dynamic-pages-template-management",
+        )
+        self.assertTrue(IDynamicPagesTemplateManagement.providedBy(view))
+
+        view = getMultiAdapter(
+            (self.portal, self.portal.REQUEST),
+            name="dynamic-pages-template-management",
+        )
+        self.assertTrue(IDynamicPagesTemplateManagement.providedBy(view))
 
 
 class ViewsFunctionalTest(unittest.TestCase):
