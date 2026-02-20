@@ -7,7 +7,6 @@ from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from zope.component import getMultiAdapter
-from zope.interface.interfaces import ComponentLookupError
 
 import unittest
 
