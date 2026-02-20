@@ -1,6 +1,6 @@
+from plone import api
 from plone.behavior.registration import BehaviorRegistrationNotFound
 from plone.behavior.registration import lookup_behavior_registration
-from plone.restapi.serializer.schema import _check_permission
 
 
 class Manager:
@@ -19,7 +19,7 @@ class Manager:
                     obj
                     for obj in self.context.aq_chain
                     if registration.marker.providedBy(obj)
-                    and _check_permission("View", self, obj)
+                    and api.user.has_permission("View", obj=obj)
                 ),
                 None,
             )
