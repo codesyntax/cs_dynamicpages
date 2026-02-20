@@ -8,13 +8,13 @@
   <!-- -*- extra stuff goes here -*- -->
 
   <browser:page
-    name="dynamic-pages-template-management"
-    for="*"
-    class=".dynamic_pages_template_management.DynamicPagesTemplateManagement"
-    template="dynamic_pages_template_management.pt"
-    permission="zope2.View"
-    layer="cs_dynamicpages.interfaces.ICsDynamicpagesLayer"
-    />
+      name="dynamic-pages-template-management"
+      for="*"
+      class=".dynamic_pages_template_management.DynamicPagesTemplateManagement"
+      template="dynamic_pages_template_management.pt"
+      permission="cmf.ModifyPortalContent"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
 
   <browser:page
       name="view"

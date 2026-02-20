@@ -8,8 +8,17 @@
       method="POST"
       factory=".post.TemplatesPost"
       for="zope.interface.Interface"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
       name="@templates"
       />
+
+  <plone:service
+      method="DELETE"
+      factory=".delete.TemplatesDelete"
+      for="zope.interface.Interface"
+      permission="cmf.ModifyPortalContent"
+      name="@templates"
+      />
+
 
 </configure>

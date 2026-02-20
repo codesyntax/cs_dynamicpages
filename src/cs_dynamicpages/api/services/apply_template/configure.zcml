@@ -8,7 +8,7 @@
       method="POST"
       factory=".post.ApplyTemplatePost"
       for="zope.interface.Interface"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
       name="@apply-template"
       />
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-11-10 15:42+0000\n"
+"POT-Creation-Date: 2026-02-20 14:03+0000\n"
 "PO-Revision-Date: 2025-11-10 16:40+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -32,19 +32,24 @@ msgstr ""
 msgid "4"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:279
+#: cs_dynamicpages/views/dynamic_view.pt:315
 msgid "Add featured"
 msgstr "Añadir elemento destacado"
 
-#: cs_dynamicpages/views/dynamic_view.pt:337
+#: cs_dynamicpages/views/dynamic_view.pt:374
 msgid "Add new row"
 msgstr "Añadir fila"
 
-#: cs_dynamicpages/views/dynamic_view.pt:309
+#: cs_dynamicpages/views/dynamic_view.pt:345
 msgid "Add row"
 msgstr "Añadir fila"
 
-#: cs_dynamicpages/views/dynamic_view.pt:392
+#: cs_dynamicpages/views/dynamic_view.pt:418
+msgid "Apply this template"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:67
+#: cs_dynamicpages/views/dynamic_view.pt:475
 msgid "Are you sure you want to delete this item? This action cannot be undone."
 msgstr "¿Estás seguro de que quieres eliminar este elemento? Esta acción no se puede deshacer."
 
@@ -56,11 +61,13 @@ msgstr "Clase CSS para el ancho de la fila"
 msgid "CSS class for the spacer"
 msgstr "Clase CSS para el espaciador"
 
-#: cs_dynamicpages/views/dynamic_view.pt:395
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:70
+#: cs_dynamicpages/views/dynamic_view.pt:478
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: cs_dynamicpages/views/dynamic_view.pt:341
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:59
+#: cs_dynamicpages/views/dynamic_view.pt:378
 msgid "Close"
 msgstr "Cerrar"
 
@@ -68,11 +75,23 @@ msgstr "Cerrar"
 msgid "Column count"
 msgstr "Número de columnas"
 
-#: cs_dynamicpages/views/dynamic_view.pt:380
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:55
+#: cs_dynamicpages/views/dynamic_view.pt:463
 msgid "Confirm Deletion"
 msgstr "Confirmar eliminado"
 
-#: cs_dynamicpages/views/dynamic_view.pt:83
+#: cs_dynamicpages/api/services/apply_template/post.py:59
+#: cs_dynamicpages/api/services/templates/delete.py:34
+#: cs_dynamicpages/api/services/templates/post.py:38
+msgid "Content does not exist"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:33
+msgid "Content title"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:39
+#: cs_dynamicpages/views/dynamic_view.pt:116
 msgid "Delete"
 msgstr "Eliminar"
 
@@ -82,7 +101,15 @@ msgstr "Eliminar"
 msgid "Dynamic Pages Control Panel"
 msgstr "Panel de control de páginas dinámicas"
 
-#: cs_dynamicpages/views/configure.zcml:29
+#: cs_dynamicpages/behaviors/templates.py:37
+msgid "Dynamic Pages Templates"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:11
+msgid "Dynamic Pages Templates management"
+msgstr ""
+
+#: cs_dynamicpages/views/configure.zcml:38
 msgid "Dynamic view"
 msgstr "Vista dinámica"
 
@@ -98,11 +125,11 @@ msgstr "Fila de página dinámica"
 msgid "DynamicPageRowFeatured"
 msgstr "Destacado de fila de página dinámica"
 
-#: cs_dynamicpages/views/dynamic_view.pt:69
+#: cs_dynamicpages/views/dynamic_view.pt:102
 msgid "Edit"
 msgstr "Editar"
 
-#: cs_dynamicpages/views/dynamic_view.pt:29
+#: cs_dynamicpages/views/dynamic_view.pt:47
 msgid "Edit Mode"
 msgstr "Modo edición"
 
@@ -174,19 +201,23 @@ msgstr "URL del enlace"
 msgid "Link text"
 msgstr "Texto del enlace"
 
-#: cs_dynamicpages/views/dynamic_view.pt:247
+#: cs_dynamicpages/views/dynamic_view.pt:280
 msgid "Move actions"
 msgstr "Acciones para mover elementos"
 
-#: cs_dynamicpages/views/dynamic_view.pt:120
+#: cs_dynamicpages/views/dynamic_view.pt:153
 msgid "Move down"
 msgstr "Bajar"
 
-#: cs_dynamicpages/views/dynamic_view.pt:103
+#: cs_dynamicpages/views/dynamic_view.pt:136
 msgid "Move up"
 msgstr "Subir"
 
-#: cs_dynamicpages/views/dynamic_view.pt:424
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:32
+msgid "Name"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_view.pt:507
 msgid "Notification"
 msgstr "Notificación"
 
@@ -198,7 +229,11 @@ msgstr "Paquete para configurar cs_dynamicpages"
 msgid "Related image"
 msgstr "Imagen relacionada"
 
-#: cs_dynamicpages/views/dynamic_view.pt:162
+#: cs_dynamicpages/views/dynamic_view.pt:392
+msgid "Reuse existing templates"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_view.pt:195
 msgid "Review state: ${state}"
 msgstr "Estado: ${state}"
 
@@ -262,6 +297,14 @@ msgstr "Ancho de la fila"
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:261
 msgid "Row widths"
 msgstr "Anchos de la fila"
+
+#: cs_dynamicpages/views/dynamic_view.pt:25
+msgid "Save as template"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:34
+msgid "See template"
+msgstr ""
 
 #: cs_dynamicpages/behaviors/row_columns.py:22
 msgid "Select how many columns will be shown in this row"
@@ -327,13 +370,25 @@ msgstr "Padding inferior"
 msgid "Spacer padding top"
 msgstr "Padding superior"
 
-#: cs_dynamicpages/views/dynamic_view.pt:232
+#: cs_dynamicpages/views/dynamic_view.pt:265
 msgid "State"
 msgstr "Estado"
 
-#: cs_dynamicpages/views/dynamic_view.pt:66
+#: cs_dynamicpages/api/services/apply_template/post.py:35
+msgid "Template name is not valid"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_view.pt:544
+msgid "Template name:"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_view.pt:99
 msgid "Template: ${template_id}"
 msgstr "Plantilla: ${template_id}"
+
+#: cs_dynamicpages/behaviors/templates.py:24
+msgid "Templates"
+msgstr ""
 
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:73
 msgid "This is the label corresponding to this spacer"
@@ -342,6 +397,12 @@ msgstr "Esta es la etiqueta que corresponde al espaciador"
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:59
 msgid "This is the label corresponding to this width"
 msgstr "Etiqueta correspondiente a este ancho"
+
+#: cs_dynamicpages/api/services/apply_template/post.py:23
+#: cs_dynamicpages/api/services/templates/delete.py:20
+#: cs_dynamicpages/api/services/templates/post.py:21
+msgid "UID is required"
+msgstr ""
 
 #: cs_dynamicpages/profiles.zcml:21
 msgid "Uninstall cs_dynamicpages setup."

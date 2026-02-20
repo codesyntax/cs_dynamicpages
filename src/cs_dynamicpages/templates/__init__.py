@@ -61,8 +61,13 @@ class Manager:
         registry = self.get_template_registry()
         registry.templates = {"templates": templates}
 
-    def delete_template(self, position):
+    def delete_template(self, uid):
         """delete a given template from the registry"""
         templates = self.get_templates()
-        templates.pop(position)
-        self.save_templates(templates)
+        new_templates = [
+            template for template in templates if template.get("uid") != uid
+        ]
+        if len(templates) > len(new_templates):
+            self.save_templates(new_templates)
+            return True
+        return False
