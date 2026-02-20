@@ -414,7 +414,7 @@
                            data-bs-parent="#templateAccordion"
                       >
                         <div class="accordion-body">
-                          SHOW THE MINI RENDERING
+                          <span i18n:translate="">SHOW THE MINI RENDERING</span>
 
                           <a class="btn btn-primary apply-template"
                              href="#"
@@ -429,7 +429,7 @@
 
                 </div>
                 <hr tal:condition="templates" />
-                <h2>Add block</h2>
+                <h2 i18n:translate="">Add block</h2>
                 <ul class="list-unstyled row">
                   <li class="mb-2 col-4"
                       tal:repeat="item available_views_for_row"
@@ -532,11 +532,13 @@
               <div class="modal-header">
                 <h1 class="modal-title fs-5"
                     id="addTemplateModal"
+                    i18n:translate=""
                 >Add template</h1>
                 <button class="btn-close"
                         aria-label="Close"
                         type="button"
                         data-bs-dismiss="modal"
+                        i18n:attributes="aria-label"
                 ></button>
               </div>
               <div class="modal-body">

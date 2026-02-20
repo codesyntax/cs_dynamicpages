@@ -29,8 +29,11 @@
               tal:repeat="template view/available_templates"
           >
             <ul>
-              <li><span i18n:translate="">Name</span>: ${template/name}</li>
-              <li><span i18n:translate="">Content title</span>: ${template/Title} (${template/translated_portal_type})</li>
+              <li><span i18n:translate="">Name</span>:
+                <span tal:replace="template/name"></span></li>
+              <li><span i18n:translate="">Content title</span>:
+                <span tal:replace="template/Title"></span>
+                (<span tal:replace="template/translated_portal_type"></span>)</li>
               <li><a href="${template/absolute_url}"
                    i18n:translate=""
                 >See template</a></li>
