@@ -5,6 +5,7 @@ on:
     types: [assigned, opened, synchronize, reopened, labeled, unlabeled]
     branches:
       - main
+      - develop
 env:
   python-version: "3.12"
   plone-version: "6.1.2"
