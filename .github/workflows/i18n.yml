@@ -1,0 +1,38 @@
+name: "cs_dynamicpages CI"
+
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened, labeled, unlabeled]
+    branches:
+      - main
+env:
+  python-version: "3.12"
+  plone-version: "6.1.2"
+
+jobs:
+  config:
+    runs-on: ubuntu-latest
+    outputs:
+      python-version: ${{ env.python-version }}
+      plone-version: ${{ env.plone-version }}
+    steps:
+      - name: Test vars
+        run: |
+          echo 'python-version=${{ env.python-version }}'
+          echo 'plone-version=${{ env.plone-version }}'
+
+  i18n:
+    name: "Missing i18n:translate"
+    runs-on: ubuntu-latest
+    needs:
+      - config
+
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Check for untranslated strings
+        shell: bash
+        run: |
+          uvx i18ndude find-untranslated -n src/
