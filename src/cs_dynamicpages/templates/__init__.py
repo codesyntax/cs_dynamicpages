@@ -39,10 +39,22 @@ class Manager:
 
         return []
 
+    def get_template(self, uid):
+        """get template by name"""
+        registry = self.get_template_registry()
+        if registry is not None:
+            for template in registry.templates.get("templates", []):
+                if template.get("uid") == uid:
+                    return template.get("uid", [])
+
+        return None
+
     def append_template(self, template):
         """append a new template to the registry"""
         registry = self.get_template_registry()
-        registry.templates["templates"].append(template)
+        templates = registry.templates.get("templates", [])
+        templates.append(template)
+        self.save_templates(templates)
 
     def save_templates(self, templates):
         """save all new templates i the registry"""

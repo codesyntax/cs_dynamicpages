@@ -2,10 +2,12 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="cs_dynamicpages">
+    i18n_domain="cs_dynamicpages"
+    >
 
   <!-- -*- extra stuff goes here -*- -->
-<include package=".templates" />
+  <include package=".templates" />
+  <include package=".apply_template" />
 
 
 </configure>

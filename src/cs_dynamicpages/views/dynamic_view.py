@@ -7,6 +7,7 @@ from zope.interface import alsoProvides
 from zope.interface import implementer
 from zope.interface import Interface
 from cs_dynamicpages.templates import Manager
+from plone.uuid.interfaces import IUUID
 
 
 class IDynamicView(Interface):
@@ -76,3 +77,10 @@ class DynamicView(BrowserView):
     def available_templates(self):
         manager = Manager(self.context)
         return manager.get_templates()
+
+    def self_in_templates(self):
+        if "rows" in self.context:
+            return IUUID(self.context.rows) in [
+                template.get("uid") for template in self.available_templates()
+            ]
+        return False

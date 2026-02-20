@@ -22,7 +22,7 @@ class ITemplates(model.Schema):
 
     templates = schema.JSONField(
         title=_(
-            "",
+            "Templates",
         ),
         description=_(
             "",
@@ -31,6 +31,13 @@ class ITemplates(model.Schema):
         default={"templates": []},
         required=False,
         readonly=False,
+    )
+    model.fieldset(
+        "dynamic_pages_templates",
+        label=_("Dynamic Pages Templates"),
+        fields=[
+            "templates",
+        ],
     )
 
 

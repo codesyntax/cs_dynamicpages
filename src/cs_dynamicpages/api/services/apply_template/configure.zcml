@@ -6,10 +6,10 @@
 
   <plone:service
       method="POST"
-      factory=".post.TemplatesPost"
+      factory=".post.ApplyTemplatePost"
       for="zope.interface.Interface"
       permission="zope2.View"
-      name="@templates"
+      name="@apply-template"
       />
 
 </configure>
