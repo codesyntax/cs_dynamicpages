@@ -132,7 +132,7 @@ test-coverage: $(VENV_FOLDER) ## run tests with coverage
 
 ## Add bobtemplates features (check bobtemplates.plone's documentation to get the list of available features)
 add: $(VENV_FOLDER)
-	@uvx plonecli add -b .mrbob.ini $(filter-out $@,$(MAKECMDGOALS))
+	@uvx --with="setuptools==81.0.0" plonecli add  $(filter-out $@,$(MAKECMDGOALS))
 
 .PHONY: release
 release: $(VENV_FOLDER) ## Create a release

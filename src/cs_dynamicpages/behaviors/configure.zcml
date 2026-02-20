@@ -12,6 +12,16 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+
+  <plone:behavior
+      name="cs_dynamicpages.templates"
+      title="Templates"
+      description="This behavior provides a way to define templates for DynamicPages"
+      factory=".templates.Templates"
+      provides=".templates.ITemplates"
+      marker=".templates.ITemplatesMarker"
+      />
+
   <plone:behavior
       name="cs_dynamicpages.row_vertical_spacing"
       title="RowVerticalSpacing"

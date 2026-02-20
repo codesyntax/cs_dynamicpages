@@ -26,6 +26,7 @@ dependencies = [
     "plone.api",
     "collective.z3cform.datagridfield",
     "plone.app.upgrade",
+    "plone.restapi",
 ]
 
 [project.optional-dependencies]

@@ -1,7 +1,9 @@
 # from cs_dynamicpages import _
+from cs_dynamicpages.templates import Manager
 from cs_dynamicpages.utils import get_available_views_for_row
 from plone import api
 from plone.protect.interfaces import IDisableCSRFProtection
+from plone.uuid.interfaces import IUUID
 from Products.Five.browser import BrowserView
 from zope.interface import alsoProvides
 from zope.interface import implementer
@@ -72,3 +74,14 @@ class DynamicView(BrowserView):
             .replace("view", "")
             .lower()
         )
+
+    def available_templates(self):
+        manager = Manager(self.context)
+        return manager.get_templates()
+
+    def self_in_templates(self):
+        if "rows" in self.context:
+            return IUUID(self.context.rows) in [
+                template.get("uid") for template in self.available_templates()
+            ]
+        return False

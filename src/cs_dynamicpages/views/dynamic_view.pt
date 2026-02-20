@@ -18,6 +18,24 @@
           <div class="right-0 py-2 sticky-top d-flex justify-content-end me-2"
                tal:condition="view/can_edit"
           >
+            <div class="px-3 py-2 mb-3 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5"
+                 tal:condition="python:len(view.rows()) and not view.self_in_templates()"
+            >
+              <!-- Button trigger modal -->
+              <button class="btn btn-primary"
+                      type="button"
+                      data-bs-target="#templateModal"
+                      data-bs-toggle="modal"
+                      i18n:translate=""
+              >
+                Save as template
+              </button>
+              <!-- Modal -->
+
+
+
+
+            </div>
             <div class="px-3 py-2 mb-3 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5">
               <div class="form-check form-switch">
                 <input class="form-check-input"
@@ -350,6 +368,7 @@
                  tabindex="-1"
                  tal:define="
                    available_views_for_row view/available_views_for_row;
+                   templates python:view.available_templates();
                  "
             >
               <div class="offcanvas-header">
@@ -365,6 +384,52 @@
                 ></button>
               </div>
               <div class="offcanvas-body">
+                <div class="templates-listing"
+                     tal:define="
+                       empty_rows python:len(view.rows()) == 0;
+                     "
+                     tal:condition="python: empty_rows and templates"
+                >
+                  <h2 i18n:translate="">Reuse existing templates</h2>
+                  <br />
+                  <div class="accordion"
+                       id="templateAccordion"
+                  >
+                    <div class="accordion-item"
+                         tal:repeat="template templates"
+                    >
+                      <h3 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                aria-controls="collapse-${repeat/template/number}"
+                                aria-expanded="false"
+                                type="button"
+                                data-bs-target="#collapse-${repeat/template/number}"
+                                data-bs-toggle="collapse"
+                        >
+                          ${template/name}
+                        </button>
+                      </h3>
+                      <div class="accordion-collapse collapsed collapse"
+                           id="collapse-${repeat/template/number}"
+                           data-bs-parent="#templateAccordion"
+                      >
+                        <div class="accordion-body">
+                          <span i18n:translate="">SHOW THE MINI RENDERING</span>
+
+                          <a class="btn btn-primary apply-template"
+                             href="#"
+                             data-uid="${template/uid}"
+                             i18n:translate=""
+                          >Apply this template
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <hr tal:condition="templates" />
+                <h2 i18n:translate="">Add block</h2>
                 <ul class="list-unstyled row">
                   <li class="mb-2 col-4"
                       tal:repeat="item available_views_for_row"
@@ -455,6 +520,59 @@
             </div>
           </div>
         </tal:condition-configuration>
+
+        <div class="modal fade"
+             id="templateModal"
+             aria-hidden="true"
+             aria-labelledby="addTemplateModal"
+             tabindex="-1"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5"
+                    id="addTemplateModal"
+                    i18n:translate=""
+                >Add template</h1>
+                <button class="btn-close"
+                        aria-label="Close"
+                        type="button"
+                        data-bs-dismiss="modal"
+                        i18n:attributes="aria-label"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label class="col-form-label"
+                           for="template-name"
+                           i18n:translate=""
+                    >Template name:</label>
+                    <input class="form-control"
+                           id="template-name"
+                           required="required"
+                           type="text"
+                    />
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary"
+                        type="button"
+                        data-bs-dismiss="modal"
+                        i18n:translate=""
+                >Close</button>
+                <button class="btn btn-primary"
+                        id="addAsTemplate"
+                        type="button"
+                        data-uid="${python:view.dynamic_page_folder_element().UID()}"
+                        i18n:translate=""
+                >Save as template</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </main>
     </metal:main>
 

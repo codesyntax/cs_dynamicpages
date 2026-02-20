@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-11-10 15:42+0000\n"
+"POT-Creation-Date: 2026-02-20 14:03+0000\n"
 "PO-Revision-Date: 2025-11-10 16:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -32,19 +32,24 @@ msgstr ""
 msgid "4"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:279
+#: cs_dynamicpages/views/dynamic_view.pt:315
 msgid "Add featured"
 msgstr "Gehitu elementu destakatua"
 
-#: cs_dynamicpages/views/dynamic_view.pt:337
+#: cs_dynamicpages/views/dynamic_view.pt:374
 msgid "Add new row"
 msgstr "Gehitu lerro berria"
 
-#: cs_dynamicpages/views/dynamic_view.pt:309
+#: cs_dynamicpages/views/dynamic_view.pt:345
 msgid "Add row"
 msgstr "Gehitu lerroa"
 
-#: cs_dynamicpages/views/dynamic_view.pt:392
+#: cs_dynamicpages/views/dynamic_view.pt:418
+msgid "Apply this template"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:67
+#: cs_dynamicpages/views/dynamic_view.pt:475
 msgid "Are you sure you want to delete this item? This action cannot be undone."
 msgstr "Ziur zaude elementu hau ezabatu nahi duzula? Ekintza hau ezin da desegin."
 
@@ -56,11 +61,13 @@ msgstr "Lerroaren zabaleraren CSS klasea"
 msgid "CSS class for the spacer"
 msgstr "Espazioa ematen duen elementuaren CSS klasea"
 
-#: cs_dynamicpages/views/dynamic_view.pt:395
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:70
+#: cs_dynamicpages/views/dynamic_view.pt:478
 msgid "Cancel"
 msgstr "Utzi"
 
-#: cs_dynamicpages/views/dynamic_view.pt:341
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:59
+#: cs_dynamicpages/views/dynamic_view.pt:378
 msgid "Close"
 msgstr "Itxi"
 
@@ -68,11 +75,23 @@ msgstr "Itxi"
 msgid "Column count"
 msgstr "Zutabe kopurua"
 
-#: cs_dynamicpages/views/dynamic_view.pt:380
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:55
+#: cs_dynamicpages/views/dynamic_view.pt:463
 msgid "Confirm Deletion"
 msgstr "Baieztatu ezabatzea"
 
-#: cs_dynamicpages/views/dynamic_view.pt:83
+#: cs_dynamicpages/api/services/apply_template/post.py:59
+#: cs_dynamicpages/api/services/templates/delete.py:34
+#: cs_dynamicpages/api/services/templates/post.py:38
+msgid "Content does not exist"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:33
+msgid "Content title"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:39
+#: cs_dynamicpages/views/dynamic_view.pt:116
 msgid "Delete"
 msgstr "Ezabatu"
 
@@ -82,7 +101,15 @@ msgstr "Ezabatu"
 msgid "Dynamic Pages Control Panel"
 msgstr "Orrialde dinamikoen kontrol panela"
 
-#: cs_dynamicpages/views/configure.zcml:29
+#: cs_dynamicpages/behaviors/templates.py:37
+msgid "Dynamic Pages Templates"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:11
+msgid "Dynamic Pages Templates management"
+msgstr ""
+
+#: cs_dynamicpages/views/configure.zcml:38
 msgid "Dynamic view"
 msgstr "Bista dinamikoa"
 
@@ -98,11 +125,11 @@ msgstr "Orri dinamikoen lerroa"
 msgid "DynamicPageRowFeatured"
 msgstr "Orri dinamikoen lerroetako destakatua"
 
-#: cs_dynamicpages/views/dynamic_view.pt:69
+#: cs_dynamicpages/views/dynamic_view.pt:102
 msgid "Edit"
 msgstr "Editatu"
 
-#: cs_dynamicpages/views/dynamic_view.pt:29
+#: cs_dynamicpages/views/dynamic_view.pt:47
 msgid "Edit Mode"
 msgstr "Edizio modua"
 
@@ -174,19 +201,23 @@ msgstr "Estekaren URLa"
 msgid "Link text"
 msgstr "Estekaren testua"
 
-#: cs_dynamicpages/views/dynamic_view.pt:247
+#: cs_dynamicpages/views/dynamic_view.pt:280
 msgid "Move actions"
 msgstr "Elementuak mugitzeko akzioak"
 
-#: cs_dynamicpages/views/dynamic_view.pt:120
+#: cs_dynamicpages/views/dynamic_view.pt:153
 msgid "Move down"
 msgstr "Mugitu behera"
 
-#: cs_dynamicpages/views/dynamic_view.pt:103
+#: cs_dynamicpages/views/dynamic_view.pt:136
 msgid "Move up"
 msgstr "Mugitu gora"
 
-#: cs_dynamicpages/views/dynamic_view.pt:424
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:32
+msgid "Name"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_view.pt:507
 msgid "Notification"
 msgstr "Jakinarazpena"
 
@@ -198,7 +229,11 @@ msgstr "cs_dynamicpages konfiguratzeko paketea"
 msgid "Related image"
 msgstr "Irudi erlazionatua"
 
-#: cs_dynamicpages/views/dynamic_view.pt:162
+#: cs_dynamicpages/views/dynamic_view.pt:392
+msgid "Reuse existing templates"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_view.pt:195
 msgid "Review state: ${state}"
 msgstr "Egoera: ${state}"
 
@@ -262,6 +297,14 @@ msgstr "Lerroaren zabalera"
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:261
 msgid "Row widths"
 msgstr "Lerroaren zabalerak"
+
+#: cs_dynamicpages/views/dynamic_view.pt:25
+msgid "Save as template"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:34
+msgid "See template"
+msgstr ""
 
 #: cs_dynamicpages/behaviors/row_columns.py:22
 msgid "Select how many columns will be shown in this row"
@@ -327,13 +370,25 @@ msgstr "Azpiko paddinga"
 msgid "Spacer padding top"
 msgstr "Gaineko paddinga"
 
-#: cs_dynamicpages/views/dynamic_view.pt:232
+#: cs_dynamicpages/views/dynamic_view.pt:265
 msgid "State"
 msgstr "Egoera"
 
-#: cs_dynamicpages/views/dynamic_view.pt:66
+#: cs_dynamicpages/api/services/apply_template/post.py:35
+msgid "Template name is not valid"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_view.pt:544
+msgid "Template name:"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_view.pt:99
 msgid "Template: ${template_id}"
 msgstr "Txantiloia: ${template_id}"
+
+#: cs_dynamicpages/behaviors/templates.py:24
+msgid "Templates"
+msgstr ""
 
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:73
 msgid "This is the label corresponding to this spacer"
@@ -342,6 +397,12 @@ msgstr "Hau da espazio honen etiketa"
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:59
 msgid "This is the label corresponding to this width"
 msgstr "Zabalera honi dagokion etiketa da hau"
+
+#: cs_dynamicpages/api/services/apply_template/post.py:23
+#: cs_dynamicpages/api/services/templates/delete.py:20
+#: cs_dynamicpages/api/services/templates/post.py:21
+msgid "UID is required"
+msgstr ""
 
 #: cs_dynamicpages/profiles.zcml:21
 msgid "Uninstall cs_dynamicpages setup."
