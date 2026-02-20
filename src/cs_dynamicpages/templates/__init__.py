@@ -1,12 +1,9 @@
-from plone.behavior.registration import (
-    lookup_behavior_registration,
-    BehaviorRegistrationNotFound,
-)
+from plone.behavior.registration import BehaviorRegistrationNotFound
+from plone.behavior.registration import lookup_behavior_registration
 from plone.restapi.serializer.schema import _check_permission
 
 
 class Manager:
-
     def __init__(self, context):
         self.context = context
 

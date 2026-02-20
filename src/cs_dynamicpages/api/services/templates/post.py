@@ -1,11 +1,11 @@
 from cs_dynamicpages import _
 from cs_dynamicpages.templates import Manager
 from plone.app.uuid.utils import uuidToObject
+from plone.protect.interfaces import IDisableCSRFProtection
 from plone.restapi.deserializer import json_body
 from plone.restapi.services import Service
 from zope.i18n import translate
 from zope.interface import alsoProvides
-from plone.protect.interfaces import IDisableCSRFProtection
 
 
 class TemplatesPost(Service):

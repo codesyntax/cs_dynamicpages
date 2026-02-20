@@ -1,13 +1,13 @@
 # from cs_dynamicpages import _
+from cs_dynamicpages.templates import Manager
 from cs_dynamicpages.utils import get_available_views_for_row
 from plone import api
 from plone.protect.interfaces import IDisableCSRFProtection
+from plone.uuid.interfaces import IUUID
 from Products.Five.browser import BrowserView
 from zope.interface import alsoProvides
 from zope.interface import implementer
 from zope.interface import Interface
-from cs_dynamicpages.templates import Manager
-from plone.uuid.interfaces import IUUID
 
 
 class IDynamicView(Interface):
@@ -67,7 +67,8 @@ class DynamicView(BrowserView):
 
     def normalize_title(self, title):
         return (
-            title.replace("cs_dynamicpages-", " ")
+            title
+            .replace("cs_dynamicpages-", " ")
             .replace("-", " ")
             .replace("_", " ")
             .replace("view", "")

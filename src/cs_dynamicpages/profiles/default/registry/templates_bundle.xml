@@ -7,7 +7,7 @@
   >
     <value key="enabled">True</value>
     <value key="jscompilation">++plone++cs_dynamicpages.edit/templates.js</value>
-    <value key="csscompilation"></value>
+    <value key="csscompilation" />
     <value key="depends">plone</value>
     <value key="load_async">True</value>
     <value key="load_defer">False</value>

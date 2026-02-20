@@ -26,18 +26,16 @@ class DynamicPagesTemplateManagement(BrowserView):
             obj = uuidToObject(template.get("uid"))
             if obj:
                 parent = aq_parent(obj)
-                template.update(
-                    {
-                        "Title": parent.Title(),
-                        "Description": parent.Description(),
-                        "absolute_url": parent.absolute_url(),
-                        "portal_type": parent.portal_type,
-                        "translated_portal_type": translate(
-                            portal_types.get(parent.portal_type).title,
-                            domain=portal_types.get(parent.portal_type).i18n_domain,
-                            context=self.request,
-                        ),
-                    }
-                )
+                template.update({
+                    "Title": parent.Title(),
+                    "Description": parent.Description(),
+                    "absolute_url": parent.absolute_url(),
+                    "portal_type": parent.portal_type,
+                    "translated_portal_type": translate(
+                        portal_types.get(parent.portal_type).title,
+                        domain=portal_types.get(parent.portal_type).i18n_domain,
+                        context=self.request,
+                    ),
+                })
                 templates.append(template)
         return templates

@@ -11,7 +11,9 @@
     <element value="dynamic-view" />
   </property>
 
-  <property name="behaviors" purge="False">
+  <property name="behaviors"
+            purge="False"
+  >
     <element value="cs_dynamicpages.templates" />
   </property>
 </object>

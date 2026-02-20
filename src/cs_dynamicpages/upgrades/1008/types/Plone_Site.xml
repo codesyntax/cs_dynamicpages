@@ -5,7 +5,9 @@
         i18n:domain="plone"
 >
 
-  <property name="behaviors" purge="False">
+  <property name="behaviors"
+            purge="False"
+  >
     <element value="cs_dynamicpages.templates" />
   </property>
 </object>
