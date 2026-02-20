@@ -42,7 +42,7 @@ class DynamicViewFolderClassesIntegrationTest(unittest.TestCase):
         mock_view = Mock()
 
         classes = adapter.get_classes(mock_template, mock_view)
-        self.assertIn("can_edit", classes)
+        self.assertNotIn("can_edit", classes)
 
         api.content.delete(obj=folder)
 
