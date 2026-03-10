@@ -12,7 +12,7 @@
 
   <body>
     <metal:main fill-slot="main">
-      <main id="content">
+      <main id="dynamic_pages_content">
 
         <tal:condition-configuration condition="view/dynamic_page_folder_element">
           <div class="right-0 py-2 sticky-top d-flex justify-content-end me-2"
