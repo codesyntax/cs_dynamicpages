@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        meta_type="Plone Actions Tool"
+        name="portal_actions"
+>
+  <object meta_type="CMF Action Category"
+          name="object"
+  >
+    <object meta_type="CMF Action"
+            name="manage_dynamic_pages_templates"
+            i18n:domain="plone"
+    >
+      <property name="title"
+                i18n:translate=""
+      >Manage Dynamic Pages Templates</property>
+      <property name="description"
+                i18n:translate=""
+      />
+      <property name="url_expr">string:${object_url}/dynamic-pages-template-management</property>
+      <property name="link_target" />
+      <property name="icon_expr">string:file-earmark</property>
+      <property name="available_expr" />
+      <property name="permissions">
+        <element value="Modify portal content" />
+      </property>
+      <property name="visible">True</property>
+    </object>
+  </object>
+</object>

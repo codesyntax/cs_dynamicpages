@@ -20,28 +20,28 @@ class IRowVerticalSpacing(model.Schema):
         description=_("Select the padding top that this row will have"),
         vocabulary="cs_dynamicpages.RowPaddingTop",
         required=False,
-        default="",
+        default="pt-0",
     )
     padding_bottom = schema.Choice(
         title=_("Row padding bottom"),
         description=_("Select the padding bottom that this row will have"),
         vocabulary="cs_dynamicpages.RowPaddingBottom",
         required=False,
-        default="",
+        default="pb-0",
     )
     margin_top = schema.Choice(
         title=_("Row margin top"),
         description=_("Select the margin top that this row will have"),
         vocabulary="cs_dynamicpages.RowMarginTop",
         required=False,
-        default="",
+        default="mt-0",
     )
     margin_bottom = schema.Choice(
         title=_("Row margin bottom"),
         description=_("Select the margin bottom that this row will have"),
         vocabulary="cs_dynamicpages.RowMarginBottom",
         required=False,
-        default="",
+        default="mb-0",
     )
 
     model.fieldset(
