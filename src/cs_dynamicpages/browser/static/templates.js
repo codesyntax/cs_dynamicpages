@@ -122,4 +122,63 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
   );
+
+  // Template preview logic
+  const previewModalEl = document.getElementById('previewTemplateModal');
+  let previewModal;
+  if (previewModalEl) {
+    previewModal = new bootstrap.Modal(previewModalEl);
+  }
+
+  Array.from(document.getElementsByClassName("preview-template-btn")).forEach(
+    (element) => {
+      element.addEventListener("click", async (event) => {
+        event.preventDefault(); // Prevent standard navigation
+        
+        const url = element.getAttribute("href");
+        const templateName = element.getAttribute("data-template-name");
+        const modalBody = document.getElementById("previewTemplateBody");
+        const modalTitle = document.getElementById("previewTemplateModalLabel");
+        
+        if (modalTitle && templateName) {
+          modalTitle.textContent = "Template: " + templateName;
+        }
+        
+        // Show loading state
+        modalBody.innerHTML = '<div class="p-5 text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
+        
+        if (previewModal) previewModal.show();
+
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error("Network response was not ok");
+          
+          const htmlString = await response.text();
+          
+          // Parse the HTML string into a DOM
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlString, "text/html");
+          
+          // Extract the specific content
+          const dynamicContent = doc.querySelector("main#dynamic_pages_content");
+          
+          if (dynamicContent) {
+            // Remove unwanted editing/interactive elements for a clean preview
+            const elementsToRemove = dynamicContent.querySelectorAll(
+              '.edit-options, .rows-mangement, .offcanvas, .modal, script, .toast-container'
+            );
+            elementsToRemove.forEach(el => el.remove());
+
+            // Put the extracted and cleaned HTML into the modal body
+            modalBody.innerHTML = dynamicContent.innerHTML;
+          } else {
+            modalBody.innerHTML = '<div class="p-4 text-danger">Content not found in template.</div>';
+          }
+        } catch (error) {
+          console.error("Error fetching template:", error);
+          modalBody.innerHTML = '<div class="p-4 text-danger">Failed to load template preview.</div>';
+        }
+      });
+    }
+  );
 });

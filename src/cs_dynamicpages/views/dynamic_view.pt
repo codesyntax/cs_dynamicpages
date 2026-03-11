@@ -9,12 +9,8 @@
     <main id="dynamic_pages_content">
 
       <tal:condition-configuration condition="view/dynamic_page_folder_element">
-        <div class="right-0 py-2 sticky-top d-flex justify-content-end me-2" tal:condition="view/can_edit">
-
-
-        </div>
         <tal:conditiondrapanddrop tal:condition="view/can_edit">
-          <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+          <script id="sortable-js" src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
         </tal:conditiondrapanddrop>
         <tal:features define="
                           rows view/rows;
@@ -249,8 +245,8 @@
                     <div class="accordion-collapse collapsed collapse" id="collapse-${repeat/template/number}"
                       data-bs-parent="#templateAccordion">
                       <div class="accordion-body">
-                        <a class="btn btn-outline-primary btn-sm" target="_blank" href="${template/absolute_url}"
-                          i18n:translate="">See
+                        <a class="btn btn-outline-primary btn-sm preview-template-btn" href="${template/absolute_url}"
+                          data-template-name="${template/name}" i18n:translate="">See
                           this
                           template
                         </a>
@@ -346,6 +342,31 @@
               <button class="btn btn-primary" id="addAsTemplate" type="button"
                 data-uid="${python:view.dynamic_page_folder_element().UID()}" i18n:translate="">Save as
                 template</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Template Preview Modal -->
+      <div class="modal fade" id="previewTemplateModal" tabindex="-1" aria-labelledby="previewTemplateModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+          <div class="modal-content border-0 shadow-lg">
+            <div class="modal-header bg-white border-bottom">
+              <h5 class="modal-title text-primary fw-semibold" id="previewTemplateModalLabel" i18n:translate="">Template Preview</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                i18n:attributes="aria-label"></button>
+            </div>
+            <div class="modal-body p-4 bg-light">
+              <!-- Marko txukuna (kuadro efektua) -->
+              <div class="bg-white border rounded shadow p-4 mx-auto" id="previewTemplateBody"
+                style="min-height: 200px; zoom: 0.50;">
+                <!-- Content will be injected here via JS -->
+              </div>
+            </div>
+            <div class="modal-footer bg-white border-top">
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal"
+                i18n:translate="">Close</button>
             </div>
           </div>
         </div>
