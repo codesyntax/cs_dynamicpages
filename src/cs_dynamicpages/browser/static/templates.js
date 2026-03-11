@@ -95,30 +95,31 @@ async function sendData(uid, name) {
   }
 }
 
-try {
-  document.getElementById("addAsTemplate").addEventListener("click", () => {
-    let target_uid = document.getElementById("addAsTemplate").dataset["uid"];
-    let template_name = document.getElementById("template-name").value;
-    sendData(target_uid, template_name);
-  });
-} catch {
-  console.log("No add button");
-}
-
-Array.from(document.getElementsByClassName("apply-template")).forEach(
-  (element) => {
-    element.addEventListener("click", (event) => {
-      let target_uid = event.target.dataset["uid"];
-      applyTemplate(target_uid);
+document.addEventListener("DOMContentLoaded", () => {
+  const addBtn = document.getElementById("addAsTemplate");
+  if (addBtn) {
+    addBtn.addEventListener("click", () => {
+      let target_uid = addBtn.dataset["uid"];
+      let template_name = document.getElementById("template-name").value;
+      sendData(target_uid, template_name);
     });
-  },
-);
+  }
 
-Array.from(document.getElementsByClassName("confirmDeleteElement")).forEach(
-  (element) => {
-    element.addEventListener("click", (event) => {
-      let target_uid = event.target.dataset["uid"];
-      deleteTemplate(target_uid);
-    });
-  },
-);
+  Array.from(document.getElementsByClassName("apply-template")).forEach(
+    (element) => {
+      element.addEventListener("click", (event) => {
+        let target_uid = event.target.dataset["uid"];
+        applyTemplate(target_uid);
+      });
+    },
+  );
+
+  Array.from(document.getElementsByClassName("confirmDeleteElement")).forEach(
+    (element) => {
+      element.addEventListener("click", (event) => {
+        let target_uid = event.target.dataset["uid"];
+        deleteTemplate(target_uid);
+      });
+    },
+  );
+});
