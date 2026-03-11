@@ -9,6 +9,25 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b5 (2026-03-11)
+
+
+### New features:
+
+- Add row marker CSS classes @erral [#10](https://github.com/codesyntax/cs_dynamicpages/issues/10)
+- Add template handling @erral 
+
+
+### Bug fixes:
+
+- Change the id for the content wrapping div @erral [#9](https://github.com/codesyntax/cs_dynamicpages/issues/9)
+- Add name to the body-class adapter not to clash with other existing adapters @erral 
+
+
+### Internal:
+
+- - Fix and expand test coverage: fix pre-existing placeholder tests, add tests for utils, indexers, upgrade steps, behaviors, vocabularies, control panel and browser components @erral 
+
 ## 1.0.0b4 (2025-11-10)
 
 
