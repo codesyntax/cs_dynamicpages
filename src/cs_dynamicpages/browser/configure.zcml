@@ -14,6 +14,9 @@
       type="plone"
       />
 
-  <adapter factory=".body_class.DynamicViewFolderClasses" />
+  <adapter
+      factory=".body_class.DynamicViewFolderClasses"
+      name="cs_dynamicpages_body_class"
+      />
 
 </configure>

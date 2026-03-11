@@ -12,13 +12,27 @@
 
   <body>
     <metal:main fill-slot="main">
-      <main id="content">
+      <main id="dynamic_pages_content">
 
         <tal:condition-configuration condition="view/dynamic_page_folder_element">
-          <div class="sticky-top right-0 d-flex justify-content-end py-2 me-2"
+          <div class="right-0 py-2 sticky-top d-flex justify-content-end me-2"
                tal:condition="view/can_edit"
           >
-            <div class="d-inline-flex align-items-center mb-3 px-3 py-2 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-5">
+            <div class="px-3 py-2 mb-3 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5"
+                 tal:condition="python:len(view.rows()) and not view.self_in_templates()"
+            >
+              <!-- Button trigger modal -->
+              <button class="btn btn-primary"
+                      type="button"
+                      data-bs-target="#templateModal"
+                      data-bs-toggle="modal"
+                      i18n:translate=""
+              >
+              Save as template
+              </button>
+              <!-- Modal -->
+            </div>
+            <div class="px-3 py-2 mb-3 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5">
               <div class="form-check form-switch">
                 <input class="form-check-input"
                        id="editModeToggle"
@@ -33,11 +47,14 @@
               </div>
             </div>
           </div>
+          <tal:conditiondrapanddrop tal:condition="view/can_edit">
+            <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+          </tal:conditiondrapanddrop>
           <tal:features define="
                           rows view/rows;
                         ">
             <tal:featured repeat="brain rows">
-              <section class="dynamic-row ${row/row_template} state-${row/review_state} ${row/extra_class|nothing} ${row/padding_top|nothing} ${row/padding_bottom|nothing} ${row/margin_top|nothing} ${row/margin_bottom|nothing}"
+              <section class="dynamic-row dynamic-row-number-${repeat/brain/number} dynamic-row-${python:repeat['brain'].number() % 2 == 0 and 'even' or 'odd'} ${row/row_template} state-${row/review_state} ${row/extra_class|nothing} ${row/padding_top|nothing} ${row/padding_bottom|nothing} ${row/margin_top|nothing} ${row/margin_bottom|nothing}"
                        id="${row/id}"
                        data-delete-target="true"
                        data-elementid="${row/id}"
@@ -48,10 +65,23 @@
                          row brain/getObject;
                        "
               >
-                <div class="edit-options edit-buttons d-flex gap-2"
+                <div class="gap-2 edit-options edit-buttons d-flex"
                      tal:condition="row/can_edit"
                 >
-                  <small class="d-inline-flex align-items-center mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 position-relative">
+                  <div class="drag-handle"
+                       title="Drap and drop"
+                       i18n:attributes="title"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="currentColor"
+                         height="24"
+                         viewbox="0 0 24 24"
+                         width="24"
+                    >
+                      <path d="M10 4H4v6h6V4zm0 10H4v6h6v-6zm10-10h-6v6h6V4zm0 10h-6v6h6v-6z"></path>
+                    </svg>
+                  </div>
+                  <small class="px-2 py-1 mb-3 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-2 position-relative">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          class="bi bi-info-circle"
                          fill="currentColor"
@@ -98,7 +128,7 @@
                       </path>
                     </svg></a>
 
-                  <div class="ms-auto d-flex gap-2 align-items-start">
+                  <div class="gap-2 ms-auto d-flex align-items-start">
 
                     <a class="btn btn-outline-primary btn-sm align-self-start"
                        href="#"
@@ -188,7 +218,7 @@
 
                 </div>
                 <tal:condition tal:condition="row/can_edit">
-                  <div class="edit-options features-list d-flex flex-wrap gap-2 align-items-start mb-3"
+                  <div class="flex-wrap gap-2 mb-3 edit-options features-list d-flex align-items-start"
                        tal:define="
                          features_list row/featured_list;
                        "
@@ -253,13 +283,15 @@
                                    data-action="move-up"
                                    tal:condition="python:not(repeat['featured_brain'].start)"
                                    i18n:translate=""
-                                >Move up</a></li>
+                                >Move up</a>
+                              </li>
                               <li><a class="dropdown-item"
                                    href="#"
                                    data-action="move-down"
                                    tal:condition="python:not(repeat['featured_brain'].end)"
                                    i18n:translate=""
-                                >Move down</a></li>
+                                >Move down</a>
+                              </li>
                               <li>
                                 <hr class="dropdown-divider" />
                               </li>
@@ -268,7 +300,8 @@
                                    data-bs-target="#deleteElementModal"
                                    data-bs-toggle="modal"
                                    i18n:translate=""
-                                >Delete</a></li>
+                                >Delete</a>
+                              </li>
                             </ul>
                           </div>
                         </div>
@@ -294,7 +327,7 @@
                     </tal:featured_add_button>
                   </div>
                 </tal:condition>
-                <div class="content row">
+                <div class="content row g-0">
                   <div class="${row/width}">
                     <replace tal:replace="structure python:row.render(request)"></replace>
                   </div>
@@ -331,6 +364,7 @@
                  tabindex="-1"
                  tal:define="
                    available_views_for_row view/available_views_for_row;
+                   templates python:view.available_templates();
                  "
             >
               <div class="offcanvas-header">
@@ -346,18 +380,64 @@
                 ></button>
               </div>
               <div class="offcanvas-body">
+                <div class="templates-listing"
+                     tal:define="
+                       empty_rows python:len(view.rows()) == 0;
+                     "
+                     tal:condition="python: empty_rows and templates"
+                >
+                  <h2 i18n:translate="">Reuse existing templates</h2>
+                  <br />
+                  <div class="accordion"
+                       id="templateAccordion"
+                  >
+                    <div class="accordion-item"
+                         tal:repeat="template templates"
+                    >
+                      <h3 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                aria-controls="collapse-${repeat/template/number}"
+                                aria-expanded="false"
+                                type="button"
+                                data-bs-target="#collapse-${repeat/template/number}"
+                                data-bs-toggle="collapse"
+                        >
+                        ${template/name}
+                        </button>
+                      </h3>
+                      <div class="accordion-collapse collapsed collapse"
+                           id="collapse-${repeat/template/number}"
+                           data-bs-parent="#templateAccordion"
+                      >
+                        <div class="accordion-body">
+                          <span i18n:translate="">SHOW THE MINI RENDERING</span>
+
+                          <a class="btn btn-primary apply-template"
+                             href="#"
+                             data-uid="${template/uid}"
+                             i18n:translate=""
+                          >Apply this template
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <hr tal:condition="templates" />
+                <h2 i18n:translate="">Add block</h2>
                 <ul class="list-unstyled row">
-                  <li class="col-4 mb-2"
+                  <li class="mb-2 col-4"
                       tal:repeat="item available_views_for_row"
                   >
-                    <div class="p-5 bg-light rounded h-100 available-view">
-                      <a class="d-flex flex-column align-items-center justify-content-between h-100 no-underline"
+                    <div class="p-5 rounded bg-light h-100 available-view">
+                      <a class="no-underline d-flex flex-column align-items-center justify-content-between h-100"
                          href="${view/dynamic_page_folder_element_url}/add-row-content?row_type=${item/row_type}"
                       >
                         <span class="mb-2"
                               tal:content="structure python:icons.tag(item['row_type_icon'], tag_class='fs-1')"
                         ></span>
-                        <span class="small text-center"
+                        <span class="text-center small"
                               tal:content="python:view.normalize_title(item['row_type'])"
                         ></span>
                       </a>
@@ -407,13 +487,13 @@
             </div>
           </div>
           <script>
-            // Selecciona todos los elementos con el atributo data-bs-toggle="tooltip"
-            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+          // Selecciona todos los elementos con el atributo data-bs-toggle="tooltip"
+          const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
 
-            // Crea una instancia de tooltip para cada elemento encontrado
-            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+          // Crea una instancia de tooltip para cada elemento encontrado
+          const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
           </script>
-          <div class="toast-container position-fixed bottom-0 end-0 p-3">
+          <div class="bottom-0 p-3 toast-container position-fixed end-0">
             <div class="toast"
                  id="liveToast"
                  aria-atomic="true"
@@ -436,6 +516,60 @@
             </div>
           </div>
         </tal:condition-configuration>
+
+        <div class="modal fade"
+             id="templateModal"
+             aria-hidden="true"
+             aria-labelledby="addTemplateModal"
+             tabindex="-1"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5"
+                    id="addTemplateModal"
+                    i18n:translate=""
+                >Add template</h1>
+                <button class="btn-close"
+                        aria-label="Close"
+                        type="button"
+                        data-bs-dismiss="modal"
+                        i18n:attributes="aria-label"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label class="col-form-label"
+                           for="template-name"
+                           i18n:translate=""
+                    >Template name:</label>
+                    <input class="form-control"
+                           id="template-name"
+                           required="required"
+                           type="text"
+                    />
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary"
+                        type="button"
+                        data-bs-dismiss="modal"
+                        i18n:translate=""
+                >Close</button>
+                <button class="btn btn-primary"
+                        id="addAsTemplate"
+                        type="button"
+                        data-uid="${python:view.dynamic_page_folder_element().UID()}"
+                        i18n:translate=""
+                >Save as
+                  template</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </main>
     </metal:main>
 

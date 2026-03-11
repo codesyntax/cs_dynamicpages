@@ -54,7 +54,7 @@ requirements-mxdev.txt: pyproject.toml mx.ini ## Generate constraints file
 
 $(VENV_FOLDER): requirements-mxdev.txt ## Install dependencies
 	@echo "$(GREEN)==> Install environment$(RESET)"
-	@uv venv $(VENV_FOLDER)
+	@uv venv $(VENV_FOLDER) --clear
 	@uv pip install -r requirements-mxdev.txt
 
 .PHONY: sync
@@ -124,6 +124,7 @@ i18n: $(VENV_FOLDER) ## Update locales
 .PHONY: test
 test: $(VENV_FOLDER) ## run tests
 	@$(BIN_FOLDER)/pytest
+	@if [ -d "src/cs_dynamicpages/tests" ]; then $(BIN_FOLDER)/pytest src/cs_dynamicpages/tests; fi
 
 .PHONY: test-coverage
 test-coverage: $(VENV_FOLDER) ## run tests with coverage
@@ -131,7 +132,7 @@ test-coverage: $(VENV_FOLDER) ## run tests with coverage
 
 ## Add bobtemplates features (check bobtemplates.plone's documentation to get the list of available features)
 add: $(VENV_FOLDER)
-	@uvx plonecli add -b .mrbob.ini $(filter-out $@,$(MAKECMDGOALS))
+	@uvx --with="setuptools==81.0.0" plonecli add  $(filter-out $@,$(MAKECMDGOALS))
 
 .PHONY: release
 release: $(VENV_FOLDER) ## Create a release

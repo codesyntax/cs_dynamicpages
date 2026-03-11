@@ -46,7 +46,6 @@
             </div>
           </div>
         </div>
-
       </tal:define>
     </tal:repeat>
   </div>
@@ -55,5 +54,4 @@
        tal:condition="context/link_url"
     >${context/link_text}</a>
   </div>
-
 </tal:define>

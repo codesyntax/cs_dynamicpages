@@ -2,11 +2,19 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
-    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="cs_dynamicpages"
     >
 
   <!-- -*- extra stuff goes here -*- -->
+
+  <browser:page
+      name="dynamic-pages-template-management"
+      for="*"
+      class=".dynamic_pages_template_management.DynamicPagesTemplateManagement"
+      template="dynamic_pages_template_management.pt"
+      permission="cmf.ModifyPortalContent"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
 
   <browser:page
       name="view"
@@ -79,18 +87,15 @@
     <browser:page
         name="cs_dynamicpages-title-description-view"
         template="dynamic_title_description_view.pt"
-        zcml:condition="have plone-61"
         />
     <browser:page
         name="cs_dynamicpages-featured-view"
         template="featured_view.pt"
-        zcml:condition="have plone-61"
         />
 
     <browser:page
         name="cs_dynamicpages-featured-overlay-view"
         template="featured_overlay_view.pt"
-        zcml:condition="have plone-61"
         />
 
     <browser:page
@@ -118,7 +123,6 @@
     <browser:page
         name="cs_dynamicpages-query-columns-view"
         template="query_columns_view.pt"
-        zcml:condition="have plone-61"
         />
   </browser:pages>
 
@@ -131,7 +135,6 @@
     <browser:page
         name="cs_dynamicpages-slider-view"
         template="slider_view.pt"
-        zcml:condition="have plone-61"
         />
 
     <browser:page
@@ -142,7 +145,6 @@
     <browser:page
         name="cs_dynamicpages-features-view"
         template="features_view.pt"
-        zcml:condition="have plone-61"
         />
   </browser:pages>
 

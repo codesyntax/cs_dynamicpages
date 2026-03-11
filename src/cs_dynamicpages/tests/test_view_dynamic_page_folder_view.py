@@ -10,39 +10,61 @@ from zope.interface.interfaces import ComponentLookupError
 import unittest
 
 
-class ViewsIntegrationTest(unittest.TestCase):
+class DynamicPageFolderViewsIntegrationTest(unittest.TestCase):
     layer = CS_DYNAMICPAGES_INTEGRATION_TESTING
 
     def setUp(self):
         self.portal = self.layer["portal"]
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
-        api.content.create(self.portal, "Folder", "other-folder")
-        api.content.create(self.portal, "Document", "front-page")
+
+        # Create a DynamicPageFolder
+        self.folder = api.content.create(self.portal, "Folder", "test-folder")
+        self.dpf = api.content.create(
+            self.folder, "DynamicPageFolder", "rows", title="Rows"
+        )
 
     def test_dynamic_page_folder_view_is_registered(self):
+        """Test that view is registered for DynamicPageFolder."""
         view = getMultiAdapter(
-            (self.portal["other-folder"], self.portal.REQUEST),
-            name="dynamic-page-folder-view",
+            (self.dpf, self.portal.REQUEST),
+            name="view",
         )
         self.assertTrue(IDynamicPageFolderView.providedBy(view))
 
-    def test_dynamic_page_folder_view_not_matching_interface(self):
+    def test_dynamic_page_folder_view_not_found_for_document(self):
+        """Test that view is not registered for Document."""
+        doc = api.content.create(self.portal, "Document", "front-page")
         view_found = True
         try:
             view = getMultiAdapter(
-                (self.portal["front-page"], self.portal.REQUEST),
-                name="dynamic-page-folder-view",
+                (doc, self.portal.REQUEST),
+                name="view",
             )
+            view_found = IDynamicPageFolderView.providedBy(view)
         except ComponentLookupError:
             view_found = False
-        else:
-            view_found = IDynamicPageFolderView.providedBy(view)
         self.assertFalse(view_found)
 
 
-class ViewsFunctionalTest(unittest.TestCase):
+class DynamicPageFolderViewsFunctionalTest(unittest.TestCase):
     layer = CS_DYNAMICPAGES_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.portal = self.layer["portal"]
+        self.request = self.layer["request"]
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
+
+        # Create a DynamicPageFolder
+        self.folder = api.content.create(self.portal, "Folder", "test-folder-dpf-func")
+        self.dpf = api.content.create(
+            self.folder, "DynamicPageFolder", "rows", title="Rows"
+        )
+
+    def test_dynamic_page_folder_view_renders_without_error(self):
+        """Test that DynamicPageFolder view renders without raising an error."""
+        view = getMultiAdapter(
+            (self.dpf, self.request),
+            name="view",
+        )
+        html = view()
+        self.assertIsInstance(html, str)

@@ -3,4 +3,5 @@
   <!-- List all packages you depend here -->
   <include package="collective.z3cform.datagridfield" />
   <include package="plone.app.contentmenu" />
+  <include package="plone.restapi" />
 </configure>

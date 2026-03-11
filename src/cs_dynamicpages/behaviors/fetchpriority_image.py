@@ -28,6 +28,14 @@ class IFetchPriorityImage(model.Schema):
         required=False,
     )
 
+    model.fieldset(
+        "related_image",
+        label="Related Image",
+        fields=[
+            "fetchpriority_image",
+        ],
+    )
+
 
 @implementer(IFetchPriorityImage)
 @adapter(IFetchPriorityImageMarker)

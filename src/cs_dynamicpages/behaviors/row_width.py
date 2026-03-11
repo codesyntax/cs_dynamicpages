@@ -19,8 +19,16 @@ class IRowWidth(model.Schema):
         title=_("Row width"),
         description=_("Select the width that this row will have"),
         vocabulary="cs_dynamicpages.RowWidth",
-        required=True,
+        required=False,
         default="col-md-12",
+    )
+
+    model.fieldset(
+        "spacing",
+        label="Spacing",
+        fields=[
+            "width",
+        ],
     )
 
 

@@ -16,4 +16,14 @@
   <object meta_type="Dexterity FTI"
           name="DynamicPageRowFeatured"
   />
+  <object meta_type="Dexterity FTI"
+          name="Folder"
+  />
+  <object meta_type="Dexterity FTI"
+          name="LRF"
+  />
+  <object meta_type="Dexterity FTI"
+          name="Plone Site"
+  />
+
 </object>
