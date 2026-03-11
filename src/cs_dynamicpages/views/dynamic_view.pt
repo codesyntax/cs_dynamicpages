@@ -10,23 +10,8 @@
 
       <tal:condition-configuration condition="view/dynamic_page_folder_element">
         <div class="right-0 py-2 sticky-top d-flex justify-content-end me-2" tal:condition="view/can_edit">
-          <div
-            class="px-3 py-2 mb-3 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5"
-            tal:condition="python:len(view.rows()) and not view.self_in_templates()">
-            <!-- Button trigger modal -->
-            <button class="btn btn-primary" type="button" data-bs-target="#templateModal" data-bs-toggle="modal"
-              i18n:translate="">
-              Save as template
-            </button>
-            <!-- Modal -->
-          </div>
-          <div
-            class="px-3 py-2 mb-3 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5">
-            <div class="form-check form-switch">
-              <input class="form-check-input" id="editModeToggle" checked role="switch" type="checkbox" />
-              <label class="form-check-label" for="editModeToggle" i18n:translate="">Edit Mode</label>
-            </div>
-          </div>
+
+
         </div>
         <tal:conditiondrapanddrop tal:condition="view/can_edit">
           <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
@@ -211,9 +196,17 @@
           </tal:featured>
         </tal:features>
         <tal:condition tal:condition="view/can_edit">
-          <div class="sticky-bottom edit-options dynamic-row d-flex justify-content-center align-items-center"
+          <div class="sticky-bottom rows-mangement d-flex justify-content-center align-items-center gap-5"
             tal:condition="view/dynamic_page_folder_element_url">
-            <a class="btn btn-primary btn-lg" aria-controls="offcanvasRight" title="Add row"
+            <div tal:condition="python:len(view.rows()) and not view.self_in_templates()">
+              <!-- Button trigger modal -->
+              <button class="btn btn-primary" type="button" data-bs-target="#templateModal" data-bs-toggle="modal"
+                i18n:translate="">
+                Save as template
+              </button>
+              <!-- Modal -->
+            </div>
+            <a class="btn btn-primary" aria-controls="offcanvasRight" title="Add row"
               data-bs-target="#addrow-offcanvasRight" data-bs-toggle="offcanvas" i18n:attributes="title"><svg
                 xmlns="http://www.w3.org/2000/svg" class="bi bi-plus-lg" fill="currentColor" height="16"
                 viewbox="0 0 16 16" width="16">
@@ -222,6 +215,13 @@
                   fill-rule="evenodd"></path>
               </svg>
             </a>
+            <div
+              class="px-3 py-2 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5">
+              <div class="form-check form-switch">
+                <input class="form-check-input" id="editModeToggle" checked role="switch" type="checkbox" />
+                <label class="form-check-label" for="editModeToggle" i18n:translate="">Edit Mode</label>
+              </div>
+            </div>
           </div>
           <div class="offcanvas offcanvas-end" id="addrow-offcanvasRight" aria-labelledby="offcanvasRightLabel"
             tabindex="-1" tal:define="
