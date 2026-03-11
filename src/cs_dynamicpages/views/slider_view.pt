@@ -48,7 +48,8 @@
         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded-3 p-4 mb-4 shadow">
           <h5 class="text-white fw-bold mb-3">${element/Title}</h5>
           <p class="text-white-50 mb-4">${element/Description}</p>
-          <a class="btn btn-outline-light px-4" href="${element/url}"
+          <a class="btn btn-outline-light px-4"
+             href="${element/url}"
              tal:condition="element/url"
           >${element/link_text}</a>
         </div>

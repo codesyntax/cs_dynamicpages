@@ -27,7 +27,8 @@
       <p class="card-text text-white-50"
          tal:condition="context/Description"
       >${context/Description}</p>
-      <a class="btn btn-outline-light btn-sm mt-2" href="${context/url}"
+      <a class="btn btn-outline-light btn-sm mt-2"
+         href="${context/url}"
          tal:condition="context/url"
       >${context/link_text}</a>
     </div>

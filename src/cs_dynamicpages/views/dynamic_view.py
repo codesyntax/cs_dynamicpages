@@ -85,4 +85,3 @@ class DynamicView(BrowserView):
                 template.get("uid") for template in self.available_templates()
             ]
         return False
-
