@@ -80,6 +80,8 @@ make create-site
 - [Issue tracker](https://github.com/codesyntax/cs_dynamicpages/issues)
 - [Source code](https://github.com/codesyntax/cs_dynamicpages/)
 
+Please, clone this repo, do your developments in a specific branch, and create a pull request from it.
+
 ### Prerequisites ✅
 
 - An [operating system](https://6.docs.plone.org/install/create-project-cookieplone.html#prerequisites-for-installation) that runs all the requirements mentioned.
