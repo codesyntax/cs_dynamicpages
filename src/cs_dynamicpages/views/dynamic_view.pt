@@ -39,7 +39,7 @@
                      tal:condition="row/can_edit"
                 >
                   <div class="drag-handle"
-                       title="Drap and drop"
+                       title="Drag and drop"
                        i18n:attributes="title"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg"
