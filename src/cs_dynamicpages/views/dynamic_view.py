@@ -1,16 +1,16 @@
 # from cs_dynamicpages import _
+from Acquisition import aq_parent
 from cs_dynamicpages.templates import Manager
 from cs_dynamicpages.utils import get_available_views_for_row
 from plone import api
+from plone.app.uuid.utils import uuidToObject
 from plone.protect.interfaces import IDisableCSRFProtection
 from plone.uuid.interfaces import IUUID
 from Products.Five.browser import BrowserView
+from zope.i18n import translate
 from zope.interface import alsoProvides
 from zope.interface import implementer
 from zope.interface import Interface
-from Acquisition import aq_parent
-from zope.i18n import translate
-from plone.app.uuid.utils import uuidToObject
 
 
 class IDynamicView(Interface):
