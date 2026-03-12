@@ -79,7 +79,7 @@ class TestTemplatesDeleteAPI(unittest.TestCase):
         request = self._make_request({"uid": self.template_uid})
         service = self._get_service(request)
 
-        response = service.reply()
+        service.reply()
 
         # In Plone tests, we check that status is NO CONTENT (204)
         self.assertEqual(request.response.getStatus(), 204)

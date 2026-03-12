@@ -86,7 +86,7 @@ class DynamicPageFolderViewsFunctionalTest(unittest.TestCase):
                     "row_type_has_featured_add_button": False,
                 }
             ]
-            response = view()
+            view()
 
             # Should have added a row
             rows = self.dpf.objectValues()
@@ -116,7 +116,7 @@ class DynamicPageFolderViewsFunctionalTest(unittest.TestCase):
                     "row_type_has_featured_add_button": True,
                 }
             ]
-            response = view()
+            view()
 
             # Should have added a row
             rows = self.dpf.objectValues()
