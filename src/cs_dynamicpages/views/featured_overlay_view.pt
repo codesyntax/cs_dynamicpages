@@ -21,9 +21,9 @@
                                       css_class='rounded')"
     />
   </tal:image>
-  <!-- Overlay-a flex-column egingo dugu behera (end) bidaltzeko edukia -->
+  <!-- We will make it a flex-column to send the text-content to the bottom -->
   <div class="card-img-overlay d-flex flex-column justify-content-end p-0">
-    <!-- Testuari hondo ilun eta erdi-gardena jarriko diogu irisgarritasuna hobetzeko -->
+    <!-- Dark background to the text to improve the readability -->
     <div class="bg-dark bg-opacity-75 w-100 p-4 mt-auto rounded-bottom">
       <h5 class="card-title text-white fw-bold">${context/Title}</h5>
       <p class="card-text text-white-50"
