@@ -21,7 +21,7 @@ The concept is pretty similar that of Volto blocks:
 
 ## Provided View
 
-There is just one view `dynamic_view` registered for Folders and Naviation roots
+There is just one view `dynamic_view` registered for Folders and Naviation roots. You can register it for your own content-types also.
 
 ### Different fields
 
@@ -35,11 +35,6 @@ To provide different views, you should register standard views (using `zcml`).
 Those views must be registered for implementers of `cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow`
 and their name _must_ start by `cs_dynamicpages-`.
 
-To ease installation of such views in your products, `cs_dynamicpages.utils` contains 2 utility functions:
-
-- `add_custom_view`: function to add a given view to the list of available row types
-- `enable_behavior`: function to enable the given behavior in the `DynamicPageRow` content type
-
 ### Restrict fields in the row edit view
 
 You may register several behaviors for `DynamicPageRow` objects but only use some of the fields
@@ -48,6 +43,23 @@ provided by them in a given view.
 You can restrict which fields are shown in the edit form of the `DynamicPageRow` going to the
 Dynamic Pages Controlpanel, and setting there the list of fields that will be shown when editing
 each of the row types.
+
+To ease installation of such views and field configuration in your products, `cs_dynamicpages.utils` contains 2 utility functions:
+
+- `add_custom_view`: function to add a given view to the list of available row types
+- `enable_behavior`: function to enable the given behavior in the `DynamicPageRow` content type
+
+## Templates
+
+The product lets the end-user save a given dynamic page as a "Template". This means that a reference to the rows setup of a given page will be saved and then can be used as an starting point when creating a new dynamic page.
+
+Templates are saved in a JSON field of a behavior called `cs_dynamicpages.templates` in a content object. This behavior is applied, by default, to the `Plone Site` object. But can be applied to any other object.
+
+The template manager goes up in the contentree from the context object where you are setting the template until it finds a content object that implements the said behavior, and saves the template information there.
+
+This means that you can configure different templates in different parts of your site, provided that you set the said behavior to a given content-type. Think, for instance, that you could set the behavior to Subsites of your site, or to Language Root Folders in multilingual sites.
+
+A template management screen is also available to view and delete such templates.
 
 ## Installation
 
