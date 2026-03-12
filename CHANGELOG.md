@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b6 (2026-03-12)
+
+
+### New features:
+
+- Style the template handling actions @libargutxi [#20](https://github.com/codesyntax/cs_dynamicpages/issues/20)
+
 ## 1.0.0b5 (2026-03-11)
 
 
