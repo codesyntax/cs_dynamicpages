@@ -129,6 +129,7 @@ test: $(VENV_FOLDER) ## run tests
 .PHONY: test-coverage
 test-coverage: $(VENV_FOLDER) ## run tests with coverage
 	@$(BIN_FOLDER)/pytest --cov=cs_dynamicpages --cov-report term-missing
+	@if [ -d "src/cs_dynamicpages/tests" ]; then $(BIN_FOLDER)/pytest src/cs_dynamicpages/tests --cov=cs_dynamicpages --cov-report term-missing --cov-append; fi
 
 ## Add bobtemplates features (check bobtemplates.plone's documentation to get the list of available features)
 add: $(VENV_FOLDER)
