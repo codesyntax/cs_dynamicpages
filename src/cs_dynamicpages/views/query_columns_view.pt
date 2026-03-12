@@ -26,18 +26,19 @@
                                                               alt=element.Title() ,
                                                               title=element.Title(),
                                                               fetchpriority=fetchpriority_image_value,
-                                                              loading=loading_image_value)"
+                                                              loading=loading_image_value,
+                                                              css_class='rounded-top')"
               />
             </tal:image>
             <div class="card-body">
               <a class="h5 card-title stretched-link"
                  href="${element/absolute_url}"
               >${element/Title}</a>
-              <p class="mb-3"
-                 tal:condition="python:element.portal_type != 'Event'"
+              <p class="mb-3 fw-light"
+                 tal:condition="python:element.portal_type == 'News Item'"
                  tal:content="python:element.toLocalizedTime(element.EffectiveDate())"
               ></p>
-              <p class="mb-3"
+              <p class="mb-3 fw-light"
                  tal:condition="python:element.portal_type == 'Event'"
                  tal:content="python:element.toLocalizedTime(element.start)"
               ></p>

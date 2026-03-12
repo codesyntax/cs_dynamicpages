@@ -1,10 +1,13 @@
 # from cs_dynamicpages import _
+from Acquisition import aq_parent
 from cs_dynamicpages.templates import Manager
 from cs_dynamicpages.utils import get_available_views_for_row
 from plone import api
+from plone.app.uuid.utils import uuidToObject
 from plone.protect.interfaces import IDisableCSRFProtection
 from plone.uuid.interfaces import IUUID
 from Products.Five.browser import BrowserView
+from zope.i18n import translate
 from zope.interface import alsoProvides
 from zope.interface import implementer
 from zope.interface import Interface
@@ -76,8 +79,26 @@ class DynamicView(BrowserView):
         )
 
     def available_templates(self):
+        portal_types = api.portal.get_tool("portal_types")
         manager = Manager(self.context)
-        return manager.get_templates()
+        templates = []
+        for template in manager.get_templates():
+            obj = uuidToObject(template.get("uid"))
+            if obj:
+                parent = aq_parent(obj)
+                template.update({
+                    "Title": parent.Title(),
+                    "Description": parent.Description(),
+                    "absolute_url": parent.absolute_url(),
+                    "portal_type": parent.portal_type,
+                    "translated_portal_type": translate(
+                        portal_types.get(parent.portal_type).title,
+                        domain=portal_types.get(parent.portal_type).i18n_domain,
+                        context=self.request,
+                    ),
+                })
+                templates.append(template)
+        return templates
 
     def self_in_templates(self):
         if "rows" in self.context:

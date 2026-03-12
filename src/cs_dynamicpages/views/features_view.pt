@@ -31,7 +31,8 @@
                                                                   alt=element.Title() ,
                                                                   title=element.Title(),
                                                                   fetchpriority=fetchpriority_image_value,
-                                                                  loading=loading_image_value)"
+                                                                  loading=loading_image_value,
+                                                                  css_class='rounded-top')"
           />
         </tal:image>
         <div class="card-body">

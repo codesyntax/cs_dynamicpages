@@ -5,6 +5,7 @@
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="cs_dynamicpages"
 >
+
   <body>
 
     <metal:custom_title fill-slot="content-title">
@@ -30,11 +31,16 @@
           >
             <ul>
               <li><span i18n:translate="">Name</span>:
-                <span tal:replace="template/name"></span></li>
+                <span tal:replace="template/name"></span>
+              </li>
               <li><span i18n:translate="">Content title</span>:
                 <span tal:replace="template/Title"></span>
-                (<span tal:replace="template/translated_portal_type"></span>)</li>
-              <li><a href="${template/absolute_url}"
+                (<span tal:replace="template/translated_portal_type"></span>)
+              </li>
+              <li><a class="btn btn-outline-primary btn-sm"
+                   href="${template/absolute_url}"
+                   target="_blank"
+                   data-template-name="${template/name}"
                    i18n:translate=""
                 >See template</a></li>
             </ul>
@@ -45,7 +51,9 @@
                data-bs-target="#deleteElementModal-${repeat/template/number}"
                data-bs-toggle="modal"
                i18n:attributes="title"
-            ><tal:icon tal:replace="structure python:icons.tag('trash')" /></a>
+            >
+              <tal:icon tal:replace="structure python:icons.tag('trash')" />
+            </a>
             <div class="modal fade"
                  id="deleteElementModal-${repeat/template/number}"
                  aria-hidden="true"
@@ -58,7 +66,8 @@
                     <h5 class="modal-title"
                         id="deleteElementModalLabel-${repeat/template/number}"
                         i18n:translate=""
-                    >Confirm Deletion</h5>
+                    >
+                      Confirm Deletion</h5>
                     <button class="btn-close"
                             aria-label="Close"
                             type="button"
@@ -84,14 +93,10 @@
                 </div>
               </div>
             </div>
-
           </li>
-
         </ul>
-
-
-
       </metal:block>
     </metal:content-core>
   </body>
+
 </html>

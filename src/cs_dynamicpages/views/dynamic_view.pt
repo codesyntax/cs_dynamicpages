@@ -15,40 +15,10 @@
       <main id="dynamic_pages_content">
 
         <tal:condition-configuration condition="view/dynamic_page_folder_element">
-          <div class="right-0 py-2 sticky-top d-flex justify-content-end me-2"
-               tal:condition="view/can_edit"
-          >
-            <div class="px-3 py-2 mb-3 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5"
-                 tal:condition="python:len(view.rows()) and not view.self_in_templates()"
-            >
-              <!-- Button trigger modal -->
-              <button class="btn btn-primary"
-                      type="button"
-                      data-bs-target="#templateModal"
-                      data-bs-toggle="modal"
-                      i18n:translate=""
-              >
-              Save as template
-              </button>
-              <!-- Modal -->
-            </div>
-            <div class="px-3 py-2 mb-3 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5">
-              <div class="form-check form-switch">
-                <input class="form-check-input"
-                       id="editModeToggle"
-                       checked
-                       role="switch"
-                       type="checkbox"
-                />
-                <label class="form-check-label"
-                       for="editModeToggle"
-                       i18n:translate=""
-                >Edit Mode</label>
-              </div>
-            </div>
-          </div>
           <tal:conditiondrapanddrop tal:condition="view/can_edit">
-            <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+            <script id="sortable-js"
+                    src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"
+            ></script>
           </tal:conditiondrapanddrop>
           <tal:features define="
                           rows view/rows;
@@ -69,7 +39,7 @@
                      tal:condition="row/can_edit"
                 >
                   <div class="drag-handle"
-                       title="Drap and drop"
+                       title="Drag and drop"
                        i18n:attributes="title"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -336,10 +306,22 @@
             </tal:featured>
           </tal:features>
           <tal:condition tal:condition="view/can_edit">
-            <div class="sticky-bottom edit-options dynamic-row d-flex justify-content-center align-items-center"
+            <div class="sticky-bottom rows-mangement d-flex justify-content-center align-items-center gap-5"
                  tal:condition="view/dynamic_page_folder_element_url"
             >
-              <a class="btn btn-primary btn-lg"
+              <div tal:condition="python:len(view.rows()) and not view.self_in_templates()">
+                <!-- Button trigger modal -->
+                <button class="btn btn-primary"
+                        type="button"
+                        data-bs-target="#templateModal"
+                        data-bs-toggle="modal"
+                        i18n:translate=""
+                >
+                Save as template
+                </button>
+                <!-- Modal -->
+              </div>
+              <a class="btn btn-primary"
                  aria-controls="offcanvasRight"
                  title="Add row"
                  data-bs-target="#addrow-offcanvasRight"
@@ -357,6 +339,20 @@
                   ></path>
                 </svg>
               </a>
+              <div class="px-3 py-2 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5">
+                <div class="form-check form-switch">
+                  <input class="form-check-input"
+                         id="editModeToggle"
+                         checked
+                         role="switch"
+                         type="checkbox"
+                  />
+                  <label class="form-check-label"
+                         for="editModeToggle"
+                         i18n:translate=""
+                  >Edit Mode</label>
+                </div>
+              </div>
             </div>
             <div class="offcanvas offcanvas-end"
                  id="addrow-offcanvasRight"
@@ -365,6 +361,7 @@
                  tal:define="
                    available_views_for_row view/available_views_for_row;
                    templates python:view.available_templates();
+                   empty_rows python:len(view.rows()) == 0;
                  "
             >
               <div class="offcanvas-header">
@@ -381,20 +378,18 @@
               </div>
               <div class="offcanvas-body">
                 <div class="templates-listing"
-                     tal:define="
-                       empty_rows python:len(view.rows()) == 0;
-                     "
                      tal:condition="python: empty_rows and templates"
                 >
-                  <h2 i18n:translate="">Reuse existing templates</h2>
-                  <br />
+                  <h6 class="mb-3"
+                      i18n:translate=""
+                  >Reuse existing templates</h6>
                   <div class="accordion"
                        id="templateAccordion"
                   >
                     <div class="accordion-item"
                          tal:repeat="template templates"
                     >
-                      <h3 class="accordion-header">
+                      <span class="accordion-header">
                         <button class="accordion-button collapsed"
                                 aria-controls="collapse-${repeat/template/number}"
                                 aria-expanded="false"
@@ -404,15 +399,22 @@
                         >
                         ${template/name}
                         </button>
-                      </h3>
+                      </span>
                       <div class="accordion-collapse collapsed collapse"
                            id="collapse-${repeat/template/number}"
                            data-bs-parent="#templateAccordion"
                       >
                         <div class="accordion-body">
-                          <span i18n:translate="">SHOW THE MINI RENDERING</span>
+                          <a class="btn btn-outline-primary btn-sm preview-template-btn"
+                             href="${template/absolute_url}"
+                             data-template-name="${template/name}"
+                             i18n:translate=""
+                          >See
+                          this
+                          template
+                          </a>
 
-                          <a class="btn btn-primary apply-template"
+                          <a class="btn btn-outline-success btn-sm apply-template"
                              href="#"
                              data-uid="${template/uid}"
                              i18n:translate=""
@@ -424,8 +426,14 @@
                   </div>
 
                 </div>
-                <hr tal:condition="templates" />
-                <h2 i18n:translate="">Add block</h2>
+                <tal:conditionrows tal:condition="python: empty_rows and templates">
+                  <div class="my-5"
+                       tal:condition="templates"
+                  ></div>
+                  <h6 class="mb-3"
+                      i18n:translate=""
+                  >Add block</h6>
+                </tal:conditionrows>
                 <ul class="list-unstyled row">
                   <li class="mb-2 col-4"
                       tal:repeat="item available_views_for_row"
@@ -565,6 +573,47 @@
                         i18n:translate=""
                 >Save as
                   template</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Template Preview Modal -->
+        <div class="modal fade"
+             id="previewTemplateModal"
+             aria-hidden="true"
+             aria-labelledby="previewTemplateModalLabel"
+             tabindex="-1"
+        >
+          <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg">
+              <div class="modal-header bg-white border-bottom">
+                <h5 class="modal-title text-primary fw-semibold"
+                    id="previewTemplateModalLabel"
+                    i18n:translate=""
+                >Template Preview</h5>
+                <button class="btn-close"
+                        aria-label="Close"
+                        type="button"
+                        data-bs-dismiss="modal"
+                        i18n:attributes="aria-label"
+                ></button>
+              </div>
+              <div class="modal-body p-4 bg-light">
+                <!-- Marko txukuna (kuadro efektua) -->
+                <div class="bg-white border rounded shadow p-4 mx-auto"
+                     id="previewTemplateBody"
+                     style="min-height: 200px; zoom: 0.50;"
+                >
+                  <!-- Content will be injected here via JS -->
+                </div>
+              </div>
+              <div class="modal-footer bg-white border-top">
+                <button class="btn btn-light"
+                        type="button"
+                        data-bs-dismiss="modal"
+                        i18n:translate=""
+                >Close</button>
               </div>
             </div>
           </div>
