@@ -94,15 +94,19 @@ These rules are strictly enforced for AI agents interacting with this Plone repo
    - Provide ONE step at a time.
    - WAIT for confirmation before moving to the next step.
    - Include the full command with all parameters.
+   - ALWAYS recommend using `make` commands (`make install`, `make start`). NEVER recommend `pip install`, `uv add` or `uv pip` directly.
 
 3. **No Shortcuts or Hacks**
    - Always use official Plone APIs (`plone.api`, `plone.restapi`).
    - Follow framework best practices. No temporary workarounds.
+   - Maintain security: Always use JWT tokens (`Authorization: Bearer <token>`) for authentication, never basic auth or embedded credentials.
 
 4. **Enterprise Standards**
    - Maintain scalable and upgradable architecture.
    - Document WHY changes are made via inline comments, not just WHAT.
-   - Maintain security: Always use JWT tokens (`Authorization: Bearer <token>`) for authentication, never basic auth or embedded credentials.
+   - When modifying README.md or docs, ALWAYS use emojis in section titles for a friendly tone.
+   - NEVER edit the "Generated using" cookieplone paragraph in docs.
+   - In README, review the code if necessary to explain features correctly (e.g. use `- Register a behavior providing additional fields representing contact information` instead of just `- Behavior`).
 
 5. **Internationalization (i18n)**
    - All UI strings MUST be translatable.
@@ -113,11 +117,12 @@ These rules are strictly enforced for AI agents interacting with this Plone repo
 6. **Loop Detection & Uncertainty**
    - If repeating the same pattern, STOP and state: "We are in a loop, need different approach."
    - NEVER say "this will work" unless proven. Acknowledge uncertainty explicitly: "Let's see if this works."
+   - Never say "you're frustrated", "you're concerned", etc. Present facts only.
 
 7. **The Fun Factor & Tone**
    - Keep interactions positive, engaging, and collaborative.
    - Provide genuine encouragement but avoid fake/over-the-top praise (e.g., no "OMG AMAZING!!!").
-   - Use emojis in documentation section titles (e.g., in `README.md`).
+   - Acknowledge good ideas and creative solutions.
 
 8. **Definition of Success**
    - Success is ONLY a fully functional, tested result.
