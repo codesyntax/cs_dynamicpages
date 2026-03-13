@@ -11,6 +11,7 @@ from cs_dynamicpages.utils import VIEW_PREFIX
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
+from zope.schema.interfaces import WrongContainedType
 
 import unittest
 
@@ -143,7 +144,7 @@ class AddCustomViewIntegrationTest(unittest.TestCase):
         if existing_views:
             # Test with existing view - function should still work
             result = add_custom_view(
-                existing_views[0]["row_type"],
+                "cs_dynamicpages-some-custom-view",
                 ["title", "description"],
                 has_button=False,
                 icon="star",
@@ -153,10 +154,26 @@ class AddCustomViewIntegrationTest(unittest.TestCase):
         else:
             self.skipTest("No existing views to test with")
 
+    def test_add_custom_view_returns_false(self):
+        # Use an existing view name
+        existing_views = get_available_views_for_row()
+        if existing_views:
+            # Test with existing view - function should still work
+            result = add_custom_view(
+                existing_views[0]["row_type"],
+                ["title", "description"],
+                has_button=False,
+                icon="star",
+            )
+            # Function returns True even if view already exists
+            self.assertFalse(result)
+        else:
+            self.skipTest("No existing views to test with")
+
     def test_add_custom_view_structure(self):
         """Test that add_custom_view creates correct structure."""
         # Test using slider-view which is registered
-        view_name = "cs_dynamicpages-slider-view"
+        view_name = "cs_dynamicpages-some-custom-view"
         original_len = len(api.portal.get_registry_record(self.record_name))
 
         add_custom_view(view_name, ["title"], has_button=True, icon="heart")
@@ -175,7 +192,7 @@ class AddCustomViewIntegrationTest(unittest.TestCase):
 
     def test_add_custom_view_default_icon_is_bricks(self):
         """Test that default icon is 'bricks'."""
-        view_name = "cs_dynamicpages-featured-view"
+        view_name = "cs_dynamicpages-some-custom-view"
 
         add_custom_view(view_name, ["title"])
 
@@ -184,6 +201,13 @@ class AddCustomViewIntegrationTest(unittest.TestCase):
         # Should find at least one entry (original + new)
         last_match = matching[-1]  # Get the last added one
         self.assertEqual(last_match["row_type_icon"], "bricks")
+
+    def test_add_not_available_custom_view_fails(self):
+        """try to add a view that is not registered"""
+        view_name = "cs_dynamicpages-this-view-does-not-exist"
+
+        with self.assertRaises(WrongContainedType):
+            add_custom_view(view_name, ["title"])
 
 
 class EnableBehaviorIntegrationTest(unittest.TestCase):

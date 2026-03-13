@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="cs_dynamicpages"
+    >
+
+  <!-- Register a dummy view to be able to use it in tests -->
+
+  <configure package=".views">
+
+    <browser:page
+        name="cs_dynamicpages-some-custom-view"
+        for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+        class=".slider_view.SliderView"
+        template="slider_view.pt"
+        permission="zope2.View"
+        layer="cs_dynamicpages.interfaces.IBrowserLayer"
+        />
+  </configure>
+
+
+</configure>
