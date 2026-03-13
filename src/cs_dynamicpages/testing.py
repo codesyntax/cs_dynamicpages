@@ -17,6 +17,7 @@ class Layer(PloneSandboxLayer):
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
         self.loadZCML(package=cs_dynamicpages)
+        self.loadZCML(package=cs_dynamicpages, name="testing.zcml")
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, "cs_dynamicpages:default")
