@@ -9,6 +9,19 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b7 (2026-03-20)
+
+
+### New features:
+
+- Add tests @erral 
+
+
+### Bug fixes:
+
+- Return false if trying to add a view that exists to the registry @erral 
+- Translate comments @erral 
+
 ## 1.0.0b6 (2026-03-12)
 
 
