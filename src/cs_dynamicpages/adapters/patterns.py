@@ -9,6 +9,16 @@ content-type that previously is enabled in the TinyMCE control-panel as an
 
 from ..behaviors.related_image import IImageRelationChoice
 from plone import api
+
+
+try:
+    # This is for Plone 6.1
+    from plone.app.z3cform.interfaces import IContentBrowserWidget
+except ImportError:
+    # This is for previous versions of Plone
+    from plone.app.z3cform.widgets.relateditems import (
+        IRelatedItemsWidget as IContentBrowserWidget,
+    )
 from plone.app.z3cform.interfaces import IContentBrowserWidget
 from z3c.form.interfaces import IValue
 from zope.component import adapter
