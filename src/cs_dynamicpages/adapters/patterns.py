@@ -16,7 +16,7 @@ try:
     from plone.app.z3cform.interfaces import IContentBrowserWidget
 except ImportError:
     # This is for previous versions of Plone
-    from plone.app.z3cform.widgets.relateditems import (
+    from plone.app.z3cform.interfaces import (
         IRelatedItemsWidget as IContentBrowserWidget,
     )
 from plone.app.z3cform.interfaces import IContentBrowserWidget
