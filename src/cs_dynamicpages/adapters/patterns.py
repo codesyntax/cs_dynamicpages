@@ -19,7 +19,7 @@ except ImportError:
     from plone.app.z3cform.interfaces import (
         IRelatedItemsWidget as IContentBrowserWidget,
     )
-from plone.app.z3cform.interfaces import IContentBrowserWidget
+
 from z3c.form.interfaces import IValue
 from zope.component import adapter
 from zope.interface import implementer
