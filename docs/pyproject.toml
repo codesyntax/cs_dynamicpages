@@ -1,22 +1,13 @@
 [project]
 name = "cs_dynamicpages_Documentation"
 description = "A new addon for Plone"
-keywords = [
-    "cs_dynamicpages",
-    "documentation",
-    "Plone",
-    "Diátaxis",
-]
-version="1.0.0"
+keywords = ["cs_dynamicpages", "documentation", "Plone", "Diátaxis"]
+version = "1.0.0"
 readme = "README.md"
 requires-python = ">=3.10,<3.14"
 license = { file = "LICENSE" }
-maintainers = [
-    { name = "Plone Community", email = "collective@plone.org" },
-]
-authors = [
-    { name = "Plone Community", email = "collective@plone.org" },
-]
+maintainers = [{ name = "CodeSyntax", email = "plone@codesyntax.com" }]
+authors = [{ name = "CodeSyntax", email = "plone@codesyntax.com" }]
 classifiers = [
     "Development Status :: 1 - Planning",
     "Operating System :: OS Independent",
@@ -33,8 +24,8 @@ dev = [
     "graphviz",
     "linkify-it-py",
     "myst-parser",
-    "plone-sphinx-theme>=1.4.1",  # Use the latest stable version or a minimum
-    "setuptools",  # required by sphinxcontrib.httpexample, remove when it migrates to importlib. See https://github.com/collective/sphinxcontrib-httpexample/issues/106
+    "plone-sphinx-theme>=1.4.1", # Use the latest stable version or a minimum
+    "setuptools",                # required by sphinxcontrib.httpexample, remove when it migrates to importlib. See https://github.com/collective/sphinxcontrib-httpexample/issues/106
     "sphinx-autobuild",
     "sphinx-copybutton",
     "sphinx-design",
@@ -53,8 +44,8 @@ dev = [
 ]
 
 [project.urls]
-Repository = "https://github.com/collective/cs_dynamicpages"
-Documentation = "https://MY_READTHEDOCS_PROJECT_SLUG.readthedocs.io/"
+Repository = "https://github.com/codesyntax/cs_dynamicpages"
+Documentation = "https://cs_dynamicpages.readthedocs.io/"
 
 [build-system]
 requires = ["setuptools"]

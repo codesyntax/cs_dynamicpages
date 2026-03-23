@@ -20,8 +20,8 @@ from plone_sphinx_theme import __version__
 # -- Project information -----------------------------------------------------
 
 project = "cs_dynamicpages"
-author = "Plone Community"
-trademark_name = "collective"
+author = "CodeSyntax"
+trademark_name = "codesyntax"
 now = datetime.now()
 year = str(now.year)
 copyright = year
@@ -130,7 +130,7 @@ suppress_warnings = []
 # a list of builtin themes.
 html_theme = "plone_sphinx_theme"  # This can be configured
 html_logo = "_static/logo.svg"
-html_favicon = "_static/favicon.ico"
+html_favicon = "_static/favicon.svg"
 # The default value includes icon-links, so override it with that one omitted, and add it to html_theme_options[footer_content_items].
 html_sidebars = {
     "**": [

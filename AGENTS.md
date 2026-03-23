@@ -12,11 +12,13 @@ This project uses `make` as the primary task runner, backed by `uv` for Python e
   make install
   ```
   *(Always recommend `make install` to users. It handles all dependencies, `uv venv`, and setup. NEVER recommend using `pip install` or `uv pip` directly.)*
+- **Sync dependencies**: `make sync`
 - **Start the Plone instance**:
   ```bash
   make start
   ```
 - **Clean the environment** (without removing data): `make clean`
+- **Remove all content**: `make remove-data`
 - **Create a new site**: `make create-site`
 
 ### Linting and Formatting
@@ -34,11 +36,11 @@ Tests are written using `pytest` and `plone.app.testing`.
 - **Run tests with coverage**: `make test-coverage`
 - **Run a single test file**: 
   ```bash
-  ./.venv/bin/pytest src/cs_dynamicpages/tests/test_ct_dynamic_page_folder.py
+  ./.venv/bin/pytest src/cs_dynamicpages/tests/test_file.py
   ```
 - **Run a specific test method/class**:
   ```bash
-  ./.venv/bin/pytest src/cs_dynamicpages/tests/test_ct_dynamic_page_folder.py::DynamicPageFolderIntegrationTest::test_ct_dynamic_page_folder_adding
+  ./.venv/bin/pytest src/cs_dynamicpages/tests/test_file.py::TestClass::test_method
   ```
 
 ---
@@ -49,24 +51,23 @@ Tests are written using `pytest` and `plone.app.testing`.
 - **Line Length**: 88 characters (configured in `pyproject.toml`).
 - **Python Version**: Target Python 3.10 (`>=3.10,<3.14`).
 - **Imports**: Formatted using `ruff`'s `isort` rules.
-  - Case-insensitive sorting.
-  - Force single-line imports (`from X import Y` on separate lines for each `Y`).
+  - Case-insensitive sorting, force single-line imports (`from X import Y` on separate lines).
   - No sections (all imports sorted alphabetically regardless of third-party/stdlib).
   - 2 blank lines after imports, 1 blank line between types.
-- **Exceptions**: Ignore `E731` (DoNotAssignLambda). Use `# noqa` only when absolutely necessary and document why.
+- **Exceptions**: Ignore `E731` (DoNotAssignLambda). Use `# noqa` only when necessary.
 
 ### Naming Conventions
 - **Classes**: `PascalCase` (e.g., `DynamicPageFolder`).
 - **Interfaces**: Prefix with `I` and use `PascalCase` (e.g., `IDynamicPageFolder`).
 - **Methods, Variables, and Functions**: `snake_case` (e.g., `dynamic_page_folder_id`).
 - **Constants**: `UPPER_SNAKE_CASE` (e.g., `TEST_USER_ID`).
-- **Filenames**: `snake_case` for Python and XML files (except specific Zope configurations like `configure.zcml` or specific profiles like `Plone_Site.xml` which follow Plone's exact casing).
+- **Filenames**: `snake_case` for Python and XML files (except `configure.zcml` / Plone profiles).
 
 ### Types & Schema
 - Define Dexterity schemas using `plone.supermodel.model.Schema`.
 - Apply `@implementer(IYourInterface)` to your content type classes.
 - Explicitly subclass `Container` or `Item` from `plone.dexterity.content`.
-- Avoid unnecessary types annotations if Zope schemas already enforce types (`zope.schema`).
+- Avoid unnecessary type annotations if Zope schemas already enforce types (`zope.schema`).
 
 ### Error Handling
 - Use standard Python exceptions or `plone.api.exc` (like `InvalidParameterError`) when using `plone.api`.
@@ -75,7 +76,7 @@ Tests are written using `pytest` and `plone.app.testing`.
 
 ### XML, ZCML, and PT
 - **XML/ZCML**: Keep it strictly formatted with `zpretty`. Indent with 2 spaces. 
-- **Page Templates (PT)**: Ensure they are properly formed HTML/XML. Keep logic in the python views, not in the templates.
+- **Page Templates (PT)**: Ensure they are properly formed HTML/XML. Keep logic in python views, not templates.
 
 ---
 
@@ -91,8 +92,7 @@ These rules are strictly enforced for AI agents interacting with this Plone repo
    - If no docs are found, EXPLICITLY STATE: "I cannot find official documentation for this." Trial and error MUST be labeled: "This requires trial and error - not documented."
 
 2. **Terminal Commands**
-   - Provide ONE step at a time.
-   - WAIT for confirmation before moving to the next step.
+   - Provide ONE step at a time. WAIT for confirmation before moving to the next step.
    - Include the full command with all parameters.
    - ALWAYS recommend using `make` commands (`make install`, `make start`). NEVER recommend `pip install`, `uv add` or `uv pip` directly.
 
@@ -109,8 +109,7 @@ These rules are strictly enforced for AI agents interacting with this Plone repo
    - In README, review the code if necessary to explain features correctly (e.g. use `- Register a behavior providing additional fields representing contact information` instead of just `- Behavior`).
 
 5. **Internationalization (i18n)**
-   - All UI strings MUST be translatable.
-   - Use `cs_dynamicpages` as the i18n domain.
+   - All UI strings MUST be translatable. Use `cs_dynamicpages` as the i18n domain.
    - Example: `_(u"My string")` imported from the project's MessageFactory.
    - Run `make i18n` to update `.pot` and `.po` files.
 
@@ -125,5 +124,26 @@ These rules are strictly enforced for AI agents interacting with this Plone repo
    - Acknowledge good ideas and creative solutions.
 
 8. **Definition of Success**
-   - Success is ONLY a fully functional, tested result.
-   - Never claim success for partial or broken implementations.
+   - Success is ONLY a fully functional, tested result. Never claim success for partial or broken implementations.
+
+---
+
+## 4. Engram Persistent Memory — Protocol
+
+You have access to Engram, a persistent memory system that survives across sessions and compactions.
+
+### WHEN TO SAVE (mandatory — not optional)
+Call `mem_save` IMMEDIATELY after any of these:
+- Bug fix completed
+- Architecture or design decision made
+- Non-obvious discovery about the codebase
+- Configuration change or environment setup
+- Pattern established (naming, structure, convention)
+- User preference or constraint learned
+
+### WHEN TO SEARCH MEMORY
+- Call `mem_context` — checks recent session history (fast, cheap)
+- If not found, call `mem_search` with relevant keywords (FTS5 full-text search)
+
+### SESSION CLOSE PROTOCOL (mandatory)
+Before ending a session, you MUST call `mem_session_summary` using the structured outline (Goal, Instructions, Discoveries, Accomplished, Next Steps, Relevant Files). This is NOT optional.

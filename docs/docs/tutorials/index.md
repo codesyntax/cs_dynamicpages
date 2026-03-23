@@ -17,3 +17,9 @@ This part of the documentation contains tutorials.
 ```{seealso}
 https://diataxis.fr/tutorials/
 ```
+
+```{toctree}
+:maxdepth: 2
+
+first-dynamic-page
+```

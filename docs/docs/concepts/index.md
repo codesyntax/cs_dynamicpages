@@ -18,3 +18,9 @@ The Diátaxis framework also calls this class of documentation _explanation_.
 ```{seealso}
 https://diataxis.fr/explanation/
 ```
+
+```{toctree}
+:maxdepth: 2
+
+architecture
+```
