@@ -51,6 +51,7 @@ Homepage = "https://github.com/codesyntax/cs_dynamicpages"
 PyPI = "https://pypi.org/project/cs_dynamicpages"
 Source = "https://github.com/codesyntax/cs_dynamicpages"
 Tracker = "https://github.com/codesyntax/cs_dynamicpages/issues"
+Documentation = "https://codesyntax.github.io/cs_dynamicpages/"
 
 
 [project.entry-points."plone.autoinclude.plugin"]

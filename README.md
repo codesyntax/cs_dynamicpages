@@ -2,6 +2,8 @@
 
 A new addon for Plone to create web-based dynamic pages.
 
+[Full Documentation](https://codesyntax.github.io/cs_dynamicpages/)
+
 The concept is pretty similar that of Volto blocks:
 
 - You can build a page using reusable items.
@@ -75,10 +77,11 @@ And to create the Plone site:
 make create-site
 ```
 
-## Contribute
+## Contribute 🤝
 
 - [Issue tracker](https://github.com/codesyntax/cs_dynamicpages/issues)
 - [Source code](https://github.com/codesyntax/cs_dynamicpages/)
+- [Documentation](https://codesyntax.github.io/cs_dynamicpages/)
 
 Please, clone this repo, do your developments in a specific branch, and create a pull request from it.
 
