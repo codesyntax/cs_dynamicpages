@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b8 (2026-03-23)
+
+
+### New features:
+
+- dynamically set the value of the related Image, checking the TinyMCE control panel @erral [#24](https://github.com/codesyntax/cs_dynamicpages/issues/24)
+
+
+### Internal:
+
+- Add documentation @erral 
+
 ## 1.0.0b7 (2026-03-20)
 
 
