@@ -7,7 +7,7 @@ content-type that previously is enabled in the TinyMCE control-panel as an
 
 """
 
-from ..behaviors.related_image import IImageRelationChoice
+from ..behaviors.related_image import IImageRelationList
 from plone import api
 
 
@@ -31,7 +31,7 @@ from zope.interface import Interface
     Interface,  # IContentListingMarker in the original
     Interface,  # IRequest in the original
     Interface,  # IForm in the original
-    IImageRelationChoice,
+    IImageRelationList,
     IContentBrowserWidget,
 )
 class RelatedImageContentbrowserPatternOptions:
@@ -45,7 +45,6 @@ class RelatedImageContentbrowserPatternOptions:
         self.widget = widget
 
     def get(self):
-
         return {
             "recentlyUsed": True,
             "selectableTypes": api.portal.get_registry_record("plone.image_objects"),

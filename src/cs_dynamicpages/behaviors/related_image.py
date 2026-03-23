@@ -30,12 +30,12 @@ except ImportError:
     )
 
 
-class IImageRelationChoice(Interface):
+class IImageRelationList(Interface):
     pass
 
 
-@implementer(IImageRelationChoice)
-class ImageRelationChoice(RelationChoice):
+@implementer(IImageRelationList)
+class ImageRelationList(RelationList):
     pass
 
 
@@ -47,12 +47,12 @@ class IRelatedImageMarker(Interface):
 class IRelatedImage(model.Schema):
     """ """
 
-    related_image = RelationList(
+    related_image = ImageRelationList(
         title=_("Related image"),
         description=_("Select the related image that will be shown in this row"),
         default=[],
         max_length=1,
-        value_type=ImageRelationChoice(vocabulary="plone.app.vocabularies.Catalog"),
+        value_type=RelationChoice(vocabulary="plone.app.vocabularies.Catalog"),
         required=False,
     )
 
