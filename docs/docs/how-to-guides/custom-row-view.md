@@ -61,7 +61,7 @@ Next, register the view in your `configure.zcml` so Plone knows it exists. It is
 
 ```xml
 <browser:page
-    name="myaddon-video-embed-view"
+    name="cs_dynamicpages-myaddon-video-embed-view"
     for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
     template="video_embed_view.pt"
     permission="zope2.View"
@@ -85,7 +85,7 @@ You must register it in the {term}`Dynamic Pages Registry` (`IDynamicPagesContro
     <value purge="False">
       <element>
         <!-- The ZCML name of your view -->
-        <key name="row_type">myaddon-video-embed-view</key>
+        <key name="row_type">cs_dynamicpages-myaddon-video-embed-view</key>
         
         <!-- The icon to display in the dropdown (Bootstrap/Plone icon name) -->
         <key name="row_type_icon">play-btn</key>
