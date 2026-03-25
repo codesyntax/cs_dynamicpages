@@ -5,9 +5,9 @@
 # -- Path setup --------------------------------------------------------------
 
 from datetime import datetime
-
 from packaging.version import Version
 from plone_sphinx_theme import __version__
+
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -24,7 +24,7 @@ author = "CodeSyntax"
 trademark_name = "codesyntax"
 now = datetime.now()
 year = str(now.year)
-copyright = year
+copyright = year  # noqa: A001
 
 
 # The version info for the project you're documenting, acts as replacement for
@@ -101,8 +101,8 @@ linkcheck_ignore = [
     r"https://github.com/.*#.*",
     # Ignore other specific anchors
 ]
-linkcheck_allowed_redirects = {  # TODO: Confirm usage of linkcheck_allowed_redirects
-    # All HTTP redirections from the source URI to the canonical URI will be treated as "working".
+linkcheck_allowed_redirects = {
+    # All HTTP redirections from the source URI to the canonical URI will be treated as "working".  # noqa: E501
 }
 linkcheck_anchors = True
 linkcheck_timeout = 5
@@ -132,7 +132,7 @@ suppress_warnings = []
 html_theme = "plone_sphinx_theme"  # This can be configured
 html_logo = "_static/logo.svg"
 html_favicon = "_static/favicon.svg"
-# The default value includes icon-links, so override it with that one omitted, and add it to html_theme_options[footer_content_items].
+# The default value includes icon-links, so override it with that one omitted, and add it to html_theme_options[footer_content_items].  # noqa: E501
 html_sidebars = {
     "**": [
         "navbar-logo",
@@ -142,8 +142,8 @@ html_sidebars = {
 }
 html_theme_options = {
     "article_header_start": ["toggle-primary-sidebar"],
-    # "extra_footer": """<p>Example `extra_footer` content. License info. Trademark info and usage.</p>
-    # <p>Pull request previews by <a href="https://readthedocs.org/">Read the Docs</a>.</p>""",
+    # "extra_footer": """<p>Example `extra_footer` content. License info. Trademark info and usage.</p>  # noqa: E501
+    # <p>Pull request previews by <a href="https://readthedocs.org/">Read the Docs</a>.</p>""",  # noqa: E501
     "footer_content_items": [
         "author",
         "copyright",
@@ -248,12 +248,12 @@ sitemap_filename = "sitemap-custom.xml"
 myst_enable_extensions = [
     "attrs_block",  # Support parsing of block attributes.
     "attrs_inline",  # Support parsing of inline attributes.
-    "colon_fence",  # You can also use ::: delimiters to denote code fences, instead of ```.
-    "deflist",  # Support definition lists. https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#definition-lists
-    "html_image",  # For inline images. See https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#html-images
+    "colon_fence",  # You can also use ::: delimiters to denote code fences, instead of ```.  # noqa: E501
+    "deflist",  # Support definition lists. https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#definition-lists  # noqa: E501
+    "html_image",  # For inline images. See https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#html-images  # noqa: E501
     "linkify",  # Identify "bare" web URLs and add hyperlinks.
-    "strikethrough",  # See https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#syntax-strikethrough
-    "substitution",  # Use Jinja2 for substitutions. https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#substitutions-with-jinja2
+    "strikethrough",  # See https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#syntax-strikethrough  # noqa: E501
+    "substitution",  # Use Jinja2 for substitutions. https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#substitutions-with-jinja2  # noqa: E501
 ]
 
 myst_substitutions = {}

@@ -1,8 +1,8 @@
-import unittest
+from cs_dynamicpages.testing import CS_DYNAMICPAGES_INTEGRATION_TESTING
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 
-from cs_dynamicpages.testing import CS_DYNAMICPAGES_INTEGRATION_TESTING
+import unittest
 
 
 class TestHowToConfigureRegistry(unittest.TestCase):
@@ -33,8 +33,8 @@ class TestHowToConfigureRegistry(unittest.TestCase):
         self.assertEqual(updated_widths[-1]["row_width_class"], "col-md-4 offset-md-4")
 
         # Test vocabulary behavior
-        from zope.schema.interfaces import IVocabularyFactory
         from zope.component import getUtility
+        from zope.schema.interfaces import IVocabularyFactory
 
         vocab_factory = getUtility(IVocabularyFactory, name="cs_dynamicpages.RowWidth")
         vocab = vocab_factory(self.portal)
@@ -63,8 +63,8 @@ class TestHowToConfigureRegistry(unittest.TestCase):
         self.assertEqual(updated_spacers[-1]["spacer_class"], "pt-12")
 
         # Test vocabulary behavior
-        from zope.schema.interfaces import IVocabularyFactory
         from zope.component import getUtility
+        from zope.schema.interfaces import IVocabularyFactory
 
         vocab_factory = getUtility(
             IVocabularyFactory, name="cs_dynamicpages.RowPaddingTop"

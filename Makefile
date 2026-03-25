@@ -100,7 +100,7 @@ create-site: $(VENV_FOLDER) instance/etc/zope.ini ## Create a new site from scra
 lint: ## Check and fix code base according to Plone standards
 	@echo "$(GREEN)==> Lint codebase$(RESET)"
 	@uvx ruff@latest check --fix --config $(BACKEND_FOLDER)/pyproject.toml
-	@uvx pyroma@latest -d .
+	@uvx --with hatchling --with pip pyroma@latest -d .
 	@uvx check-python-versions@latest .
 	@uvx zpretty@latest --check src
 

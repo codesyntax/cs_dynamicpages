@@ -1,10 +1,10 @@
-import unittest
+from cs_dynamicpages.testing import CS_DYNAMICPAGES_INTEGRATION_TESTING
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from zope.component import getMultiAdapter
 
-from cs_dynamicpages.testing import CS_DYNAMICPAGES_INTEGRATION_TESTING
+import unittest
 
 
 class TestHowToUsingQueryColumns(unittest.TestCase):
@@ -100,5 +100,5 @@ class TestHowToUsingQueryColumns(unittest.TestCase):
 
         # It should also contain the layout class (e.g. Bootstrap grid col-*)
         # based on columns="3". Let's check if the generic class mapping handles it.
-        # It could be 'col-md-4' or 'row-cols-md-3' depending on the exact implementation.
-        # But for the how-to, we just verify it exists and renders.
+        # It could be 'col-md-4' or 'row-cols-md-3' depending on the exact
+        # implementation. But for the how-to, we just verify it exists and renders.

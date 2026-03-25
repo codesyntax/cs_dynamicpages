@@ -1,13 +1,9 @@
-import unittest
-from zope.component import getUtility
-from plone.registry.interfaces import IRegistry
+from cs_dynamicpages.testing import CS_DYNAMICPAGES_INTEGRATION_TESTING
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
+from zope.component import getUtility
 
-from cs_dynamicpages.testing import CS_DYNAMICPAGES_INTEGRATION_TESTING
-from cs_dynamicpages.controlpanels.dynamic_pages_control_panel.controlpanel import (
-    IDynamicPagesControlPanel,
-)
+import unittest
 
 
 class TestHowToCustomRowView(unittest.TestCase):
@@ -46,12 +42,12 @@ class TestHowToCustomRowView(unittest.TestCase):
             ],
         }
 
-        # To make schema validation pass during test, we need to register a dummy view adapter
-        # so the vocabulary finds it when checking the 'row_type' value constraints
+        # To make schema validation pass during test, we need to register a dummy view
+        # adapter so the vocabulary finds it when checking 'row_type' value constraints
+        from cs_dynamicpages.content.dynamic_page_row import IDynamicPageRow
         from zope.component import getSiteManager
         from zope.interface import Interface
         from zope.publisher.interfaces.browser import IBrowserRequest
-        from cs_dynamicpages.content.dynamic_page_row import IDynamicPageRow
 
         class DummyView:
             pass
@@ -80,7 +76,6 @@ class TestHowToCustomRowView(unittest.TestCase):
 
         # Test vocabulary behavior
         from zope.schema.interfaces import IVocabularyFactory
-        from zope.component import getUtility
 
         vocab_factory = getUtility(IVocabularyFactory, name="cs_dynamicpages.RowType")
         vocab = vocab_factory(self.portal)

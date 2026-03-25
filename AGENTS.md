@@ -6,6 +6,8 @@ This document contains the guidelines, commands, and code style rules for AI cod
 
 This project uses `make` as the primary task runner, backed by `uv` for Python environment management and `hatchling` as the build system.
 
+**IMPORTANT MANDATE**: After you modify *any* Python, XML, ZCML, or PT file, you MUST run `make check` (or `make format && make lint`) and fix any resulting errors before completing your task.
+
 ### Installation and Running
 - **Install the project**: 
   ```bash
