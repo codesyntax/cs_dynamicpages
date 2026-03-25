@@ -30,6 +30,7 @@ dev = [
     "sphinx-copybutton",
     "sphinx-design",
     "sphinx-examples",
+    "sphinx-llms-txt",
     "sphinx-notfound-page",
     "sphinx-reredirects",
     "sphinx-sitemap",

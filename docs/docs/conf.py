@@ -69,6 +69,7 @@ extensions = [
     "sphinx_copybutton",
     "sphinx_design",
     "sphinx_examples",
+    "sphinx_llms_txt",
     "sphinx_reredirects",
     "sphinx_sitemap",
     "sphinx_tippy",
