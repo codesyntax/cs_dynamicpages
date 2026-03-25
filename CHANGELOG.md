@@ -9,6 +9,15 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b9 (2026-03-25)
+
+
+### Internal:
+
+- Add llms plugin for documentation @erral 
+- Add tests for documentation how-tos @erral 
+- Fix docs base url @erral 
+
 ## 1.0.0b8 (2026-03-23)
 
 
