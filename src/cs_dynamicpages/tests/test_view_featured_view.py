@@ -98,7 +98,7 @@ class FeaturedViewsFunctionalTest(unittest.TestCase):
             name="cs_dynamicpages-featured-view",
         )
         html = view()
-        self.assertIn('class="row"', html)
+        self.assertIn('class="row ', html)
         self.assertIn("col-md-6", html)
 
     def test_featured_view_renders_title(self):
