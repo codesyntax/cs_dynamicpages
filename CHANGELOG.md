@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b11 (2026-04-14)
+
+
+### New features:
+
+- Render README and CHANGELOG in pypi readme @erral 
+
+
+### Bug fixes:
+
+- Minor styling fixes @libargutxi 
+
 ## 1.0.0b9 (2026-03-25)
 
 
