@@ -5,7 +5,7 @@
 <body>
 
   <metal:custom_title fill-slot="content-title">
-    <h1 class="documentFirstHeading" i18n:translate="">
+    <h1 i18n:translate="">
       Dynamic Pages Templates management
     </h1>
   </metal:custom_title>
@@ -44,7 +44,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="deleteElementModalLabel-${repeat/template/number}" i18n:translate="">
+                  <h2 id="deleteElementModalLabel-${repeat/template/number}" i18n:translate="">
                     Confirm Deletion</h5>
                   <button class="btn-close" aria-label="Close" type="button" data-bs-dismiss="modal"
                     i18n:attributes="aria-label"></button>
