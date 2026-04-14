@@ -1,4 +1,9 @@
-# from plone.app.z3cform.widgets.contentbrowser import ContentBrowserFieldWidget
+"""
+See https://community.plone.org/t/customizing-contentbrowser-pattern-options/22812
+for some context
+
+"""
+
 from cs_dynamicpages import _
 from plone.autoform import directives as form
 from plone.autoform.interfaces import IFormFieldProvider
@@ -25,6 +30,15 @@ except ImportError:
     )
 
 
+class IImageRelationList(Interface):
+    pass
+
+
+@implementer(IImageRelationList)
+class ImageRelationList(RelationList):
+    pass
+
+
 class IRelatedImageMarker(Interface):
     pass
 
@@ -33,7 +47,7 @@ class IRelatedImageMarker(Interface):
 class IRelatedImage(model.Schema):
     """ """
 
-    related_image = RelationList(
+    related_image = ImageRelationList(
         title=_("Related image"),
         description=_("Select the related image that will be shown in this row"),
         default=[],
@@ -46,11 +60,6 @@ class IRelatedImage(model.Schema):
         "related_image",
         RelatedImageFieldWidget,
         vocabulary="plone.app.vocabularies.Catalog",
-        pattern_options={
-            "recentlyUsed": True,
-            "selectableTypes": ["Image"],
-            "upload": True,
-        },
     )
     image_position = schema.Choice(
         title=_("Image position"),

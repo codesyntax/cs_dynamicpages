@@ -14,10 +14,57 @@ jobs:
     name: "Backend: Lint"
     needs:
       - config
-    uses: plone/meta/.github/workflows/backend-lint.yml@2.x
-    with:
-      python-version: ${{ needs.config.outputs.python-version }}
-      plone-version: ${{ needs.config.outputs.plone-version }}
+    runs-on: ubuntu-latest
+    env:
+      PYTHON_VERSION: ${{ needs.config.outputs.python-version }}
+      PLONE_VERSION: ${{ needs.config.outputs.plone-version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup codebase
+        uses: plone/meta/.github/actions/setup_backend_uv@2.x
+        with:
+          python-version: ${{ needs.config.outputs.python-version }}
+          plone-version: ${{ needs.config.outputs.plone-version }}
+
+      - name: Check formatting
+        id: ruff-format
+        shell: bash
+        run: |
+          uvx ruff@latest format --diff
+
+      - name: Check lint
+        id: ruff-lint
+        if: ${{ success() || failure() }}
+        shell: bash
+        run: |
+          uvx ruff@latest check --diff
+
+      - name: Check XML / ZCML
+        id: zpretty
+        if: ${{ success() || failure() }}
+        shell: bash
+        run: |
+          uvx zpretty@latest --check src
+
+      - name: Check Python Versions
+        id: py-versions
+        if: ${{ success() || failure() }}
+        shell: bash
+        run: |
+          uvx check-python-versions@latest .
+
+      - name: Report
+        if: ${{ success() || failure() }}
+        run: |
+          echo '# Code Analysis' >> $GITHUB_STEP_SUMMARY
+          echo '| Test | Status |' >> $GITHUB_STEP_SUMMARY
+          echo '| --- | --- |' >> $GITHUB_STEP_SUMMARY
+          echo '| Format | ${{ steps.ruff-format.conclusion == 'failure' && '❌' || ' ✅' }} |' >> $GITHUB_STEP_SUMMARY
+          echo '| Lint | ${{ steps.ruff-lint.conclusion == 'failure' && '❌' || ' ✅' }} |' >> $GITHUB_STEP_SUMMARY
+          echo '| XML / ZCML | ${{ steps.zpretty.conclusion == 'failure' && '❌' || ' ✅' }} |' >> $GITHUB_STEP_SUMMARY
+          echo '| Python Versions | ${{ steps.py-versions.conclusion == 'failure' && '❌' || ' ✅' }} |' >> $GITHUB_STEP_SUMMARY
 
   test:
     name: "Backend: Test"

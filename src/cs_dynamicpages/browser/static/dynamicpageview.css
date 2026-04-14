@@ -4,7 +4,7 @@
 
 body.template-dynamic-view.can_edit {
   &:not(.preview-mode):not(:has(.modal.show .dynamic-row)) {
-    /* Modaletik kanpo daudenean soilik aplikatu */
+    /* Apply only out of the modal */
     & > main > .dynamic-row,
     #dynamic_pages_content > .dynamic-row {
       background-color: #f5f5f5;

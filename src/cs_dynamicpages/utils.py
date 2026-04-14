@@ -32,6 +32,10 @@ def add_custom_view(
     """utility function to add a given view to the list of available row types"""
     record_name = "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields"
     values = api.portal.get_registry_record(record_name)
+    existing_views = [item.get("row_type") for item in values]
+    if view_name in existing_views:
+        return False
+
     new_item = {
         "row_type": view_name,
         "each_row_type_fields": shown_fields,

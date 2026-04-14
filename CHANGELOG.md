@@ -9,6 +9,47 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b9 (2026-03-25)
+
+
+### Internal:
+
+- Add llms plugin for documentation @erral 
+- Add tests for documentation how-tos @erral 
+- Fix docs base url @erral 
+
+## 1.0.0b8 (2026-03-23)
+
+
+### New features:
+
+- dynamically set the value of the related Image, checking the TinyMCE control panel @erral [#24](https://github.com/codesyntax/cs_dynamicpages/issues/24)
+
+
+### Internal:
+
+- Add documentation @erral 
+
+## 1.0.0b7 (2026-03-20)
+
+
+### New features:
+
+- Add tests @erral 
+
+
+### Bug fixes:
+
+- Return false if trying to add a view that exists to the registry @erral 
+- Translate comments @erral 
+
+## 1.0.0b6 (2026-03-12)
+
+
+### New features:
+
+- Style the template handling actions @libargutxi [#20](https://github.com/codesyntax/cs_dynamicpages/issues/20)
+
 ## 1.0.0b5 (2026-03-11)
 
 
