@@ -1,8 +1,7 @@
 [project]
 name = "cs_dynamicpages"
-dynamic = ["version"]
+dynamic = ["version", "readme"]
 description = "A new addon for Plone"
-readme = "README.md"
 requires-python = ">=3.10,<3.14"
 authors = [{ name = "CodeSyntax", email = "plone@codesyntax.com" }]
 keywords = ["CMS", "Plone", "Python"]
@@ -64,7 +63,7 @@ managed = false
 path = "src/cs_dynamicpages/__init__.py"
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-fancy-pypi-readme"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build]
@@ -180,3 +179,15 @@ omit = ["src/cs_dynamicpages/locales/*.py"]
 
 [tool.zest-releaser]
 python-file-with-version = "src/cs_dynamicpages/__init__.py"
+
+[tool.hatch.metadata.hooks.fancy-pypi-readme]
+content-type = "text/markdown"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = "README.md"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+text = "\n\n---\n\n"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = "CHANGELOG.md"
