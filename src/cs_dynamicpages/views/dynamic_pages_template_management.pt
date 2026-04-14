@@ -63,6 +63,7 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
+
                     <h5 class="modal-title"
                         id="deleteElementModalLabel-${repeat/template/number}"
                         i18n:translate=""
@@ -92,8 +93,8 @@
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
+
+            </div></li>
         </ul>
       </metal:block>
     </metal:content-core>

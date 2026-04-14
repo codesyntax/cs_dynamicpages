@@ -229,9 +229,9 @@
                                 >Edit</a>
                               </li>
                               <li>
-                                <h5 class="dropdown-header"
+                                <h2 class="dropdown-header"
                                     i18n:translate=""
-                                >State</h5>
+                                >State</h2>
                               </li>
                               <tal:define tal:define="
                                             featured_transitions python:context.portal_workflow.getTransitionsFor(featured_obj);
@@ -244,9 +244,9 @@
                                 </tal:featured_transitions>
                               </tal:define>
                               <li>
-                                <h5 class="dropdown-header"
+                                <h2 class="dropdown-header"
                                     i18n:translate=""
-                                >Move actions</h5>
+                                >Move actions</h2>
                               </li>
                               <li><a class="dropdown-item"
                                    href="#"
@@ -365,10 +365,10 @@
                  "
             >
               <div class="offcanvas-header">
-                <h5 class="offcanvas-title"
+                <h2 class="offcanvas-title h5"
                     id="offcanvasRightLabel"
                     i18n:translate=""
-                >Add new row</h5>
+                >Add new row</h2>
                 <button class="btn-close"
                         aria-label="Close"
                         type="button"
@@ -380,9 +380,9 @@
                 <div class="templates-listing"
                      tal:condition="python: empty_rows and templates"
                 >
-                  <h6 class="mb-3"
+                  <h2 class="mb-3 h6"
                       i18n:translate=""
-                  >Reuse existing templates</h6>
+                  >Reuse existing templates</h2>
                   <div class="accordion"
                        id="templateAccordion"
                   >
@@ -430,9 +430,9 @@
                   <div class="my-5"
                        tal:condition="templates"
                   ></div>
-                  <h6 class="mb-3"
+                  <h2 class="mb-3 h6"
                       i18n:translate=""
-                  >Add block</h6>
+                  >Add block</h2>
                 </tal:conditionrows>
                 <ul class="list-unstyled row">
                   <li class="mb-2 col-4"
@@ -465,10 +465,10 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title"
+                  <h2 class="modal-title h5"
                       id="deleteElementModalLabel"
                       i18n:translate=""
-                  >Confirm Deletion</h5>
+                  >Confirm Deletion</h2>
                   <button class="btn-close"
                           aria-label="Close"
                           type="button"
@@ -534,10 +534,10 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5"
+                <h2 class="modal-title fs-5"
                     id="addTemplateModal"
                     i18n:translate=""
-                >Add template</h1>
+                >Add template</h2>
                 <button class="btn-close"
                         aria-label="Close"
                         type="button"
@@ -588,10 +588,10 @@
           <div class="modal-dialog modal-xl modal-dialog-scrollable">
             <div class="modal-content border-0 shadow-lg">
               <div class="modal-header bg-white border-bottom">
-                <h5 class="modal-title text-primary fw-semibold"
+                <h2 class="modal-title h5 text-primary fw-semibold"
                     id="previewTemplateModalLabel"
                     i18n:translate=""
-                >Template Preview</h5>
+                >Template Preview</h2>
                 <button class="btn-close"
                         aria-label="Close"
                         type="button"

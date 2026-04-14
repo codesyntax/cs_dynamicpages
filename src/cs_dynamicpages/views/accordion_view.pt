@@ -2,18 +2,18 @@
      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
      xmlns:metal="http://xml.zope.org/namespaces/metal"
      xmlns:tal="http://xml.zope.org/namespaces/tal"
-     class="accordion accordion-flush"
+     class="accordion shadow-sm mb-4"
      id="accordionDynamicPage-${context/id}"
      tal:define="
        elements view/elements;
      "
      tal:condition="elements"
 >
-  <div class="accordion-item"
+  <div class="accordion-item border-0 border-bottom"
        tal:repeat="brain elements"
   >
-    <div class="accordion-header h3">
-      <button class="accordion-button collapsed"
+    <div class="accordion-header h3 m-0">
+      <button class="accordion-button collapsed fw-bold fs-5 bg-white text-dark"
               aria-controls="accordionDynamicPage-${context/id}-${brain/id}"
               aria-expanded="false"
               type="button"
@@ -27,7 +27,7 @@
          id="accordionDynamicPage-${context/id}-${brain/id}"
          data-bs-parent="#accordionDynamicPage-${context/id}"
     >
-      <div class="accordion-body"
+      <div class="accordion-body bg-light"
            tal:define="
              element brain/getObject;
            "
