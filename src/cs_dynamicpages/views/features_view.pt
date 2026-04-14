@@ -38,13 +38,15 @@
           </div>
         </tal:image>
         <div class="card-body p-4 d-flex flex-column">
-          <h2 class="h5 card-title mb-3" tal:condition="element/url">
+          <h2 class="h5 card-title mb-3"
+              tal:condition="element/url"
+          >
             <a class="text-dark no-underline stretched-link fw-bold"
                href="${element/url}"
             >${element/Title}</a>
           </h2>
           <h2 class="h5 card-title fw-bold text-dark mb-3"
-             tal:condition="not:element/url"
+              tal:condition="not:element/url"
           >${element/Title}</h2>
           <p class="card-text text-secondary"
              tal:condition="element/Description"

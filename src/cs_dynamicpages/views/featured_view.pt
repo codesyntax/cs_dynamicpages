@@ -29,7 +29,9 @@
        "
   >
     <h3>${context/Title}</h3>
-    <p class="lead" tal:condition="context/Description">${context/Description}</p>
+    <p class="lead"
+       tal:condition="context/Description"
+    >${context/Description}</p>
     <div>
       <tal:replace tal:condition="context/text"
                    replace="structure context/text/output"

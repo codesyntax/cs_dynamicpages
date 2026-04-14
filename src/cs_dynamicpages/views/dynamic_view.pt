@@ -229,7 +229,7 @@
                                 >Edit</a>
                               </li>
                               <li>
-                              <h2 class="dropdown-header"
+                                <h2 class="dropdown-header"
                                     i18n:translate=""
                                 >State</h2>
                               </li>
@@ -244,7 +244,7 @@
                                 </tal:featured_transitions>
                               </tal:define>
                               <li>
-                              <h2 class="dropdown-header"
+                                <h2 class="dropdown-header"
                                     i18n:translate=""
                                 >Move actions</h2>
                               </li>
