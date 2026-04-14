@@ -63,51 +63,38 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-                    <h2 id="deleteElementModalLabel-${repeat/template/number}"
+
+                    <h5 class="modal-title"
+                        id="deleteElementModalLabel-${repeat/template/number}"
                         i18n:translate=""
                     >
-                      Confirm Deletion
-                      <button class="btn-close"
-                              aria-label="Close"
-                              type="button"
-                              data-bs-dismiss="modal"
-                              i18n:attributes="aria-label"
-                      ></button>
-                    </h2></div>
-=======
-                  <h5 class="modal-title"
-                      id="deleteElementModalLabel-${repeat/template/number}"
-                      i18n:translate=""
-                  >
-                    Confirm Deletion</h5>
-                  <button class="btn-close"
-                          aria-label="Close"
-                          type="button"
-                          data-bs-dismiss="modal"
-                          i18n:attributes="aria-label"
-                  ></button>
-                </div>
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; main
-                <div class="modal-body">
-                  <p i18n:translate="">Are you sure you want to delete this item? This action cannot be undone.</p>
-                </div>
-                <div class="modal-footer">
-                  <button class="btn btn-secondary"
-                          type="button"
-                          data-bs-dismiss="modal"
-                          i18n:translate=""
-                  >Cancel</button>
-                  <button class="btn btn-danger confirmDeleteElement"
-                          type="button"
-                          data-uid="${template/uid}"
-                          i18n:translate=""
-                  >Delete</button>
+                      Confirm Deletion</h5>
+                    <button class="btn-close"
+                            aria-label="Close"
+                            type="button"
+                            data-bs-dismiss="modal"
+                            i18n:attributes="aria-label"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <p i18n:translate="">Are you sure you want to delete this item? This action cannot be undone.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary"
+                            type="button"
+                            data-bs-dismiss="modal"
+                            i18n:translate=""
+                    >Cancel</button>
+                    <button class="btn btn-danger confirmDeleteElement"
+                            type="button"
+                            data-uid="${template/uid}"
+                            i18n:translate=""
+                    >Delete</button>
+                  </div>
                 </div>
               </div>
-            </div>
- 
-          </li>
+
+            </div></li>
         </ul>
       </metal:block>
     </metal:content-core>
