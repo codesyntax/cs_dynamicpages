@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-03-12 08:02+0000\n"
+"POT-Creation-Date: 2026-04-14 15:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Apply this template"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_pages_template_management.pt:79
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:80
 #: cs_dynamicpages/views/dynamic_view.pt:480
 msgid "Are you sure you want to delete this item? This action cannot be undone."
 msgstr ""
@@ -67,12 +67,12 @@ msgstr ""
 msgid "CSS class for the spacer"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_pages_template_management.pt:82
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:83
 #: cs_dynamicpages/views/dynamic_view.pt:483
 msgid "Cancel"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_pages_template_management.pt:71
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:72
 #: cs_dynamicpages/views/dynamic_view.pt:372
 msgid "Close"
 msgstr ""
@@ -81,7 +81,7 @@ msgstr ""
 msgid "Column count"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_pages_template_management.pt:66
+#: cs_dynamicpages/views/dynamic_pages_template_management.pt:67
 #: cs_dynamicpages/views/dynamic_view.pt:468
 msgid "Confirm Deletion"
 msgstr ""
@@ -195,7 +195,7 @@ msgstr ""
 msgid "If selected a 'Add featured' button will be added in the edit interface. This is useful for rows that have content pieces inside them. For example in a slider row, there are slider items. This button will be used to add those items."
 msgstr ""
 
-#: cs_dynamicpages/behaviors/related_image.py:56
+#: cs_dynamicpages/behaviors/related_image.py:65
 msgid "Image position"
 msgstr ""
 
@@ -235,7 +235,7 @@ msgstr ""
 msgid "Package to configure a new cs_dynamicpages site"
 msgstr ""
 
-#: cs_dynamicpages/behaviors/related_image.py:37
+#: cs_dynamicpages/behaviors/related_image.py:51
 msgid "Related image"
 msgstr ""
 
@@ -340,11 +340,11 @@ msgstr ""
 msgid "Select the padding top that this row will have"
 msgstr ""
 
-#: cs_dynamicpages/behaviors/related_image.py:57
+#: cs_dynamicpages/behaviors/related_image.py:66
 msgid "Select the position of this image"
 msgstr ""
 
-#: cs_dynamicpages/behaviors/related_image.py:38
+#: cs_dynamicpages/behaviors/related_image.py:52
 msgid "Select the related image that will be shown in this row"
 msgstr ""
 

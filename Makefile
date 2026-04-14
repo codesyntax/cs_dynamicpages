@@ -28,7 +28,7 @@ BACKEND_FOLDER=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 ifdef PLONE_VERSION
 PLONE_VERSION := $(PLONE_VERSION)
 else
-PLONE_VERSION := 6.1.2
+PLONE_VERSION := 6.1.4
 endif
 
 VENV_FOLDER=$(BACKEND_FOLDER)/.venv
@@ -54,7 +54,7 @@ requirements-mxdev.txt: pyproject.toml mx.ini ## Generate constraints file
 
 $(VENV_FOLDER): requirements-mxdev.txt ## Install dependencies
 	@echo "$(GREEN)==> Install environment$(RESET)"
-	@uv venv $(VENV_FOLDER) --clear
+	@uv venv --python=3.13 $(VENV_FOLDER) --clear
 	@uv pip install -r requirements-mxdev.txt
 
 .PHONY: sync
