@@ -1,12 +1,8 @@
-# from cs_dynamicpages import _
 from cs_dynamicpages import _
-
-# from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from cs_dynamicpages.utils import get_available_views_for_row
 from plone import api
 from plone.protect.interfaces import IDisableCSRFProtection
 from Products.Five.browser import BrowserView
-from Products.statusmessages.interfaces import IStatusMessage
 from uuid import uuid4
 from zope.interface import alsoProvides
 from zope.interface import implementer
@@ -78,7 +74,7 @@ class DynamicPageAddRowContentView(BrowserView):
                             link_url="/",
                         )
             statusmessage = _("Row added successfully")
-            IStatusMessage(self.request).add(statusmessage, type="info")
+            api.portal.show_message(statusmessage, type="info")
             return self.request.response.redirect(
                 f"{self.context.aq_parent.absolute_url()}#{random_id!s}"
             )
