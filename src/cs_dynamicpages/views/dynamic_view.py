@@ -41,18 +41,11 @@ class DynamicView(BrowserView):
         else:
             if self.can_edit():
                 alsoProvides(self.request, IDisableCSRFProtection)
-                api.content.create(
+                created_element = api.content.create(
                     container=self.context,
                     type="DynamicPageFolder",
                     title="Rows",
                 )
-                created_elements_find = api.content.find(
-                    portal_type="DynamicPageFolder",
-                    context=self.context,
-                    depth=1,
-                    sort_on="getObjPositionInParent",
-                )
-                created_element = created_elements_find[0].getObject()
                 api.content.transition(created_element, transition="publish")
                 return created_element
 

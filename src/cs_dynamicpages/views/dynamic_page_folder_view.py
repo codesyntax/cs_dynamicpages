@@ -1,12 +1,8 @@
-# from cs_dynamicpages import _
 from cs_dynamicpages import _
-
-# from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from cs_dynamicpages.utils import get_available_views_for_row
 from plone import api
 from plone.protect.interfaces import IDisableCSRFProtection
 from Products.Five.browser import BrowserView
-from Products.statusmessages.interfaces import IStatusMessage
 from uuid import uuid4
 from zope.interface import alsoProvides
 from zope.interface import implementer
@@ -41,7 +37,7 @@ class DynamicPageAddRowContentView(BrowserView):
             random_id = uuid4()
 
             alsoProvides(self.request, IDisableCSRFProtection)
-            api.content.create(
+            created_element = api.content.create(
                 type="DynamicPageRow",
                 container=self.context,
                 row_type=row_type,
@@ -56,11 +52,6 @@ class DynamicPageAddRowContentView(BrowserView):
                 if view["row_type"] == row_type:
                     has_featured_button = view["row_type_has_featured_add_button"]
                     if has_featured_button:
-                        created_elements_find = api.content.find(
-                            portal_type="DynamicPageRow",
-                            id=str(random_id),
-                        )
-                        created_element = created_elements_find[0].getObject()
                         random_id_featured = uuid4()
                         api.content.create(
                             type="DynamicPageRowFeatured",
@@ -83,7 +74,7 @@ class DynamicPageAddRowContentView(BrowserView):
                             link_url="/",
                         )
             statusmessage = _("Row added successfully")
-            IStatusMessage(self.request).add(statusmessage, type="info")
+            api.portal.show_message(statusmessage, type="info")
             return self.request.response.redirect(
                 f"{self.context.aq_parent.absolute_url()}#{random_id!s}"
             )
