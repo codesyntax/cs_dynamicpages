@@ -41,18 +41,11 @@ class DynamicView(BrowserView):
         else:
             if self.can_edit():
                 alsoProvides(self.request, IDisableCSRFProtection)
-                api.content.create(
+                created_element = api.content.create(
                     container=self.context,
                     type="DynamicPageFolder",
                     title="Rows",
                 )
-                created_elements_find = api.content.find(
-                    portal_type="DynamicPageFolder",
-                    context=self.context,
-                    depth=1,
-                    sort_on="getObjPositionInParent",
-                )
-                created_element = created_elements_find[0].getObject()
                 api.content.transition(created_element, transition="publish")
                 return created_element
 
@@ -70,8 +63,7 @@ class DynamicView(BrowserView):
 
     def normalize_title(self, title):
         return (
-            title
-            .replace("cs_dynamicpages-", " ")
+            title.replace("cs_dynamicpages-", " ")
             .replace("-", " ")
             .replace("_", " ")
             .replace("view", "")
@@ -86,17 +78,19 @@ class DynamicView(BrowserView):
             obj = uuidToObject(template.get("uid"))
             if obj:
                 parent = aq_parent(obj)
-                template.update({
-                    "Title": parent.Title(),
-                    "Description": parent.Description(),
-                    "absolute_url": parent.absolute_url(),
-                    "portal_type": parent.portal_type,
-                    "translated_portal_type": translate(
-                        portal_types.get(parent.portal_type).title,
-                        domain=portal_types.get(parent.portal_type).i18n_domain,
-                        context=self.request,
-                    ),
-                })
+                template.update(
+                    {
+                        "Title": parent.Title(),
+                        "Description": parent.Description(),
+                        "absolute_url": parent.absolute_url(),
+                        "portal_type": parent.portal_type,
+                        "translated_portal_type": translate(
+                            portal_types.get(parent.portal_type).title,
+                            domain=portal_types.get(parent.portal_type).i18n_domain,
+                            context=self.request,
+                        ),
+                    }
+                )
                 templates.append(template)
         return templates
 
