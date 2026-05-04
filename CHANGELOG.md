@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b12 (2026-05-04)
+
+
+### Internal:
+
+- Use newly created object directly without having to find it @erral [#29](https://github.com/codesyntax/cs_dynamicpages/issues/29)
+
 ## 1.0.0b11 (2026-04-14)
 
 
