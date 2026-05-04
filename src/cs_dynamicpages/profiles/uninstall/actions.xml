@@ -9,8 +9,8 @@
     <object meta_type="CMF Action"
             name="manage_dynamic_pages_templates"
             remove="true"
-
     >
 
+    </object>
   </object>
 </object>
