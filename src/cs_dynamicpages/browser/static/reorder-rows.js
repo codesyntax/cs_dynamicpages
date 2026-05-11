@@ -4,12 +4,6 @@
 (function () {
   "use strict";
 
-  // Store references to avoid re-querying the DOM
-  let sortableInstance = null;
-  const upClickHandlers = new Map();
-  const downClickHandlers = new Map();
-  let isInitialized = false;
-
   // Initialize when DOM is loaded
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initRowReordering);
@@ -55,6 +49,7 @@
     if (element) {
       moveElementInDOM(element, delta);
       sendReorderRequest(element, delta);
+      updateRowPositions(); // Recalculate plus button positions
     }
 
     setTimeout(() => (button.disabled = false), 500);
@@ -68,7 +63,7 @@
 
     // Find the container of the rows. We assume all draggable items share the same parent.
     const firstDraggableElement = document.querySelector(
-      '[data-move-target="true"]'
+      '.dynamic-row-wrapper'
     );
     if (!firstDraggableElement?.parentElement) {
       return;
@@ -85,6 +80,7 @@
       ghostClass: "sortable-ghost", // Class for the drop placeholder
       chosenClass: "sortable-chosen", // Class for the chosen item
       dragClass: "sortable-drag", // Class for the dragging item
+      draggable: ".dynamic-row-wrapper", // Only allow dragging the wrappers
 
       // Element is dropped
       onEnd: (evt) => {
@@ -92,8 +88,21 @@
         if (oldIndex !== newIndex) {
           const delta = newIndex - oldIndex;
           sendReorderRequest(item, delta);
+          updateRowPositions(); // Recalculate plus button positions
         }
       },
+    });
+  }
+
+  /**
+   * Recalculates all data-position attributes for add-row-plus-buttons
+   * based on their current order in the DOM.
+   */
+  function updateRowPositions() {
+    const plusButtons = document.querySelectorAll(".add-row-plus-btn");
+    plusButtons.forEach((btn, index) => {
+      btn.setAttribute("data-position", index);
+      console.debug(`Updated plus button at index ${index} with position ${index}`);
     });
   }
 
