@@ -30,10 +30,6 @@ class DynamicPageFolderView(BrowserView):
         return self.index()
 
 
-import logging
-
-logger = logging.getLogger("cs_dynamicpages")
-
 @implementer(IDynamicPageFolderView)
 class DynamicPageAddRowContentView(BrowserView):
     # If you want to define a template here, please remove the template from
@@ -44,7 +40,6 @@ class DynamicPageAddRowContentView(BrowserView):
         # Implement your own actions:
         row_type = self.request.get("row_type") or self.request.form.get("row_type")
         position = self.request.get("position") or self.request.form.get("position")
-        logger.info(f"cs_dynamicpages: Adding row of type {row_type} at position {position}")
         if row_type:
             random_id = str(uuid4())
 
@@ -59,17 +54,9 @@ class DynamicPageAddRowContentView(BrowserView):
                 link_text="Link Text",
                 link_url="/",
             )
-            logger.info(f"Created row with id {obj.getId()}")
             if position is not None:
-                try:
-                    pos_int = int(position)
-                    logger.info(f"Moving {obj.getId()} to position {pos_int}")
-                    self.context.moveObjectToPosition(obj.getId(), pos_int)
-                    logger.info(f"New position: {self.context.getObjectPosition(obj.getId())}")
-                except (ValueError, TypeError) as e:
-                    logger.error(f"Invalid position: {position}")
-                except Exception as e:
-                    logger.error(f"Error moving object: {e}")
+                with suppress(ValueError, TypeError):
+                    self.context.moveObjectToPosition(obj.getId(), int(position))
 
             available_views = get_available_views_for_row()
             for view in available_views:

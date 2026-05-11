@@ -57,7 +57,6 @@
 
   function initDragAndDropReordering() {
     if (typeof Sortable === "undefined") {
-      console.log("SortableJS not loaded. Drag-and-drop reordering disabled.");
       return;
     }
 
@@ -102,7 +101,6 @@
     const plusButtons = document.querySelectorAll(".add-row-plus-btn");
     plusButtons.forEach((btn, index) => {
       btn.setAttribute("data-position", index);
-      console.debug(`Updated plus button at index ${index} with position ${index}`);
     });
   }
 
