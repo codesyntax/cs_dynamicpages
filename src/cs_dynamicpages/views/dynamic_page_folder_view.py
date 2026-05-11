@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+# from cs_dynamicpages import _
+# from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from contextlib import suppress
+>>>>>>> 95dc80b (add row position)
 from cs_dynamicpages import _
 from cs_dynamicpages.utils import get_available_views_for_row
 from plone import api
@@ -33,11 +39,12 @@ class DynamicPageAddRowContentView(BrowserView):
     def __call__(self):
         # Implement your own actions:
         row_type = self.request.get("row_type")
+        position = self.request.get("position")
         if row_type:
             random_id = uuid4()
 
             alsoProvides(self.request, IDisableCSRFProtection)
-            created_element = api.content.create(
+            obj = api.content.create(
                 type="DynamicPageRow",
                 container=self.context,
                 row_type=row_type,
@@ -47,6 +54,9 @@ class DynamicPageAddRowContentView(BrowserView):
                 link_text="Link Text",
                 link_url="/",
             )
+            if position is not None:
+                with suppress(ValueError, TypeError):
+                    self.context.moveObjectToPosition(obj.id, int(position))
             available_views = get_available_views_for_row()
             for view in available_views:
                 if view["row_type"] == row_type:
@@ -55,7 +65,7 @@ class DynamicPageAddRowContentView(BrowserView):
                         random_id_featured = uuid4()
                         api.content.create(
                             type="DynamicPageRowFeatured",
-                            container=created_element,
+                            container=obj,
                             title="New Featured",
                             description="Here goes the description",
                             id=str(random_id_featured),
@@ -66,7 +76,7 @@ class DynamicPageAddRowContentView(BrowserView):
                         random_id_featured_2 = uuid4()
                         api.content.create(
                             type="DynamicPageRowFeatured",
-                            container=created_element,
+                            container=obj,
                             title="New Featured 2",
                             description="Here goes the description",
                             id=str(random_id_featured_2),
