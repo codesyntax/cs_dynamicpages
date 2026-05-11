@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    >
+
+  <gs:registerProfile
+      name="1009"
+      title="Register add-row-position JS bundle"
+      description="Configuration for version 1009"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+      directory="1009"
+      />
+
+  <gs:upgradeSteps
+      profile="cs_dynamicpages:default"
+      source="1008"
+      destination="1009"
+      >
+
+    <gs:upgradeDepends
+        title="Register add-row-position JS bundle (GS profile)"
+        description=""
+        import_profile="cs_dynamicpages.upgrades:1009"
+        />
+
+  </gs:upgradeSteps>
+
+</configure>

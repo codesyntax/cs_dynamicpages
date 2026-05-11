@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<registry>
+  <records interface="Products.CMFPlone.interfaces.IBundleRegistry"
+           prefix="plone.bundles/cs_dynamicpages.dynamicpagerow_add_position"
+  >
+    <value key="enabled">True</value>
+    <value key="jscompilation">++plone++cs_dynamicpages.edit/add-row-position.js</value>
+    <value key="depends">plone</value>
+    <value key="load_async">True</value>
+    <value key="load_defer">False</value>
+    <value key="expression" />
+  </records>
+</registry>
