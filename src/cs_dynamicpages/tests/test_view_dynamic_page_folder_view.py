@@ -146,3 +146,40 @@ class DynamicPageFolderViewsFunctionalTest(unittest.TestCase):
         self.assertEqual(len(self.dpf.objectValues()), 0)
         # Should return None because __call__ returns implicit None if no row_type
         self.assertIsNone(response)
+
+    def test_dynamic_page_add_row_content_view_with_position(self):
+        """Test adding a row at a specific position."""
+        # Create an existing row
+        api.content.create(
+            self.dpf, "DynamicPageRow", "row1", title="Row 1", row_type="type1"
+        )
+        api.content.create(
+            self.dpf, "DynamicPageRow", "row2", title="Row 2", row_type="type1"
+        )
+
+        self.request.form["row_type"] = "type1"
+        self.request.form["position"] = "1"
+        view = getMultiAdapter((self.dpf, self.request), name="add-row-content")
+
+        from unittest.mock import patch
+
+        with patch(
+            "cs_dynamicpages.views.dynamic_page_folder_view.get_available_views_for_row"
+        ) as mock_get_views:
+            mock_get_views.return_value = [
+                {
+                    "row_type": "type1",
+                    "row_type_has_featured_add_button": False,
+                }
+            ]
+            view()
+
+            # Should have added a row at position 1
+            row_ids = self.dpf.objectIds()
+            self.assertEqual(len(row_ids), 3)
+            # The new row has a random UUID as ID, so we check the second element
+            self.assertEqual(row_ids[0], "row1")
+            self.assertEqual(row_ids[2], "row2")
+            # The middle one should be the new one
+            self.assertNotEqual(row_ids[1], "row1")
+            self.assertNotEqual(row_ids[1], "row2")

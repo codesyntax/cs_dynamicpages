@@ -40,6 +40,7 @@ body.template-dynamic-view.can_edit {
   }
 
   &.preview-mode .edit-options {
+    display: none !important;
     position: absolute;
     opacity: 0;
     visibility: hidden;
@@ -107,6 +108,83 @@ body.template-dynamic-view.can_edit {
     opacity: 1 !important;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
+
+  .add-row-plus-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    margin: 0 !important;
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--dynamicpages-primary-color),
+        transparent
+      );
+      z-index: -1;
+      opacity: 0.2;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 0.5;
+        left: 5%;
+        right: 5%;
+      }
+    }
+
+    .add-row-plus-btn {
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      border: 1px solid var(--dynamicpages-primary-color);
+      color: var(--dynamicpages-primary-color);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+      svg {
+        width: 14px;
+        height: 14px;
+        transition: transform 0.2s ease;
+      }
+
+      &:hover {
+        background-color: var(--dynamicpages-primary-color);
+        color: white;
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        svg {
+          transform: rotate(90.01deg);
+        }
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+
+  /* Remove Bootsptrap's default configuration not to break centering */
+  .add-row-plus-btn.btn {
+    line-height: 1;
+  }
 }
 
 .no-underline {
@@ -122,4 +200,8 @@ body.template-dynamic-view.can_edit {
       }
     }
   }
+}
+
+.dynamic-row .dropdown-menu {
+  z-index: 1030; /* Ensure dropdown is above other elements */
 }

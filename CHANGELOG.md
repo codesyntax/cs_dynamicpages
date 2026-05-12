@@ -21,21 +21,21 @@
 
 ### New features:
 
-- Render README and CHANGELOG in pypi readme @erral 
+- Render README and CHANGELOG in pypi readme @erral
 
 
 ### Bug fixes:
 
-- Minor styling fixes @libargutxi 
+- Minor styling fixes @libargutxi
 
 ## 1.0.0b9 (2026-03-25)
 
 
 ### Internal:
 
-- Add llms plugin for documentation @erral 
-- Add tests for documentation how-tos @erral 
-- Fix docs base url @erral 
+- Add llms plugin for documentation @erral
+- Add tests for documentation how-tos @erral
+- Fix docs base url @erral
 
 ## 1.0.0b8 (2026-03-23)
 
@@ -47,20 +47,20 @@
 
 ### Internal:
 
-- Add documentation @erral 
+- Add documentation @erral
 
 ## 1.0.0b7 (2026-03-20)
 
 
 ### New features:
 
-- Add tests @erral 
+- Add tests @erral
 
 
 ### Bug fixes:
 
-- Return false if trying to add a view that exists to the registry @erral 
-- Translate comments @erral 
+- Return false if trying to add a view that exists to the registry @erral
+- Translate comments @erral
 
 ## 1.0.0b6 (2026-03-12)
 
@@ -75,18 +75,18 @@
 ### New features:
 
 - Add row marker CSS classes @erral [#10](https://github.com/codesyntax/cs_dynamicpages/issues/10)
-- Add template handling @erral 
+- Add template handling @erral
 
 
 ### Bug fixes:
 
 - Change the id for the content wrapping div @erral [#9](https://github.com/codesyntax/cs_dynamicpages/issues/9)
-- Add name to the body-class adapter not to clash with other existing adapters @erral 
+- Add name to the body-class adapter not to clash with other existing adapters @erral
 
 
 ### Internal:
 
-- - Fix and expand test coverage: fix pre-existing placeholder tests, add tests for utils, indexers, upgrade steps, behaviors, vocabularies, control panel and browser components @erral 
+- - Fix and expand test coverage: fix pre-existing placeholder tests, add tests for utils, indexers, upgrade steps, behaviors, vocabularies, control panel and browser components @erral
 
 ## 1.0.0b4 (2025-11-10)
 
@@ -104,7 +104,7 @@
 ### New features:
 
 - Add more javascript code to the frontend @libargutxi [#5](https://github.com/codesyntax/cs_dynamicpages/issues/5)
-- New configuration options @libargutxi 
+- New configuration options @libargutxi
 
 ## 1.0.0b2 (2025-10-08)
 

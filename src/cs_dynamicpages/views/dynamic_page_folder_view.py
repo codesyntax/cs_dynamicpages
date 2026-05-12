@@ -1,3 +1,6 @@
+# from cs_dynamicpages import _
+# from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from contextlib import suppress
 from cs_dynamicpages import _
 from cs_dynamicpages.utils import get_available_views_for_row
 from plone import api
@@ -32,49 +35,52 @@ class DynamicPageAddRowContentView(BrowserView):
 
     def __call__(self):
         # Implement your own actions:
-        row_type = self.request.get("row_type")
+        row_type = self.request.get("row_type") or self.request.form.get("row_type")
+        position = self.request.get("position") or self.request.form.get("position")
         if row_type:
-            random_id = uuid4()
+            random_id = str(uuid4())
 
             alsoProvides(self.request, IDisableCSRFProtection)
-            created_element = api.content.create(
+            obj = api.content.create(
                 type="DynamicPageRow",
                 container=self.context,
                 row_type=row_type,
                 title=row_type,
                 description="Here goes the description",
-                id=str(random_id),
+                id=random_id,
                 link_text="Link Text",
                 link_url="/",
             )
+            if position is not None:
+                with suppress(ValueError, TypeError):
+                    self.context.moveObjectToPosition(obj.getId(), int(position))
+
             available_views = get_available_views_for_row()
             for view in available_views:
                 if view["row_type"] == row_type:
                     has_featured_button = view["row_type_has_featured_add_button"]
                     if has_featured_button:
-                        random_id_featured = uuid4()
                         api.content.create(
                             type="DynamicPageRowFeatured",
-                            container=created_element,
+                            container=obj,
                             title="New Featured",
                             description="Here goes the description",
-                            id=str(random_id_featured),
+                            id=str(uuid4()),
                             link_text="Link Text",
                             link_url="/",
                         )
 
-                        random_id_featured_2 = uuid4()
                         api.content.create(
                             type="DynamicPageRowFeatured",
-                            container=created_element,
+                            container=obj,
                             title="New Featured 2",
                             description="Here goes the description",
-                            id=str(random_id_featured_2),
+                            id=str(uuid4()),
                             link_text="Link Text",
                             link_url="/",
                         )
             statusmessage = _("Row added successfully")
             api.portal.show_message(statusmessage, type="info")
             return self.request.response.redirect(
-                f"{self.context.aq_parent.absolute_url()}#{random_id!s}"
+                f"{self.context.aq_parent.absolute_url()}#{random_id}"
             )
