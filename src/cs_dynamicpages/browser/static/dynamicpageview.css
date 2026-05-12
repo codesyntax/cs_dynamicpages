@@ -181,7 +181,7 @@ body.template-dynamic-view.can_edit {
     }
   }
 
-  /* Kendu Bootstrap-en padding lehenetsia zentratzea ez kaltetzeko */
+  /* Remove Bootsptrap's default configuration not to break centering */
   .add-row-plus-btn.btn {
     line-height: 1;
   }
