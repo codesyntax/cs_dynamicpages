@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b13 (2026-05-12)
+
+
+### New features:
+
+- Register add-row-position JS bundle @libargutxi [#31](https://github.com/codesyntax/cs_dynamicpages/issues/31)
+
+
+### Bug fixes:
+
+- Remove action on uninstalling @erral 
+
 ## 1.0.0b12 (2026-05-04)
 
 
