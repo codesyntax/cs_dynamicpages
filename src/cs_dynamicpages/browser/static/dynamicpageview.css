@@ -201,3 +201,7 @@ body.template-dynamic-view.can_edit {
     }
   }
 }
+
+.dynamic-row .dropdown-menu {
+  z-index: 1030; /* Ensure dropdown is above other elements */
+}
