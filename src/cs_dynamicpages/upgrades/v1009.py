@@ -1,5 +1,6 @@
-from cs_dynamicpages.upgrades.base import upgrade_registry
+from cs_dynamicpages import logger
 
 
-def upgrade(context):
-    upgrade_registry(context, "cs_dynamicpages", "1009")
+def upgrade(setup_tool=None):
+    """ """
+    logger.info("Running upgrade (Python): Register add-row-position JS bundle")

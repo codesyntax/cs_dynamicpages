@@ -6,10 +6,3 @@ def reload_gs_profile(context):
         context,
         "profile-cs_dynamicpages:default",
     )
-
-
-def upgrade_registry(context, package, version):
-    loadMigrationProfile(
-        context,
-        f"profile-{package}.upgrades:{version}",
-    )

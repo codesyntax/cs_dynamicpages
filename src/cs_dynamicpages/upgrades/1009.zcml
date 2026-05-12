@@ -18,6 +18,12 @@
       destination="1009"
       >
 
+    <gs:upgradeStep
+        title="Install new behavior"
+        description=""
+        handler=".v1009.upgrade"
+        />
+
     <gs:upgradeDepends
         title="Register add-row-position JS bundle (GS profile)"
         description=""
