@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-=======
 # from cs_dynamicpages import _
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from contextlib import suppress
->>>>>>> 95dc80b (add row position)
 from cs_dynamicpages import _
 from cs_dynamicpages.utils import get_available_views_for_row
 from plone import api
