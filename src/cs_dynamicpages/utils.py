@@ -83,32 +83,70 @@ def enable_behavior(behavior_dotted_name=str):
 
 def get_available_views_for_row():
     from cs_dynamicpages.content.dynamic_page_row import IDynamicPageRow
+    from cs_dynamicpages.interfaces import IRowTypeMetadata
 
-    items = []
     sm = getSiteManager()
-
     available_views = sm.adapters.lookupAll(
         required=(IDynamicPageRow, providedBy(getRequest())),
         provided=Interface,
     )
 
-    values = api.portal.get_registry_record(
+    registry_values = api.portal.get_registry_record(
         "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields", default=[]
     )
+    registry_map = {item["row_type"]: item for item in registry_values}
 
-    for value in values:
-        for item in available_views:
-            if item[0].startswith(VIEW_PREFIX):
-                item_dict = {
-                    "row_type": item[0],
-                    "each_row_type_fields": [],
-                    "row_type_has_featured_add_button": False,
-                    "row_type_icon": "bricks",
-                }
-                if item[0] == value["row_type"] and value not in items:
-                    item_dict = value
-                    items.append(item_dict)
+    items = []
+    for name, factory in available_views:
+        if not name.startswith(VIEW_PREFIX):
+            continue
+
+        # Start with Code Defaults
+        item_dict = {
+            "row_type": name,
+            "each_row_type_fields": [],
+            "row_type_has_featured_add_button": False,
+            "row_type_icon": "bricks",
+        }
+
+        # Try to get metadata from factory
+        if IRowTypeMetadata.implementedBy(factory):
+            item_dict["each_row_type_fields"] = list(
+                getattr(factory, "allowed_fields", [])
+            )
+            item_dict["row_type_has_featured_add_button"] = getattr(
+                factory, "has_featured", False
+            )
+            item_dict["row_type_icon"] = getattr(factory, "icon", "bricks")
+
+        # Merge Registry Overrides
+        if name in registry_map:
+            override = registry_map[name]
+            # If the registry has specific fields defined, use them
+            if override.get("each_row_type_fields"):
+                item_dict["each_row_type_fields"] = list(
+                    override["each_row_type_fields"]
+                )
+
+            # Icons and buttons can also be overridden
+            if override.get("row_type_icon"):
+                item_dict["row_type_icon"] = override["row_type_icon"]
+
+            if override.get("row_type_has_featured_add_button") is not None:
+                item_dict["row_type_has_featured_add_button"] = override[
+                    "row_type_has_featured_add_button"
+                ]
+
+        items.append(item_dict)
     return items
+
+
+def get_row_config(view_name):
+    configs = get_available_views_for_row()
+    for config in configs:
+        if config["row_type"] == view_name:
+            return config
+    return None
 
 
 def normalize_uid_from_path(url=None):

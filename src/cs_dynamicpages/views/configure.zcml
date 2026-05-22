@@ -78,41 +78,59 @@
 
 
 
-  <browser:pages
+  <browser:page
+      name="cs_dynamicpages-title-description-view"
       for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
-      class=".featured_view.FeaturedView"
+      class=".featured_view.TitleDescriptionView"
+      template="dynamic_title_description_view.pt"
       permission="zope2.View"
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
-      >
-    <browser:page
-        name="cs_dynamicpages-title-description-view"
-        template="dynamic_title_description_view.pt"
-        />
-    <browser:page
-        name="cs_dynamicpages-featured-view"
-        template="featured_view.pt"
-        />
+      />
 
-    <browser:page
-        name="cs_dynamicpages-featured-overlay-view"
-        template="featured_overlay_view.pt"
-        />
+  <browser:page
+      name="cs_dynamicpages-featured-view"
+      for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+      class=".featured_view.FeaturedViewDefault"
+      template="featured_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
 
-    <browser:page
-        name="cs_dynamicpages-horizontal-rule-view"
-        template="horizontal_rule_view.pt"
-        />
+  <browser:page
+      name="cs_dynamicpages-featured-overlay-view"
+      for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+      class=".featured_view.FeaturedOverlayView"
+      template="featured_overlay_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
 
-    <browser:page
-        name="cs_dynamicpages-spacer-view"
-        template="spacer_view.pt"
-        />
+  <browser:page
+      name="cs_dynamicpages-horizontal-rule-view"
+      for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+      class=".featured_view.HorizontalRuleView"
+      template="horizontal_rule_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
 
-    <browser:page
-        name="cs_dynamicpages-text-view"
-        template="text_view.pt"
-        />
-  </browser:pages>
+  <browser:page
+      name="cs_dynamicpages-spacer-view"
+      for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+      class=".featured_view.SpacerView"
+      template="spacer_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
+
+  <browser:page
+      name="cs_dynamicpages-text-view"
+      for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+      class=".featured_view.TextView"
+      template="text_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
 
   <browser:pages
       for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
@@ -126,26 +144,31 @@
         />
   </browser:pages>
 
-  <browser:pages
+  <browser:page
+      name="cs_dynamicpages-slider-view"
       for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
       class=".slider_view.SliderView"
+      template="slider_view.pt"
       permission="zope2.View"
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
-      >
-    <browser:page
-        name="cs_dynamicpages-slider-view"
-        template="slider_view.pt"
-        />
+      />
 
-    <browser:page
-        name="cs_dynamicpages-accordion-view"
-        template="accordion_view.pt"
-        />
+  <browser:page
+      name="cs_dynamicpages-accordion-view"
+      for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+      class=".slider_view.AccordionView"
+      template="accordion_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
 
-    <browser:page
-        name="cs_dynamicpages-features-view"
-        template="features_view.pt"
-        />
-  </browser:pages>
+  <browser:page
+      name="cs_dynamicpages-features-view"
+      for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+      class=".slider_view.FeaturesView"
+      template="features_view.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
 
 </configure>

@@ -14,6 +14,23 @@
       type="plone"
       />
 
+  <browser:page
+      name="edit"
+      for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+      class=".forms.RowEditForm"
+      permission="cmf.ModifyPortalContent"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
+
+  <adapter
+      factory=".forms.RowAddView"
+      provides="zope.publisher.interfaces.browser.IBrowserPage"
+      for="Products.CMFCore.interfaces.IFolderish
+           cs_dynamicpages.interfaces.IBrowserLayer
+           plone.dexterity.interfaces.IDexterityFTI"
+      name="DynamicPageRow"
+      />
+
   <adapter
       factory=".body_class.DynamicViewFolderClasses"
       name="cs_dynamicpages_body_class"

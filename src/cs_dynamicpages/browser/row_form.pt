@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone"
+>
+  <body>
+    <metal:main fill-slot="main">
+      <div id="row-config-data"
+           style="display: none;"
+           tal:attributes="
+             data-config view/row_type_configs;
+           "
+      ></div>
+      <metal:use-macro use-macro="context/@@ploneform-macros/titlelessform" />
+    </metal:main>
+  </body>
+</html>

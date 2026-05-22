@@ -11,6 +11,20 @@
   let rowTypeSelect = null;
 
   function initialize(context = document) {
+    // Check for pre-loaded configuration in the DOM
+    const configEl = document.getElementById("row-config-data");
+    if (configEl) {
+      try {
+        const data = JSON.parse(configEl.dataset.config);
+        if (data && data.length > 0) {
+          processRowTypeFields(data);
+          return;
+        }
+      } catch (e) {
+        console.error("Error parsing pre-loaded row config:", e);
+      }
+    }
+
     // Check if we're in an edit form or an add form
     const isEditForm =
       context === document &&
@@ -26,7 +40,7 @@
       return;
     }
 
-    // Get configuration from control panel
+    // Get configuration from control panel (Fallback)
     const baseUrl = document.body.dataset.portalUrl || "";
     fetch(
       `${baseUrl}/@registry/cs_dynamicpages.dynamic_pages_control_panel.row_type_fields`,
