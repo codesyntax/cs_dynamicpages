@@ -1,0 +1,1 @@
+Improve block editing experience by introducing a declarative metadata system and simplifying the edit/add forms. All allowed fields are now rendered in a single fieldset and follow the order defined in the metadata configuration.
