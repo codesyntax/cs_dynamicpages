@@ -44,8 +44,8 @@ class RowFormMixin:
                 new_fields_list.append(all_fields_dict[matched_name])
                 del all_fields_dict[matched_name]
 
-        # Always include Title and ID
-        for n in ["IBasic.title", "title", "IShortName.id", "id"]:
+        # Always include Title
+        for n in ["IBasic.title", "title"]:
             if n in all_fields_dict:
                 new_fields_list.append(all_fields_dict[n])
                 del all_fields_dict[n]
