@@ -86,17 +86,31 @@ class TestBlockEditingForms(unittest.TestCase):
         # when they are supposed to be hidden.
         from plone.app.z3cform.interfaces import IPloneFormLayer
         from zope.interface import alsoProvides
+        from z3c.form.interfaces import HIDDEN_MODE
 
-        self.row.row_type = "cs_dynamicpages-text-view"  # Hide ICollection fields
-
+        self.row.row_type = "cs_dynamicpages-text-view" # Hide ICollection fields
+        
         request = self.portal.REQUEST.clone()
         alsoProvides(request, IPloneFormLayer)
-
+        
         form = RowEditForm(self.row, request)
         form.update()
+        
+        # Manually add a widget in HIDDEN_MODE to see if it crashes
+        # using a field that uses OrderedSelectWidget if possible
+        # but here we just check if any widget is in HIDDEN_MODE
+        for widget in form.widgets.values():
+            if widget.mode == HIDDEN_MODE:
+                # If we have widgets in HIDDEN_MODE, rendering might crash
+                # if they don't have a 'hidden' template.
+                pass
+
         # This should trigger the rendering which might crash
         try:
             rendered = form()
-            self.assertIn("IRichTextBehavior-text", rendered)
+            self.assertIn('IRichTextBehavior-text', rendered)
+            # Check that unwanted fields are NOT in rendered output
+            self.assertNotIn('ICollection-customViewFields', rendered)
         except Exception as e:
             self.fail(f"Form rendering failed with {type(e).__name__}: {e}")
+

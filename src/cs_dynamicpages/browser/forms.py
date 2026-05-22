@@ -33,7 +33,10 @@ class RowFormMixin:
         # Always keep row_type
         for n in ["IDynamicPageRow.row_type", "row_type"]:
             if n in all_fields_dict:
-                new_fields_list.append(all_fields_dict[n])
+                f = all_fields_dict[n]
+                # Ensure it's not hidden
+                f.mode = None 
+                new_fields_list.append(f)
                 del all_fields_dict[n]
                 break
 
@@ -41,16 +44,21 @@ class RowFormMixin:
         for field_name in allowed_fields:
             matched_name = self._find_matched_field(all_fields_dict, field_name)
             if matched_name:
-                new_fields_list.append(all_fields_dict[matched_name])
+                f = all_fields_dict[matched_name]
+                f.mode = None # Force visible
+                new_fields_list.append(f)
                 del all_fields_dict[matched_name]
 
         # Always include Title
         for n in ["IBasic.title", "title"]:
             if n in all_fields_dict:
-                new_fields_list.append(all_fields_dict[n])
+                f = all_fields_dict[n]
+                f.mode = None # Force visible
+                new_fields_list.append(f)
                 del all_fields_dict[n]
 
         return new_fields_list
+
 
     def _find_matched_field(self, all_fields_dict, field_name):
         if field_name in all_fields_dict:
@@ -85,6 +93,33 @@ class RowEditForm(RowFormMixin, DefaultEditForm):
         super().updateFields()
         self._flatten_and_order_fields()
 
+    def updateWidgets(self):
+        super().updateWidgets()
+        # Safety net: ensure unwanted widgets are not there
+        row_type = self._get_current_row_type()
+        if row_type:
+            config = get_row_config(row_type)
+            if config:
+                allowed_fields = config.get("each_row_type_fields", [])
+                self._filter_widgets_manager(self.widgets, allowed_fields)
+                for group in self.groups:
+                    if hasattr(group, "widgets"):
+                        self._filter_widgets_manager(group.widgets, allowed_fields)
+
+    def _filter_widgets_manager(self, widgets, allowed_fields):
+        to_delete = []
+        for name, widget in widgets.items():
+            if widget.field.__name__ in ["row_type", "title"]:
+                continue
+            is_allowed = name in allowed_fields or widget.field.__name__ in allowed_fields
+            if not is_allowed:
+                norm_name = name.replace(".", "-")
+                is_allowed = norm_name in allowed_fields
+            if not is_allowed:
+                to_delete.append(name)
+        for name in to_delete:
+            del widgets[name]
+
     def row_type_configs(self):
         return json.dumps(get_available_views_for_row())
 
@@ -95,6 +130,32 @@ class RowAddForm(RowFormMixin, DefaultAddForm):
     def updateFields(self):
         super().updateFields()
         self._flatten_and_order_fields()
+
+    def updateWidgets(self):
+        super().updateWidgets()
+        row_type = self._get_current_row_type()
+        if row_type:
+            config = get_row_config(row_type)
+            if config:
+                allowed_fields = config.get("each_row_type_fields", [])
+                self._filter_widgets_manager(self.widgets, allowed_fields)
+                for group in self.groups:
+                    if hasattr(group, "widgets"):
+                        self._filter_widgets_manager(group.widgets, allowed_fields)
+
+    def _filter_widgets_manager(self, widgets, allowed_fields):
+        to_delete = []
+        for name, widget in widgets.items():
+            if widget.field.__name__ in ["row_type", "title"]:
+                continue
+            is_allowed = name in allowed_fields or widget.field.__name__ in allowed_fields
+            if not is_allowed:
+                norm_name = name.replace(".", "-")
+                is_allowed = norm_name in allowed_fields
+            if not is_allowed:
+                to_delete.append(name)
+        for name in to_delete:
+            del widgets[name]
 
     def row_type_configs(self):
         return json.dumps(get_available_views_for_row())
