@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b14 (2026-06-18)
+
+
+### New features:
+
+- Sort vocabulary values @erral 
+
+
+### Bug fixes:
+
+- Fix the registration documentation @erral 
+
 ## 1.0.0b13 (2026-05-12)
 
 
