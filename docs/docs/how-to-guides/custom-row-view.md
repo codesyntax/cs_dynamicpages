@@ -81,31 +81,11 @@ You must register it in the {term}`Dynamic Pages Registry` (`IDynamicPagesContro
           i18n:domain="cs_dynamicpages">
 
   <!-- Append our new view to the existing row_type_fields record -->
-  <record name="cs_dynamicpages.dynamic_pages_control_panel.row_type_fields">
+  <record name="cs_dynamicpages.dynamic_pages_control_panel.row_type_fields"
+          interface="cs_dynamicpages.controlpanels.dynamic_pages_control_panel.controlpanel.IDynamicPagesControlPanel"
+          field="row_type_fields">
     <value purge="False">
-      <element>
-        <!-- The ZCML name of your view -->
-        <key name="row_type">cs_dynamicpages-myaddon-video-embed-view</key>
-        
-        <!-- The icon to display in the dropdown (Bootstrap/Plone icon name) -->
-        <key name="row_type_icon">play-btn</key>
-        
-        <!-- Does it need the 'Add Featured' button for child items? -->
-        <key name="row_type_has_featured_add_button">False</key>
-        
-        <!-- The exact list of fields to expose when this view is selected -->
-        <key name="each_row_type_fields">
-          <element>IBasic.title</element>
-          <element>IBasic.description</element>
-          <element>IRichTextBehavior-text</element>
-          <element>IRowWidth.width</element>
-          <element>IExtraClass.extra_class</element>
-          <element>IRowVerticalSpacing.padding_top</element>
-          <element>IRowVerticalSpacing.padding_bottom</element>
-          <element>IRowVerticalSpacing.margin_top</element>
-          <element>IRowVerticalSpacing.margin_bottom</element>
-        </key>
-      </element>
+      <element>{'row_type': 'cs_dynamicpages-myaddon-video-embed-view', 'row_type_icon': 'play-btn', 'row_type_has_featured_add_button': False, 'each_row_type_fields': ['IBasic.title', 'IBasic.description', 'IRichTextBehavior-text', 'IRowWidth.width', 'IExtraClass.extra_class', 'IRowVerticalSpacing.padding_top', 'IRowVerticalSpacing.padding_bottom', 'IRowVerticalSpacing.margin_top', 'IRowVerticalSpacing.margin_bottom']}</element>
     </value>
   </record>
 
@@ -115,7 +95,8 @@ You must register it in the {term}`Dynamic Pages Registry` (`IDynamicPagesContro
 ### Understanding the Registration
 
 * `purge="False"`: This is critical. It ensures your new row type is *added* to the list, rather than overwriting all the default `cs_dynamicpages` row types.
-* `each_row_type_fields`: This array dictates exactly which fields are visible. Notice how we use `IRichTextBehavior-text` to capture the video iframe embed code, but we omitted `IRelatedImage.related_image` because a video row doesn't need an image upload.
+* **Dictionary Format**: The row configuration is defined as a Python dictionary string inside the `<element>` tag.
+* `each_row_type_fields`: This list dictates exactly which fields are visible. Notice how we use `IRichTextBehavior-text` to capture the video iframe embed code, but we omitted `IRelatedImage.related_image` because a video row doesn't need an image upload.
 
 ## 4. Apply the Profile
 
