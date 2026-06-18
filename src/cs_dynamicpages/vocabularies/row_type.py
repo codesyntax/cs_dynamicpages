@@ -47,7 +47,7 @@ class RowType:
                     title=item.value,
                 )
             )
-        return SimpleVocabulary(terms)
+        return SimpleVocabulary(sorted(terms, key=lambda x: x.value))
 
 
 RowTypeFactory = RowType()
