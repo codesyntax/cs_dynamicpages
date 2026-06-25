@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b15 (2026-06-25)
+
+
+### Bug fixes:
+
+- Fix ordering actions for rows and features @libargutxi [#36](https://github.com/codesyntax/cs_dynamicpages/issues/36)
+
 ## 1.0.0b14 (2026-06-18)
 
 
