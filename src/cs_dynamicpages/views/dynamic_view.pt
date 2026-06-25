@@ -133,7 +133,12 @@
                          href="#"
                          title="Move up"
                          data-action="move-up"
-                         tal:condition="python:not(repeat['brain'].start)"
+                         tal:define="
+                           is_first python:repeat['brain'].start;
+                         "
+                         tal:attributes="
+                           style python:is_first and 'display:none' or '';
+                         "
                          i18n:attributes="title"
                       ><svg xmlns="http://www.w3.org/2000/svg"
                              class="bi bi-arrow-up"
@@ -150,7 +155,12 @@
                          href="#"
                          title="Move down"
                          data-action="move-down"
-                         tal:condition="python:not(repeat['brain'].end)"
+                         tal:define="
+                           is_last python:repeat['brain'].end;
+                         "
+                         tal:attributes="
+                           style python:is_last and 'display:none' or '';
+                         "
                          i18n:attributes="title"
                       ><svg xmlns="http://www.w3.org/2000/svg"
                              class="bi bi-arrow-down"
@@ -224,16 +234,16 @@
                     >
                       <tal:conditionfeatures tal:condition="features_list">
                         <tal:featured repeat="featured_brain features_list">
-                          <div tal:define="
+                          <div data-delete-target="true"
+                               data-elementid="${featured_obj/id}"
+                               data-elementurl="${featured_obj/absolute_url}"
+                               data-move-target="true"
+                               data-parenturl="${row/absolute_url}"
+                               tal:define="
                                  featured_obj featured_brain/getObject;
-                               ">
-                            <div class="btn-group"
-                                 data-delete-target="true"
-                                 data-elementid="${featured_obj/id}"
-                                 data-elementurl="${featured_obj/absolute_url}"
-                                 data-move-target="true"
-                                 data-parenturl="${row/absolute_url}"
-                            >
+                               "
+                          >
+                            <div class="btn-group">
                               <a class="btn btn-secondary dropdown-toggle"
                                  aria-expanded="false"
                                  type="button"
@@ -282,14 +292,24 @@
                                 <li><a class="dropdown-item"
                                      href="#"
                                      data-action="move-up"
-                                     tal:condition="python:not(repeat['featured_brain'].start)"
+                                     tal:define="
+                                       is_first python:repeat['featured_brain'].start;
+                                     "
+                                     tal:attributes="
+                                       style python:is_first and 'display:none' or '';
+                                     "
                                      i18n:translate=""
                                   >Move up</a>
                                 </li>
                                 <li><a class="dropdown-item"
                                      href="#"
                                      data-action="move-down"
-                                     tal:condition="python:not(repeat['featured_brain'].end)"
+                                     tal:define="
+                                       is_last python:repeat['featured_brain'].end;
+                                     "
+                                     tal:attributes="
+                                       style python:is_last and 'display:none' or '';
+                                     "
                                      i18n:translate=""
                                   >Move down</a>
                                 </li>

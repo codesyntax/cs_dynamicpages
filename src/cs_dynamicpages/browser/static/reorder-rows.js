@@ -35,6 +35,14 @@
     moveDownButtons.forEach((button) => {
       button.addEventListener("click", (e) => handleButtonClick(e, 1));
     });
+
+    // Initialize move button visibility for all containers
+    document.querySelectorAll('[data-move-target="true"]').forEach((item) => {
+      const container = item.parentElement;
+      if (container) {
+        updateMoveButtonsInContainer(container);
+      }
+    });
   }
 
   function handleButtonClick(e, delta) {
@@ -47,7 +55,11 @@
 
     const element = button.closest('[data-move-target="true"]');
     if (element) {
+      const container = element.parentElement;
       moveElementInDOM(element, delta);
+      if (container) {
+        updateMoveButtonsInContainer(container);
+      }
       sendReorderRequest(element, delta);
       updateRowPositions(); // Recalculate plus button positions
     }
@@ -83,9 +95,10 @@
 
       // Element is dropped
       onEnd: (evt) => {
-        const { oldIndex, newIndex, item } = evt;
+        const { oldIndex, newIndex, item, to } = evt;
         if (oldIndex !== newIndex) {
           const delta = newIndex - oldIndex;
+          updateMoveButtonsInContainer(to || item.parentElement);
           sendReorderRequest(item, delta);
           updateRowPositions(); // Recalculate plus button positions
         }
@@ -101,6 +114,28 @@
     const plusButtons = document.querySelectorAll(".add-row-plus-btn");
     plusButtons.forEach((btn, index) => {
       btn.setAttribute("data-position", index);
+    });
+  }
+
+  /**
+   * Shows/hides move up/down buttons based on each element's position
+   * within its container.
+   */
+  function updateMoveButtonsInContainer(container) {
+    const items = container.querySelectorAll('[data-move-target="true"]');
+    const total = items.length;
+
+    items.forEach((item, index) => {
+      const isFirst = index === 0;
+      const isLast = index === total - 1;
+      const moveUp = item.querySelector('[data-action="move-up"]');
+      const moveDown = item.querySelector('[data-action="move-down"]');
+      if (moveUp) {
+        moveUp.style.display = isFirst ? "none" : "";
+      }
+      if (moveDown) {
+        moveDown.style.display = isLast ? "none" : "";
+      }
     });
   }
 
