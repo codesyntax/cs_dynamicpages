@@ -19,7 +19,7 @@
       <property name="url_expr">string:${object_url}/dynamic-pages-template-management</property>
       <property name="link_target" />
       <property name="icon_expr">string:file-earmark</property>
-      <property name="available_expr" />
+      <property name="available_expr">python:len(context.contentValues({'portal_type': 'DynamicPageFolder'}))</property>
       <property name="permissions">
         <element value="Modify portal content" />
       </property>
