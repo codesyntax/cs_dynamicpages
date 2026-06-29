@@ -1,0 +1,35 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    >
+
+  <gs:registerProfile
+      name="1010"
+      title="Fix Manage Templates Link"
+      description="Configuration for version 1010"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+      directory="1010"
+      />
+
+  <gs:upgradeSteps
+      profile="cs_dynamicpages:default"
+      source="1009"
+      destination="1010"
+      >
+
+    <gs:upgradeStep
+        title="Fix Manage Templates Link"
+        description="Show the link only when the current context is a Dynamic Page itself"
+        handler=".v1010.upgrade"
+        />
+
+    <gs:upgradeDepends
+        title="Fix Manage Templates Link (GS profile)"
+        description="Show the link only when the current context is a Dynamic Page itself"
+        import_profile="cs_dynamicpages.upgrades:1010"
+        />
+
+  </gs:upgradeSteps>
+
+</configure>
