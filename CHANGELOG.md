@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b16 (2026-06-29)
+
+
+### Bug fixes:
+
+- Show the manage templates link only when the current context is a dynamic page @erral 
+
 ## 1.0.0b15 (2026-06-25)
 
 
