@@ -1,0 +1,3 @@
+- Recursive Nesting: `DynamicPageRow` is now folderish and can contain other `DynamicPageRow` items, enabling infinite nesting.
+- Removed `DynamicPageRowFeatured` content type. Existing items are migrated to `DynamicPageRow` during upgrade.
+- Standardized on a single content type for all row-related content.
