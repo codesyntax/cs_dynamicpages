@@ -34,18 +34,12 @@
         <tal:block replace="structure python:element.render(request)" />
       </div>
     </div>
-    <metal:use_macro use-macro="macros/add_button">
-      <metal:fill-slot fill-slot="position"
-                       tal:define="
-                         position python:repeat['brain'].index + 1;
-                       "
-      >${position}</metal:fill-slot>
-      <metal:fill-slot fill-slot="container_uid"
-                       tal:define="
-                         container_uid context/UID;
-                       "
-      >${container_uid}</metal:fill-slot>
-      <metal:fill-slot fill-slot="is_nested">True</metal:fill-slot>
-    </metal:use_macro>
+    <tal:define define="
+                  position python:repeat['brain'].index + 1;
+                  container_uid context/UID;
+                  is_nested string:True;
+                ">
+      <metal:use_macro use-macro="macros/add_button" />
+    </tal:define>
   </div>
 </div>

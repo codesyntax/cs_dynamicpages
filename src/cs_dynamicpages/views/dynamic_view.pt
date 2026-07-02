@@ -28,9 +28,11 @@
                           rows view/rows;
                           can_edit view/can_edit;
                         ">
-            <metal:use_macro use-macro="macros/add_button">
-              <metal:fill-slot fill-slot="position">0</metal:fill-slot>
-            </metal:use_macro>
+            <tal:define define="
+                          position string:0;
+                        ">
+              <metal:use_macro use-macro="macros/add_button" />
+            </tal:define>
 
             <tal:featured repeat="brain rows">
               <div class="dynamic-row-wrapper"
@@ -233,20 +235,14 @@
                       </tal:featured_add_button>
                     </div>
                   </tal:condition>
-                  <div class="content row g-0">
-                    <div class="${row/width}">
-                      <tal:block replace="structure python:row.render(request)" />
-                    </div>
-                  </div>
-                </section>
-                <metal:use_macro use-macro="macros/add_button">
-                  <metal:fill-slot fill-slot="position"
-                                   tal:define="
-                                     position python:repeat['brain'].index + 1;
-                                   "
-                  >${position}</metal:fill-slot>
-                </metal:use_macro>
-              </div>
+                </section></div>
+
+              <tal:define define="
+                            position python:repeat['brain'].index + 1;
+                          ">
+                <metal:use_macro use-macro="macros/add_button" />
+              </tal:define>
+
             </tal:featured>
           </tal:features>
           <tal:condition tal:condition="view/can_edit">
