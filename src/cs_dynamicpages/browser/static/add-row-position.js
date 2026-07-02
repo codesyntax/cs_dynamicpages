@@ -19,30 +19,41 @@
     if (!offcanvasAddRow) return;
 
     offcanvasAddRow.addEventListener("show.bs.offcanvas", (event) => {
-      // event.relatedTarget sometimes fails in some Bootstrap versions or environments
-      const button = event.relatedTarget || null;
-      const position = (button ? button.getAttribute("data-position") : null) || lastClickedPosition;
+      // Get position and container from the button that triggered the offcanvas
+      const button = event.relatedTarget;
+      const position = button ? button.getAttribute("data-position") : lastClickedPosition;
+      const container = button ? button.getAttribute("data-container") : null;
       
-      if (position !== null) {
+      if (position !== null || container !== null) {
         const links = offcanvasAddRow.querySelectorAll('a[href*="add-row-content"]');
         
         links.forEach(link => {
           let href = link.getAttribute('href');
           
-          // Remove existing position if any to avoid duplication
+          // Remove existing position and container if any to avoid duplication
           href = href.replace(/[&?]position=\d+/, '');
+          href = href.replace(/[&?]container=[^&]+/, '');
           
           // Add new position
-          const separator = href.includes('?') ? '&' : '?';
-          const newHref = href + separator + 'position=' + position;
+          if (position !== null) {
+            const separator = href.includes('?') ? '&' : '?';
+            href = href + separator + 'position=' + position;
+          }
           
-          link.setAttribute('href', newHref);
+          // Add new container
+          if (container !== null) {
+            const separator = href.includes('?') ? '&' : '?';
+            href = href + separator + 'container=' + container;
+          }
+          
+          link.setAttribute('href', href);
         });
 
         // Also update template apply buttons
         const templateButtons = offcanvasAddRow.querySelectorAll('.apply-template');
         templateButtons.forEach(btn => {
-          btn.setAttribute('data-position', position);
+          if (position !== null) btn.setAttribute('data-position', position);
+          if (container !== null) btn.setAttribute('data-container', container);
         });
       }
     });

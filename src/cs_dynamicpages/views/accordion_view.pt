@@ -1,11 +1,9 @@
-<div xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-     xmlns:metal="http://xml.zope.org/namespaces/metal"
-     xmlns:tal="http://xml.zope.org/namespaces/tal"
-     class="accordion shadow-sm mb-4"
-     id="accordionDynamicPage-${context/id}"
+<div class="accordion shadow-sm mb-4"
+     id="accordion-${context/UID}"
      tal:define="
        elements view/elements;
+       macros context/@@macros/macros;
+       can_edit context/can_edit;
      "
      tal:condition="elements"
 >
@@ -14,29 +12,40 @@
   >
     <div class="accordion-header h3 m-0">
       <button class="accordion-button collapsed fw-bold fs-5 bg-white text-dark"
-              aria-controls="accordionDynamicPage-${context/id}-${brain/id}"
+              aria-controls="collapse-${brain/UID}"
               aria-expanded="false"
               type="button"
-              data-bs-target="#accordionDynamicPage-${context/id}-${brain/id}"
+              data-bs-target="#collapse-${brain/UID}"
               data-bs-toggle="collapse"
       >
         ${brain/Title}
       </button>
     </div>
     <div class="accordion-collapse collapse"
-         id="accordionDynamicPage-${context/id}-${brain/id}"
-         data-bs-parent="#accordionDynamicPage-${context/id}"
+         id="collapse-${brain/UID}"
+         data-bs-parent="#accordion-${context/UID}"
     >
       <div class="accordion-body bg-light"
            tal:define="
              element brain/getObject;
            "
       >
-        <tal:replace tal:condition="element/text"
-                     replace="structure element/text/output"
-        >
-        </tal:replace>
+        <metal:use_macro use-macro="macros/management_icons" />
+        <tal:block replace="structure python:element.render(request)" />
       </div>
     </div>
+    <metal:use_macro use-macro="macros/add_button">
+      <metal:fill-slot fill-slot="position"
+                       tal:define="
+                         position python:repeat['brain'].index + 1;
+                       "
+      >${position}</metal:fill-slot>
+      <metal:fill-slot fill-slot="container_uid"
+                       tal:define="
+                         container_uid context/UID;
+                       "
+      >${container_uid}</metal:fill-slot>
+      <metal:fill-slot fill-slot="is_nested">True</metal:fill-slot>
+    </metal:use_macro>
   </div>
 </div>
