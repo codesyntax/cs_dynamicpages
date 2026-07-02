@@ -8,6 +8,14 @@
   <!-- -*- extra stuff goes here -*- -->
 
   <browser:page
+      name="macros"
+      for="*"
+      template="macros.pt"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
+
+  <browser:page
       name="dynamic-pages-template-management"
       for="*"
       class=".dynamic_pages_template_management.DynamicPagesTemplateManagement"
@@ -16,14 +24,7 @@
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
       />
 
-  <browser:page
-      name="view"
-      for="cs_dynamicpages.content.dynamic_page_row_featured.IDynamicPageRowFeatured"
-      class=".dynamic_page_row_featured_view.DynamicPageRowFeaturedView"
-      template="dynamic_page_row_featured_view.pt"
-      permission="zope2.View"
-      layer="cs_dynamicpages.interfaces.IBrowserLayer"
-      />
+
 
   <browser:page
       name="view"
@@ -38,7 +39,7 @@
 
   <browser:page
       name="add-row-content"
-      for="cs_dynamicpages.content.dynamic_page_folder.IDynamicPageFolder"
+      for="zope.interface.Interface"
       class=".dynamic_page_folder_view.DynamicPageAddRowContentView"
       permission="cmf.AddPortalContent"
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
@@ -111,6 +112,22 @@
     <browser:page
         name="cs_dynamicpages-text-view"
         template="text_view.pt"
+        />
+  </browser:pages>
+
+  <browser:pages
+      for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
+      class=".dynamic_page_row_view.DynamicPageRowView"
+      permission="zope2.View"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      >
+    <browser:page
+        name="cs_dynamicpages-image-view"
+        template="image_view.pt"
+        />
+    <browser:page
+        name="cs_dynamicpages-card-view"
+        template="card_view.pt"
         />
   </browser:pages>
 
