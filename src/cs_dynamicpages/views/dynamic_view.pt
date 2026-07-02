@@ -217,9 +217,9 @@
                 <div class="form-check form-switch">
                   <input class="form-check-input"
                          id="editModeToggle"
-                  />role="switch"
+                         role="switch"
                          type="checkbox"
-                  /&gt;
+                  />
                   <label class="form-check-label"
                          for="editModeToggle"
                          i18n:translate=""
