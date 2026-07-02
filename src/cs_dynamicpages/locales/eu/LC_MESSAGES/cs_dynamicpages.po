@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-14 15:35+0000\n"
+"POT-Creation-Date: 2026-07-02 10:38+0000\n"
 "PO-Revision-Date: 2026-03-12 09:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -32,32 +32,32 @@ msgstr ""
 msgid "4"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:433
+#: cs_dynamicpages/views/dynamic_view.pt:413
 msgid "Add block"
 msgstr "Gehitu blokea"
 
-#: cs_dynamicpages/views/dynamic_view.pt:282
-msgid "Add featured"
-msgstr "Gehitu elementu destakatua"
+#: cs_dynamicpages/views/dynamic_view.pt:232
+msgid "Add nested row"
+msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:368
+#: cs_dynamicpages/views/dynamic_view.pt:348
 msgid "Add new row"
 msgstr "Gehitu lerro berria"
 
-#: cs_dynamicpages/views/dynamic_view.pt:324
-msgid "Add row"
-msgstr "Gehitu lerroa"
+#: cs_dynamicpages/views/dynamic_view.pt:29
+msgid "Add row here"
+msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:537
+#: cs_dynamicpages/views/dynamic_view.pt:517
 msgid "Add template"
 msgstr "Gehitu txantiloia"
 
-#: cs_dynamicpages/views/dynamic_view.pt:417
+#: cs_dynamicpages/views/dynamic_view.pt:397
 msgid "Apply this template"
 msgstr "Aplikatu txantiloi hau"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:80
-#: cs_dynamicpages/views/dynamic_view.pt:480
+#: cs_dynamicpages/views/dynamic_view.pt:460
 msgid "Are you sure you want to delete this item? This action cannot be undone."
 msgstr "Ziur zaude elementu hau ezabatu nahi duzula? Ekintza hau ezin da desegin."
 
@@ -70,12 +70,12 @@ msgid "CSS class for the spacer"
 msgstr "Espazioa ematen duen elementuaren CSS klasea"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:83
-#: cs_dynamicpages/views/dynamic_view.pt:483
+#: cs_dynamicpages/views/dynamic_view.pt:463
 msgid "Cancel"
 msgstr "Utzi"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:72
-#: cs_dynamicpages/views/dynamic_view.pt:372
+#: cs_dynamicpages/views/dynamic_view.pt:352
 msgid "Close"
 msgstr "Itxi"
 
@@ -84,7 +84,7 @@ msgid "Column count"
 msgstr "Zutabe kopurua"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:67
-#: cs_dynamicpages/views/dynamic_view.pt:468
+#: cs_dynamicpages/views/dynamic_view.pt:448
 msgid "Confirm Deletion"
 msgstr "Baieztatu ezabatzea"
 
@@ -99,11 +99,11 @@ msgid "Content title"
 msgstr "Edukiaren izenburua"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:48
-#: cs_dynamicpages/views/dynamic_view.pt:83
+#: cs_dynamicpages/views/dynamic_view.pt:112
 msgid "Delete"
 msgstr "Ezabatu"
 
-#: cs_dynamicpages/views/dynamic_view.pt:41
+#: cs_dynamicpages/views/dynamic_view.pt:70
 msgid "Drag and drop"
 msgstr "Arrastatu eta jaregin"
 
@@ -121,7 +121,7 @@ msgstr "Orrialde dinamikoen txantiloiak"
 msgid "Dynamic Pages Templates management"
 msgstr "Orrialde dinamikoen txantiloien kudeaketa"
 
-#: cs_dynamicpages/views/configure.zcml:37
+#: cs_dynamicpages/views/configure.zcml:30
 msgid "Dynamic view"
 msgstr "Bista dinamikoa"
 
@@ -133,15 +133,11 @@ msgstr "Orri dinamikoen karpeta"
 msgid "DynamicPageRow"
 msgstr "Orri dinamikoen lerroa"
 
-#: cs_dynamicpages/profiles/default/types/DynamicPageRowFeatured.xml
-msgid "DynamicPageRowFeatured"
-msgstr "Orri dinamikoen lerroetako destakatua"
-
-#: cs_dynamicpages/views/dynamic_view.pt:69
+#: cs_dynamicpages/views/dynamic_view.pt:98
 msgid "Edit"
 msgstr "Editatu"
 
-#: cs_dynamicpages/views/dynamic_view.pt:350
+#: cs_dynamicpages/views/dynamic_view.pt:330
 msgid "Edit Mode"
 msgstr "Edizio modua"
 
@@ -213,15 +209,11 @@ msgstr "Estekaren URLa"
 msgid "Link text"
 msgstr "Estekaren testua"
 
-#: cs_dynamicpages/views/dynamic_view.pt:247
-msgid "Move actions"
-msgstr "Elementuak mugitzeko akzioak"
-
-#: cs_dynamicpages/views/dynamic_view.pt:120
+#: cs_dynamicpages/views/dynamic_view.pt:154
 msgid "Move down"
 msgstr "Mugitu behera"
 
-#: cs_dynamicpages/views/dynamic_view.pt:103
+#: cs_dynamicpages/views/dynamic_view.pt:132
 msgid "Move up"
 msgstr "Mugitu gora"
 
@@ -229,7 +221,7 @@ msgstr "Mugitu gora"
 msgid "Name"
 msgstr "Izena"
 
-#: cs_dynamicpages/views/dynamic_view.pt:512
+#: cs_dynamicpages/views/dynamic_view.pt:492
 msgid "Notification"
 msgstr "Jakinarazpena"
 
@@ -241,17 +233,21 @@ msgstr "cs_dynamicpages konfiguratzeko paketea"
 msgid "Related image"
 msgstr "Irudi erlazionatua"
 
-#: cs_dynamicpages/views/dynamic_view.pt:383
+#: cs_dynamicpages/views/dynamic_view.pt:363
 msgid "Reuse existing templates"
 msgstr "Berrerabili txantiloiak"
 
-#: cs_dynamicpages/views/dynamic_view.pt:162
+#: cs_dynamicpages/views/dynamic_view.pt:201
 msgid "Review state: ${state}"
 msgstr "Egoera: ${state}"
 
 #: cs_dynamicpages/vocabularies/image_position.py:26
 msgid "Right"
 msgstr "Eskuma"
+
+#: cs_dynamicpages/views/dynamic_view.pt:247
+msgid "Row"
+msgstr ""
 
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:64
 msgid "Row Width CSS class"
@@ -261,7 +257,7 @@ msgstr "Lerroaren zabalerara CSS klasea"
 msgid "Row Width Label"
 msgstr "Lerro zabaleraren etiketa"
 
-#: cs_dynamicpages/views/dynamic_page_folder_view.py:85
+#: cs_dynamicpages/views/dynamic_page_folder_view.py:84
 msgid "Row added successfully"
 msgstr "Lerroa ondo gehitu da"
 
@@ -310,7 +306,7 @@ msgstr "Lerroaren zabalera"
 msgid "Row widths"
 msgstr "Lerroaren zabalerak"
 
-#: cs_dynamicpages/views/dynamic_view.pt:314
+#: cs_dynamicpages/views/dynamic_view.pt:291
 msgid "Save as template"
 msgstr "Gorde txantiloi gisa"
 
@@ -318,7 +314,7 @@ msgstr "Gorde txantiloi gisa"
 msgid "See template"
 msgstr "Ikusi txantiloia"
 
-#: cs_dynamicpages/views/dynamic_view.pt:408
+#: cs_dynamicpages/views/dynamic_view.pt:388
 msgid "See this template"
 msgstr "Ikusi txantiloi hau"
 
@@ -386,11 +382,7 @@ msgstr "Azpiko paddinga"
 msgid "Spacer padding top"
 msgstr "Gaineko paddinga"
 
-#: cs_dynamicpages/views/dynamic_view.pt:232
-msgid "State"
-msgstr "Egoera"
-
-#: cs_dynamicpages/views/dynamic_view.pt:591
+#: cs_dynamicpages/views/dynamic_view.pt:571
 msgid "Template Preview"
 msgstr "Txantiloiaren aurrebista"
 
@@ -398,11 +390,11 @@ msgstr "Txantiloiaren aurrebista"
 msgid "Template name is not valid"
 msgstr "Txantiloiaren izena ez da zuzena"
 
-#: cs_dynamicpages/views/dynamic_view.pt:551
+#: cs_dynamicpages/views/dynamic_view.pt:531
 msgid "Template name:"
 msgstr "Txantiloiaren izena:"
 
-#: cs_dynamicpages/views/dynamic_view.pt:66
+#: cs_dynamicpages/views/dynamic_view.pt:95
 msgid "Template: ${template_id}"
 msgstr "Txantiloia: ${template_id}"
 

@@ -26,6 +26,7 @@ class DynamicView(BrowserView):
                 portal_type="DynamicPageRow",
                 sort_on="getObjPositionInParent",
                 context=dynamic_page_folder,
+                depth=1,
             )
         return []
 

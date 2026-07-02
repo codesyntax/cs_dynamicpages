@@ -1,0 +1,3 @@
+- Added recursive management UI: nested rows now have their own edit/delete controls.
+- Added discreet inline "+" buttons for adding rows inside existing containers (Accordions, Sliders, etc.).
+- Integrated robust Offcanvas state tracking using native Bootstrap 5 events.

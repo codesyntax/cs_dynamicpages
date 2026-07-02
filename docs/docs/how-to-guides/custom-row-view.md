@@ -85,7 +85,7 @@ You must register it in the {term}`Dynamic Pages Registry` (`IDynamicPagesContro
           interface="cs_dynamicpages.controlpanels.dynamic_pages_control_panel.controlpanel.IDynamicPagesControlPanel"
           field="row_type_fields">
     <value purge="False">
-      <element>{'row_type': 'cs_dynamicpages-myaddon-video-embed-view', 'row_type_icon': 'play-btn', 'row_type_has_featured_add_button': False, 'each_row_type_fields': ['IBasic.title', 'IBasic.description', 'IRichTextBehavior-text', 'IRowWidth.width', 'IExtraClass.extra_class', 'IRowVerticalSpacing.padding_top', 'IRowVerticalSpacing.padding_bottom', 'IRowVerticalSpacing.margin_top', 'IRowVerticalSpacing.margin_bottom']}</element>
+      <element>{'row_type': 'cs_dynamicpages-myaddon-video-embed-view', 'row_type_icon': 'play-btn', 'row_type_allows_children': False, 'each_row_type_fields': ['IBasic.title', 'IBasic.description', 'IRichTextBehavior-text', 'IRowWidth.width', 'IExtraClass.extra_class', 'IRowVerticalSpacing.padding_top', 'IRowVerticalSpacing.padding_bottom', 'IRowVerticalSpacing.margin_top', 'IRowVerticalSpacing.margin_bottom']}</element>
     </value>
   </record>
 

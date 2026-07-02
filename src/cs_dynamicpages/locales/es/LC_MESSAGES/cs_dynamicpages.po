@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-14 15:35+0000\n"
+"POT-Creation-Date: 2026-07-02 10:38+0000\n"
 "PO-Revision-Date: 2026-03-12 09:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -32,32 +32,32 @@ msgstr ""
 msgid "4"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:433
+#: cs_dynamicpages/views/dynamic_view.pt:413
 msgid "Add block"
 msgstr "Añadir bloque"
 
-#: cs_dynamicpages/views/dynamic_view.pt:282
-msgid "Add featured"
-msgstr "Añadir elemento destacado"
+#: cs_dynamicpages/views/dynamic_view.pt:232
+msgid "Add nested row"
+msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:368
+#: cs_dynamicpages/views/dynamic_view.pt:348
 msgid "Add new row"
 msgstr "Añadir fila"
 
-#: cs_dynamicpages/views/dynamic_view.pt:324
-msgid "Add row"
-msgstr "Añadir fila"
+#: cs_dynamicpages/views/dynamic_view.pt:29
+msgid "Add row here"
+msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:537
+#: cs_dynamicpages/views/dynamic_view.pt:517
 msgid "Add template"
 msgstr "Añadir plantilla"
 
-#: cs_dynamicpages/views/dynamic_view.pt:417
+#: cs_dynamicpages/views/dynamic_view.pt:397
 msgid "Apply this template"
 msgstr "Aplicar esta plantilla"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:80
-#: cs_dynamicpages/views/dynamic_view.pt:480
+#: cs_dynamicpages/views/dynamic_view.pt:460
 msgid "Are you sure you want to delete this item? This action cannot be undone."
 msgstr "¿Estás seguro de que quieres eliminar este elemento? Esta acción no se puede deshacer."
 
@@ -70,12 +70,12 @@ msgid "CSS class for the spacer"
 msgstr "Clase CSS para el espaciador"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:83
-#: cs_dynamicpages/views/dynamic_view.pt:483
+#: cs_dynamicpages/views/dynamic_view.pt:463
 msgid "Cancel"
 msgstr "Cancelar"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:72
-#: cs_dynamicpages/views/dynamic_view.pt:372
+#: cs_dynamicpages/views/dynamic_view.pt:352
 msgid "Close"
 msgstr "Cerrar"
 
@@ -84,7 +84,7 @@ msgid "Column count"
 msgstr "Número de columnas"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:67
-#: cs_dynamicpages/views/dynamic_view.pt:468
+#: cs_dynamicpages/views/dynamic_view.pt:448
 msgid "Confirm Deletion"
 msgstr "Confirmar eliminado"
 
@@ -99,11 +99,11 @@ msgid "Content title"
 msgstr "Título del contenido"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:48
-#: cs_dynamicpages/views/dynamic_view.pt:83
+#: cs_dynamicpages/views/dynamic_view.pt:112
 msgid "Delete"
 msgstr "Eliminar"
 
-#: cs_dynamicpages/views/dynamic_view.pt:41
+#: cs_dynamicpages/views/dynamic_view.pt:70
 msgid "Drag and drop"
 msgstr "Arrastrar y soltar"
 
@@ -121,7 +121,7 @@ msgstr "Plantillas de páginas dinámicas"
 msgid "Dynamic Pages Templates management"
 msgstr "Gestión de plantillas de páginas dinámicas"
 
-#: cs_dynamicpages/views/configure.zcml:37
+#: cs_dynamicpages/views/configure.zcml:30
 msgid "Dynamic view"
 msgstr "Vista dinámica"
 
@@ -133,15 +133,11 @@ msgstr "Carpeta de página dinámica"
 msgid "DynamicPageRow"
 msgstr "Fila de página dinámica"
 
-#: cs_dynamicpages/profiles/default/types/DynamicPageRowFeatured.xml
-msgid "DynamicPageRowFeatured"
-msgstr "Destacado de fila de página dinámica"
-
-#: cs_dynamicpages/views/dynamic_view.pt:69
+#: cs_dynamicpages/views/dynamic_view.pt:98
 msgid "Edit"
 msgstr "Editar"
 
-#: cs_dynamicpages/views/dynamic_view.pt:350
+#: cs_dynamicpages/views/dynamic_view.pt:330
 msgid "Edit Mode"
 msgstr "Modo edición"
 
@@ -213,15 +209,11 @@ msgstr "URL del enlace"
 msgid "Link text"
 msgstr "Texto del enlace"
 
-#: cs_dynamicpages/views/dynamic_view.pt:247
-msgid "Move actions"
-msgstr "Acciones para mover elementos"
-
-#: cs_dynamicpages/views/dynamic_view.pt:120
+#: cs_dynamicpages/views/dynamic_view.pt:154
 msgid "Move down"
 msgstr "Bajar"
 
-#: cs_dynamicpages/views/dynamic_view.pt:103
+#: cs_dynamicpages/views/dynamic_view.pt:132
 msgid "Move up"
 msgstr "Subir"
 
@@ -229,7 +221,7 @@ msgstr "Subir"
 msgid "Name"
 msgstr "Nombre"
 
-#: cs_dynamicpages/views/dynamic_view.pt:512
+#: cs_dynamicpages/views/dynamic_view.pt:492
 msgid "Notification"
 msgstr "Notificación"
 
@@ -241,17 +233,21 @@ msgstr "Paquete para configurar cs_dynamicpages"
 msgid "Related image"
 msgstr "Imagen relacionada"
 
-#: cs_dynamicpages/views/dynamic_view.pt:383
+#: cs_dynamicpages/views/dynamic_view.pt:363
 msgid "Reuse existing templates"
 msgstr "Reutilizar plantillas existentes"
 
-#: cs_dynamicpages/views/dynamic_view.pt:162
+#: cs_dynamicpages/views/dynamic_view.pt:201
 msgid "Review state: ${state}"
 msgstr "Estado: ${state}"
 
 #: cs_dynamicpages/vocabularies/image_position.py:26
 msgid "Right"
 msgstr "Derecha"
+
+#: cs_dynamicpages/views/dynamic_view.pt:247
+msgid "Row"
+msgstr ""
 
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:64
 msgid "Row Width CSS class"
@@ -261,7 +257,7 @@ msgstr "Clase CSS del ancho de la fila"
 msgid "Row Width Label"
 msgstr "Etiqueta del ancho de la fila"
 
-#: cs_dynamicpages/views/dynamic_page_folder_view.py:85
+#: cs_dynamicpages/views/dynamic_page_folder_view.py:84
 msgid "Row added successfully"
 msgstr "Fila añadida correctamente"
 
@@ -310,7 +306,7 @@ msgstr "Ancho de la fila"
 msgid "Row widths"
 msgstr "Anchos de la fila"
 
-#: cs_dynamicpages/views/dynamic_view.pt:314
+#: cs_dynamicpages/views/dynamic_view.pt:291
 msgid "Save as template"
 msgstr "Guardar como plantilla"
 
@@ -318,7 +314,7 @@ msgstr "Guardar como plantilla"
 msgid "See template"
 msgstr "Ver plantilla"
 
-#: cs_dynamicpages/views/dynamic_view.pt:408
+#: cs_dynamicpages/views/dynamic_view.pt:388
 msgid "See this template"
 msgstr "Ver esta plantilla"
 
@@ -386,11 +382,7 @@ msgstr "Padding inferior"
 msgid "Spacer padding top"
 msgstr "Padding superior"
 
-#: cs_dynamicpages/views/dynamic_view.pt:232
-msgid "State"
-msgstr "Estado"
-
-#: cs_dynamicpages/views/dynamic_view.pt:591
+#: cs_dynamicpages/views/dynamic_view.pt:571
 msgid "Template Preview"
 msgstr "Previsualización de la plantilla"
 
@@ -398,11 +390,11 @@ msgstr "Previsualización de la plantilla"
 msgid "Template name is not valid"
 msgstr "El nombre de plantilla no es válido"
 
-#: cs_dynamicpages/views/dynamic_view.pt:551
+#: cs_dynamicpages/views/dynamic_view.pt:531
 msgid "Template name:"
 msgstr "Nombre de la plantilla:"
 
-#: cs_dynamicpages/views/dynamic_view.pt:66
+#: cs_dynamicpages/views/dynamic_view.pt:95
 msgid "Template: ${template_id}"
 msgstr "Plantilla: ${template_id}"
 

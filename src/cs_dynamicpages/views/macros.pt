@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tal:block xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+           xmlns:metal="http://xml.zope.org/namespaces/metal"
+           xmlns:tal="http://xml.zope.org/namespaces/tal"
+>
+
+  <!-- Unified Add Row Button -->
+  <metal:add_button define-macro="add_button">
+    <div tal:define="
+           is_nested is_nested|nothing;
+           container_uid container_uid|nothing;
+           pos position|nothing;
+           can_edit can_edit|nothing;
+           icons_view nocall:context/@@iconresolver;
+         "
+         tal:condition="can_edit"
+         tal:attributes="
+           class python:'add-row-plus-container edit-options d-flex justify-content-center my-3' + (is_nested and ' nested' or '');
+         "
+    >
+      <button class="btn btn-sm btn-outline-primary rounded-circle add-row-plus-btn"
+              title="Add row here"
+              data-bs-target="#addrow-offcanvasRight"
+              data-bs-toggle="offcanvas"
+              tal:attributes="
+                data-position pos;
+                data-container container_uid;
+              "
+              i18n:attributes="title"
+      >
+        <span tal:replace="structure python:icons_view.tag('plus')"></span>
+      </button>
+    </div>
+  </metal:add_button>
+
+  <!-- Unified Row Management Icons (Pen/Trash) -->
+  <metal:management_icons define-macro="management_icons">
+    <div class="nested-management-options d-flex gap-2"
+         tal:define="
+           can_edit can_edit|nothing;
+           icons_view nocall:context/@@iconresolver;
+         "
+         tal:condition="can_edit"
+    >
+      <a class="btn btn-outline-primary btn-sm rounded-circle"
+         href="${element/absolute_url}/edit"
+         title="Edit"
+         i18n:attributes="title"
+      >
+        <span tal:replace="structure python:icons_view.tag('pencil')"></span>
+      </a>
+      <a class="btn btn-outline-danger btn-sm rounded-circle"
+         href="${element/absolute_url}/delete_confirmation"
+         title="Delete"
+         i18n:attributes="title"
+      >
+        <span tal:replace="structure python:icons_view.tag('trash')"></span>
+      </a>
+    </div>
+  </metal:management_icons>
+
+</tal:block>

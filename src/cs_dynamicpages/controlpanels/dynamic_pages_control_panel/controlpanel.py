@@ -33,10 +33,10 @@ class IRowTypeFieldsSchema(Interface):
         default=[],
     )
 
-    row_type_has_featured_add_button = schema.Bool(
-        title=_("Has featured add button?"),
+    row_type_allows_children = schema.Bool(
+        title=_("Allows children?"),
         description=_(
-            "If selected a 'Add featured' button will be added in the edit "
+            "If selected a 'Add nested row' button will be added in the edit "
             "interface. This is useful for rows that have content pieces "
             "inside them. For example in a slider row, there are slider items. "
             "This button will be used to add those items."
@@ -103,7 +103,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_top",
                     "IRowVerticalSpacing.margin_bottom",
                 ],
-                "row_type_has_featured_add_button": False,
+                "row_type_allows_children": False,
                 "row_type_icon": "fonts",
             },
             {
@@ -123,7 +123,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_top",
                     "IRowVerticalSpacing.margin_bottom",
                 ],
-                "row_type_has_featured_add_button": False,
+                "row_type_allows_children": False,
                 "row_type_icon": "card-image",
             },
             {
@@ -142,7 +142,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_top",
                     "IRowVerticalSpacing.margin_bottom",
                 ],
-                "row_type_has_featured_add_button": False,
+                "row_type_allows_children": False,
                 "row_type_icon": "image-fill",
             },
             {
@@ -156,7 +156,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_top",
                     "IRowVerticalSpacing.margin_bottom",
                 ],
-                "row_type_has_featured_add_button": False,
+                "row_type_allows_children": False,
                 "row_type_icon": "hr",
             },
             {
@@ -169,7 +169,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_top",
                     "IRowVerticalSpacing.margin_bottom",
                 ],
-                "row_type_has_featured_add_button": False,
+                "row_type_allows_children": False,
                 "row_type_icon": "arrows-vertical",
             },
             {
@@ -184,7 +184,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                     "IFetchPriorityImage.fetchpriority_image",
                 ],
-                "row_type_has_featured_add_button": True,
+                "row_type_allows_children": True,
                 "row_type_icon": "images",
             },
             {
@@ -200,7 +200,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                     "IFetchPriorityImage.fetchpriority_image",
                 ],
-                "row_type_has_featured_add_button": True,
+                "row_type_allows_children": True,
                 "row_type_icon": "grid",
             },
             {
@@ -214,7 +214,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_top",
                     "IRowVerticalSpacing.margin_bottom",
                 ],
-                "row_type_has_featured_add_button": True,
+                "row_type_allows_children": True,
                 "row_type_icon": "chevron-double-down",
             },
             {
@@ -235,7 +235,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                     "IFetchPriorityImage.fetchpriority_image",
                 ],
-                "row_type_has_featured_add_button": False,
+                "row_type_allows_children": False,
                 "row_type_icon": "funnel",
             },
             {
@@ -250,8 +250,44 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_top",
                     "IRowVerticalSpacing.margin_bottom",
                 ],
-                "row_type_has_featured_add_button": False,
+                "row_type_allows_children": False,
                 "row_type_icon": "body-text",
+            },
+            {
+                "row_type": "cs_dynamicpages-image-view",
+                "each_row_type_fields": [
+                    "IBasic.title",
+                    "IRowWidth.width",
+                    "IExtraClass.extra_class",
+                    "IRelatedImage.related_image",
+                    "IFetchPriorityImage.fetchpriority_image",
+                    "IRowVerticalSpacing.padding_top",
+                    "IRowVerticalSpacing.padding_bottom",
+                    "IRowVerticalSpacing.margin_top",
+                    "IRowVerticalSpacing.margin_bottom",
+                ],
+                "row_type_allows_children": False,
+                "row_type_icon": "image",
+            },
+            {
+                "row_type": "cs_dynamicpages-card-view",
+                "each_row_type_fields": [
+                    "IBasic.title",
+                    "IBasic.description",
+                    "IRowWidth.width",
+                    "IExtraClass.extra_class",
+                    "IRelatedImage.related_image",
+                    "IFetchPriorityImage.fetchpriority_image",
+                    "IRichTextBehavior-text",
+                    "ILinkInfo.link_text",
+                    "ILinkInfo.link_url",
+                    "IRowVerticalSpacing.padding_top",
+                    "IRowVerticalSpacing.padding_bottom",
+                    "IRowVerticalSpacing.margin_top",
+                    "IRowVerticalSpacing.margin_bottom",
+                ],
+                "row_type_allows_children": False,
+                "row_type_icon": "card-heading",
             },
         ],
     )

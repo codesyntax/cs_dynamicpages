@@ -39,7 +39,7 @@ def add_custom_view(
     new_item = {
         "row_type": view_name,
         "each_row_type_fields": shown_fields,
-        "row_type_has_featured_add_button": has_button,
+        "row_type_allows_children": has_button,
         "row_type_icon": icon,
     }
     values.append(new_item)
@@ -102,7 +102,7 @@ def get_available_views_for_row():
                 item_dict = {
                     "row_type": item[0],
                     "each_row_type_fields": [],
-                    "row_type_has_featured_add_button": False,
+                    "row_type_allows_children": False,
                     "row_type_icon": "bricks",
                 }
                 if item[0] == value["row_type"] and value not in items:

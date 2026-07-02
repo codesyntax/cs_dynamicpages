@@ -113,3 +113,23 @@ class FeaturedViewsFunctionalTest(unittest.TestCase):
         )
         html = view()
         self.assertIn("Test Row", html)
+
+    def test_image_view_renders(self):
+        self.row.row_type = "cs_dynamicpages-image-view"
+        view = getMultiAdapter(
+            (self.row, self.request),
+            name="cs_dynamicpages-image-view",
+        )
+        # Should render without error even without image
+        html = view()
+        self.assertIsInstance(html, str)
+
+    def test_card_view_renders(self):
+        self.row.row_type = "cs_dynamicpages-card-view"
+        view = getMultiAdapter(
+            (self.row, self.request),
+            name="cs_dynamicpages-card-view",
+        )
+        html = view()
+        self.assertIn("card", html)
+        self.assertIn("Test Row", html)
