@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-04-14 15:35+0000\n"
+"POT-Creation-Date: 2026-07-02 10:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,32 +30,32 @@ msgstr ""
 msgid "4"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:433
+#: cs_dynamicpages/views/dynamic_view.pt:413
 msgid "Add block"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:282
-msgid "Add featured"
+#: cs_dynamicpages/views/dynamic_view.pt:232
+msgid "Add nested row"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:368
+#: cs_dynamicpages/views/dynamic_view.pt:348
 msgid "Add new row"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:324
-msgid "Add row"
+#: cs_dynamicpages/views/dynamic_view.pt:29
+msgid "Add row here"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:537
+#: cs_dynamicpages/views/dynamic_view.pt:517
 msgid "Add template"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:417
+#: cs_dynamicpages/views/dynamic_view.pt:397
 msgid "Apply this template"
 msgstr ""
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:80
-#: cs_dynamicpages/views/dynamic_view.pt:480
+#: cs_dynamicpages/views/dynamic_view.pt:460
 msgid "Are you sure you want to delete this item? This action cannot be undone."
 msgstr ""
 
@@ -68,12 +68,12 @@ msgid "CSS class for the spacer"
 msgstr ""
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:83
-#: cs_dynamicpages/views/dynamic_view.pt:483
+#: cs_dynamicpages/views/dynamic_view.pt:463
 msgid "Cancel"
 msgstr ""
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:72
-#: cs_dynamicpages/views/dynamic_view.pt:372
+#: cs_dynamicpages/views/dynamic_view.pt:352
 msgid "Close"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgid "Column count"
 msgstr ""
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:67
-#: cs_dynamicpages/views/dynamic_view.pt:468
+#: cs_dynamicpages/views/dynamic_view.pt:448
 msgid "Confirm Deletion"
 msgstr ""
 
@@ -97,11 +97,11 @@ msgid "Content title"
 msgstr ""
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:48
-#: cs_dynamicpages/views/dynamic_view.pt:83
+#: cs_dynamicpages/views/dynamic_view.pt:112
 msgid "Delete"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:41
+#: cs_dynamicpages/views/dynamic_view.pt:70
 msgid "Drag and drop"
 msgstr ""
 
@@ -119,7 +119,7 @@ msgstr ""
 msgid "Dynamic Pages Templates management"
 msgstr ""
 
-#: cs_dynamicpages/views/configure.zcml:37
+#: cs_dynamicpages/views/configure.zcml:30
 msgid "Dynamic view"
 msgstr ""
 
@@ -131,15 +131,11 @@ msgstr ""
 msgid "DynamicPageRow"
 msgstr ""
 
-#: cs_dynamicpages/profiles/default/types/DynamicPageRowFeatured.xml
-msgid "DynamicPageRowFeatured"
-msgstr ""
-
-#: cs_dynamicpages/views/dynamic_view.pt:69
+#: cs_dynamicpages/views/dynamic_view.pt:98
 msgid "Edit"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:350
+#: cs_dynamicpages/views/dynamic_view.pt:330
 msgid "Edit Mode"
 msgstr ""
 
@@ -211,15 +207,11 @@ msgstr ""
 msgid "Link text"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:247
-msgid "Move actions"
-msgstr ""
-
-#: cs_dynamicpages/views/dynamic_view.pt:120
+#: cs_dynamicpages/views/dynamic_view.pt:154
 msgid "Move down"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:103
+#: cs_dynamicpages/views/dynamic_view.pt:132
 msgid "Move up"
 msgstr ""
 
@@ -227,7 +219,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:512
+#: cs_dynamicpages/views/dynamic_view.pt:492
 msgid "Notification"
 msgstr ""
 
@@ -239,16 +231,20 @@ msgstr ""
 msgid "Related image"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:383
+#: cs_dynamicpages/views/dynamic_view.pt:363
 msgid "Reuse existing templates"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:162
+#: cs_dynamicpages/views/dynamic_view.pt:201
 msgid "Review state: ${state}"
 msgstr ""
 
 #: cs_dynamicpages/vocabularies/image_position.py:26
 msgid "Right"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_view.pt:247
+msgid "Row"
 msgstr ""
 
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:64
@@ -259,7 +255,7 @@ msgstr ""
 msgid "Row Width Label"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_page_folder_view.py:85
+#: cs_dynamicpages/views/dynamic_page_folder_view.py:84
 msgid "Row added successfully"
 msgstr ""
 
@@ -308,7 +304,7 @@ msgstr ""
 msgid "Row widths"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:314
+#: cs_dynamicpages/views/dynamic_view.pt:291
 msgid "Save as template"
 msgstr ""
 
@@ -316,7 +312,7 @@ msgstr ""
 msgid "See template"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:408
+#: cs_dynamicpages/views/dynamic_view.pt:388
 msgid "See this template"
 msgstr ""
 
@@ -384,11 +380,7 @@ msgstr ""
 msgid "Spacer padding top"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:232
-msgid "State"
-msgstr ""
-
-#: cs_dynamicpages/views/dynamic_view.pt:591
+#: cs_dynamicpages/views/dynamic_view.pt:571
 msgid "Template Preview"
 msgstr ""
 
@@ -396,11 +388,11 @@ msgstr ""
 msgid "Template name is not valid"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:551
+#: cs_dynamicpages/views/dynamic_view.pt:531
 msgid "Template name:"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:66
+#: cs_dynamicpages/views/dynamic_view.pt:95
 msgid "Template: ${template_id}"
 msgstr ""
 

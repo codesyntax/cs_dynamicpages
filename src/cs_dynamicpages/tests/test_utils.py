@@ -268,7 +268,7 @@ class GetAvailableViewsForRowIntegrationTest(unittest.TestCase):
         required_keys = [
             "row_type",
             "each_row_type_fields",
-            "row_type_has_featured_add_button",
+            "row_type_allows_children",
             "row_type_icon",
         ]
         for item in result:

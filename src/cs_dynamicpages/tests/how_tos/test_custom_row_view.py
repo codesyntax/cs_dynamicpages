@@ -28,7 +28,7 @@ class TestHowToCustomRowView(unittest.TestCase):
         new_row_type = {
             "row_type": "cs_dynamicpages-myaddon-video-embed-view",
             "row_type_icon": "play-btn",
-            "row_type_has_featured_add_button": False,
+            "row_type_allows_children": False,
             "each_row_type_fields": [
                 "IBasic.title",
                 "IBasic.description",
@@ -72,7 +72,7 @@ class TestHowToCustomRowView(unittest.TestCase):
             updated_rows[-1]["row_type"], "cs_dynamicpages-myaddon-video-embed-view"
         )
         self.assertEqual(updated_rows[-1]["row_type_icon"], "play-btn")
-        self.assertFalse(updated_rows[-1]["row_type_has_featured_add_button"])
+        self.assertFalse(updated_rows[-1]["row_type_allows_children"])
 
         # Test vocabulary behavior
         from zope.schema.interfaces import IVocabularyFactory
