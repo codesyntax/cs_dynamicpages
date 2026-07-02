@@ -164,6 +164,10 @@ class UpgradeStep1011IntegrationTest(unittest.TestCase):
         # 3. Run upgrade
         upgrade()
 
+        # 3b. Run the XML profile manually to simulate the full upgrade step
+        setup = api.portal.get_tool("portal_setup")
+        setup.runAllImportStepsFromProfile("profile-cs_dynamicpages.upgrades:1011")
+
         # 4. Verify migration
         # The old object should be gone, new one should exist
         self.assertEqual(len(row.objectValues()), 1)
@@ -175,7 +179,10 @@ class UpgradeStep1011IntegrationTest(unittest.TestCase):
         )  # Sliders get image-view
         self.assertEqual(new_feat.text, "Some text")
 
-        # Cleanup FTI if we created it
+        # 5. Verify FTI removal
+        self.assertNotIn("DynamicPageRowFeatured", types_tool.objectIds())
+
+        # Cleanup FTI if it still exists (it shouldn't)
         row_fti.allowed_content_types = original_allowed
         if "DynamicPageRowFeatured" in types_tool.objectIds():
             types_tool._delObject("DynamicPageRowFeatured")
