@@ -106,4 +106,4 @@ class UpgradeStep1005IntegrationTest(unittest.TestCase):
         self.assertIn("IBasic.title", view_config["each_row_type_fields"])
         self.assertIn("IBasic.description", view_config["each_row_type_fields"])
         self.assertEqual(view_config["row_type_icon"], "fonts")
-        self.assertFalse(view_config["row_type_has_featured_add_button"])
+        self.assertFalse(view_config["row_type_allows_children"])

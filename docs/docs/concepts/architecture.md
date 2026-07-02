@@ -23,7 +23,7 @@ The add-on achieves this modularity by introducing three specialized Dexterity c
 
 1.  **{term}`DynamicPageFolder <Dynamic Page Folder>`**: This is the top-level container. It represents the page itself (for instance, the "Home" page) and acts as the structural envelope holding all the individual rows that compose the page.
 2.  **{term}`DynamicPageRow <Dynamic Page Row>`**: Represents a single horizontal slice (or block) of the page. Depending on its configured {term}`Row Type` (which maps to a specific view template like `text-view`, `slider-view`, or `featured-view`), a row behaves differently and displays different information.
-3.  **{term}`DynamicPageRowFeatured <Dynamic Page Row Featured>`**: A nested, child content type used *inside* a {term}`DynamicPageRow <Dynamic Page Row>`. Some row types, like an "Image Slider" or a "Features Grid", require multiple child items (the slides or the individual features). The {term}`DynamicPageRowFeatured <Dynamic Page Row Featured>` type serves as these individual sub-items, holding their own title, description, image, and link.
+    **Recursive Nesting:** A unique feature of `DynamicPageRow` is its folderish nature. A row can contain other rows. This enables infinite nesting, allowing you to build complex structures like accordions where each panel contains a carousel or a multi-column text block.
 
 ## The Magic of the Registry
 
