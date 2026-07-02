@@ -5,13 +5,33 @@
     i18n_domain="cs_dynamicpages"
     >
 
-  <gs:upgradeStep
+  <gs:registerProfile
+      name="1011"
       title="Migrate DynamicPageRowFeatured to DynamicPageRow"
-      description="Moves all featured items into the new folderish row structure."
+      description="Configuration for version 1011"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+      directory="1011"
+      />
+
+  <gs:upgradeSteps
       profile="cs_dynamicpages:default"
       source="1010"
       destination="1011"
-      handler="cs_dynamicpages.upgrades.v1011.upgrade"
-      />
+      >
+
+    <gs:upgradeStep
+        title="Migrate DynamicPageRowFeatured to DynamicPageRow"
+        description="Moves all featured items into the new folderish row structure."
+        handler="cs_dynamicpages.upgrades.v1011.upgrade"
+        />
+
+    <gs:upgradeDepends
+        title="Remove DynamicPageRowFeatured FTI"
+        description="Removes the obsolete content type from portal_types"
+        import_profile="cs_dynamicpages.upgrades:1011"
+        />
+
+  </gs:upgradeSteps>
 
 </configure>
