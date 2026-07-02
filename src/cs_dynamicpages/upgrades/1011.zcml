@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    i18n_domain="cs_dynamicpages"
+    >
+
+  <gs:upgradeStep
+      title="Migrate DynamicPageRowFeatured to DynamicPageRow"
+      description="Moves all featured items into the new folderish row structure."
+      profile="cs_dynamicpages:default"
+      source="1010"
+      destination="1011"
+      handler="cs_dynamicpages.upgrades.v1011.upgrade"
+      />
+
+</configure>
