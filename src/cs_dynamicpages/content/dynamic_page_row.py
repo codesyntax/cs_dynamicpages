@@ -44,37 +44,50 @@ class DynamicPageRow(Container):
     def can_edit(self):
         return api.user.has_permission("Modify portal content", obj=self)
 
-    def featured_list(self):
+    def nested_rows(self):
         return api.content.find(
             context=self,
-            portal_type="DynamicPageRowFeatured",
+            portal_type="DynamicPageRow",
             sort_on="getObjPositionInParent",
             depth=1,
         )
 
-    def show_featured_add_button(self):
+    def show_add_child_button(self):
         row_type = self.row_type
         row_type_fields = api.portal.get_registry_record(
             "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields"
         )
         for row_type_field in row_type_fields:
             if row_type_field["row_type"] == row_type:
-                return row_type_field["row_type_has_featured_add_button"]
+                return row_type_field["row_type_allows_children"]
         return False
 
     def render(self, request):
-        if self.row_type:
-            try:
-                view = api.content.get_view(
-                    name=self.row_type,
-                    context=self,
-                    request=request,
-                )
-                return view()
-            except Exception as e:
-                log.error(e)
-                return "ERROR RENDERING THE SELECTED ROW TYPE"
-        return "THE SELECTED ROW TYPE IS NO LONGER AVAILABLE"
+        if not hasattr(request, "render_stack"):
+            request.render_stack = set()
+
+        if self.UID() in request.render_stack:
+            log.error(
+                f"Circular reference detected rendering row {self.absolute_url()}"
+            )
+            return "CIRCULAR REFERENCE DETECTED"
+
+        request.render_stack.add(self.UID())
+        try:
+            if self.row_type:
+                try:
+                    view = api.content.get_view(
+                        name=self.row_type,
+                        context=self,
+                        request=request,
+                    )
+                    return view()
+                except Exception as e:
+                    log.error(e)
+                    return "ERROR RENDERING THE SELECTED ROW TYPE"
+            return "THE SELECTED ROW TYPE IS NO LONGER AVAILABLE"
+        finally:
+            request.render_stack.remove(self.UID())
 
     def url(self):
         """Returns the url with link variables replaced."""
@@ -82,3 +95,9 @@ class DynamicPageRow(Container):
             return ""
         url = replace_link_variables_by_paths(self, self.link_url.strip())
         return absolute_target_url(url)
+
+    def related_image_object(self):
+        related_image = getattr(self, "related_image", None)
+        if related_image:
+            return related_image[0].to_object
+        return None

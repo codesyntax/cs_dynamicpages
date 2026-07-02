@@ -11,14 +11,30 @@ class ISliderView(Interface):
 
 @implementer(ISliderView)
 class SliderView(DynamicPageRowView):
-    # If you want to define a template here, please remove the template from
-    # the configure.zcml registration of this view.
-    # template = ViewPageTemplateFile('slider_view.pt')
-
     def elements(self):
-        # Implement your own actions:
         return api.content.find(
-            portal_type="DynamicPageRowFeatured",
+            portal_type="DynamicPageRow",
             context=self.context,
             sort_on="getObjPositionInParent",
+            depth=1,
+        )
+
+
+class AccordionView(DynamicPageRowView):
+    def elements(self):
+        return api.content.find(
+            portal_type="DynamicPageRow",
+            context=self.context,
+            sort_on="getObjPositionInParent",
+            depth=1,
+        )
+
+
+class FeaturesView(DynamicPageRowView):
+    def elements(self):
+        return api.content.find(
+            portal_type="DynamicPageRow",
+            context=self.context,
+            sort_on="getObjPositionInParent",
+            depth=1,
         )
