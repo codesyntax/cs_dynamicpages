@@ -1,6 +1,8 @@
 <div class="row g-4 features-view"
      tal:define="
        elements view/elements;
+       macros context/@@macros/macros;
+       can_edit context/can_edit;
      "
      tal:condition="elements"
 >
@@ -14,50 +16,26 @@
     <tal:define tal:define="
                   element brain/getObject;
                 ">
-
-      <div class="card h-100 border-0 shadow rounded overflow-hidden">
-        <tal:image tal:define="
-                     image element/related_image_object;
-                   "
-                   tal:condition="image"
-                   tal:on-error="nothing"
+      <div class="h-100 position-relative">
+        <div class="p-2 nested-management-options d-flex gap-2 position-absolute top-0 start-0 z-3"
+             tal:condition="can_edit"
         >
-          <div class="ratio ratio-16x9 bg-light">
-            <img tal:define="
-                   images image/@@images;
-                 "
-                 tal:replace="structure python:images.srcset(fieldname='image',
-                                                                    scale_in_src='huge',
-                                                                    sizes='(min-width: 1400px) 400px, 100vw',
-                                                                    alt=element.Title() ,
-                                                                    title=element.Title(),
-                                                                    fetchpriority=fetchpriority_image_value,
-                                                                    loading=loading_image_value,
-                                                                    css_class='object-fit-cover w-100 h-100')"
-            />
-          </div>
-        </tal:image>
-        <div class="card-body p-4 d-flex flex-column">
-          <h2 class="h5 card-title mb-3"
-              tal:condition="element/url"
-          >
-            <a class="text-dark no-underline stretched-link fw-bold"
-               href="${element/url}"
-            >${element/Title}</a>
-          </h2>
-          <h2 class="h5 card-title fw-bold text-dark mb-3"
-              tal:condition="not:element/url"
-          >${element/Title}</h2>
-          <p class="card-text text-secondary"
-             tal:condition="element/Description"
-          >${element/Description}</p>
-          <div class="mt-auto text-muted">
-            <tal:replace tal:condition="element/text"
-                         replace="structure element/text/output"
-            >
-            </tal:replace>
-          </div>
+          <metal:use_macro use-macro="macros/management_icons" />
         </div>
+        <tal:block replace="structure python:element.render(request)" />
+        <metal:use_macro use-macro="macros/add_button">
+          <metal:fill-slot fill-slot="position"
+                           tal:define="
+                             position python:repeat['brain'].index + 1;
+                           "
+          >${position}</metal:fill-slot>
+          <metal:fill-slot fill-slot="container_uid"
+                           tal:define="
+                             container_uid context/UID;
+                           "
+          >${container_uid}</metal:fill-slot>
+          <metal:fill-slot fill-slot="is_nested">True</metal:fill-slot>
+        </metal:use_macro>
       </div>
     </tal:define>
   </div>

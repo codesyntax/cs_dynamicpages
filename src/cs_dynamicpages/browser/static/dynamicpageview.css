@@ -205,3 +205,38 @@ body.template-dynamic-view.can_edit {
 .dynamic-row .dropdown-menu {
   z-index: 1030; /* Ensure dropdown is above other elements */
 }
+/* Nested Management Styling */
+.add-row-plus-container.nested {
+  transform: scale(0.8);
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  opacity: 0.6;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.add-row-plus-container.nested:hover {
+  opacity: 1;
+  transform: scale(0.9);
+}
+
+.nested-management-options {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 4px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 0.5rem;
+}
+
+/* Hover reveal for management icons */
+.accordion-item .nested-management-options,
+.carousel-item .nested-management-options,
+.features-view .nested-management-options {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.accordion-item:hover > .accordion-collapse > .accordion-body > .nested-management-options,
+.carousel-item:hover .nested-management-options,
+.features-view .h-100:hover > .nested-management-options {
+  opacity: 1;
+}
