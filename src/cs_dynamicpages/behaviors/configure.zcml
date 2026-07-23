@@ -60,6 +60,11 @@
       />
 
 
+  <utility
+      name="cs_dynamicpages.RelatedImageSource"
+      component=".related_image.RelatedImageSourceVocabularyFactory"
+      />
+
   <plone:behavior
       name="cs_dynamicpages.related_image"
       title="RelatedImage"
