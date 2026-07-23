@@ -1,1 +1,0 @@
-Replace module-level vocabulary try/except with a ComponentLookupError-based factory that delegates to `RootCatalog` (multilingual) or `Catalog` (fallback) for the related image source. Register as `cs_dynamicpages.RelatedImageSource` vocabulary.

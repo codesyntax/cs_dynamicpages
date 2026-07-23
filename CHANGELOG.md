@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b17 (2026-07-23)
+
+
+### Bug fixes:
+
+- Replace module-level vocabulary try/except with a ComponentLookupError-based factory that delegates to `RootCatalog` (multilingual) or `Catalog` (fallback) for the related image source. Register as `cs_dynamicpages.RelatedImageSource` vocabulary. [#39](https://github.com/codesyntax/cs_dynamicpages/issues/39)
+
 ## 1.0.0b16 (2026-06-29)
 
 
