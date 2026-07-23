@@ -13,9 +13,12 @@ from z3c.relationfield.schema import RelationChoice
 from z3c.relationfield.schema import RelationList
 from zope import schema
 from zope.component import adapter
+from zope.component import getUtility
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import provider
+from zope.interface.interfaces import ComponentLookupError
+from zope.schema.interfaces import IVocabularyFactory
 
 
 try:
@@ -28,6 +31,25 @@ except ImportError:
     from plone.app.z3cform.widgets.relateditems import (
         RelatedItemsFieldWidget as RelatedImageFieldWidget,
     )
+
+
+@implementer(IVocabularyFactory)
+class RelatedImageSourceVocabularyFactory:
+    """Vocabulary that delegates to RootCatalog if available, else Catalog."""
+
+    def __call__(self, context):
+        try:
+            factory = getUtility(
+                IVocabularyFactory, "plone.app.multilingual.RootCatalog"
+            )
+            return factory(context)
+        except ComponentLookupError:
+            return getUtility(IVocabularyFactory, "plone.app.vocabularies.Catalog")(
+                context
+            )
+
+
+RelatedImageSourceVocabularyFactory = RelatedImageSourceVocabularyFactory()
 
 
 class IImageRelationList(Interface):
@@ -52,14 +74,14 @@ class IRelatedImage(model.Schema):
         description=_("Select the related image that will be shown in this row"),
         default=[],
         max_length=1,
-        value_type=RelationChoice(vocabulary="plone.app.vocabularies.Catalog"),
+        value_type=RelationChoice(vocabulary="cs_dynamicpages.RelatedImageSource"),
         required=False,
     )
 
     form.widget(
         "related_image",
         RelatedImageFieldWidget,
-        vocabulary="plone.app.vocabularies.Catalog",
+        vocabulary="cs_dynamicpages.RelatedImageSource",
     )
     image_position = schema.Choice(
         title=_("Image position"),
