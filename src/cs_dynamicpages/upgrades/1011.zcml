@@ -1,0 +1,35 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    >
+
+  <gs:registerProfile
+      name="1011"
+      title="Add purge action JS handlers"
+      description="Configuration for version 1011"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+      directory="1011"
+      />
+
+  <gs:upgradeSteps
+      profile="cs_dynamicpages:default"
+      source="1010"
+      destination="1011"
+      >
+
+    <gs:upgradeStep
+        title="Add purge action JS handlers"
+        description="Add JS file to handle purging"
+        handler=".v1011.upgrade"
+        />
+
+    <gs:upgradeDepends
+        title="Add purge action JS handlers (GS profile)"
+        description="Add JS file to handle purging"
+        import_profile="cs_dynamicpages.upgrades:1011"
+        />
+
+  </gs:upgradeSteps>
+
+</configure>

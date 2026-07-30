@@ -315,3 +315,56 @@ class TestPurgeSubscriberRegistration(unittest.TestCase):
         notify(ObjectModifiedEvent(dpf))
 
         api.content.delete(obj=folder)
+
+
+class TestPurgeAPIEndpoint(unittest.TestCase):
+    """Tests for the @purge REST API endpoint."""
+
+    layer = CS_DYNAMICPAGES_INTEGRATION_TESTING
+
+    def setUp(self):
+        self.portal = self.layer["portal"]
+        setRoles(self.portal, TEST_USER_ID, ["Manager"])
+
+    @patch("cs_dynamicpages.api.services.purge.post.notify")
+    def test_purge_endpoint_fires_purge_event(self, mock_notify):
+        from cs_dynamicpages.api.services.purge.post import PurgePost
+        from z3c.caching.purge import Purge
+
+        folder = api.content.create(
+            container=self.portal,
+            type="Folder",
+            id="test-api-purge",
+            title="Test Folder",
+        )
+
+        view = PurgePost()
+        view.context = folder
+        view.request = self.portal.REQUEST
+        view.reply()
+
+        mock_notify.assert_called_once()
+        args = mock_notify.call_args[0]
+        self.assertIsInstance(args[0], Purge)
+        self.assertIs(args[0].object, folder)
+
+        api.content.delete(obj=folder)
+
+    def test_purge_endpoint_returns_no_content(self):
+        from cs_dynamicpages.api.services.purge.post import PurgePost
+
+        folder = api.content.create(
+            container=self.portal,
+            type="Folder",
+            id="test-api-purge-nc",
+            title="Test Folder",
+        )
+
+        view = PurgePost()
+        view.context = folder
+        view.request = self.portal.REQUEST
+        view.reply()
+
+        self.assertEqual(self.portal.REQUEST.response.getStatus(), 204)
+
+        api.content.delete(obj=folder)

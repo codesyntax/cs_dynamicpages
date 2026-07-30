@@ -398,6 +398,22 @@
                 </button>
                 <!-- Modal -->
               </div>
+              <div>
+                <button class="btn btn-warning"
+                        id="purge-content"
+                        type="button"
+                        tal:attributes="
+                          data-url string:${context/absolute_url}/@purge;
+                        "
+                        i18n:translate=""
+                >
+                Purge from cache
+                </button>
+                <span class="d-none text-success ms-2"
+                      id="purge-success-message"
+                      i18n:translate=""
+                >Purged successfully.</span>
+              </div>
               <!-- <a class="btn btn-primary"
                  aria-controls="offcanvasRight"
                  title="Add row"
