@@ -6,6 +6,7 @@
     >
 
   <!-- -*- extra stuff goes here -*- -->
+  <include package=".purge" />
   <include package=".templates" />
   <include package=".apply_template" />
 
