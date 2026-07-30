@@ -38,6 +38,7 @@
 
   <include package=".views" />
   <include package=".adapters" />
+  <include package=".cache" />
 
 
 
