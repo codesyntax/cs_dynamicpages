@@ -46,7 +46,7 @@
 
   <browser:page
       name="dynamic-view"
-      for="plone.app.contenttypes.interfaces.IFolder"
+      for="plone.dexterity.interfaces.IDexterityContainer"
       class=".dynamic_view.DynamicView"
       template="dynamic_view.pt"
       permission="zope2.View"
