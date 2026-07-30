@@ -9,6 +9,17 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b18 (2026-07-30)
+
+
+### New features:
+
+- Register `dynamic-view` for all Dexterity containers instead of only `IFolder`.
+  This makes the dynamic view available on any container type (e.g. `DynamicPageFolder`).
+  - Update README to reflect the broader registration.
+  - Add integration test verifying registration on `DynamicPageFolder`. [#register-dynamicview-for-all-dexterity-containers](https://github.com/codesyntax/cs_dynamicpages/issues/register-dynamicview-for-all-dexterity-containers)
+- Add cache purging subscribers @erral 
+
 ## 1.0.0b17 (2026-07-23)
 
 
