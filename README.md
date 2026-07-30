@@ -23,7 +23,7 @@ The concept is pretty similar that of Volto blocks:
 
 ## Provided View
 
-There is just one view `dynamic_view` registered for Folders and Naviation roots. You can register it for your own content-types also.
+The `dynamic_view` view is registered for all Dexterity containers and Navigation roots. You can register it for your own content-types also.
 
 ### Different fields
 

@@ -25,6 +25,13 @@ class ViewsIntegrationTest(unittest.TestCase):
         )
         self.assertTrue(IDynamicView.providedBy(view))
 
+    def test_dynamic_view_on_dynamic_page_folder(self):
+        api.content.create(self.portal, "DynamicPageFolder", "a-dpf")
+        view = getMultiAdapter(
+            (self.portal["a-dpf"], self.portal.REQUEST), name="dynamic-view"
+        )
+        self.assertTrue(IDynamicView.providedBy(view))
+
     def test_dynamic_view_not_matching_interface(self):
         view_found = True
         try:
