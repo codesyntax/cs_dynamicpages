@@ -95,9 +95,18 @@ class DynamicView(BrowserView):
                 templates.append(template)
         return templates
 
-    def self_in_templates(self):
-        if "rows" in self.context:
-            return IUUID(self.context.rows) in [
-                template.get("uid") for template in self.available_templates()
-            ]
-        return False
+    def row_types_constraints(self):
+        """Return a mapping of row type to its allowed child row types."""
+        import json
+        row_type_fields = api.portal.get_registry_record(
+            "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields", default=[]
+        )
+        constraints = {
+            "top_level": api.portal.get_registry_record(
+                "cs_dynamicpages.dynamic_pages_control_panel.top_level_row_types",
+                default=[],
+            )
+        }
+        for item in row_type_fields:
+            constraints[item["row_type"]] = item.get("allowed_child_row_types", [])
+        return json.dumps(constraints)

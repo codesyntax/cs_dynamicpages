@@ -21,6 +21,10 @@
       >
 
         <tal:condition-configuration condition="view/dynamic_page_folder_element">
+          <script id="row-constraints-json"
+                  type="application/json"
+                  tal:content="view/row_types_constraints"
+          ></script>
           <tal:conditiondrapanddrop tal:condition="view/can_edit">
             <script id="sortable-js"
                     src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"
@@ -333,8 +337,9 @@
                   >Add block</h2>
                 </tal:conditionrows>
                 <ul class="list-unstyled row">
-                  <li class="mb-2 col-4"
+                  <li class="mb-2 col-4 available-view-item"
                       tal:repeat="item available_views_for_row"
+                      tal:attributes="data-row-type item/row_type"
                   >
                     <div class="p-5 rounded bg-light h-100 available-view">
                       <a class="no-underline d-flex flex-column align-items-center justify-content-between h-100"

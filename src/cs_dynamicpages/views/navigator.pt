@@ -43,6 +43,20 @@
                 ></span>
 
                 <div class="node-actions d-flex gap-1 ms-auto">
+                  <button class="btn btn-xs btn-outline-success rounded-circle"
+                          title="Add inside"
+                          data-bs-target="#addrow-offcanvasRight"
+                          data-bs-toggle="offcanvas"
+                          tal:condition="node/allows_children"
+                          tal:attributes="
+                            data-container node/uid;
+                            data-container-type node/row_type;
+                            data-position python:len(node['children']);
+                          "
+                          i18n:attributes="title"
+                  >
+                    <span tal:replace="structure python:icons_view.tag('plus')"></span>
+                  </button>
                   <a class="btn btn-xs btn-outline-primary rounded-circle"
                      href="${node/url}/edit"
                      title="Edit"

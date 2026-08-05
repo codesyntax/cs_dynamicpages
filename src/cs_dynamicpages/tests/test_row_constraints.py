@@ -123,3 +123,17 @@ class TestRowConstraints(unittest.TestCase):
         self.assertEqual(len(filtered_types), 1)
         self.assertIn("cs_dynamicpages-image-view", filtered_types)
         self.assertNotIn("cs_dynamicpages-text-view", filtered_types)
+
+    def test_row_types_constraints_json(self):
+        """Test that constraints are correctly exported as JSON."""
+        from cs_dynamicpages.views.dynamic_view import DynamicView
+        view = DynamicView(self.portal, self.layer["request"])
+        
+        # Set a top-level constraint
+        self.registry[self.record_name] = ["cs_dynamicpages-text-view"]
+        
+        import json
+        constraints = json.loads(view.row_types_constraints())
+        self.assertIn("top_level", constraints)
+        self.assertEqual(constraints["top_level"], ["cs_dynamicpages-text-view"])
+        self.assertIn("cs_dynamicpages-slider-view", constraints)

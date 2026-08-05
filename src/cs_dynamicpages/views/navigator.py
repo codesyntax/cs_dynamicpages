@@ -37,6 +37,7 @@ class NavigatorView(BrowserView):
                 "uid": obj.UID(),
                 "title": obj.Title(),
                 "row_type": getattr(obj, "row_type", ""),
+                "allows_children": obj.show_add_child_button(),
                 "depth": depth,
                 "url": obj.absolute_url(),
                 "can_edit": api.user.has_permission("Modify portal content", obj=obj),

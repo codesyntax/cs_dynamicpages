@@ -10,6 +10,7 @@
     <div tal:define="
            is_nested is_nested|nothing;
            container_uid container_uid|nothing;
+           container_type container_type|string:top_level;
            pos position|nothing;
            can_edit can_edit|nothing;
            icons_view nocall:context/@@iconresolver;
@@ -26,6 +27,7 @@
               tal:attributes="
                 data-position pos;
                 data-container container_uid;
+                data-container-type container_type;
               "
               i18n:attributes="title"
       >
