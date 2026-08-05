@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-08-05 16:42+0000\n"
+"POT-Creation-Date: 2026-08-05 21:22+0000\n"
 "PO-Revision-Date: 2026-03-12 09:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -32,50 +32,57 @@ msgstr ""
 msgid "4"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:322
+#: cs_dynamicpages/views/dynamic_view.pt:335
 msgid "Add block"
 msgstr "Gehitu blokea"
 
-#: cs_dynamicpages/views/dynamic_view.pt:156
+#: cs_dynamicpages/views/dynamic_view.pt:160
 msgid "Add nested row"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:257
+#: cs_dynamicpages/views/dynamic_view.pt:270
 msgid "Add new row"
 msgstr "Gehitu lerro berria"
 
-#: cs_dynamicpages/views/dynamic_view.pt:426
+#: cs_dynamicpages/views/dynamic_view.pt:442
 msgid "Add template"
 msgstr "Gehitu txantiloia"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:37
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:53
+msgid "Allowed child row types"
+msgstr ""
+
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:40
 msgid "Allows children?"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:306
+#: cs_dynamicpages/views/dynamic_view.pt:319
 msgid "Apply this template"
 msgstr "Aplikatu txantiloi hau"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:80
-#: cs_dynamicpages/views/dynamic_view.pt:369
 msgid "Are you sure you want to delete this item? This action cannot be undone."
 msgstr "Ziur zaude elementu hau ezabatu nahi duzula? Ekintza hau ezin da desegin."
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:65
+#: cs_dynamicpages/views/dynamic_view.pt:385
+msgid "Are you sure you want to delete this row? All items contained within it will also be deleted. This action cannot be undone."
+msgstr ""
+
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:80
 msgid "CSS class for the row width"
 msgstr "Lerroaren zabaleraren CSS klasea"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:79
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:94
 msgid "CSS class for the spacer"
 msgstr "Espazioa ematen duen elementuaren CSS klasea"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:83
-#: cs_dynamicpages/views/dynamic_view.pt:372
+#: cs_dynamicpages/views/dynamic_view.pt:388
 msgid "Cancel"
 msgstr "Utzi"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:72
-#: cs_dynamicpages/views/dynamic_view.pt:261
+#: cs_dynamicpages/views/dynamic_view.pt:274
 msgid "Close"
 msgstr "Itxi"
 
@@ -88,7 +95,7 @@ msgid "Configuration for version 2000"
 msgstr ""
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:67
-#: cs_dynamicpages/views/dynamic_view.pt:357
+#: cs_dynamicpages/views/dynamic_view.pt:373
 msgid "Confirm Deletion"
 msgstr "Baieztatu ezabatzea"
 
@@ -103,15 +110,15 @@ msgid "Content title"
 msgstr "Edukiaren izenburua"
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:48
-#: cs_dynamicpages/views/dynamic_view.pt:76
+#: cs_dynamicpages/views/dynamic_view.pt:80
 msgid "Delete"
 msgstr "Ezabatu"
 
-#: cs_dynamicpages/views/dynamic_view.pt:59
+#: cs_dynamicpages/views/dynamic_view.pt:63
 msgid "Drag and drop"
 msgstr "Arrastatu eta jaregin"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:481
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:520
 #: cs_dynamicpages/profiles/default/controlpanel.xml
 #: cs_dynamicpages/upgrades/1002/controlpanel.xml
 msgid "Dynamic Pages Control Panel"
@@ -137,11 +144,11 @@ msgstr "Orri dinamikoen karpeta"
 msgid "DynamicPageRow"
 msgstr "Orri dinamikoen lerroa"
 
-#: cs_dynamicpages/views/dynamic_view.pt:71
+#: cs_dynamicpages/views/dynamic_view.pt:75
 msgid "Edit"
 msgstr "Editatu"
 
-#: cs_dynamicpages/views/dynamic_view.pt:239
+#: cs_dynamicpages/views/dynamic_view.pt:243
 msgid "Edit Mode"
 msgstr "Edizio modua"
 
@@ -153,7 +160,7 @@ msgstr "Idatzi lerroari gehituko zaion CSS klase gehigarria"
 msgid "Enter the URL of the link"
 msgstr "Idatzi estekaren URLa"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:27
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:30
 msgid "Enter the fields that will be available when editing this row type. This is useful to hide unused fields."
 msgstr "Idatzi lerro-mota hau editatzean agertuko diren eremuen izenak. Behar ez diren eremuak ezkutatzeko balio du honek."
 
@@ -169,27 +176,27 @@ msgstr "CSS klase gehigarria"
 msgid "Fetch priority image"
 msgstr "Irudiaren 'fetchpriority' atributua"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:88
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:115
 msgid "Here we have all the available views for the rows and their settings"
 msgstr "Hemen lerro guztien bistak eta beren ezarpenak dituzu"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:402
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:441
 msgid "Here you can define the available margins for each spacer"
 msgstr "Hemen espazioa ematen duen elementuaren marginak definitu ditzakezu"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:324
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:363
 msgid "Here you can define the available paddings for each spacer"
 msgstr "Hemen espazioa ematen duen elementuaren paddingak definitu ditzakezu"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:298
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:337
 msgid "Here you can define the available widths for each row"
 msgstr "Hemen lerro bakoitzaren zabalera posibleak gehitu ditzakezu"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:50
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:65
 msgid "Icon for the row type"
 msgstr "Lerroaren ikonoa"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:38
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:41
 msgid "If selected a 'Add nested row' button will be added in the edit interface. This is useful for rows that have content pieces inside them. For example in a slider row, there are slider items. This button will be used to add those items."
 msgstr ""
 
@@ -213,11 +220,11 @@ msgstr "Estekaren testua"
 msgid "Migrate DynamicPageRowFeatured to DynamicPageRow"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:99
+#: cs_dynamicpages/views/dynamic_view.pt:103
 msgid "Move down"
 msgstr "Mugitu behera"
 
-#: cs_dynamicpages/views/dynamic_view.pt:87
+#: cs_dynamicpages/views/dynamic_view.pt:91
 msgid "Move up"
 msgstr "Mugitu gora"
 
@@ -225,7 +232,11 @@ msgstr "Mugitu gora"
 msgid "Name"
 msgstr "Izena"
 
-#: cs_dynamicpages/views/dynamic_view.pt:401
+#: cs_dynamicpages/views/dynamic_view.pt:254
+msgid "Navigator"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_view.pt:417
 msgid "Notification"
 msgstr "Jakinarazpena"
 
@@ -233,11 +244,11 @@ msgstr "Jakinarazpena"
 msgid "Package to configure a new cs_dynamicpages site"
 msgstr "cs_dynamicpages konfiguratzeko paketea"
 
-#: cs_dynamicpages/views/dynamic_view.pt:196
+#: cs_dynamicpages/views/dynamic_view.pt:200
 msgid "Purge from cache"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:206
+#: cs_dynamicpages/views/dynamic_view.pt:210
 msgid "Purged successfully."
 msgstr ""
 
@@ -245,11 +256,11 @@ msgstr ""
 msgid "Related image"
 msgstr "Irudi erlazionatua"
 
-#: cs_dynamicpages/views/dynamic_view.pt:272
+#: cs_dynamicpages/views/dynamic_view.pt:285
 msgid "Reuse existing templates"
 msgstr "Berrerabili txantiloiak"
 
-#: cs_dynamicpages/views/dynamic_view.pt:125
+#: cs_dynamicpages/views/dynamic_view.pt:129
 msgid "Review state: ${state}"
 msgstr "Egoera: ${state}"
 
@@ -257,15 +268,15 @@ msgstr "Egoera: ${state}"
 msgid "Right"
 msgstr "Eskuma"
 
-#: cs_dynamicpages/views/dynamic_view.pt:161
+#: cs_dynamicpages/views/dynamic_view.pt:165
 msgid "Row"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:64
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:79
 msgid "Row Width CSS class"
 msgstr "Lerroaren zabalerara CSS klasea"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:58
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:73
 msgid "Row Width Label"
 msgstr "Lerro zabaleraren etiketa"
 
@@ -273,7 +284,7 @@ msgstr "Lerro zabaleraren etiketa"
 msgid "Row added successfully"
 msgstr "Lerroa ondo gehitu da"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:26
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:29
 msgid "Row fields"
 msgstr "Lerroaren eremuak"
 
@@ -293,32 +304,32 @@ msgstr "Lerroaren beheko paddinga"
 msgid "Row padding top"
 msgstr "Lerroaren gaineko paddinga"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:17
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:19
 msgid "Row type"
 msgstr "Lerro-mota"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:92
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:119
 msgid "Row type field"
 msgstr "Lerro motaren eremua"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:87
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:114
 msgid "Row type fields"
 msgstr "Lerro motaren eremuak"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:49
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:64
 msgid "Row type icon"
 msgstr "Lerroaren ikonoa"
 
 #: cs_dynamicpages/behaviors/row_width.py:19
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:301
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:340
 msgid "Row width"
 msgstr "Lerroaren zabalera"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:297
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:336
 msgid "Row widths"
 msgstr "Lerroaren zabalerak"
 
-#: cs_dynamicpages/views/dynamic_view.pt:185
+#: cs_dynamicpages/views/dynamic_view.pt:189
 msgid "Save as template"
 msgstr "Gorde txantiloi gisa"
 
@@ -326,7 +337,7 @@ msgstr "Gorde txantiloi gisa"
 msgid "See template"
 msgstr "Ikusi txantiloia"
 
-#: cs_dynamicpages/views/dynamic_view.pt:297
+#: cs_dynamicpages/views/dynamic_view.pt:310
 msgid "See this template"
 msgstr "Ikusi txantiloi hau"
 
@@ -358,7 +369,7 @@ msgstr "Aukeratu irudiaren posizioa"
 msgid "Select the related image that will be shown in this row"
 msgstr "Aukeratu lerro honetan agertuko den erlazionatutako irudia"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:18
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:20
 msgid "Select the row type. This is the type of the row that will be added."
 msgstr "Aukeratu lerro mota. Mota honetako lerroa gehituko da."
 
@@ -366,35 +377,43 @@ msgstr "Aukeratu lerro mota. Mota honetako lerroa gehituko da."
 msgid "Select the width that this row will have"
 msgstr "Aukeratu lerro honek izango duen zabalera"
 
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:54
+msgid "Select which row types are allowed as children of this row type. If empty, all row types are allowed."
+msgstr ""
+
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:103
+msgid "Select which row types are allowed at the top level of a page. If empty, all row types are allowed."
+msgstr ""
+
 #: cs_dynamicpages/behaviors/fetchpriority_image.py:22
 msgid "Set this to true if you want to signal that this image has a 'high' fetch priority, otherwise 'auto' will be used. When using 'high' the value of the loading attribute will be set to 'eager', and 'lazy' when it is not set."
 msgstr "Aukeratuta badago irudiaren 'fetchpriority' atributuaren balioa 'high' izango da, bestela 'auto'. 'high' erabiltzen denean, gainera, 'loading' atributuaren balioa 'eager' bezala erabiliko da, bestela 'lazy'."
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:78
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:93
 msgid "Spacer CSS class"
 msgstr "Espazioa ematen duen elementuaren CSSa"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:72
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:87
 msgid "Spacer Label"
 msgstr "Etiketa"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:440
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:479
 msgid "Spacer margin bottom"
 msgstr "Azpiko margina"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:401
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:440
 msgid "Spacer margin top"
 msgstr "Gaineko margina"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:362
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:401
 msgid "Spacer padding bottom"
 msgstr "Azpiko paddinga"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:323
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:362
 msgid "Spacer padding top"
 msgstr "Gaineko paddinga"
 
-#: cs_dynamicpages/views/dynamic_view.pt:480
+#: cs_dynamicpages/views/dynamic_view.pt:496
 msgid "Template Preview"
 msgstr "Txantiloiaren aurrebista"
 
@@ -402,11 +421,11 @@ msgstr "Txantiloiaren aurrebista"
 msgid "Template name is not valid"
 msgstr "Txantiloiaren izena ez da zuzena"
 
-#: cs_dynamicpages/views/dynamic_view.pt:440
+#: cs_dynamicpages/views/dynamic_view.pt:456
 msgid "Template name:"
 msgstr "Txantiloiaren izena:"
 
-#: cs_dynamicpages/views/dynamic_view.pt:68
+#: cs_dynamicpages/views/dynamic_view.pt:72
 msgid "Template: ${template_id}"
 msgstr "Txantiloia: ${template_id}"
 
@@ -414,13 +433,17 @@ msgstr "Txantiloia: ${template_id}"
 msgid "Templates"
 msgstr "Txantiloiak"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:73
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:88
 msgid "This is the label corresponding to this spacer"
 msgstr "Hau da espazio honen etiketa"
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:59
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:74
 msgid "This is the label corresponding to this width"
 msgstr "Zabalera honi dagokion etiketa da hau"
+
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:102
+msgid "Top-level row types"
+msgstr ""
 
 #: cs_dynamicpages/api/services/apply_template/post.py:23
 #: cs_dynamicpages/api/services/templates/delete.py:19
