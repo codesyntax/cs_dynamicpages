@@ -85,3 +85,35 @@ class TestNavigatorLogic(unittest.TestCase):
         self.assertEqual(len(tree[1]["children"]), 1)
         self.assertEqual(tree[1]["children"][0]["id"], "row2-1")
         self.assertEqual(tree[1]["children"][0]["depth"], 1)
+
+    def test_recursive_deletion(self):
+        """Test that deleting a parent row deletes all children."""
+        row1 = api.content.create(
+            container=self.dpf,
+            type="DynamicPageRow",
+            id="parent",
+            title="Parent",
+        )
+        child = api.content.create(
+            container=row1,
+            type="DynamicPageRow",
+            id="child",
+            title="Child",
+        )
+        grandchild = api.content.create(
+            container=child,
+            type="DynamicPageRow",
+            id="grandchild",
+            title="Grandchild",
+        )
+
+        child_uid = child.UID()
+        grandchild_uid = grandchild.UID()
+
+        # Delete parent
+        api.content.delete(obj=row1)
+
+        # Verify all are gone
+        self.assertNotIn("parent", self.dpf.objectIds())
+        self.assertIsNone(api.content.get(UID=child_uid))
+        self.assertIsNone(api.content.get(UID=grandchild_uid))
