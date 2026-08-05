@@ -1,5 +1,5 @@
 from cs_dynamicpages.testing import CS_DYNAMICPAGES_INTEGRATION_TESTING
-from cs_dynamicpages.upgrades.v1011 import upgrade
+from cs_dynamicpages.upgrades.v2000 import upgrade
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -7,8 +7,8 @@ from plone.app.testing import TEST_USER_ID
 import unittest
 
 
-class UpgradeStep1011IntegrationTest(unittest.TestCase):
-    """Integration tests for upgrade step 1011."""
+class UpgradeStep2000IntegrationTest(unittest.TestCase):
+    """Integration tests for upgrade step 2000."""
 
     layer = CS_DYNAMICPAGES_INTEGRATION_TESTING
 
@@ -22,7 +22,8 @@ class UpgradeStep1011IntegrationTest(unittest.TestCase):
 
     def tearDown(self):
         # Restore original registry values
-        self.registry[self.record_name] = self.original_values
+        if self.record_name in self.registry:
+            self.registry[self.record_name] = self.original_values
 
     def test_upgrade_migrates_registry_keys(self):
         """Test that upgrade renames row_type_has_featured_add_button.
@@ -166,7 +167,7 @@ class UpgradeStep1011IntegrationTest(unittest.TestCase):
 
         # 3b. Run the XML profile manually to simulate the full upgrade step
         setup = api.portal.get_tool("portal_setup")
-        setup.runAllImportStepsFromProfile("profile-cs_dynamicpages.upgrades:1011")
+        setup.runAllImportStepsFromProfile("profile-cs_dynamicpages.upgrades:2000")
 
         # 4. Verify migration
         # The old object should be gone, new one should exist

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-07-02 10:38+0000\n"
+"POT-Creation-Date: 2026-08-05 16:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,32 +30,32 @@ msgstr ""
 msgid "4"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:413
+#: cs_dynamicpages/views/dynamic_view.pt:322
 msgid "Add block"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:232
+#: cs_dynamicpages/views/dynamic_view.pt:156
 msgid "Add nested row"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:348
+#: cs_dynamicpages/views/dynamic_view.pt:257
 msgid "Add new row"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:29
-msgid "Add row here"
-msgstr ""
-
-#: cs_dynamicpages/views/dynamic_view.pt:517
+#: cs_dynamicpages/views/dynamic_view.pt:426
 msgid "Add template"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:397
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:37
+msgid "Allows children?"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_view.pt:306
 msgid "Apply this template"
 msgstr ""
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:80
-#: cs_dynamicpages/views/dynamic_view.pt:460
+#: cs_dynamicpages/views/dynamic_view.pt:369
 msgid "Are you sure you want to delete this item? This action cannot be undone."
 msgstr ""
 
@@ -68,12 +68,12 @@ msgid "CSS class for the spacer"
 msgstr ""
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:83
-#: cs_dynamicpages/views/dynamic_view.pt:463
+#: cs_dynamicpages/views/dynamic_view.pt:372
 msgid "Cancel"
 msgstr ""
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:72
-#: cs_dynamicpages/views/dynamic_view.pt:352
+#: cs_dynamicpages/views/dynamic_view.pt:261
 msgid "Close"
 msgstr ""
 
@@ -81,8 +81,12 @@ msgstr ""
 msgid "Column count"
 msgstr ""
 
+#: cs_dynamicpages/upgrades/2000.zcml:15
+msgid "Configuration for version 2000"
+msgstr ""
+
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:67
-#: cs_dynamicpages/views/dynamic_view.pt:448
+#: cs_dynamicpages/views/dynamic_view.pt:357
 msgid "Confirm Deletion"
 msgstr ""
 
@@ -97,15 +101,15 @@ msgid "Content title"
 msgstr ""
 
 #: cs_dynamicpages/views/dynamic_pages_template_management.pt:48
-#: cs_dynamicpages/views/dynamic_view.pt:112
+#: cs_dynamicpages/views/dynamic_view.pt:76
 msgid "Delete"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:70
+#: cs_dynamicpages/views/dynamic_view.pt:59
 msgid "Drag and drop"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:445
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:481
 #: cs_dynamicpages/profiles/default/controlpanel.xml
 #: cs_dynamicpages/upgrades/1002/controlpanel.xml
 msgid "Dynamic Pages Control Panel"
@@ -119,7 +123,7 @@ msgstr ""
 msgid "Dynamic Pages Templates management"
 msgstr ""
 
-#: cs_dynamicpages/views/configure.zcml:30
+#: cs_dynamicpages/views/configure.zcml:38
 msgid "Dynamic view"
 msgstr ""
 
@@ -131,11 +135,11 @@ msgstr ""
 msgid "DynamicPageRow"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:98
+#: cs_dynamicpages/views/dynamic_view.pt:71
 msgid "Edit"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:330
+#: cs_dynamicpages/views/dynamic_view.pt:239
 msgid "Edit Mode"
 msgstr ""
 
@@ -163,23 +167,19 @@ msgstr ""
 msgid "Fetch priority image"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:37
-msgid "Has featured add button?"
-msgstr ""
-
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:88
 msgid "Here we have all the available views for the rows and their settings"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:366
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:402
 msgid "Here you can define the available margins for each spacer"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:288
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:324
 msgid "Here you can define the available paddings for each spacer"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:262
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:298
 msgid "Here you can define the available widths for each row"
 msgstr ""
 
@@ -188,10 +188,10 @@ msgid "Icon for the row type"
 msgstr ""
 
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:38
-msgid "If selected a 'Add featured' button will be added in the edit interface. This is useful for rows that have content pieces inside them. For example in a slider row, there are slider items. This button will be used to add those items."
+msgid "If selected a 'Add nested row' button will be added in the edit interface. This is useful for rows that have content pieces inside them. For example in a slider row, there are slider items. This button will be used to add those items."
 msgstr ""
 
-#: cs_dynamicpages/behaviors/related_image.py:65
+#: cs_dynamicpages/behaviors/related_image.py:87
 msgid "Image position"
 msgstr ""
 
@@ -207,11 +207,15 @@ msgstr ""
 msgid "Link text"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:154
+#: cs_dynamicpages/upgrades/2000.zcml:15
+msgid "Migrate DynamicPageRowFeatured to DynamicPageRow"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_view.pt:99
 msgid "Move down"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:132
+#: cs_dynamicpages/views/dynamic_view.pt:87
 msgid "Move up"
 msgstr ""
 
@@ -219,7 +223,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:492
+#: cs_dynamicpages/views/dynamic_view.pt:401
 msgid "Notification"
 msgstr ""
 
@@ -227,15 +231,23 @@ msgstr ""
 msgid "Package to configure a new cs_dynamicpages site"
 msgstr ""
 
-#: cs_dynamicpages/behaviors/related_image.py:51
+#: cs_dynamicpages/views/dynamic_view.pt:196
+msgid "Purge from cache"
+msgstr ""
+
+#: cs_dynamicpages/views/dynamic_view.pt:206
+msgid "Purged successfully."
+msgstr ""
+
+#: cs_dynamicpages/behaviors/related_image.py:73
 msgid "Related image"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:363
+#: cs_dynamicpages/views/dynamic_view.pt:272
 msgid "Reuse existing templates"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:201
+#: cs_dynamicpages/views/dynamic_view.pt:125
 msgid "Review state: ${state}"
 msgstr ""
 
@@ -243,7 +255,7 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:247
+#: cs_dynamicpages/views/dynamic_view.pt:161
 msgid "Row"
 msgstr ""
 
@@ -255,7 +267,7 @@ msgstr ""
 msgid "Row Width Label"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_page_folder_view.py:84
+#: cs_dynamicpages/views/dynamic_page_folder_view.py:93
 msgid "Row added successfully"
 msgstr ""
 
@@ -296,15 +308,15 @@ msgid "Row type icon"
 msgstr ""
 
 #: cs_dynamicpages/behaviors/row_width.py:19
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:265
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:301
 msgid "Row width"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:261
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:297
 msgid "Row widths"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:291
+#: cs_dynamicpages/views/dynamic_view.pt:185
 msgid "Save as template"
 msgstr ""
 
@@ -312,7 +324,7 @@ msgstr ""
 msgid "See template"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:388
+#: cs_dynamicpages/views/dynamic_view.pt:297
 msgid "See this template"
 msgstr ""
 
@@ -336,11 +348,11 @@ msgstr ""
 msgid "Select the padding top that this row will have"
 msgstr ""
 
-#: cs_dynamicpages/behaviors/related_image.py:66
+#: cs_dynamicpages/behaviors/related_image.py:88
 msgid "Select the position of this image"
 msgstr ""
 
-#: cs_dynamicpages/behaviors/related_image.py:52
+#: cs_dynamicpages/behaviors/related_image.py:74
 msgid "Select the related image that will be shown in this row"
 msgstr ""
 
@@ -364,23 +376,23 @@ msgstr ""
 msgid "Spacer Label"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:404
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:440
 msgid "Spacer margin bottom"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:365
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:401
 msgid "Spacer margin top"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:326
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:362
 msgid "Spacer padding bottom"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:287
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:323
 msgid "Spacer padding top"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:571
+#: cs_dynamicpages/views/dynamic_view.pt:480
 msgid "Template Preview"
 msgstr ""
 
@@ -388,11 +400,11 @@ msgstr ""
 msgid "Template name is not valid"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:531
+#: cs_dynamicpages/views/dynamic_view.pt:440
 msgid "Template name:"
 msgstr ""
 
-#: cs_dynamicpages/views/dynamic_view.pt:95
+#: cs_dynamicpages/views/dynamic_view.pt:68
 msgid "Template: ${template_id}"
 msgstr ""
 
