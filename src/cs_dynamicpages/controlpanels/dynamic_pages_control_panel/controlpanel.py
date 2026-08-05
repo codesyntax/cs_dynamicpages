@@ -4,8 +4,19 @@ from cs_dynamicpages import _
 from cs_dynamicpages.interfaces import IBrowserLayer
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
-from plone.app.z3cform.widgets.checkbox import CheckBoxFieldWidget
-from plone.app.z3cform.widgets.text import TextLinesFieldWidget
+
+
+try:
+    from plone.app.z3cform.widgets.checkbox import CheckBoxFieldWidget
+except ImportError:
+    from z3c.form.browser.checkbox import CheckBoxFieldWidget
+
+try:
+    from plone.app.z3cform.widgets.text import TextLinesFieldWidget
+except ImportError:
+    from z3c.form.browser.textlines import TextLinesFieldWidget
+
+
 from plone.autoform.directives import widget
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from plone.z3cform import layout
