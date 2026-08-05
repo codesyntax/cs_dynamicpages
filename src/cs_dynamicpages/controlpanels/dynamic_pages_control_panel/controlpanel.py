@@ -4,6 +4,8 @@ from cs_dynamicpages import _
 from cs_dynamicpages.interfaces import IBrowserLayer
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
+from plone.app.z3cform.widgets.checkbox import CheckBoxFieldWidget
+from plone.app.z3cform.widgets.text import TextLinesFieldWidget
 from plone.autoform.directives import widget
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from plone.z3cform import layout
@@ -22,6 +24,7 @@ class IRowTypeFieldsSchema(Interface):
         vocabulary="cs_dynamicpages.RowType",
     )
 
+    widget("each_row_type_fields", TextLinesFieldWidget)
     each_row_type_fields = schema.List(
         title=_("Row fields"),
         description=_(
@@ -30,17 +33,6 @@ class IRowTypeFieldsSchema(Interface):
         ),
         required=True,
         value_type=schema.TextLine(),
-        default=[],
-    )
-
-    allowed_child_row_types = schema.List(
-        title=_("Allowed child row types"),
-        description=_(
-            "Select which row types are allowed as children of this row type. "
-            "If empty, all row types are allowed."
-        ),
-        required=False,
-        value_type=schema.Choice(vocabulary="cs_dynamicpages.RowType"),
         default=[],
     )
 
@@ -54,6 +46,18 @@ class IRowTypeFieldsSchema(Interface):
         ),
         required=False,
         default=False,
+    )
+
+    widget("allowed_child_row_types", CheckBoxFieldWidget)
+    allowed_child_row_types = schema.List(
+        title=_("Allowed child row types"),
+        description=_(
+            "Select which row types are allowed as children of this row type. "
+            "If empty, all row types are allowed."
+        ),
+        required=False,
+        value_type=schema.Choice(vocabulary="cs_dynamicpages.RowType"),
+        default=[],
     )
 
     row_type_icon = schema.TextLine(
@@ -93,6 +97,7 @@ class ISpacerSchema(Interface):
 
 
 class IDynamicPagesControlPanel(Interface):
+    widget("top_level_row_types", CheckBoxFieldWidget)
     top_level_row_types = schema.List(
         title=_("Top-level row types"),
         description=_(
