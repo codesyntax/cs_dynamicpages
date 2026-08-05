@@ -30,7 +30,8 @@ class NavigatorView(BrowserView):
             depth=1,
         )
 
-        for brain in brains:
+        total = len(brains)
+        for index, brain in enumerate(brains):
             obj = brain.getObject()
             item = {
                 "id": obj.getId(),
@@ -39,7 +40,10 @@ class NavigatorView(BrowserView):
                 "row_type": getattr(obj, "row_type", ""),
                 "allows_children": obj.show_add_child_button(),
                 "depth": depth,
+                "is_first": index == 0,
+                "is_last": index == total - 1,
                 "url": obj.absolute_url(),
+                "parent_url": container.absolute_url(),
                 "can_edit": api.user.has_permission("Modify portal content", obj=obj),
                 "children": self._get_children(obj, depth + 1),
             }

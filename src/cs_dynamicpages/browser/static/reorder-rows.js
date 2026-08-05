@@ -56,12 +56,17 @@
     const element = button.closest('[data-move-target="true"]');
     if (element) {
       const container = element.parentElement;
-      moveElementInDOM(element, delta);
-      if (container) {
-        updateMoveButtonsInContainer(container);
+      const isNavigator = button.closest('.navigator-tree') !== null;
+
+      if (!isNavigator) {
+        moveElementInDOM(element, delta);
+        if (container) {
+          updateMoveButtonsInContainer(container);
+        }
+        updateRowPositions(); // Recalculate plus button positions
       }
-      sendReorderRequest(element, delta);
-      updateRowPositions(); // Recalculate plus button positions
+
+      sendReorderRequest(element, delta, isNavigator);
     }
 
     setTimeout(() => (button.disabled = false), 500);
@@ -156,7 +161,7 @@
     }
   }
 
-  function sendReorderRequest(element, delta) {
+  function sendReorderRequest(element, delta, reloadOnSuccess = false) {
     const elementId = element.dataset.elementid;
     if (!elementId) {
       console.error("No data-element-id attribute found on element");
@@ -186,6 +191,9 @@
         if (!response.ok) {
           const error = new Error(`HTTP error! status: ${response.status}`);
           throw error;
+        }
+        if (reloadOnSuccess) {
+          window.location.reload();
         }
       })
       .catch((error) => {

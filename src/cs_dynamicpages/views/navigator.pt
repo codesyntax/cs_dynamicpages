@@ -30,7 +30,12 @@
                 tal:repeat="node rows"
             >
               <div class="navigator-node d-flex align-items-center gap-2 p-2 rounded bg-light border"
-                   tal:attributes="style python:'margin-left: ' + str(node['depth'] * 20) + 'px'"
+                   data-move-target="true"
+                   tal:attributes="
+                     style python:'margin-left: ' + str(node['depth'] * 20) + 'px';
+                     data-elementid node/id;
+                     data-parenturl node/parent_url;
+                   "
               >
                 <span class="node-icon text-muted"
                       tal:content="structure python:icons_view.tag('list')"
@@ -43,6 +48,22 @@
                 ></span>
 
                 <div class="node-actions d-flex gap-1 ms-auto">
+                  <a class="btn btn-xs btn-outline-secondary rounded-circle"
+                     href="#"
+                     title="Move up"
+                     data-action="move-up"
+                     tal:condition="not:node/is_first"
+                  >
+                    <span tal:replace="structure python:icons_view.tag('arrow-up')"></span>
+                  </a>
+                  <a class="btn btn-xs btn-outline-secondary rounded-circle"
+                     href="#"
+                     title="Move down"
+                     data-action="move-down"
+                     tal:condition="not:node/is_last"
+                  >
+                    <span tal:replace="structure python:icons_view.tag('arrow-down')"></span>
+                  </a>
                   <button class="btn btn-xs btn-outline-success rounded-circle"
                           title="Add inside"
                           data-bs-target="#addrow-offcanvasRight"
