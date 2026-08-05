@@ -35,6 +35,14 @@ To provide different views, you should register standard views (using `zcml`).
 Those views must be registered for implementers of `cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow`
 and their name _must_ start by `cs_dynamicpages-`.
 
+### Structural governance
+
+You can restrict which row types are allowed at the top level of a page and which ones are allowed as children of a given row type in the Dynamic Pages Controlpanel.
+
+### Navigator Sidebar
+
+A recursive Offcanvas sidebar is available in the `dynamic_view` to help managing complex row structures (reordering, adding, editing or deleting nested items).
+
 ### Restrict fields in the row edit view
 
 You may register several behaviors for `DynamicPageRow` objects but only use some of the fields
