@@ -40,6 +40,7 @@ def add_custom_view(
         "row_type": view_name,
         "each_row_type_fields": shown_fields,
         "row_type_allows_children": has_button,
+        "allowed_child_row_types": [],
         "row_type_icon": icon,
     }
     values.append(new_item)
@@ -81,8 +82,9 @@ def enable_behavior(behavior_dotted_name=str):
         )
 
 
-def get_available_views_for_row():
+def get_available_views_for_row(container=None):
     from cs_dynamicpages.content.dynamic_page_row import IDynamicPageRow
+    from cs_dynamicpages.content.dynamic_page_folder import IDynamicPageFolder
 
     items = []
     sm = getSiteManager()
@@ -92,22 +94,35 @@ def get_available_views_for_row():
         provided=Interface,
     )
 
-    values = api.portal.get_registry_record(
+    row_type_fields = api.portal.get_registry_record(
         "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields", default=[]
     )
 
-    for value in values:
+    # Filter by constraints
+    allowed_types = []
+    if container is not None:
+        if IDynamicPageFolder.providedBy(container):
+            # Top-level
+            allowed_types = api.portal.get_registry_record(
+                "cs_dynamicpages.dynamic_pages_control_panel.top_level_row_types",
+                default=[],
+            )
+        elif IDynamicPageRow.providedBy(container):
+            # Child row
+            parent_row_type = getattr(container, "row_type", "")
+            for item in row_type_fields:
+                if item["row_type"] == parent_row_type:
+                    allowed_types = item.get("allowed_child_row_types", [])
+                    break
+
+    for value in row_type_fields:
+        if allowed_types and value["row_type"] not in allowed_types:
+            continue
+
         for item in available_views:
             if item[0].startswith(VIEW_PREFIX):
-                item_dict = {
-                    "row_type": item[0],
-                    "each_row_type_fields": [],
-                    "row_type_allows_children": False,
-                    "row_type_icon": "bricks",
-                }
                 if item[0] == value["row_type"] and value not in items:
-                    item_dict = value
-                    items.append(item_dict)
+                    items.append(value)
     return items
 
 

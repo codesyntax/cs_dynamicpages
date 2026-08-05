@@ -10,12 +10,14 @@ def update_registry_schema_and_add_types():
     record_name = "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields"
     row_type_fields = list(registry.get(record_name, []))
 
-    # 1. Update existing records to new schema (rename key)
+    # 1. Update existing records to new schema (rename key and add new keys)
     for field in row_type_fields:
         if "row_type_has_featured_add_button" in field:
             field["row_type_allows_children"] = field.pop(
                 "row_type_has_featured_add_button"
             )
+        if "allowed_child_row_types" not in field:
+            field["allowed_child_row_types"] = []
 
     existing_row_types = [field["row_type"] for field in row_type_fields]
 
@@ -35,6 +37,7 @@ def update_registry_schema_and_add_types():
                 "IRowVerticalSpacing.margin_bottom",
             ],
             "row_type_allows_children": False,
+            "allowed_child_row_types": [],
             "row_type_icon": "image",
         },
         {
@@ -55,6 +58,7 @@ def update_registry_schema_and_add_types():
                 "IRowVerticalSpacing.margin_bottom",
             ],
             "row_type_allows_children": False,
+            "allowed_child_row_types": [],
             "row_type_icon": "card-heading",
         },
     ]

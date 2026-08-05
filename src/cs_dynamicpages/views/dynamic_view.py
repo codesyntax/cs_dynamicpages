@@ -60,7 +60,8 @@ class DynamicView(BrowserView):
         return api.user.has_permission("Modify portal content", obj=self.context)
 
     def available_views_for_row(self):
-        return get_available_views_for_row()
+        container = self.dynamic_page_folder_element()
+        return get_available_views_for_row(container)
 
     def normalize_title(self, title):
         return (

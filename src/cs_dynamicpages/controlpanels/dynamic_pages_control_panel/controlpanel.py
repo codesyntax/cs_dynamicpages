@@ -33,6 +33,17 @@ class IRowTypeFieldsSchema(Interface):
         default=[],
     )
 
+    allowed_child_row_types = schema.List(
+        title=_("Allowed child row types"),
+        description=_(
+            "Select which row types are allowed as children of this row type. "
+            "If empty, all row types are allowed."
+        ),
+        required=False,
+        value_type=schema.Choice(vocabulary="cs_dynamicpages.RowType"),
+        default=[],
+    )
+
     row_type_allows_children = schema.Bool(
         title=_("Allows children?"),
         description=_(
@@ -82,6 +93,17 @@ class ISpacerSchema(Interface):
 
 
 class IDynamicPagesControlPanel(Interface):
+    top_level_row_types = schema.List(
+        title=_("Top-level row types"),
+        description=_(
+            "Select which row types are allowed at the top level of a page. "
+            "If empty, all row types are allowed."
+        ),
+        required=False,
+        value_type=schema.Choice(vocabulary="cs_dynamicpages.RowType"),
+        default=[],
+    )
+
     widget("row_type_fields", DataGridFieldFactory, allow_reorder=True)
     row_type_fields = schema.List(
         title=_("Row type fields"),
@@ -104,6 +126,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_allows_children": False,
+                "allowed_child_row_types": [],
                 "row_type_icon": "fonts",
             },
             {
@@ -124,6 +147,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_allows_children": False,
+                "allowed_child_row_types": [],
                 "row_type_icon": "card-image",
             },
             {
@@ -143,6 +167,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_allows_children": False,
+                "allowed_child_row_types": [],
                 "row_type_icon": "image-fill",
             },
             {
@@ -157,6 +182,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_allows_children": False,
+                "allowed_child_row_types": [],
                 "row_type_icon": "hr",
             },
             {
@@ -170,6 +196,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_allows_children": False,
+                "allowed_child_row_types": [],
                 "row_type_icon": "arrows-vertical",
             },
             {
@@ -185,6 +212,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IFetchPriorityImage.fetchpriority_image",
                 ],
                 "row_type_allows_children": True,
+                "allowed_child_row_types": [],
                 "row_type_icon": "images",
             },
             {
@@ -201,6 +229,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IFetchPriorityImage.fetchpriority_image",
                 ],
                 "row_type_allows_children": True,
+                "allowed_child_row_types": [],
                 "row_type_icon": "grid",
             },
             {
@@ -215,6 +244,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_allows_children": True,
+                "allowed_child_row_types": [],
                 "row_type_icon": "chevron-double-down",
             },
             {
@@ -236,6 +266,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IFetchPriorityImage.fetchpriority_image",
                 ],
                 "row_type_allows_children": False,
+                "allowed_child_row_types": [],
                 "row_type_icon": "funnel",
             },
             {
@@ -251,6 +282,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_allows_children": False,
+                "allowed_child_row_types": [],
                 "row_type_icon": "body-text",
             },
             {
@@ -267,6 +299,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_allows_children": False,
+                "allowed_child_row_types": [],
                 "row_type_icon": "image",
             },
             {
@@ -287,6 +320,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_allows_children": False,
+                "allowed_child_row_types": [],
                 "row_type_icon": "card-heading",
             },
         ],

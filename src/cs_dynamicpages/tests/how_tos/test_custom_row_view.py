@@ -29,6 +29,7 @@ class TestHowToCustomRowView(unittest.TestCase):
             "row_type": "cs_dynamicpages-myaddon-video-embed-view",
             "row_type_icon": "play-btn",
             "row_type_allows_children": False,
+            "allowed_child_row_types": [],
             "each_row_type_fields": [
                 "IBasic.title",
                 "IBasic.description",
