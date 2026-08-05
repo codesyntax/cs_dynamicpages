@@ -21,7 +21,9 @@
            icons_view nocall:context/@@iconresolver;
          "
     >
-      <tal:root_macro define="rows tree">
+      <tal:root_macro define="
+                        rows tree;
+                      ">
         <metal:render_tree define-macro="render_tree">
           <ul class="list-unstyled ps-0"
               tal:condition="rows"
@@ -54,7 +56,9 @@
                      href="#"
                      title="Move up"
                      data-action="move-up"
-                     tal:attributes="style python:node['is_first'] and 'display:none' or ''"
+                     tal:attributes="
+                       style python:node['is_first'] and 'display:none' or '';
+                     "
                      i18n:attributes="title"
                   >
                     <span tal:replace="structure python:icons_view.tag('arrow-up')"></span>
@@ -63,7 +67,9 @@
                      href="#"
                      title="Move down"
                      data-action="move-down"
-                     tal:attributes="style python:node['is_last'] and 'display:none' or ''"
+                     tal:attributes="
+                       style python:node['is_last'] and 'display:none' or '';
+                     "
                      i18n:attributes="title"
                   >
                     <span tal:replace="structure python:icons_view.tag('arrow-down')"></span>
@@ -93,14 +99,18 @@
                           title="Delete"
                           data-bs-target="#deleteElementModal"
                           data-bs-toggle="modal"
-                          tal:attributes="data-rowid node/id"
+                          tal:attributes="
+                            data-rowid node/id;
+                          "
                           i18n:attributes="title"
                   >
                     <span tal:replace="structure python:icons_view.tag('trash')"></span>
                   </button>
                 </div>
               </div>
-              <tal:recurse define="rows node/children">
+              <tal:recurse define="
+                             rows node/children;
+                           ">
                 <metal:use_tree use-macro="template/macros/render_tree" />
               </tal:recurse>
             </li>

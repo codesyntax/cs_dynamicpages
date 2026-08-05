@@ -53,7 +53,8 @@ class NavigatorView(BrowserView):
     def normalize_title(self, title):
         """Reuse normalization logic from dynamic_view."""
         return (
-            title.replace("cs_dynamicpages-", " ")
+            title
+            .replace("cs_dynamicpages-", " ")
             .replace("-", " ")
             .replace("_", " ")
             .replace("view", "")

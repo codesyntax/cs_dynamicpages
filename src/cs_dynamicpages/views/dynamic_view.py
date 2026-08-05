@@ -105,6 +105,7 @@ class DynamicView(BrowserView):
     def row_types_constraints(self):
         """Return a mapping of row type to its allowed child row types."""
         import json
+
         row_type_fields = api.portal.get_registry_record(
             "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields", default=[]
         )
