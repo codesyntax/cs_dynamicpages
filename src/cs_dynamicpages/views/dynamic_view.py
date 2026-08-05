@@ -95,6 +95,13 @@ class DynamicView(BrowserView):
                 templates.append(template)
         return templates
 
+    def self_in_templates(self):
+        if "rows" in self.context:
+            return IUUID(self.context.rows) in [
+                template.get("uid") for template in self.available_templates()
+            ]
+        return False
+
     def row_types_constraints(self):
         """Return a mapping of row type to its allowed child row types."""
         import json

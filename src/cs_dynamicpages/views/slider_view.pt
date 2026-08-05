@@ -35,21 +35,9 @@
       >
         <div class="ratio ratio-21x9 w-100">
           <div class="w-100 h-100">
-            <div class="p-2 nested-management-options d-flex gap-2 position-absolute top-0 start-0 z-3"
-                 tal:condition="can_edit"
-            >
-              <metal:use_macro use-macro="macros/management_icons" />
-            </div>
             <replace tal:replace="structure python:element.render(request)"></replace>
           </div>
         </div>
-        <tal:define define="
-                      position python:repeat['brain'].index + 1;
-                      container_uid context/UID;
-                      is_nested string:True;
-                    ">
-          <metal:use_macro use-macro="macros/add_button" />
-        </tal:define>
       </div>
     </tal:slides>
   </div>
