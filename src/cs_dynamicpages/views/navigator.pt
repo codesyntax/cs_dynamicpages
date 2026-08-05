@@ -38,7 +38,7 @@
                    "
               >
                 <span class="node-icon text-muted"
-                      tal:content="structure python:icons_view.tag('list')"
+                      tal:content="structure python:icons_view.tag('list-ul')"
                 ></span>
                 <span class="node-title flex-grow-1 small fw-semibold text-truncate"
                       tal:content="node/title"
@@ -47,12 +47,15 @@
                       tal:content="python:view.normalize_title(node['row_type'])"
                 ></span>
 
-                <div class="node-actions d-flex gap-1 ms-auto">
+                <div class="node-actions d-flex gap-1 ms-auto"
+                     tal:condition="node/can_edit"
+                >
                   <a class="btn btn-xs btn-outline-secondary rounded-circle"
                      href="#"
                      title="Move up"
                      data-action="move-up"
-                     tal:condition="not:node/is_first"
+                     tal:attributes="style python:node['is_first'] and 'display:none' or ''"
+                     i18n:attributes="title"
                   >
                     <span tal:replace="structure python:icons_view.tag('arrow-up')"></span>
                   </a>
@@ -60,7 +63,8 @@
                      href="#"
                      title="Move down"
                      data-action="move-down"
-                     tal:condition="not:node/is_last"
+                     tal:attributes="style python:node['is_last'] and 'display:none' or ''"
+                     i18n:attributes="title"
                   >
                     <span tal:replace="structure python:icons_view.tag('arrow-down')"></span>
                   </a>
