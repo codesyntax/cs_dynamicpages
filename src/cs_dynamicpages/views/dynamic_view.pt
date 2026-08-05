@@ -230,7 +230,7 @@
                 </svg>
               </a> -->
               <div class="px-3 py-2 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5">
-                <div class="form-check form-switch">
+                <div class="form-check form-switch me-3 border-end pe-3">
                   <input class="form-check-input"
                          id="editModeToggle"
                          role="switch"
@@ -241,8 +241,17 @@
                          i18n:translate=""
                   >Edit Mode</label>
                 </div>
+                <button class="btn btn-sm btn-link text-warning-emphasis p-0 no-underline"
+                        type="button"
+                        data-bs-target="#offcanvasNavigator"
+                        data-bs-toggle="offcanvas"
+                >
+                  <span tal:replace="structure python:icons_view.tag('list-ul')"></span>
+                  <span i18n:translate="">Navigator</span>
+                </button>
               </div>
             </div>
+            <tal:block replace="structure context/@@navigator" />
             <div class="offcanvas offcanvas-end"
                  id="addrow-offcanvasRight"
                  aria-labelledby="offcanvasRightLabel"

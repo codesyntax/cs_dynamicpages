@@ -240,3 +240,34 @@ body.template-dynamic-view.can_edit {
 .features-view .h-100:hover > .nested-management-options {
   opacity: 1;
 }
+
+/* Navigator Tree Styling */
+.navigator-tree ul {
+  border-left: 1px dashed #dee2e6;
+  margin-left: 0.75rem;
+}
+
+.navigator-tree > ul {
+  border-left: none;
+  margin-left: 0;
+}
+
+.navigator-node {
+  transition: background-color 0.2s;
+}
+
+.navigator-node:hover {
+  background-color: #f8f9fa !important;
+}
+
+.navigator-node .node-type {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+}
+
+.btn-xs {
+  padding: 0.1rem 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+

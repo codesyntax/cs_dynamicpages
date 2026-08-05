@@ -1,0 +1,79 @@
+<div class="offcanvas offcanvas-end"
+     id="offcanvasNavigator"
+     aria-labelledby="offcanvasNavigatorLabel"
+     tabindex="-1"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title"
+        id="offcanvasNavigatorLabel"
+        i18n:translate=""
+    >Page Structure</h5>
+    <button class="btn-close"
+            aria-label="Close"
+            type="button"
+            data-bs-dismiss="offcanvas"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="navigator-tree"
+         tal:define="
+           tree view/row_tree;
+           icons_view nocall:context/@@iconresolver;
+         "
+    >
+      <tal:root_macro define="rows tree">
+        <metal:render_tree define-macro="render_tree">
+          <ul class="list-unstyled ps-0"
+              tal:condition="rows"
+          >
+            <li class="mb-2"
+                tal:repeat="node rows"
+            >
+              <div class="navigator-node d-flex align-items-center gap-2 p-2 rounded bg-light border"
+                   tal:attributes="style python:'margin-left: ' + str(node['depth'] * 20) + 'px'"
+              >
+                <span class="node-icon text-muted"
+                      tal:content="structure python:icons_view.tag('list')"
+                ></span>
+                <span class="node-title flex-grow-1 small fw-semibold text-truncate"
+                      tal:content="node/title"
+                ></span>
+                <span class="node-type badge bg-secondary-subtle text-secondary-emphasis border border-secondary-subtle"
+                      tal:content="python:view.normalize_title(node['row_type'])"
+                ></span>
+
+                <div class="node-actions d-flex gap-1 ms-auto">
+                  <a class="btn btn-xs btn-outline-primary rounded-circle"
+                     href="${node/url}/edit"
+                     title="Edit"
+                     i18n:attributes="title"
+                  >
+                    <span tal:replace="structure python:icons_view.tag('pencil')"></span>
+                  </a>
+                  <button class="btn btn-xs btn-outline-danger rounded-circle btn-delete-element"
+                          title="Delete"
+                          data-bs-target="#deleteElementModal"
+                          data-bs-toggle="modal"
+                          tal:attributes="data-rowid node/id"
+                          i18n:attributes="title"
+                  >
+                    <span tal:replace="structure python:icons_view.tag('trash')"></span>
+                  </button>
+                </div>
+              </div>
+              <tal:recurse define="rows node/children">
+                <metal:use_tree use-macro="template/macros/render_tree" />
+              </tal:recurse>
+            </li>
+          </ul>
+        </metal:render_tree>
+      </tal:root_macro>
+      <div class="alert alert-info py-2 small"
+           tal:condition="not:tree"
+           i18n:translate=""
+      >
+        No rows added to this page yet.
+      </div>
+    </div>
+  </div>
+</div>

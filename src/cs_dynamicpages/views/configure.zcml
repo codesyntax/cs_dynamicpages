@@ -79,6 +79,15 @@
 
 
 
+  <browser:page
+      name="navigator"
+      for="*"
+      class=".navigator.NavigatorView"
+      template="navigator.pt"
+      permission="cmf.ModifyPortalContent"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
+
   <browser:pages
       for="cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow"
       class=".featured_view.FeaturedView"
