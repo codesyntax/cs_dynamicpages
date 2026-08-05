@@ -12,6 +12,7 @@
             aria-label="Close"
             type="button"
             data-bs-dismiss="offcanvas"
+            i18n:attributes="aria-label"
     ></button>
   </div>
   <div class="offcanvas-body">

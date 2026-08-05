@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-08-05 21:22+0000\n"
+"POT-Creation-Date: 2026-08-05 21:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,11 +46,11 @@ msgstr ""
 msgid "Add template"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:53
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:64
 msgid "Allowed child row types"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:40
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:51
 msgid "Allows children?"
 msgstr ""
 
@@ -66,11 +66,11 @@ msgstr ""
 msgid "Are you sure you want to delete this row? All items contained within it will also be deleted. This action cannot be undone."
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:80
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:91
 msgid "CSS class for the row width"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:94
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:105
 msgid "CSS class for the spacer"
 msgstr ""
 
@@ -116,7 +116,7 @@ msgstr ""
 msgid "Drag and drop"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:520
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:531
 #: cs_dynamicpages/profiles/default/controlpanel.xml
 #: cs_dynamicpages/upgrades/1002/controlpanel.xml
 msgid "Dynamic Pages Control Panel"
@@ -158,7 +158,7 @@ msgstr ""
 msgid "Enter the URL of the link"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:30
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:41
 msgid "Enter the fields that will be available when editing this row type. This is useful to hide unused fields."
 msgstr ""
 
@@ -174,27 +174,27 @@ msgstr ""
 msgid "Fetch priority image"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:115
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:126
 msgid "Here we have all the available views for the rows and their settings"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:441
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:452
 msgid "Here you can define the available margins for each spacer"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:363
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:374
 msgid "Here you can define the available paddings for each spacer"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:337
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:348
 msgid "Here you can define the available widths for each row"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:65
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:76
 msgid "Icon for the row type"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:41
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:52
 msgid "If selected a 'Add nested row' button will be added in the edit interface. This is useful for rows that have content pieces inside them. For example in a slider row, there are slider items. This button will be used to add those items."
 msgstr ""
 
@@ -270,11 +270,11 @@ msgstr ""
 msgid "Row"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:79
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:90
 msgid "Row Width CSS class"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:73
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:84
 msgid "Row Width Label"
 msgstr ""
 
@@ -282,7 +282,7 @@ msgstr ""
 msgid "Row added successfully"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:29
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:40
 msgid "Row fields"
 msgstr ""
 
@@ -302,28 +302,28 @@ msgstr ""
 msgid "Row padding top"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:19
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:30
 msgid "Row type"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:119
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:130
 msgid "Row type field"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:114
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:125
 msgid "Row type fields"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:64
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:75
 msgid "Row type icon"
 msgstr ""
 
 #: cs_dynamicpages/behaviors/row_width.py:19
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:340
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:351
 msgid "Row width"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:336
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:347
 msgid "Row widths"
 msgstr ""
 
@@ -367,7 +367,7 @@ msgstr ""
 msgid "Select the related image that will be shown in this row"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:20
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:31
 msgid "Select the row type. This is the type of the row that will be added."
 msgstr ""
 
@@ -375,11 +375,11 @@ msgstr ""
 msgid "Select the width that this row will have"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:54
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:65
 msgid "Select which row types are allowed as children of this row type. If empty, all row types are allowed."
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:103
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:114
 msgid "Select which row types are allowed at the top level of a page. If empty, all row types are allowed."
 msgstr ""
 
@@ -387,27 +387,27 @@ msgstr ""
 msgid "Set this to true if you want to signal that this image has a 'high' fetch priority, otherwise 'auto' will be used. When using 'high' the value of the loading attribute will be set to 'eager', and 'lazy' when it is not set."
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:93
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:104
 msgid "Spacer CSS class"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:87
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:98
 msgid "Spacer Label"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:479
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:490
 msgid "Spacer margin bottom"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:440
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:451
 msgid "Spacer margin top"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:401
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:412
 msgid "Spacer padding bottom"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:362
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:373
 msgid "Spacer padding top"
 msgstr ""
 
@@ -431,15 +431,15 @@ msgstr ""
 msgid "Templates"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:88
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:99
 msgid "This is the label corresponding to this spacer"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:74
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:85
 msgid "This is the label corresponding to this width"
 msgstr ""
 
-#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:102
+#: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:113
 msgid "Top-level row types"
 msgstr ""
 
