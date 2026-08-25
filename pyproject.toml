@@ -65,7 +65,7 @@ managed = false
 path = "src/cs_dynamicpages/__init__.py"
 
 [build-system]
-requires = ["hatchling", "hatch-fancy-pypi-readme"]
+requires = ["hatchling >= 1.26.0, < 1.32.0", "hatch-fancy-pypi-readme"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build]
