@@ -428,103 +428,103 @@
               </div>
             </div>
           </div>
-        </tal:condition-configuration>
 
-        <div class="modal fade"
-             id="templateModal"
-             aria-hidden="true"
-             aria-labelledby="addTemplateModal"
-             tabindex="-1"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="modal-title fs-5"
-                    id="addTemplateModal"
-                    i18n:translate=""
-                >Add template</h2>
-                <button class="btn-close"
-                        aria-label="Close"
-                        type="button"
-                        data-bs-dismiss="modal"
-                        i18n:attributes="aria-label"
-                ></button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="mb-3">
-                    <label class="col-form-label"
-                           for="template-name"
-                           i18n:translate=""
-                    >Template name:</label>
-                    <input class="form-control"
-                           id="template-name"
-                           required="required"
-                           type="text"
-                    />
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-secondary"
-                        type="button"
-                        data-bs-dismiss="modal"
-                        i18n:translate=""
-                >Close</button>
-                <button class="btn btn-primary"
-                        id="addAsTemplate"
-                        type="button"
-                        data-uid="${python:view.dynamic_page_folder_element().UID()}"
-                        i18n:translate=""
-                >Save as
-                  template</button>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Template Preview Modal -->
-        <div class="modal fade"
-             id="previewTemplateModal"
-             aria-hidden="true"
-             aria-labelledby="previewTemplateModalLabel"
-             tabindex="-1"
-        >
-          <div class="modal-dialog modal-xl modal-dialog-scrollable">
-            <div class="modal-content border-0 shadow-lg">
-              <div class="modal-header bg-white border-bottom">
-                <h2 class="modal-title h5 text-primary fw-semibold"
-                    id="previewTemplateModalLabel"
-                    i18n:translate=""
-                >
-                  Template Preview</h2>
-                <button class="btn-close"
-                        aria-label="Close"
-                        type="button"
-                        data-bs-dismiss="modal"
-                        i18n:attributes="aria-label"
-                ></button>
-              </div>
-              <div class="modal-body p-4 bg-light">
-                <!-- Marko txukuna (kuadro efektua) -->
-                <div class="bg-white border rounded shadow p-4 mx-auto"
-                     id="previewTemplateBody"
-                     style="min-height: 200px; zoom: 0.50;"
-                >
-                  <!-- Content will be injected here via JS -->
+          <div class="modal fade"
+               id="templateModal"
+               aria-hidden="true"
+               aria-labelledby="addTemplateModal"
+               tabindex="-1"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title fs-5"
+                      id="addTemplateModal"
+                      i18n:translate=""
+                  >Add template</h2>
+                  <button class="btn-close"
+                          aria-label="Close"
+                          type="button"
+                          data-bs-dismiss="modal"
+                          i18n:attributes="aria-label"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label class="col-form-label"
+                             for="template-name"
+                             i18n:translate=""
+                      >Template name:</label>
+                      <input class="form-control"
+                             id="template-name"
+                             required="required"
+                             type="text"
+                      />
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary"
+                          type="button"
+                          data-bs-dismiss="modal"
+                          i18n:translate=""
+                  >Close</button>
+                  <button class="btn btn-primary"
+                          id="addAsTemplate"
+                          type="button"
+                          data-uid="${python:view.dynamic_page_folder_element().UID()}"
+                          i18n:translate=""
+                  >Save as
+                    template</button>
                 </div>
               </div>
-              <div class="modal-footer bg-white border-top">
-                <button class="btn btn-light"
-                        type="button"
-                        data-bs-dismiss="modal"
-                        i18n:translate=""
-                >Close</button>
+            </div>
+          </div>
+
+          <!-- Template Preview Modal -->
+          <div class="modal fade"
+               id="previewTemplateModal"
+               aria-hidden="true"
+               aria-labelledby="previewTemplateModalLabel"
+               tabindex="-1"
+          >
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+              <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-white border-bottom">
+                  <h2 class="modal-title h5 text-primary fw-semibold"
+                      id="previewTemplateModalLabel"
+                      i18n:translate=""
+                  >
+                    Template Preview</h2>
+                  <button class="btn-close"
+                          aria-label="Close"
+                          type="button"
+                          data-bs-dismiss="modal"
+                          i18n:attributes="aria-label"
+                  ></button>
+                </div>
+                <div class="modal-body p-4 bg-light">
+                  <!-- Marko txukuna (kuadro efektua) -->
+                  <div class="bg-white border rounded shadow p-4 mx-auto"
+                       id="previewTemplateBody"
+                       style="min-height: 200px; zoom: 0.50;"
+                  >
+                    <!-- Content will be injected here via JS -->
+                  </div>
+                </div>
+                <div class="modal-footer bg-white border-top">
+                  <button class="btn btn-light"
+                          type="button"
+                          data-bs-dismiss="modal"
+                          i18n:translate=""
+                  >Close</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
+        </tal:condition-configuration>
       </main>
     </metal:main>
 

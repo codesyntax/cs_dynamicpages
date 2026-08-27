@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b19 (2026-08-25)
+
+
+### Bug fixes:
+
+- Include template modal inside the condition to avoid errors @erral 
+
 ## 1.0.0b18 (2026-07-30)
 
 
