@@ -21,17 +21,30 @@ class ViewsIntegrationTest(unittest.TestCase):
 
     def test_row_type_control_panel_view_is_registered(self):
         view = getMultiAdapter(
-            (self.portal["other-folder"], self.portal.REQUEST),
-            name="row-type-control-panel-view",
+            (self.portal, self.portal.REQUEST),
+            name="dynamic_pages-row-type-control-panel-view",
         )
         self.assertTrue(IRowTypeControlPanelView.providedBy(view))
+
+    def test_row_type_control_panel_view_not_matching_interface_document(self):
+        view_found = True
+        try:
+            view = getMultiAdapter(
+                (self.portal["front-page"], self.portal.REQUEST),
+                name="dynamic_pages-row-type-control-panel-view",
+            )
+        except ComponentLookupError:
+            view_found = False
+        else:
+            view_found = IRowTypeControlPanelView.providedBy(view)
+        self.assertFalse(view_found)
 
     def test_row_type_control_panel_view_not_matching_interface(self):
         view_found = True
         try:
             view = getMultiAdapter(
-                (self.portal["front-page"], self.portal.REQUEST),
-                name="row-type-control-panel-view",
+                (self.portal["other-folder"], self.portal.REQUEST),
+                name="dynamic_pages-row-type-control-panel-view",
             )
         except ComponentLookupError:
             view_found = False
