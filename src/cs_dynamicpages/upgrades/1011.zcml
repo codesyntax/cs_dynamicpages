@@ -5,7 +5,7 @@
 
   <gs:registerProfile
       name="1011"
-      title="Install new index and reindex"
+      title="Install new JS"
       description="Configuration for version 1011"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
@@ -19,13 +19,13 @@
       >
 
     <gs:upgradeStep
-        title="Install new index and reindex"
+        title="Install new JS"
         description=""
         handler=".v1011.upgrade"
         />
 
     <gs:upgradeDepends
-        title="Install new index and reindex (GS profile)"
+        title="Install new JS (GS profile)"
         description=""
         import_profile="cs_dynamicpages.upgrades:1011"
         />
