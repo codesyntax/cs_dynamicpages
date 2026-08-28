@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b21 (2026-08-28)
+
+
+### Bug fixes:
+
+- Remove unneeded call from upgrade step @erral 
+
 ## 1.0.0b20 (2026-08-28)
 
 
