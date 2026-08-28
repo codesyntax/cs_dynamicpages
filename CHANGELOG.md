@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b20 (2026-08-28)
+
+
+### New features:
+
+- Add a new controlpanel to show where each row type is used @erral [#52](https://github.com/codesyntax/cs_dynamicpages/issues/52)
+
 ## 1.0.0b19 (2026-08-25)
 
 
