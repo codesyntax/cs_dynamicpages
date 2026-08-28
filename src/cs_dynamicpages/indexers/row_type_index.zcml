@@ -1,9 +1,13 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
-  <adapter factory=".row_type_index.dummy"
-    name="row_type_index" />
+  <adapter
+      factory=".row_type_index.dummy"
+      name="row_type"
+      />
 
-  <adapter factory=".row_type_index.row_type_index"
-    name="row_type_index" />
+  <adapter
+      factory=".row_type_index.row_type_index"
+      name="row_type"
+      />
 
 </configure>

@@ -10,4 +10,10 @@
   <!-- Metadata
   <column value="industry" />
 -->
+
+  <index meta_type="FieldIndex"
+         name="row_type"
+  >
+    <indexed_attr value="row_type" />
+  </index>
 </object>
