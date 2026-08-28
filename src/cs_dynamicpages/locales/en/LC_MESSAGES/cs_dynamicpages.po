@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-07-30 07:05+0000\n"
+"POT-Creation-Date: 2026-08-28 10:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,6 +111,12 @@ msgstr ""
 msgid "Dynamic Pages Control Panel"
 msgstr ""
 
+#: cs_dynamicpages/profiles/default/controlpanel.xml
+#: cs_dynamicpages/upgrades/1012/controlpanel.xml
+#: cs_dynamicpages/views/row_type_control_panel_view.pt:12
+msgid "Dynamic Pages Row Type Control Panel"
+msgstr ""
+
 #: cs_dynamicpages/behaviors/templates.py:36
 msgid "Dynamic Pages Templates"
 msgstr ""
@@ -119,7 +125,7 @@ msgstr ""
 msgid "Dynamic Pages Templates management"
 msgstr ""
 
-#: cs_dynamicpages/views/configure.zcml:37
+#: cs_dynamicpages/views/configure.zcml:46
 msgid "Dynamic view"
 msgstr ""
 
@@ -209,6 +215,10 @@ msgstr ""
 
 #: cs_dynamicpages/behaviors/link_info.py:23
 msgid "Link text"
+msgstr ""
+
+#: cs_dynamicpages/views/row_type_control_panel_view.pt:59
+msgid "Location:"
 msgstr ""
 
 #: cs_dynamicpages/views/dynamic_view.pt:288
@@ -422,6 +432,10 @@ msgstr ""
 
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:59
 msgid "This is the label corresponding to this width"
+msgstr ""
+
+#: cs_dynamicpages/views/row_type_control_panel_view.pt:16
+msgid "This panel shows where each row type has been used through the site."
 msgstr ""
 
 #: cs_dynamicpages/api/services/apply_template/post.py:23

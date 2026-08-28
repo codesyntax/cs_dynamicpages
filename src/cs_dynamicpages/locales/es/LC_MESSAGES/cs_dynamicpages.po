@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-07-30 07:05+0000\n"
+"POT-Creation-Date: 2026-08-28 10:25+0000\n"
 "PO-Revision-Date: 2026-03-12 09:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -113,6 +113,12 @@ msgstr "Arrastrar y soltar"
 msgid "Dynamic Pages Control Panel"
 msgstr "Panel de control de páginas dinámicas"
 
+#: cs_dynamicpages/profiles/default/controlpanel.xml
+#: cs_dynamicpages/upgrades/1012/controlpanel.xml
+#: cs_dynamicpages/views/row_type_control_panel_view.pt:12
+msgid "Dynamic Pages Row Type Control Panel"
+msgstr "Panel de Control de tipos de filas"
+
 #: cs_dynamicpages/behaviors/templates.py:36
 msgid "Dynamic Pages Templates"
 msgstr "Plantillas de páginas dinámicas"
@@ -121,7 +127,7 @@ msgstr "Plantillas de páginas dinámicas"
 msgid "Dynamic Pages Templates management"
 msgstr "Gestión de plantillas de páginas dinámicas"
 
-#: cs_dynamicpages/views/configure.zcml:37
+#: cs_dynamicpages/views/configure.zcml:46
 msgid "Dynamic view"
 msgstr "Vista dinámica"
 
@@ -212,6 +218,10 @@ msgstr "URL del enlace"
 #: cs_dynamicpages/behaviors/link_info.py:23
 msgid "Link text"
 msgstr "Texto del enlace"
+
+#: cs_dynamicpages/views/row_type_control_panel_view.pt:59
+msgid "Location:"
+msgstr "Ubicación:"
 
 #: cs_dynamicpages/views/dynamic_view.pt:288
 msgid "Move actions"
@@ -425,6 +435,10 @@ msgstr "Esta es la etiqueta que corresponde al espaciador"
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:59
 msgid "This is the label corresponding to this width"
 msgstr "Etiqueta correspondiente a este ancho"
+
+#: cs_dynamicpages/views/row_type_control_panel_view.pt:16
+msgid "This panel shows where each row type has been used through the site."
+msgstr "Este panel muestra dónde es utiliza cada tipo de file en todo el sitio."
 
 #: cs_dynamicpages/api/services/apply_template/post.py:23
 #: cs_dynamicpages/api/services/templates/delete.py:19
