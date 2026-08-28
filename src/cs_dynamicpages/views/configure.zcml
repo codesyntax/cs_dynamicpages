@@ -8,13 +8,13 @@
   <!-- -*- extra stuff goes here -*- -->
 
   <browser:page
-    name="row-type-control-panel-view"
-    for="*"
-    class=".row_type_control_panel_view.RowTypeControlPanelView"
-    template="row_type_control_panel_view.pt"
-    permission="zope2.View"
-    layer="cs_dynamicpages.interfaces.IBrowserLayer"
-    />
+      name="dynamic_pages-row-type-control-panel-view"
+      for="plone.base.interfaces.INavigationRoot"
+      class=".row_type_control_panel_view.RowTypeControlPanelView"
+      template="row_type_control_panel_view.pt"
+      permission="cmf.ManagePortal"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
 
   <browser:page
       name="dynamic-pages-template-management"

@@ -1,35 +1,96 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/prefs_main_template/macros/master"
       i18n:domain="cs_dynamicpages"
-      metal:use-macro="context/main_template/macros/master">
-<body>
+>
+  <body>
 
-  <metal:custom_title fill-slot="content-title">
-    <h1 tal:replace="structure context/@@title" />
+    <div metal:fill-slot="prefs_configlet_main">
 
-    <!-- @@title view template: -->
-    <!--
-    <h1 tal:define="title context/Title" tal:condition="title" tal:content="title">
-      Title or id
-    </h1>
-    -->
+      <h1 class="documentFirstHeading"
+          i18n:translate=""
+      >Dynamic Pages Row Type Control Panel</h1>
 
-  </metal:custom_title>
+      <p class="documentDescription"
+         i18n:translate=""
+      >
+        This panel shows where each row type has been used through the site.
+      </p>
 
-  <metal:custom_description fill-slot="content-description">
-    <p tal:replace="structure context/@@description" />
-  </metal:custom_description>
 
-  <metal:content-core fill-slot="content-core">
-  <metal:block define-macro="content-core">
+      <div class="accordion"
+           id="cs_dynamicpages-row-types-accordion"
+      >
+        <tal:row_type repeat="row_type view/row_types">
+          <div class="accordion-item"
+               tal:condition="row_type/count"
+          >
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed"
+                      aria-controls="collapse-${repeat/row_type/index}"
+                      aria-expanded="false"
+                      type="button"
+                      data-bs-target="#collapse-${repeat/row_type/index}"
+                      data-bs-toggle="collapse"
+              >
+                ${row_type/title}
+              </button>
+            </h2>
+            <div class="accordion-collapse collapse"
+                 id="collapse-${repeat/row_type/index}"
+                 data-bs-parent="#cs_dynamicpages-row-types-accordion"
+            >
+              <div class="accordion-body">
+                <ul>
+                  <tal:item repeat="item row_type/used_in">
+                    <li>
+                      <a href="${item/absolute_url}">
+                        ${item/title}
+                      </a>
+                      <tal:breadcrumbs condition="item/breadcrumbs">
 
-    <h2>Main content</h2>
-    <!--<div tal:replace="view/my_custom_view_method" />-->
-    <!--<div tal:replace="context/my_custom_field" />-->
+                        <ul class="list-inline"
+                            tal:define="
+                              breadcrumbs item/breadcrumbs;
+                            "
+                        >
+                          <span i18n:translate="">Location:</span>
+                          <li class="list-inline-item"
+                              tal:define="
+                                navroot python:view.navroot(item.get('item'));
+                              "
+                          >
+                            <a href="${navroot/absolute_url}">
+                              ${navroot/Title}
+                            </a>
 
-  </metal:block>
-  </metal:content-core>
-</body>
+                            <span>&nbsp;/</span>
+                          </li>
+                          <li class="list-inline-item"
+                              tal:repeat="bread breadcrumbs"
+                          >
+                            <a href="${bread/absolute_url}">
+                              ${bread/Title}
+                            </a>
+
+                            <span tal:condition="not:repeat/bread/end">&nbsp;/</span>
+                          </li>
+                        </ul>
+
+                      </tal:breadcrumbs>
+                    </li>
+                  </tal:item>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </tal:row_type>
+
+      </div>
+
+    </div>
+
+  </body>
 </html>

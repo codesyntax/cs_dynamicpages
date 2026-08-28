@@ -6,19 +6,6 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
-  <configlet action_id="dynamic_pages_control_panel-controlpanel"
-             appId="dynamic_pages_control_panel-controlpanel"
-             category="Products"
-             condition_expr=""
-             icon_expr=""
-             title="Dynamic Pages Control Panel"
-             url_expr="string:${portal_url}/@@dynamic_pages_control_panel-controlpanel"
-             visible="True"
-             i18n:attributes="title"
-  >
-    <permission>Manage Portal</permission>
-  </configlet>
-
   <configlet action_id="dynamic_pages_row_type_control_panel-controlpanel"
              appId="dynamic_pages_row_type_control_panel-controlpanel"
              category="Products"

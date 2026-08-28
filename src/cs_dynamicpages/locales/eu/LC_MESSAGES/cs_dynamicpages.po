@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-07-30 07:05+0000\n"
+"POT-Creation-Date: 2026-08-28 10:25+0000\n"
 "PO-Revision-Date: 2026-03-12 09:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -113,6 +113,12 @@ msgstr "Arrastatu eta jaregin"
 msgid "Dynamic Pages Control Panel"
 msgstr "Orrialde dinamikoen kontrol panela"
 
+#: cs_dynamicpages/profiles/default/controlpanel.xml
+#: cs_dynamicpages/upgrades/1012/controlpanel.xml
+#: cs_dynamicpages/views/row_type_control_panel_view.pt:12
+msgid "Dynamic Pages Row Type Control Panel"
+msgstr "Orrialde dinamikoen lerro-moten kontrol panela"
+
 #: cs_dynamicpages/behaviors/templates.py:36
 msgid "Dynamic Pages Templates"
 msgstr "Orrialde dinamikoen txantiloiak"
@@ -121,7 +127,7 @@ msgstr "Orrialde dinamikoen txantiloiak"
 msgid "Dynamic Pages Templates management"
 msgstr "Orrialde dinamikoen txantiloien kudeaketa"
 
-#: cs_dynamicpages/views/configure.zcml:37
+#: cs_dynamicpages/views/configure.zcml:46
 msgid "Dynamic view"
 msgstr "Bista dinamikoa"
 
@@ -212,6 +218,10 @@ msgstr "Estekaren URLa"
 #: cs_dynamicpages/behaviors/link_info.py:23
 msgid "Link text"
 msgstr "Estekaren testua"
+
+#: cs_dynamicpages/views/row_type_control_panel_view.pt:59
+msgid "Location:"
+msgstr "Kokalekua:"
 
 #: cs_dynamicpages/views/dynamic_view.pt:288
 msgid "Move actions"
@@ -425,6 +435,10 @@ msgstr "Hau da espazio honen etiketa"
 #: cs_dynamicpages/controlpanels/dynamic_pages_control_panel/controlpanel.py:59
 msgid "This is the label corresponding to this width"
 msgstr "Zabalera honi dagokion etiketa da hau"
+
+#: cs_dynamicpages/views/row_type_control_panel_view.pt:16
+msgid "This panel shows where each row type has been used through the site."
+msgstr "Panel honetan, atarian lerro bakoitza non erabiltzen den ikusi daiteke."
 
 #: cs_dynamicpages/api/services/apply_template/post.py:23
 #: cs_dynamicpages/api/services/templates/delete.py:19

@@ -1,24 +1,34 @@
-<configure xmlns="http://namespaces.zope.org/zope"
-  xmlns:gs="http://namespaces.zope.org/genericsetup">
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    >
 
-  <gs:registerProfile name="1012"
-    title="Add new index to catalog"
-    directory="1012"
-    description='Configuration for version 1012'
-    for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
-    provides="Products.GenericSetup.interfaces.EXTENSION" />
+  <gs:registerProfile
+      name="1012"
+      title="Add new index to catalog"
+      description="Configuration for version 1012"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+      directory="1012"
+      />
 
-  <gs:upgradeSteps source="1011"
-    destination="1012"
-    profile="cs_dynamicpages:default">
+  <gs:upgradeSteps
+      profile="cs_dynamicpages:default"
+      source="1011"
+      destination="1012"
+      >
 
-    <gs:upgradeStep title="Add new index to catalog"
-      description=""
-      handler=".v1012.upgrade" />
+    <gs:upgradeStep
+        title="Add new index to catalog"
+        description=""
+        handler=".v1012.upgrade"
+        />
 
-    <gs:upgradeDepends title="Add new index to catalog (GS profile)"
-      description=""
-      import_profile="cs_dynamicpages.upgrades:1012" />
+    <gs:upgradeDepends
+        title="Add new index to catalog (GS profile)"
+        description=""
+        import_profile="cs_dynamicpages.upgrades:1012"
+        />
 
   </gs:upgradeSteps>
 
