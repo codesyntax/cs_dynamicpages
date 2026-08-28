@@ -3,6 +3,8 @@
   <!-- Indexers/Metadata -->
 
   <!-- -*- extra stuff goes here -*- -->
+
+  <include file="row_type_index.zcml" />
   <adapter
       factory=".content_index_extender.FolderishItemTextExtender"
       name="IDexterityContainer"
