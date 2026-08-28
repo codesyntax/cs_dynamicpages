@@ -1,12 +1,10 @@
 from . import logger
-
-
-from .base import reload_gs_profile
-# from plone import api
+from plone import api
 
 
 def upgrade(setup_tool=None):
-    """
-    """
+    """ """
     logger.info("Running upgrade (Python): Add new index to catalog")
-    reload_gs_profile(setup_tool)
+    catalog = api.portal.get_tool("portal_catalog")
+    catalog.reindexIndex(["row_type"])
+    logger.info("New index `row_type` reindexed")
