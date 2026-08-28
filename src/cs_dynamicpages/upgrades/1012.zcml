@@ -18,17 +18,18 @@
       destination="1012"
       >
 
+    <gs:upgradeDepends
+        title="Add new index to catalog (GS profile)"
+        description=""
+        import_profile="cs_dynamicpages.upgrades:1012"
+        />
+
     <gs:upgradeStep
         title="Add new index to catalog"
         description=""
         handler=".v1012.upgrade"
         />
 
-    <gs:upgradeDepends
-        title="Add new index to catalog (GS profile)"
-        description=""
-        import_profile="cs_dynamicpages.upgrades:1012"
-        />
 
   </gs:upgradeSteps>
 
