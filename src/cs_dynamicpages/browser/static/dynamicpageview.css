@@ -85,7 +85,7 @@ body.template-dynamic-view.can_edit {
     width: auto;
   }
 
-  /* Estiloa heldulekuarentzat (handle) */
+  /* Style for the reorder handle */
   .drag-handle {
     cursor: grab;
     color: #aaa;
@@ -96,7 +96,7 @@ body.template-dynamic-view.can_edit {
     color: #333;
   }
 
-  /* SortableJS-k erabiltzen dituen klaseak */
+  /* classes of sortable.js to reorder rows */
   .sortable-ghost {
     opacity: 0 !important;
     background-color: #c8ebfb !important;
@@ -181,7 +181,7 @@ body.template-dynamic-view.can_edit {
     }
   }
 
-  /* Remove Bootsptrap's default configuration not to break centering */
+  /* Remove Bootstrap's default configuration not to break centering */
   .add-row-plus-btn.btn {
     line-height: 1;
   }

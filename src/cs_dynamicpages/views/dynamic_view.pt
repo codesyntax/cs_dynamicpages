@@ -591,10 +591,8 @@
             </div>
           </div>
           <script>
-          // Selecciona todos los elementos con el atributo data-bs-toggle="tooltip"
+          // Select all tooltip-marked items, and create the tooltips
           const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-
-          // Crea una instancia de tooltip para cada elemento encontrado
           const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
           </script>
           <div class="bottom-0 p-3 toast-container position-fixed end-0">
