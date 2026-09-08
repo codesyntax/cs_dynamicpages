@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b22 (2026-09-08)
+
+
+### Bug fixes:
+
+- Translate comment texts into English @erral 
+
 ## 1.0.0b21 (2026-08-28)
 
 
