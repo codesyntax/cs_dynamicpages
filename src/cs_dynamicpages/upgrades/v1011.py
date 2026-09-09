@@ -1,7 +1,10 @@
 from . import logger
+<<<<<<< HEAD
 
 
 # from plone import api
+=======
+>>>>>>> main
 
 
 def upgrade(setup_tool=None):
