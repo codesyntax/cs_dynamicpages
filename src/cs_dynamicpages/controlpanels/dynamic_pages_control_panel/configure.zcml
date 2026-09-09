@@ -14,6 +14,22 @@
       layer="cs_dynamicpages.interfaces.IBrowserLayer"
       />
 
+  <browser:page
+      name="dynamic_pages_export_config"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.ExportConfig"
+      permission="cmf.ManagePortal"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
+
+  <browser:page
+      name="dynamic_pages_import_form"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.DynamicPagesImportFormView"
+      permission="cmf.ManagePortal"
+      layer="cs_dynamicpages.interfaces.IBrowserLayer"
+      />
+
   <include package="plone.restapi" />
   <adapter
       factory=".controlpanel.DynamicPagesControlPanelConfigletPanel"

@@ -2,14 +2,20 @@ from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield.registry import DictRow
 from cs_dynamicpages import _
 from cs_dynamicpages.interfaces import IBrowserLayer
+from plone import api
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
 from plone.autoform.directives import widget
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from plone.z3cform import layout
+from z3c.form import button
+from z3c.form import field
+from z3c.form import form
 from zope import schema
 from zope.component import adapter
 from zope.interface import Interface
+
+import json
 
 
 class IRowTypeFieldsSchema(Interface):
@@ -444,10 +450,46 @@ class DynamicPagesControlPanel(RegistryEditForm):
     schema_prefix = "cs_dynamicpages.dynamic_pages_control_panel"
     label = _("Dynamic Pages Control Panel")
 
+    @button.buttonAndHandler(_("Save"), name="save")
+    def handleSave(self, action):
+        super().handleSave(self, action)
+
+    @button.buttonAndHandler(_("Cancel"), name="cancel")
+    def handleCancel(self, action):
+        super().handleCancel(self, action)
+
+    @button.buttonAndHandler(_("Export"), name="export")
+    def handleExport(self, action):
+        self.request.response.redirect(
+            self.context.absolute_url() + "/@@dynamic_pages_export_config"
+        )
+
+    @button.buttonAndHandler(_("Import"), name="import_redirect")
+    def handleImportRedirect(self, action):
+        self.request.response.redirect(
+            self.context.absolute_url() + "/@@dynamic_pages_import_form"
+        )
+
 
 DynamicPagesControlPanelView = layout.wrap_form(
     DynamicPagesControlPanel, ControlPanelFormWrapper
 )
+
+
+class ExportConfig(layout.BrowserView):
+    def __call__(self):
+        data = {}
+        prefix = "cs_dynamicpages.dynamic_pages_control_panel."
+
+        for name in IDynamicPagesControlPanel.names():
+            data[name] = api.portal.get_registry_record(prefix + name)
+
+        response = self.request.response
+        response.setHeader("Content-Type", "application/json")
+        response.setHeader(
+            "Content-Disposition", "attachment; filename=dynamic_pages_config.json"
+        )
+        return json.dumps(data, indent=4)
 
 
 @adapter(Interface, IBrowserLayer)
@@ -460,3 +502,62 @@ class DynamicPagesControlPanelConfigletPanel(RegistryConfigletPanel):
     title = _("Dynamic Pages Control Panel")
     group = ""
     schema_prefix = "cs_dynamicpages.dynamic_pages_control_panel"
+
+
+class IDynamicPagesImportSchema(Interface):
+    import_file = schema.Bytes(
+        title=_("JSON file"),
+        description=_("Upload a JSON file to import the configuration"),
+        required=True,
+    )
+
+
+class DynamicPagesImportForm(form.Form):
+    fields = field.Fields(IDynamicPagesImportSchema)
+    ignoreContext = True
+    label = _("Import Dynamic Pages Configuration")
+
+    @button.buttonAndHandler(_("Import"), name="import")
+    def handleImport(self, action):
+        data, errors = self.extractData()
+        if errors:
+            self.status = self.formErrorsMessage
+            return
+
+        import_file = data.get("import_file")
+        if import_file:
+            try:
+                config_data = json.loads(import_file)
+                prefix = "cs_dynamicpages.dynamic_pages_control_panel."
+
+                for key, value in config_data.items():
+                    if key in IDynamicPagesControlPanel.names():
+                        api.portal.set_registry_record(prefix + key, value)
+
+                api.portal.show_message(
+                    _("Configuration imported successfully."), self.request, type="info"
+                )
+            except Exception as e:
+                api.portal.show_message(
+                    _(
+                        "Error importing configuration: ${error}",
+                        mapping={"error": str(e)},
+                    ),
+                    self.request,
+                    type="error",
+                )
+
+        self.request.response.redirect(
+            self.context.absolute_url() + "/@@dynamic_pages_control_panel-controlpanel"
+        )
+
+    @button.buttonAndHandler(_("Cancel"), name="cancel")
+    def handleCancel(self, action):
+        self.request.response.redirect(
+            self.context.absolute_url() + "/@@dynamic_pages_control_panel-controlpanel"
+        )
+
+
+DynamicPagesImportFormView = layout.wrap_form(
+    DynamicPagesImportForm, ControlPanelFormWrapper
+)
