@@ -33,7 +33,10 @@ class DynamicPagesControlPanelImportExportTest(unittest.TestCase):
         self.assertEqual(
             self.request.response.getHeader("Content-Type"), "application/json"
         )
-        self.assertIn("attachment; filename=dynamic_pages_config.json", self.request.response.getHeader("Content-Disposition"))
+        self.assertIn(
+            "attachment; filename=dynamic_pages_config.json",
+            self.request.response.getHeader("Content-Disposition"),
+        )
 
     def test_export_button_redirects(self):
         """Test that the export button in the control panel redirects to export view."""
@@ -46,7 +49,9 @@ class DynamicPagesControlPanelImportExportTest(unittest.TestCase):
         form.handleExport(form, None)
 
         self.assertEqual(self.request.response.getStatus(), 302)
-        self.assertIn("@@dynamic_pages_export_config", self.request.response.getHeader("Location"))
+        self.assertIn(
+            "@@dynamic_pages_export_config", self.request.response.getHeader("Location")
+        )
 
     def test_import(self):
         """Test the import functionality."""
