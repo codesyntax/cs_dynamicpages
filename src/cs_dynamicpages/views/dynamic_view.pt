@@ -383,70 +383,67 @@
             </tal:featured>
           </tal:features>
           <tal:condition tal:condition="view/can_edit">
-            <div class="sticky-bottom rows-mangement d-flex justify-content-center align-items-center gap-5"
+            <div class="admin-bar-container fixed-bottom"
                  tal:condition="view/dynamic_page_folder_element_url"
             >
-              <div tal:condition="python:len(view.rows()) and not view.self_in_templates()">
-                <!-- Button trigger modal -->
-                <button class="btn btn-primary"
-                        type="button"
-                        data-bs-target="#templateModal"
-                        data-bs-toggle="modal"
-                        i18n:translate=""
-                >
-                Save as template
-                </button>
-                <!-- Modal -->
-              </div>
-              <div>
-                <button class="btn btn-warning"
-                        id="purge-content"
-                        type="button"
-                        tal:attributes="
-                          data-url string:${context/absolute_url}/@purge;
-                        "
-                        i18n:translate=""
-                >
-                Purge from cache
-                </button>
-                <span class="d-none text-success ms-2"
-                      id="purge-success-message"
-                      i18n:translate=""
-                >Purged successfully.</span>
-              </div>
-              <!-- <a class="btn btn-primary"
-                 aria-controls="offcanvasRight"
-                 title="Add row"
-                 data-bs-target="#addrow-offcanvasRight"
-                 data-bs-toggle="offcanvas"
-                 tal:attributes="
-                   data-position python:len(view.rows());
-                 "
-                 i18n:attributes="title"
-              ><svg xmlns="http://www.w3.org/2000/svg"
-                     class="bi bi-plus-lg"
+              <button class="btn btn-primary btn-sm shadow-sm mx-auto d-block"
+                      id="adminBarToggle"
+                      type="button"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="bi bi-chevron-up"
                      fill="currentColor"
                      height="16"
                      viewbox="0 0 16 16"
                      width="16"
                 >
-                  <path d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"
+                  <path d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
                         fill-rule="evenodd"
                   ></path>
                 </svg>
-              </a> -->
-              <div class="px-3 py-2 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5">
-                <div class="form-check form-switch">
-                  <input class="form-check-input"
-                         id="editModeToggle"
-                         checked
-                         role="switch"
-                         type="checkbox"
-                  />
-                  <label class="form-check-label"
-                         for="editModeToggle"
-                         i18n:translate=""
-                  >Edit Mode</label>
+              </button>
+              <div class="rows-mangement d-flex justify-content-center align-items-center gap-5 d-none">
+                <div tal:condition="python:len(view.rows()) and not view.self_in_templates()">
+                  <!-- Button trigger modal -->
+                  <button class="btn btn-primary"
+                          type="button"
+                          data-bs-target="#templateModal"
+                          data-bs-toggle="modal"
+                          i18n:translate=""
+                  >
+                    Save as template
+                  </button>
+                  <!-- Modal -->
+                </div>
+                <div>
+                  <button class="btn btn-warning"
+                          id="purge-content"
+                          type="button"
+                          tal:attributes="
+                            data-url string:${context/absolute_url}/@purge;
+                          "
+                          i18n:translate=""
+                  >
+                    Purge from cache
+                  </button>
+                  <span class="d-none text-success ms-2"
+                        id="purge-success-message"
+                        i18n:translate=""
+                  >Purged successfully.</span>
+                </div>
+                <div class="px-3 py-2 border d-inline-flex align-items-center fw-semibold text-warning-emphasis bg-warning-subtle border-warning-subtle rounded-5">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input"
+                           id="editModeToggle"
+                           checked
+                           role="switch"
+                           type="checkbox"
+                    />
+                    <label class="form-check-label"
+                           for="editModeToggle"
+                           i18n:translate=""
+                    >Edit Mode</label>
+                  </div>
                 </div>
               </div>
             </div>
