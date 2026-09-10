@@ -48,6 +48,7 @@ class DynamicView(BrowserView):
                 )
                 api.content.transition(created_element, transition="publish")
                 return created_element
+        return None
 
     def dynamic_page_folder_element_url(self):
         dynamic_page_folder = self.dynamic_page_folder_element()
