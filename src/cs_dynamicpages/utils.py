@@ -2,10 +2,6 @@ from cs_dynamicpages import logger
 from plone import api
 from plone.app.uuid.utils import uuidToObject
 from urllib.parse import urlparse
-from zope.component import getSiteManager
-from zope.globalrequest import getRequest
-from zope.interface import Interface
-from zope.interface import providedBy
 
 
 VIEW_PREFIX = "cs_dynamicpages-"
@@ -22,6 +18,21 @@ NON_REDIRECTABLE_URL_SCHEMES = [
 # links starting with these URL scheme should not be resolved to paths
 NON_RESOLVABLE_URL_SCHEMES = [*NON_REDIRECTABLE_URL_SCHEMES, "file:", "ftp:"]
 
+CORE_TYPES = [
+    "cs_dynamicpages-title-description-view",
+    "cs_dynamicpages-featured-view",
+    "cs_dynamicpages-featured-overlay-view",
+    "cs_dynamicpages-horizontal-rule-view",
+    "cs_dynamicpages-spacer-view",
+    "cs_dynamicpages-slider-view",
+    "cs_dynamicpages-features-view",
+    "cs_dynamicpages-accordion-view",
+    "cs_dynamicpages-query-columns-view",
+    "cs_dynamicpages-text-view",
+    "cs_dynamicpages-image-view",
+    "cs_dynamicpages-card-view",
+]
+
 
 def add_custom_view(
     view_name: str,
@@ -31,7 +42,7 @@ def add_custom_view(
 ):
     """utility function to add a given view to the list of available row types"""
     record_name = "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields"
-    values = api.portal.get_registry_record(record_name)
+    values = list(api.portal.get_registry_record(record_name))
     existing_views = [item.get("row_type") for item in values]
     if view_name in existing_views:
         return False
@@ -39,7 +50,8 @@ def add_custom_view(
     new_item = {
         "row_type": view_name,
         "each_row_type_fields": shown_fields,
-        "row_type_has_featured_add_button": has_button,
+        "row_type_allows_children": has_button,
+        "allowed_child_row_types": [],
         "row_type_icon": icon,
     }
     values.append(new_item)
@@ -81,34 +93,45 @@ def enable_behavior(behavior_dotted_name=str):
         )
 
 
-def get_available_views_for_row():
+def get_available_views_for_row(container=None):
+    from cs_dynamicpages.content.dynamic_page_folder import IDynamicPageFolder
     from cs_dynamicpages.content.dynamic_page_row import IDynamicPageRow
 
-    items = []
-    sm = getSiteManager()
-
-    available_views = sm.adapters.lookupAll(
-        required=(IDynamicPageRow, providedBy(getRequest())),
-        provided=Interface,
-    )
-
-    values = api.portal.get_registry_record(
+    row_type_fields = api.portal.get_registry_record(
         "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields", default=[]
     )
 
-    for value in values:
-        for item in available_views:
-            if item[0].startswith(VIEW_PREFIX):
-                item_dict = {
-                    "row_type": item[0],
-                    "each_row_type_fields": [],
-                    "row_type_has_featured_add_button": False,
-                    "row_type_icon": "bricks",
-                }
-                if item[0] == value["row_type"] and value not in items:
-                    item_dict = value
-                    items.append(item_dict)
-    return items
+    # Filter by constraints
+    allowed_types = []
+    is_content_context = False
+    if container is not None:
+        if IDynamicPageFolder.providedBy(container):
+            is_content_context = True
+            allowed_types = api.portal.get_registry_record(
+                "cs_dynamicpages.dynamic_pages_control_panel.top_level_row_types",
+                default=[],
+            )
+        elif IDynamicPageRow.providedBy(container):
+            is_content_context = True
+            parent_row_type = getattr(container, "row_type", "")
+            for item in row_type_fields:
+                if item["row_type"] == parent_row_type:
+                    allowed_types = item.get("allowed_child_row_types", [])
+                    break
+
+    # If we are in a content context, we return what's in the registry
+    # filtered by constraints.
+    if is_content_context:
+        items = []
+        for value in row_type_fields:
+            if allowed_types and value["row_type"] not in allowed_types:
+                continue
+            items.append(value)
+        return items
+
+    # If we are NOT in a content context (e.g. registry validation),
+    # we return everything from the registry.
+    return row_type_fields
 
 
 def normalize_uid_from_path(url=None):

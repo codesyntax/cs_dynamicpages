@@ -15,11 +15,9 @@ The concept is pretty similar that of Volto blocks:
 - DynamicPageFolder: this content type will be created in a given folder, and will be the container
   where all the rows will be added.
 
-- DynamicPageRow: this content type will be the one that will be rendered in a separate row in the view
-
-- DynamicPageRowFeatured: this content type can be used to save static information that can be shown in a
-  row. For instance: each of the items of a slider need a title, a description or an image. They can be added
-  using this content-type
+- DynamicPageRow: this content type will be the one that will be rendered in a separate row in the view.
+  It is folderish and can contain other `DynamicPageRow` items, enabling infinite nesting for
+  complex components (accordions-with-tabs, multi-level grids, etc.).
 
 ## Provided View
 
@@ -36,6 +34,14 @@ To provide different views, you should register standard views (using `zcml`).
 
 Those views must be registered for implementers of `cs_dynamicpages.content.dynamic_page_row.IDynamicPageRow`
 and their name _must_ start by `cs_dynamicpages-`.
+
+### Structural governance
+
+You can restrict which row types are allowed at the top level of a page and which ones are allowed as children of a given row type in the Dynamic Pages Controlpanel.
+
+### Navigator Sidebar
+
+A recursive Offcanvas sidebar is available in the `dynamic_view` to help managing complex row structures (reordering, adding, editing or deleting nested items).
 
 ### Restrict fields in the row edit view
 
