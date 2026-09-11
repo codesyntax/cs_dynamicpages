@@ -9,6 +9,19 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b23 (2026-09-11)
+
+
+### New features:
+
+- Add export/import views for control panel registry @libargutxi [#54](https://github.com/codesyntax/cs_dynamicpages/issues/54)
+- Add a toggle to show/hide editor options bar @libargutxi [#56](https://github.com/codesyntax/cs_dynamicpages/issues/56)
+
+
+### Bug fixes:
+
+- return None in dynamic_page_folder_element function if there is no DynamicPageFolder element @libargutxi [#55](https://github.com/codesyntax/cs_dynamicpages/issues/55)
+
 ## 1.0.0b22 (2026-09-08)
 
 

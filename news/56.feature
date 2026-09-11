@@ -1,1 +1,0 @@
-Add a toggle to show/hide editor options bar @libargutxi
