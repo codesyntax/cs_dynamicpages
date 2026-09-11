@@ -19,7 +19,7 @@ Instead of relying on rigid page templates or complex visual builders, site admi
 
 ## The Core Content Types
 
-The add-on achieves this modularity by introducing three specialized Dexterity content types:
+The add-on achieves this modularity by introducing two specialized Dexterity content types:
 
 1.  **{term}`DynamicPageFolder <Dynamic Page Folder>`**: This is the top-level container. It represents the page itself (for instance, the "Home" page) and acts as the structural envelope holding all the individual rows that compose the page.
 2.  **{term}`DynamicPageRow <Dynamic Page Row>`**: Represents a single horizontal slice (or block) of the page. Depending on its configured {term}`Row Type` (which maps to a specific view template like `text-view`, `slider-view`, or `featured-view`), a row behaves differently and displays different information.

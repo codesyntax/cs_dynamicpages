@@ -31,9 +31,9 @@ We will keep the current UX (inline buttons, drag-and-drop handles) throughout t
 5. **Clean Legacy Files**: Delete obsolete robot tests. (✅ Done)
 
 ## Phase 5: Documentation & Standards
-1. **Documentation Overhaul**: Update `README.md` and `docs/` to reflect the new single-type architecture. (⏳ Pending)
-2. **Internationalization**: Run `make i18n` to sync translation strings. (⏳ Pending)
-3. **Final Verification**: Run `make check`, `make test`, and manually verify nesting UI. (⏳ Pending)
+1. **Documentation Overhaul**: Update `README.md` and `docs/` to reflect the new single-type architecture. (✅ Done)
+2. **Internationalization**: Run `make i18n` to sync translation strings. (✅ Done)
+3. **Final Verification**: Run `make check`, `make test`, and manually verify nesting UI. (✅ Done)
 
 ---
 
