@@ -128,6 +128,23 @@ class AddCustomViewIntegrationTest(unittest.TestCase):
         self.record_name = "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields"
         self.original_values = list(api.portal.get_registry_record(self.record_name))
 
+        # Register a dummy view for testing custom views
+        from cs_dynamicpages.content.dynamic_page_row import IDynamicPageRow
+        from zope.component import getSiteManager
+        from zope.interface import Interface
+        from zope.publisher.interfaces.browser import IBrowserRequest
+
+        class DummyView:
+            pass
+
+        sm = getSiteManager()
+        sm.registerAdapter(
+            DummyView,
+            (IDynamicPageRow, IBrowserRequest),
+            Interface,
+            name="cs_dynamicpages-some-custom-view",
+        )
+
     def tearDown(self):
         # Restore original registry values to prevent test pollution
         from plone.registry.interfaces import IRegistry
@@ -268,7 +285,7 @@ class GetAvailableViewsForRowIntegrationTest(unittest.TestCase):
         required_keys = [
             "row_type",
             "each_row_type_fields",
-            "row_type_has_featured_add_button",
+            "row_type_allows_children",
             "row_type_icon",
         ]
         for item in result:
