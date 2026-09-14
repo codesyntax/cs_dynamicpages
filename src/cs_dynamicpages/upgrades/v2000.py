@@ -87,7 +87,10 @@ def migrate_featured_to_rows():
         parent = old_obj.aq_parent
 
         # Determine appropriate row_type based on parent
+        # Parent might also be a broken object if it's a nested DynamicPageRowFeatured
         parent_row_type = getattr(parent, "row_type", "")
+        if not parent_row_type and hasattr(parent, "__dict__"):
+            parent_row_type = parent.__dict__.get("row_type", "")
         new_row_type = "cs_dynamicpages-text-view"  # Default fallback
 
         if parent_row_type == "cs_dynamicpages-slider-view":
@@ -98,39 +101,70 @@ def migrate_featured_to_rows():
             new_row_type = "cs_dynamicpages-text-view"
 
         # Let's create the new object
-        new_id = f"{old_obj.getId()}-migrated-{str(uuid.uuid4())[:8]}"
+        new_id = f"{brain.getId}-migrated-{str(uuid.uuid4())[:8]}"
 
         new_obj = api.content.create(
             type="DynamicPageRow",
             container=parent,
             id=new_id,
-            title=old_obj.Title(),
-            description=old_obj.Description(),
+            title=brain.Title,
+            description=brain.Description,
             row_type=new_row_type,
         )
 
-        # Transfer data generically using schemata to preserve all behavior data
-        from plone.dexterity.utils import iterSchemata
+        # Transfer data robustly.
+        # We try to get the object state to handle "Broken Objects" where the class code is missing.
+        state = {}
+        if hasattr(old_obj, "__getstate__"):
+            try:
+                state = old_obj.__getstate__()
+            except Exception:
+                state = getattr(old_obj, "__dict__", {})
+        elif hasattr(old_obj, "__dict__"):
+            state = old_obj.__dict__
 
-        for schema in iterSchemata(old_obj):
-            for name in schema.names():
-                if name in ["id", "title", "description"]:
-                    continue
-                value = getattr(old_obj, name, None)
-                if value is not None:
-                    try:
-                        setattr(new_obj, name, value)
-                    except Exception as e:
-                        logger.warning(
-                            f"Could not copy attribute {name} from {old_obj.absolute_url()}: {e}"
-                        )
+        # List of attributes to rescue (Standard + Common Behaviors)
+        RESCUE_ATTRS = [
+            "text",
+            "related_image",
+            "link_url",
+            "link_text",
+            "tabs_content",
+            "grid_rows",
+            "accordion_links",
+            "links",
+            "kicker_text",
+            "youtube_link",
+            "blockquote_title",
+            "blockquote_description",
+            "teacher_listing",
+            "html_code",
+            "card_render_type",
+            "first_item_featured",
+            "is_section_heading",
+            "show_title",
+            "show_ask_info_button",
+        ]
+
+        for attr in RESCUE_ATTRS:
+            # We use state.get() because broken objects might crash on direct getattr()
+            # for some internal reasons, and state inspection is safer.
+            val = state.get(attr, None)
+            if val is not None:
+                try:
+                    setattr(new_obj, attr, val)
+                except Exception as e:
+                    logger.warning(
+                        f"Could not rescue attribute {attr} for {brain.getPath()}: {e}"
+                    )
 
         # Handle position
         position = 0
         import contextlib
 
+        old_id = brain.getId
         with contextlib.suppress(AttributeError, KeyError):
-            position = parent.getObjectPositionInParent(old_obj.getId())
+            position = parent.getObjectPositionInParent(old_id)
 
         parent.moveObjectToPosition(new_obj.getId(), position)
 
@@ -138,7 +172,7 @@ def migrate_featured_to_rows():
         api.content.delete(old_obj)
 
         # Rename new object to old id
-        api.content.rename(obj=new_obj, new_id=old_obj.getId())
+        api.content.rename(obj=new_obj, new_id=old_id)
 
 
 def upgrade(setup_tool=None):
