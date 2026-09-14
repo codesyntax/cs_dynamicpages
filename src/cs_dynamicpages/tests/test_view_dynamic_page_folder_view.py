@@ -83,7 +83,7 @@ class DynamicPageFolderViewsFunctionalTest(unittest.TestCase):
             mock_get_views.return_value = [
                 {
                     "row_type": "dynamic_page_row",
-                    "row_type_has_featured_add_button": False,
+                    "row_type_allows_children": False,
                 }
             ]
             view()
@@ -102,7 +102,7 @@ class DynamicPageFolderViewsFunctionalTest(unittest.TestCase):
 
     def test_dynamic_page_add_row_content_view_with_featured(self):
         """Test adding a row via the add_row view with featured elements."""
-        self.request.form["row_type"] = "dynamic_page_row_featured"
+        self.request.form["row_type"] = "dynamic_page_row_text"
         view = getMultiAdapter((self.dpf, self.request), name="add-row-content")
 
         from unittest.mock import patch
@@ -112,8 +112,8 @@ class DynamicPageFolderViewsFunctionalTest(unittest.TestCase):
         ) as mock_get_views:
             mock_get_views.return_value = [
                 {
-                    "row_type": "dynamic_page_row_featured",
-                    "row_type_has_featured_add_button": True,
+                    "row_type": "dynamic_page_row_text",
+                    "row_type_allows_children": True,
                 }
             ]
             view()
@@ -123,15 +123,15 @@ class DynamicPageFolderViewsFunctionalTest(unittest.TestCase):
             self.assertEqual(len(rows), 1)
             row = rows[0]
             self.assertEqual(row.portal_type, "DynamicPageRow")
-            self.assertEqual(row.row_type, "dynamic_page_row_featured")
+            self.assertEqual(row.row_type, "dynamic_page_row_text")
 
-            # Should have added two featured elements inside the row
+            # Should have added two rows inside the row
             featured = row.objectValues()
             self.assertEqual(len(featured), 2)
-            self.assertEqual(featured[0].portal_type, "DynamicPageRowFeatured")
-            self.assertEqual(featured[0].title, "New Featured")
-            self.assertEqual(featured[1].portal_type, "DynamicPageRowFeatured")
-            self.assertEqual(featured[1].title, "New Featured 2")
+            self.assertEqual(featured[0].portal_type, "DynamicPageRow")
+            self.assertEqual(featured[0].title, "New Nested Row")
+            self.assertEqual(featured[1].portal_type, "DynamicPageRow")
+            self.assertEqual(featured[1].title, "New Nested Row 2")
 
     def test_dynamic_page_add_row_content_view_no_row_type(self):
         """Test the view when no row_type is provided."""
@@ -169,7 +169,7 @@ class DynamicPageFolderViewsFunctionalTest(unittest.TestCase):
             mock_get_views.return_value = [
                 {
                     "row_type": "type1",
-                    "row_type_has_featured_add_button": False,
+                    "row_type_allows_children": False,
                 }
             ]
             view()

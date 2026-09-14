@@ -26,6 +26,7 @@ class DynamicView(BrowserView):
                 portal_type="DynamicPageRow",
                 sort_on="getObjPositionInParent",
                 context=dynamic_page_folder,
+                depth=1,
             )
         return []
 
@@ -60,7 +61,8 @@ class DynamicView(BrowserView):
         return api.user.has_permission("Modify portal content", obj=self.context)
 
     def available_views_for_row(self):
-        return get_available_views_for_row()
+        container = self.dynamic_page_folder_element()
+        return get_available_views_for_row(container)
 
     def normalize_title(self, title):
         return (
@@ -100,3 +102,20 @@ class DynamicView(BrowserView):
                 template.get("uid") for template in self.available_templates()
             ]
         return False
+
+    def row_types_constraints(self):
+        """Return a mapping of row type to its allowed child row types."""
+        import json
+
+        row_type_fields = api.portal.get_registry_record(
+            "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields", default=[]
+        )
+        constraints = {
+            "top_level": api.portal.get_registry_record(
+                "cs_dynamicpages.dynamic_pages_control_panel.top_level_row_types",
+                default=[],
+            )
+        }
+        for item in row_type_fields:
+            constraints[item["row_type"]] = item.get("allowed_child_row_types", [])
+        return json.dumps(constraints)

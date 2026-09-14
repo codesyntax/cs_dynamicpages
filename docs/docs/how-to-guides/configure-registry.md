@@ -19,9 +19,20 @@ By default, the add-on ships with standard Bootstrap 5 utility classes (e.g., `m
 2. Navigate to **Site Setup** -> **Dynamic Pages Control Panel**.
 
 Here, you will find several tabs:
-* **Row type fields:** Mappings of views to their visible fields (see {doc}`custom-row-view`).
+* **Row type fields:** Mappings of views to their visible fields and child constraints (see {doc}`custom-row-view`).
+* **Top-level row types:** Constraints on which rows can be added directly to a page.
 * **Row widths:** Definitions for the `Width` dropdown on rows.
 * **Spacers:** Definitions for top/bottom margins and paddings.
+
+## Structural Governance
+
+`cs_dynamicpages` allows you to control the hierarchy of your pages to ensure design consistency.
+
+### Top-level Row Types
+In the **Top-level row types** tab, you can select which row types are allowed to be added directly to a {term}`Dynamic Page Folder`. If you leave this list empty, all registered row types are allowed.
+
+### Allowed Child Row Types
+Within the **Row type fields** tab, each row definition includes an **Allowed child row types** field. This allows you to restrict what can be added inside a folderish row. For example, you might want to allow only "Image" rows inside a "Slider" row.
 
 ## Modifying Row Widths
 

@@ -19,30 +19,63 @@
     if (!offcanvasAddRow) return;
 
     offcanvasAddRow.addEventListener("show.bs.offcanvas", (event) => {
-      // event.relatedTarget sometimes fails in some Bootstrap versions or environments
-      const button = event.relatedTarget || null;
-      const position = (button ? button.getAttribute("data-position") : null) || lastClickedPosition;
+      // Get position and container from the button that triggered the offcanvas
+      const button = event.relatedTarget;
+      const position = button ? button.getAttribute("data-position") : lastClickedPosition;
+      const container = button ? button.getAttribute("data-container") : null;
+      const containerType = button ? button.getAttribute("data-container-type") : 'top_level';
       
-      if (position !== null) {
+      // Filter available views based on constraints
+      const constraintsElem = document.getElementById("row-constraints-json");
+      if (constraintsElem && containerType) {
+        try {
+          const constraints = JSON.parse(constraintsElem.textContent);
+          const allowedTypes = constraints[containerType] || [];
+          const viewItems = offcanvasAddRow.querySelectorAll(".available-view-item");
+          
+          viewItems.forEach(item => {
+            const rowType = item.getAttribute("data-row-type");
+            if (allowedTypes.length === 0 || allowedTypes.includes(rowType)) {
+              item.classList.remove("d-none");
+            } else {
+              item.classList.add("d-none");
+            }
+          });
+        } catch (e) {
+          console.error("Error parsing constraints:", e);
+        }
+      }
+
+      if (position !== null || container !== null) {
         const links = offcanvasAddRow.querySelectorAll('a[href*="add-row-content"]');
         
         links.forEach(link => {
           let href = link.getAttribute('href');
           
-          // Remove existing position if any to avoid duplication
+          // Remove existing position and container if any to avoid duplication
           href = href.replace(/[&?]position=\d+/, '');
+          href = href.replace(/[&?]container=[^&]+/, '');
           
           // Add new position
-          const separator = href.includes('?') ? '&' : '?';
-          const newHref = href + separator + 'position=' + position;
+          if (position !== null) {
+            const separator = href.includes('?') ? '&' : '?';
+            href = href + separator + 'position=' + position;
+          }
           
-          link.setAttribute('href', newHref);
+          // Add new container
+          if (container !== null) {
+            const separator = href.includes('?') ? '&' : '?';
+            href = href + separator + 'container=' + container;
+          }
+          
+          link.setAttribute('href', href);
         });
 
         // Also update template apply buttons
         const templateButtons = offcanvasAddRow.querySelectorAll('.apply-template');
         templateButtons.forEach(btn => {
-          btn.setAttribute('data-position', position);
+          if (position !== null) btn.setAttribute('data-position', position);
+          if (container !== null) btn.setAttribute('data-container', container);
         });
       }
     });

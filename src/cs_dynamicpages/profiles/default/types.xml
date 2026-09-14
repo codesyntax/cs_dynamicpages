@@ -14,9 +14,6 @@
           name="DynamicPageRow"
   />
   <object meta_type="Dexterity FTI"
-          name="DynamicPageRowFeatured"
-  />
-  <object meta_type="Dexterity FTI"
           name="Folder"
   />
   <object meta_type="Dexterity FTI"

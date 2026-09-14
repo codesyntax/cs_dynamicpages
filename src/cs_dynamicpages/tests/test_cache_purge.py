@@ -106,87 +106,6 @@ class TestPurgeDynamicPageRow(unittest.TestCase):
         api.content.delete(obj=folder)
 
 
-class TestPurgeDynamicPageRowFeatured(unittest.TestCase):
-    """Tests for the DynamicPageRowFeatured cache purge handler."""
-
-    layer = CS_DYNAMICPAGES_INTEGRATION_TESTING
-
-    def setUp(self):
-        self.portal = self.layer["portal"]
-        setRoles(self.portal, TEST_USER_ID, ["Manager"])
-
-    @patch("cs_dynamicpages.cache.dynamic_page_row_featured.purge_item_from_cache")
-    @patch("cs_dynamicpages.cache.dynamic_page_row_featured.purge_dynamic_page_row")
-    def test_purge_featured_purges_self_and_delegates_to_row(
-        self, mock_row_purge, mock_purge
-    ):
-        from cs_dynamicpages.cache.dynamic_page_row_featured import purge
-
-        folder = api.content.create(
-            container=self.portal,
-            type="Folder",
-            id="test-feat-folder",
-            title="Test Folder",
-        )
-        dpf = api.content.create(
-            container=folder,
-            type="DynamicPageFolder",
-            id="rows",
-            title="Rows",
-        )
-        row = api.content.create(
-            container=dpf,
-            type="DynamicPageRow",
-            id="test-row",
-            title="Test Row",
-        )
-        featured = api.content.create(
-            container=row,
-            type="DynamicPageRowFeatured",
-            id="test-featured",
-            title="Test Featured",
-        )
-
-        purge(featured, None)
-
-        mock_purge.assert_called_once_with(featured)
-        mock_row_purge.assert_called_once_with(row, None)
-
-        api.content.delete(obj=folder)
-
-    def test_purge_featured_smoke(self):
-        from cs_dynamicpages.cache.dynamic_page_row_featured import purge
-
-        folder = api.content.create(
-            container=self.portal,
-            type="Folder",
-            id="test-feat-smoke",
-            title="Test Folder",
-        )
-        dpf = api.content.create(
-            container=folder,
-            type="DynamicPageFolder",
-            id="rows",
-            title="Rows",
-        )
-        row = api.content.create(
-            container=dpf,
-            type="DynamicPageRow",
-            id="test-row",
-            title="Test Row",
-        )
-        featured = api.content.create(
-            container=row,
-            type="DynamicPageRowFeatured",
-            id="test-featured",
-            title="Test Featured",
-        )
-
-        purge(featured, None)
-
-        api.content.delete(obj=folder)
-
-
 class TestPurgeDynamicPageFolder(unittest.TestCase):
     """Tests for the DynamicPageFolder cache purge handler."""
 
@@ -273,12 +192,8 @@ class TestPurgeSubscriberRegistration(unittest.TestCase):
     def test_dynamic_page_row_purge_handlers_importable(self):
         from cs_dynamicpages.cache.dynamic_page_folder import purge as purge_folder
         from cs_dynamicpages.cache.dynamic_page_row import purge
-        from cs_dynamicpages.cache.dynamic_page_row_featured import (
-            purge as purge_featured,
-        )
 
         self.assertTrue(callable(purge))
-        self.assertTrue(callable(purge_featured))
         self.assertTrue(callable(purge_folder))
 
     def test_purge_subscribers_fire_on_object_modified_event(self):
@@ -303,15 +218,16 @@ class TestPurgeSubscriberRegistration(unittest.TestCase):
             id="test-row",
             title="Test Row",
         )
-        featured = api.content.create(
+        # Test nesting
+        nested = api.content.create(
             container=row,
-            type="DynamicPageRowFeatured",
-            id="test-featured",
-            title="Test Featured",
+            type="DynamicPageRow",
+            id="test-nested",
+            title="Test Nested",
         )
 
         notify(ObjectModifiedEvent(row))
-        notify(ObjectModifiedEvent(featured))
+        notify(ObjectModifiedEvent(nested))
         notify(ObjectModifiedEvent(dpf))
 
         api.content.delete(obj=folder)

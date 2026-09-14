@@ -20,10 +20,7 @@ Dynamic Page Folder
     The top-level container content type (`DynamicPageFolder`) that represents an entire landing page. It acts as the wrapper holding all the individual rows that compose the page layout.
 
 Dynamic Page Row
-    A single horizontal block (`DynamicPageRow`) of a dynamic page. A row can display text, images, sliders, or collection grids depending on its configured {term}`Row Type`.
-
-Dynamic Page Row Featured
-    A child content type (`DynamicPageRowFeatured`) placed *inside* a {term}`Dynamic Page Row`. These are used when a row requires multiple distinct elements to function, such as the individual slides in a Slider view or the expandable panels in an Accordion view.
+    A single horizontal block (`DynamicPageRow`) of a dynamic page. A row can display text, images, sliders, or collection grids depending on its configured {term}`Row Type`. It is folderish and can contain other rows recursively to build complex nested structures.
 
 Row Type
     The specific view template assigned to a {term}`Dynamic Page Row` (e.g., `slider-view`, `text-view`, `features-view`). The Row Type dictates not only how the row looks on the frontend, but also which fields are exposed in the edit form.

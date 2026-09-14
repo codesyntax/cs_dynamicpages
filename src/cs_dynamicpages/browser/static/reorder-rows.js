@@ -25,7 +25,7 @@
     // Find all move up/down buttons
     const moveUpButtons = document.querySelectorAll('a[data-action="move-up"]');
     const moveDownButtons = document.querySelectorAll(
-      'a[data-action="move-down"]'
+      'a[data-action="move-down"]',
     );
 
     moveUpButtons.forEach((button) => {
@@ -56,12 +56,17 @@
     const element = button.closest('[data-move-target="true"]');
     if (element) {
       const container = element.parentElement;
-      moveElementInDOM(element, delta);
-      if (container) {
-        updateMoveButtonsInContainer(container);
+      const isNavigator = button.closest(".navigator-tree") !== null;
+
+      if (!isNavigator) {
+        moveElementInDOM(element, delta);
+        if (container) {
+          updateMoveButtonsInContainer(container);
+        }
+        updateRowPositions(); // Recalculate plus button positions
       }
-      sendReorderRequest(element, delta);
-      updateRowPositions(); // Recalculate plus button positions
+
+      sendReorderRequest(element, delta, isNavigator);
     }
 
     setTimeout(() => (button.disabled = false), 500);
@@ -74,7 +79,7 @@
 
     // Find the container of the rows. We assume all draggable items share the same parent.
     const firstDraggableElement = document.querySelector(
-      '.dynamic-row-wrapper'
+      ".dynamic-row-wrapper",
     );
     if (!firstDraggableElement?.parentElement) {
       return;
@@ -122,14 +127,24 @@
    * within its container.
    */
   function updateMoveButtonsInContainer(container) {
-    const items = container.querySelectorAll('[data-move-target="true"]');
+    // Find the parent <ul> list container instead of the individual <li>
+    const ulContainer =
+      container.tagName === "UL" ? container : container.closest("ul");
+    if (!ulContainer) return;
+
+    // Select ONLY the immediate items at this tree level
+    const items = ulContainer.querySelectorAll(
+      ":scope > li > [data-move-target='true']",
+    );
     const total = items.length;
 
     items.forEach((item, index) => {
       const isFirst = index === 0;
       const isLast = index === total - 1;
+
       const moveUp = item.querySelector('[data-action="move-up"]');
       const moveDown = item.querySelector('[data-action="move-down"]');
+
       if (moveUp) {
         moveUp.style.display = isFirst ? "none" : "";
       }
@@ -140,23 +155,27 @@
   }
 
   function moveElementInDOM(element, delta) {
-    const parent = element.parentNode;
-    if (!parent) return;
+    // Target the parent <li> element so children are moved along with it
+    const liElement = element.closest("li");
+    const ulParent = liElement?.parentNode;
+    if (!ulParent) return;
 
     if (delta > 0) {
-      // Move down
-      const nextTarget = element.nextElementSibling?.nextElementSibling || null;
-      parent.insertBefore(element, nextTarget);
+      // Move down past the next <li> sibling
+      const nextLi = liElement.nextElementSibling;
+      if (nextLi) {
+        ulParent.insertBefore(liElement, nextLi.nextElementSibling);
+      }
     } else {
-      // Move up
-      const target = element.previousElementSibling;
-      if (target) {
-        parent.insertBefore(element, target);
+      // Move up before the previous <li> sibling
+      const prevLi = liElement.previousElementSibling;
+      if (prevLi) {
+        ulParent.insertBefore(liElement, prevLi);
       }
     }
   }
 
-  function sendReorderRequest(element, delta) {
+  function sendReorderRequest(element, delta, reloadOnSuccess = false) {
     const elementId = element.dataset.elementid;
     if (!elementId) {
       console.error("No data-element-id attribute found on element");
@@ -186,6 +205,9 @@
         if (!response.ok) {
           const error = new Error(`HTTP error! status: ${response.status}`);
           throw error;
+        }
+        if (reloadOnSuccess) {
+          window.location.reload();
         }
       })
       .catch((error) => {

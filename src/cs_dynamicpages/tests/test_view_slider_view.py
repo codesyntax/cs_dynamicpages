@@ -84,17 +84,15 @@ class SliderViewsFunctionalTest(unittest.TestCase):
 
     def test_slider_view_renders_carousel_with_elements(self):
         """Test that slider view renders carousel structure when elements exist."""
-        # Create a featured item for the slider with required attributes
-        featured = api.content.create(
+        # Create a child item for the slider
+        child = api.content.create(
             self.row,
-            "DynamicPageRowFeatured",
-            "featured-1",
-            title="Featured Item",
+            "DynamicPageRow",
+            "child-1",
+            title="Child Row",
         )
-        # Set required attributes to avoid None errors
-        featured.link_url = ""
-        featured.link_text = ""
-        api.content.transition(obj=featured, transition="publish")
+        child.row_type = "cs_dynamicpages-text-view"
+        api.content.transition(obj=child, transition="publish")
 
         view = getMultiAdapter(
             (self.row, self.request),

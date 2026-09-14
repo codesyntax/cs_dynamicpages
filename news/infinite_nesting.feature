@@ -1,0 +1,5 @@
+- Implemented **Infinite Nesting Architecture**: `DynamicPageRow` is now folderish, allowing rows to contain other rows recursively.
+- Introduced **Structural Governance**: New registry settings `top_level_row_types` and `allowed_child_row_types` control which row types can be added where.
+- Added **Navigator Sidebar**: A recursive Offcanvas tree UI for managing complex page structures (reorder, add, edit, delete nested items).
+- Improved **Control Panel UX**: Optimized the row configuration interface with checkboxes and multi-line text areas to fix selection visibility issues in DataGrids.
+- Standardized on a single content type for all rows, migrating legacy `DynamicPageRowFeatured` items automatically.

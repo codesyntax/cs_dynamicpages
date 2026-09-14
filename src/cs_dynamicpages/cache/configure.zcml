@@ -18,18 +18,6 @@
       />
 
   <subscriber
-      for="cs_dynamicpages.content.dynamic_page_row_featured.IDynamicPageRowFeatured
-           zope.lifecycleevent.IObjectModifiedEvent"
-      handler=".dynamic_page_row_featured.purge"
-      />
-
-  <subscriber
-      for="cs_dynamicpages.content.dynamic_page_row_featured.IDynamicPageRowFeatured
-           Products.CMFCore.interfaces.IActionSucceededEvent"
-      handler=".dynamic_page_row_featured.purge"
-      />
-
-  <subscriber
       for="cs_dynamicpages.content.dynamic_page_folder.IDynamicPageFolder
            zope.lifecycleevent.IObjectModifiedEvent"
       handler=".dynamic_page_folder.purge"

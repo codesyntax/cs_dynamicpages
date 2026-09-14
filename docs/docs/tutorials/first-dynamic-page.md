@@ -72,7 +72,7 @@ Now you have two rows stacked vertically: a Featured hero and a Text block.
 
 ## Step 4: Create an Image Slider (Rows with Children)
 
-Some rows, like sliders, grids, or accordions, require multiple distinct items inside them. We build these by adding a row, and then adding {term}`Dynamic Page Row Featured` items *inside* that row.
+Some rows, like sliders, grids, or accordions, require multiple distinct items inside them. We build these by adding a row, and then adding child {term}`Dynamic Page Row` items *inside* that row.
 
 Let's build a slider with three images.
 
@@ -89,12 +89,13 @@ You now have a Slider row, but it's empty! We need to add slides.
 
 ### 4.2. Add Slides to the Slider
 
-1. Look at the view of the Slider row you just saved. Because this row type is configured to accept children, you will see a special **Add Featured** button (or you can use the standard Plone toolbar: **Add new... > Dynamic Page Row Featured**).
-2. Click **Add Featured**.
-3. **Title:** Enter `Slide 1: The Team`.
-4. **Related Image:** Upload the first image.
-5. Click **Save**.
-6. Repeat steps 2-5 twice more, creating "Slide 2" and "Slide 3" with different images.
+1. Look at the view of the Slider row you just saved. Because this row type is configured to accept children, you will see a special **Add nested row** button (or you can use the standard Plone toolbar: **Add new... > Dynamic Page Row**).
+2. Click **Add nested row**.
+3. **Row Type:** Select **Image view**.
+4. **Title:** Enter `Slide 1: The Team`.
+5. **Related Image:** Upload the first image.
+6. Click **Save**.
+7. Repeat steps 2-6 twice more, creating "Slide 2" and "Slide 3" with different images.
 
 ---
 
@@ -105,8 +106,8 @@ You now have a Slider row, but it's empty! We need to add slides.
 3. You should see:
    * The **Featured view** hero block at the top.
    * The **Text view** block in the middle, nicely centered.
-   * The **Slider view** at the bottom, automatically cycling through the three featured slides you added inside it.
+   * The **Slider view** at the bottom, automatically cycling through the three slides you added inside it.
 
-If you need to reorder the rows, simply use Plone's standard **Contents** view (folder contents) on the {term}`DynamicPageFolder <Dynamic Page Folder>` and drag-and-drop the rows into your preferred sequence.
+If you need to reorder the rows, simply use the drag-and-drop handles in the **Edit Mode** of the {term}`DynamicPageFolder <Dynamic Page Folder>` or use Plone's standard **Contents** view.
 
 **Congratulations!** You have built your first dynamic page.
