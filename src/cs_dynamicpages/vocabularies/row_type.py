@@ -38,13 +38,15 @@ class DynamicVocabulary(SimpleVocabulary):
     def __contains__(self, value):
         if super().__contains__(value):
             return True
-        return not self._strict and isinstance(value, str) and is_registered(value)
+        if self._strict:
+            return False
+        return isinstance(value, str) and value.startswith(VIEW_PREFIX)
 
     def getTerm(self, value):
         try:
             return super().getTerm(value)
         except LookupError:
-            if not self._strict and isinstance(value, str) and is_registered(value):
+            if not self._strict and isinstance(value, str) and value.startswith(VIEW_PREFIX):
                 return SimpleTerm(
                     value=value,
                     token=str(value),
