@@ -109,18 +109,21 @@ def migrate_featured_to_rows():
             row_type=new_row_type,
         )
 
-        # Transfer data
-        if hasattr(old_obj, "text"):
-            new_obj.text = old_obj.text
+        # Transfer data generically using schemata to preserve all behavior data
+        from plone.dexterity.utils import iterSchemata
 
-        if hasattr(old_obj, "link_url"):
-            new_obj.link_url = old_obj.link_url
-
-        if hasattr(old_obj, "link_text"):
-            new_obj.link_text = old_obj.link_text
-
-        if hasattr(old_obj, "related_image"):
-            new_obj.related_image = old_obj.related_image
+        for schema in iterSchemata(old_obj):
+            for name in schema.names():
+                if name in ["id", "title", "description"]:
+                    continue
+                value = getattr(old_obj, name, None)
+                if value is not None:
+                    try:
+                        setattr(new_obj, name, value)
+                    except Exception as e:
+                        logger.warning(
+                            f"Could not copy attribute {name} from {old_obj.absolute_url()}: {e}"
+                        )
 
         # Handle position
         position = 0
