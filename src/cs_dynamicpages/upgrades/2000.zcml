@@ -20,17 +20,18 @@
       destination="2000"
       >
 
+    <gs:upgradeDepends
+        title="Remove DynamicPageRowFeatured FTI"
+        description="Removes the obsolete content type from portal_types"
+        import_profile="cs_dynamicpages.upgrades:2000"
+        />
+
     <gs:upgradeStep
         title="Migrate DynamicPageRowFeatured to DynamicPageRow"
         description="Moves all featured items into the new folderish row structure."
         handler="cs_dynamicpages.upgrades.v2000.upgrade"
         />
 
-    <gs:upgradeDepends
-        title="Remove DynamicPageRowFeatured FTI"
-        description="Removes the obsolete content type from portal_types"
-        import_profile="cs_dynamicpages.upgrades:2000"
-        />
 
   </gs:upgradeSteps>
 
