@@ -83,8 +83,13 @@ def migrate_featured_to_rows():
     logger.info(f"Found {len(brains)} DynamicPageRowFeatured objects to migrate.")
 
     for brain in brains:
-        old_obj = brain.getObject()
-        parent = old_obj.aq_parent
+        old_id = brain.getId
+        try:
+            old_obj = brain.getObject()
+            parent = old_obj.aq_parent
+        except Exception:
+            logger.warning(f"Could not get parent for {brain.getPath()}, skipping.")
+            continue
 
         # Determine appropriate row_type based on parent
         # Parent might also be a broken object if it's a nested DynamicPageRowFeatured
@@ -100,19 +105,14 @@ def migrate_featured_to_rows():
         elif parent_row_type == "cs_dynamicpages-accordion-view":
             new_row_type = "cs_dynamicpages-text-view"
 
-        # Let's create the new object
-        new_id = f"{brain.getId}-migrated-{str(uuid.uuid4())[:8]}"
+        # Handle position before deletion
+        position = 0
+        import contextlib
 
-        new_obj = api.content.create(
-            type="DynamicPageRow",
-            container=parent,
-            id=new_id,
-            title=brain.Title,
-            description=brain.Description,
-            row_type=new_row_type,
-        )
+        with contextlib.suppress(AttributeError, KeyError):
+            position = parent.getObjectPositionInParent(old_id)
 
-        # Transfer data robustly.
+        # Transfer data robustly by getting state before deletion.
         # We try to get the object state to handle "Broken Objects" where the class code is missing.
         state = {}
         if hasattr(old_obj, "__getstate__"):
@@ -122,6 +122,31 @@ def migrate_featured_to_rows():
                 state = getattr(old_obj, "__dict__", {})
         elif hasattr(old_obj, "__dict__"):
             state = old_obj.__dict__
+
+        # Delete old object by ID directly from parent to avoid passing broken instance to Plone APIs
+        try:
+            if old_id in parent.objectIds():
+                parent.manage_delObjects([old_id])
+        except Exception as e:
+            logger.warning(
+                f"Standard delete failed for {old_id}, using low-level _delObject: {e}"
+            )
+            try:
+                parent._delObject(old_id)
+            except Exception as e2:
+                logger.error(f"Critical: Could not delete {old_id}: {e2}")
+                continue
+
+        # Create new object with the original ID immediately
+        new_obj = api.content.create(
+            type="DynamicPageRow",
+            container=parent,
+            id=old_id,
+            title=brain.Title,
+            description=brain.Description,
+            row_type=new_row_type,
+            safe_id=False,
+        )
 
         # List of attributes to rescue (Standard + Common Behaviors)
         RESCUE_ATTRS = [
@@ -158,21 +183,8 @@ def migrate_featured_to_rows():
                         f"Could not rescue attribute {attr} for {brain.getPath()}: {e}"
                     )
 
-        # Handle position
-        position = 0
-        import contextlib
-
-        old_id = brain.getId
-        with contextlib.suppress(AttributeError, KeyError):
-            position = parent.getObjectPositionInParent(old_id)
-
-        parent.moveObjectToPosition(new_obj.getId(), position)
-
-        # Delete old object
-        api.content.delete(old_obj)
-
-        # Rename new object to old id
-        api.content.rename(obj=new_obj, new_id=old_id)
+        parent.moveObjectToPosition(old_id, position)
+        new_obj.reindexObject()
 
 
 def upgrade(setup_tool=None):
