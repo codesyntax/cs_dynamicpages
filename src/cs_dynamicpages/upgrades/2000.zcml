@@ -16,7 +16,7 @@
 
   <gs:upgradeSteps
       profile="cs_dynamicpages:default"
-      source="1011"
+      source="1012"
       destination="2000"
       >
 
