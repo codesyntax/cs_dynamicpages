@@ -51,6 +51,18 @@ class IRowTypeFieldsSchema(Interface):
         default=False,
     )
 
+    each_featured_type_fields = schema.List(
+        title=_("Featured item fields"),
+        description=_(
+            "Enter the fields that will be available when "
+            "editing featured items in this row type. "
+            "This is useful to hide unused fields."
+        ),
+        required=False,
+        value_type=schema.TextLine(),
+        default=[],
+    )
+
     row_type_icon = schema.TextLine(
         title=_("Row type icon"),
         description=_("Icon for the row type"),
@@ -110,6 +122,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": False,
+                "each_featured_type_fields": [],
                 "row_type_icon": "fonts",
             },
             {
@@ -130,6 +143,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": False,
+                "each_featured_type_fields": [],
                 "row_type_icon": "card-image",
             },
             {
@@ -149,6 +163,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": False,
+                "each_featured_type_fields": [],
                 "row_type_icon": "image-fill",
             },
             {
@@ -163,6 +178,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": False,
+                "each_featured_type_fields": [],
                 "row_type_icon": "hr",
             },
             {
@@ -176,6 +192,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": False,
+                "each_featured_type_fields": [],
                 "row_type_icon": "arrows-vertical",
             },
             {
@@ -191,6 +208,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IFetchPriorityImage.fetchpriority_image",
                 ],
                 "row_type_has_featured_add_button": True,
+                "each_featured_type_fields": [],
                 "row_type_icon": "images",
             },
             {
@@ -207,6 +225,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IFetchPriorityImage.fetchpriority_image",
                 ],
                 "row_type_has_featured_add_button": True,
+                "each_featured_type_fields": [],
                 "row_type_icon": "grid",
             },
             {
@@ -221,6 +240,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": True,
+                "each_featured_type_fields": [],
                 "row_type_icon": "chevron-double-down",
             },
             {
@@ -242,6 +262,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IFetchPriorityImage.fetchpriority_image",
                 ],
                 "row_type_has_featured_add_button": False,
+                "each_featured_type_fields": [],
                 "row_type_icon": "funnel",
             },
             {
@@ -257,6 +278,7 @@ class IDynamicPagesControlPanel(Interface):
                     "IRowVerticalSpacing.margin_bottom",
                 ],
                 "row_type_has_featured_add_button": False,
+                "each_featured_type_fields": [],
                 "row_type_icon": "body-text",
             },
         ],

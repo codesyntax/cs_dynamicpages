@@ -28,6 +28,7 @@ def add_custom_view(
     shown_fields: list[str],
     has_button: bool = False,
     icon: str = "bricks",
+    featured_fields: list[str] | None = None,
 ):
     """utility function to add a given view to the list of available row types"""
     record_name = "cs_dynamicpages.dynamic_pages_control_panel.row_type_fields"
@@ -40,6 +41,7 @@ def add_custom_view(
         "row_type": view_name,
         "each_row_type_fields": shown_fields,
         "row_type_has_featured_add_button": has_button,
+        "each_featured_type_fields": featured_fields or [],
         "row_type_icon": icon,
     }
     values.append(new_item)
