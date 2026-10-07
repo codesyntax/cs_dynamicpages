@@ -14,7 +14,8 @@
     <metal:main fill-slot="main">
       <main id="dynamic_pages_content">
 
-        <tal:condition-configuration condition="view/dynamic_page_folder_element">
+        <tal:condition-configuration define="dynamic_page_folder_element view/dynamic_page_folder_element"
+          condition="nocall:dynamic_page_folder_element">
           <tal:conditiondrapanddrop tal:condition="view/can_edit">
             <script id="sortable-js"
                     src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"
@@ -581,7 +582,7 @@
                   <button class="btn btn-primary"
                           id="addAsTemplate"
                           type="button"
-                          data-uid="${python:view.dynamic_page_folder_element().UID()}"
+                          data-uid="${python:dynamic_page_folder_element.UID()}"
                           i18n:translate=""
                   >Save as
                     template</button>
