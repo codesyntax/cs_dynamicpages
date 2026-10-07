@@ -14,8 +14,11 @@
     <metal:main fill-slot="main">
       <main id="dynamic_pages_content">
 
-        <tal:condition-configuration define="dynamic_page_folder_element view/dynamic_page_folder_element"
-          condition="nocall:dynamic_page_folder_element">
+        <tal:condition-configuration define="
+                                       dynamic_page_folder_element view/dynamic_page_folder_element;
+                                     "
+                                     condition="nocall:dynamic_page_folder_element"
+        >
           <tal:conditiondrapanddrop tal:condition="view/can_edit">
             <script id="sortable-js"
                     src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"
