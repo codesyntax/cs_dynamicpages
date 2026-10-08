@@ -15,4 +15,4 @@ msgstr ""
 "Domain: DOMAIN\n"
 
 msgid "Manage Dynamic Pages Templates"
-msgstr ""
+msgstr "Orrialde dinamikoen txantiloiak kudeatu"

@@ -1,34 +1,36 @@
-# from plone.app.textfield import RichText
-# from plone.autoform import directives
+from cs_dynamicpages import _
 from cs_dynamicpages.utils import absolute_target_url
 from logging import getLogger
 from plone import api
 from plone.app.contenttypes.utils import replace_link_variables_by_paths
 from plone.dexterity.content import Container
-
-# from plone.namedfile import field as namedfile
 from plone.supermodel import model
-
-# from plone.supermodel.directives import fieldset
-# from z3c.form.browser.radio import RadioFieldWidget
 from zope import schema
+from zope.interface import alsoProvides
 from zope.interface import implementer
 
 
-log = getLogger(__name__)
+try:
+    from plone.app.multilingual.dx.interfaces import ILanguageIndependentField
+except ImportError:
+    ILanguageIndependentField = None
 
-# from cs_dynamicpages import _
+log = getLogger(__name__)
 
 
 class IDynamicPageRow(model.Schema):
     """Marker interface and Dexterity Python Schema for DynamicPageRow"""
 
     row_type = schema.Choice(
-        title="Row type",
+        title=_("Row type"),
         required=True,
         default="cs_dynamicpages-horizontal-rule-view",
         vocabulary="cs_dynamicpages.RowType",
     )
+
+
+if ILanguageIndependentField is not None:
+    alsoProvides(IDynamicPageRow["row_type"], ILanguageIndependentField)
 
 
 @implementer(IDynamicPageRow)
