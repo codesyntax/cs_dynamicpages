@@ -9,6 +9,19 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0b24 (2026-10-08)
+
+
+### New features:
+
+- Make items translatable when using plone.app.multilingual @erral 
+- Render icons using Plone's icons view @erral 
+
+
+### Bug fixes:
+
+- Fix `dynamic_page_folder_element` handling in the dynamic page view, avoiding an extra call and using `nocall` to check its presence. @libargutxi 
+
 ## 1.0.0b23 (2026-09-11)
 
 

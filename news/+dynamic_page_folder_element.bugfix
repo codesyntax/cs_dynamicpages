@@ -1,1 +1,0 @@
-Fix `dynamic_page_folder_element` handling in the dynamic page view, avoiding an extra call and using `nocall` to check its presence. @libargutxi
