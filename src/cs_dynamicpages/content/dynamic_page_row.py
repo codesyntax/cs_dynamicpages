@@ -9,6 +9,7 @@ from zope import schema
 from zope.interface import alsoProvides
 from zope.interface import implementer
 
+
 try:
     from plone.app.multilingual.dx.interfaces import ILanguageIndependentField
 except ImportError:
