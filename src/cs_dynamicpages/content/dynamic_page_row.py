@@ -12,8 +12,13 @@ from plone.supermodel import model
 # from plone.supermodel.directives import fieldset
 # from z3c.form.browser.radio import RadioFieldWidget
 from zope import schema
+from zope.interface import alsoProvides
 from zope.interface import implementer
 
+try:
+    from plone.app.multilingual.dx.interfaces import ILanguageIndependentField
+except:
+    ILanguageIndependentField = None
 
 log = getLogger(__name__)
 
@@ -29,6 +34,10 @@ class IDynamicPageRow(model.Schema):
         default="cs_dynamicpages-horizontal-rule-view",
         vocabulary="cs_dynamicpages.RowType",
     )
+
+
+if ILanguageIndependentField is not None:
+    alsoProvides(IDynamicPageRow["row_type"], ILanguageIndependentField)
 
 
 @implementer(IDynamicPageRow)
