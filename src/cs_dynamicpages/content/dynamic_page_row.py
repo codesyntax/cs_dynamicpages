@@ -1,3 +1,4 @@
+from cs_dynamicpages import _
 from cs_dynamicpages.utils import absolute_target_url
 from logging import getLogger
 from plone import api
@@ -7,7 +8,7 @@ from plone.supermodel import model
 from zope import schema
 from zope.interface import alsoProvides
 from zope.interface import implementer
-from cs_dynamicpages import _
+
 
 try:
     from plone.app.multilingual.dx.interfaces import ILanguageIndependentField

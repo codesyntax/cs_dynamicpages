@@ -1,4 +1,3 @@
-
 from plone.app.upgrade.utils import loadMigrationProfile
 
 
