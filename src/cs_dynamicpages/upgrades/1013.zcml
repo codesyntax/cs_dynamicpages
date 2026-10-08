@@ -1,0 +1,25 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:gs="http://namespaces.zope.org/genericsetup">
+
+  <gs:registerProfile name="1013"
+    title="Mark provided content-types as translatable"
+    directory="1013"
+    description='Configuration for version 1013'
+    for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+    provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+  <gs:upgradeSteps source="1012"
+    destination="1013"
+    profile="cs_dynamicpages:default">
+
+    <gs:upgradeStep title="Mark provided content-types as translatable"
+      description=""
+      handler=".v1013.upgrade" />
+
+    <gs:upgradeDepends title="Mark provided content-types as translatable (GS profile)"
+      description=""
+      import_profile="cs_dynamicpages.upgrades:1013" />
+
+  </gs:upgradeSteps>
+
+</configure>
